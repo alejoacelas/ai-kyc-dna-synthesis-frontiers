@@ -870,7 +870,7 @@ def generate_responses_csv(
                 "full_response": full_response,
                 "response_length": len(full_response),
                 # Use fetched OpenRouter latency (accurate), fall back to PromptFoo latency
-                "latency_ms": result_latencies.get(result.get("id", "")) or result.get("latencyMs", 0),
+                "latency_ms": result_latencies.get(result.get("id", ""), None),
                 "total_cost": result.get("cost", 0) or response.get("cost", 0),
                 "model_cost": response.get("model_cost", ""),
                 "web_search_cost": response.get("web_search_cost", ""),
