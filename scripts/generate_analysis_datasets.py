@@ -5,8 +5,22 @@ Generate analysis datasets for KYC paper from promptfoo evaluation results.
 Creates two CSV datasets:
 1. tests.csv - One row per test (assertion) result for accuracy/reliability analysis
 2. responses.csv - One row per model response for cost/latency analysis
+
+Usage:
+    # Full regeneration (default)
+    python generate_analysis_datasets.py
+
+    # Skip latency fetching (use existing latencies from processed/responses.csv)
+    python generate_analysis_datasets.py --skip-latency
+
+    # Skip country classification (use existing from processed/tests.csv)
+    python generate_analysis_datasets.py --skip-country
+
+    # Only run country classification (updates institution_country in existing CSVs)
+    python generate_analysis_datasets.py --only-country
 """
 
+import argparse
 import json
 import csv
 import re
@@ -52,6 +66,10 @@ GROUND_TRUTH_FILE = DATA_DIR / "ground_truth_flags.json"
 
 # OpenRouter API
 OPENROUTER_GENERATION_URL = "https://openrouter.ai/api/v1/generation"
+OPENROUTER_CHAT_URL = "https://openrouter.ai/api/v1/chat/completions"
+
+# Country classification categories
+COUNTRY_CATEGORIES = ["USA", "Europe + Australia", "China", "Others"]
 
 
 def fetch_generation_metadata(generation_id: str, api_key: str) -> Optional[dict]:
@@ -155,6 +173,244 @@ def fetch_all_generation_latencies(
             result_latencies[result_id] = total_latency
 
     return result_latencies
+
+
+# Cache for institution country classifications
+_institution_country_cache: dict[str, str] = {}
+
+
+def classify_institution_country(institution: str, api_key: str) -> str:
+    """
+    Classify an institution's country using Gemini via OpenRouter.
+
+    Returns one of: "USA", "Europe + Australia", "China", "Others"
+    """
+    if not institution or not institution.strip():
+        return "Others"
+
+    # Check cache first
+    institution_key = institution.strip().lower()
+    if institution_key in _institution_country_cache:
+        return _institution_country_cache[institution_key]
+
+    if not api_key:
+        return "Others"
+
+    prompt = f"""Classify the following institution into exactly one of these categories:
+- USA (institutions in the United States)
+- Europe + Australia (institutions in European countries or Australia)
+- China (institutions in China, including Hong Kong and Macau)
+- Others (institutions in any other country)
+
+Institution: {institution}
+
+Respond with ONLY the category name, nothing else. Your response must be exactly one of: USA, Europe + Australia, China, Others"""
+
+    try:
+        response = requests.post(
+            OPENROUTER_CHAT_URL,
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "google/gemini-2.5-flash",
+                "messages": [{"role": "user", "content": prompt}],
+                "max_tokens": 20,
+                "temperature": 0,
+            },
+            timeout=30,
+        )
+        if response.status_code == 200:
+            data = response.json()
+            result = data.get("choices", [{}])[0].get("message", {}).get("content", "").strip()
+            # Normalize the result
+            if "USA" in result.upper() and "AUSTRALIA" not in result.upper():
+                category = "USA"
+            elif "EUROPE" in result.upper() or "AUSTRALIA" in result.upper():
+                category = "Europe + Australia"
+            elif "CHINA" in result.upper():
+                category = "China"
+            else:
+                category = "Others"
+            _institution_country_cache[institution_key] = category
+            return category
+    except Exception as e:
+        print(f"  Warning: Failed to classify institution '{institution}': {e}")
+
+    return "Others"
+
+
+def classify_all_institutions(
+    institutions: set[str],
+    max_workers: int = 10,
+) -> dict[str, str]:
+    """
+    Classify all unique institutions in parallel.
+
+    Args:
+        institutions: Set of unique institution names.
+        max_workers: Number of parallel threads.
+
+    Returns:
+        Dict mapping institution -> country category.
+    """
+    api_key = os.environ.get("OPENROUTER_API_KEY")
+    if not api_key:
+        print("  Warning: OPENROUTER_API_KEY not set, skipping country classification")
+        return {inst: "Others" for inst in institutions}
+
+    # Filter out already cached and empty institutions
+    to_classify = [
+        inst for inst in institutions
+        if inst and inst.strip() and inst.strip().lower() not in _institution_country_cache
+    ]
+
+    if not to_classify:
+        return {inst: _institution_country_cache.get(inst.strip().lower(), "Others") for inst in institutions}
+
+    print(f"  Classifying {len(to_classify)} institutions by country...")
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_inst = {
+            executor.submit(classify_institution_country, inst, api_key): inst
+            for inst in to_classify
+        }
+
+        completed = 0
+        for future in as_completed(future_to_inst):
+            inst = future_to_inst[future]
+            completed += 1
+
+            if completed % 20 == 0:
+                print(f"    Progress: {completed}/{len(to_classify)}")
+
+            try:
+                future.result()  # Result is cached in the function
+            except Exception as e:
+                print(f"  Warning: Exception classifying '{inst}': {e}")
+
+    print(f"  Classified {len(to_classify)} institutions")
+
+    # Return mapping for all requested institutions
+    return {
+        inst: _institution_country_cache.get(inst.strip().lower() if inst else "", "Others")
+        for inst in institutions
+    }
+
+
+def load_existing_latencies() -> dict[str, int]:
+    """
+    Load existing latencies from processed/responses.csv.
+
+    Returns dict mapping result_id -> latency_ms.
+    """
+    responses_path = OUTPUT_DIR / "responses.csv"
+    if not responses_path.exists():
+        print("  No existing responses.csv found, will fetch latencies from API")
+        return {}
+
+    latencies = {}
+    with open(responses_path, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            result_id = row.get("result_id", "")
+            latency = row.get("latency_ms", "")
+            if result_id and latency:
+                try:
+                    latencies[result_id] = int(latency)
+                except ValueError:
+                    pass
+
+    print(f"  Loaded {len(latencies)} existing latencies from responses.csv")
+    return latencies
+
+
+def load_existing_country_classifications() -> dict[str, str]:
+    """
+    Load existing country classifications from processed/tests.csv.
+
+    Returns dict mapping institution -> country category.
+    """
+    tests_path = OUTPUT_DIR / "tests.csv"
+    if not tests_path.exists():
+        print("  No existing tests.csv found, will classify institutions from API")
+        return {}
+
+    classifications = {}
+    with open(tests_path, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            institution = row.get("customer_institution", "")
+            country = row.get("institution_country", "")
+            if institution and country:
+                classifications[institution] = country
+
+    print(f"  Loaded {len(classifications)} existing country classifications from tests.csv")
+    return classifications
+
+
+def run_only_country_classification():
+    """
+    Run only country classification on existing processed CSVs.
+
+    This is useful for updating the institution_country column without
+    regenerating everything from scratch.
+    """
+    import pandas as pd
+
+    load_dotenv()
+
+    print("Running country classification only mode...")
+
+    # Check if processed CSVs exist
+    tests_path = OUTPUT_DIR / "tests.csv"
+    responses_path = OUTPUT_DIR / "responses.csv"
+
+    if not tests_path.exists() or not responses_path.exists():
+        print("ERROR: processed/tests.csv or processed/responses.csv not found")
+        print("Run the full script first to generate the base CSVs")
+        return
+
+    # Load existing CSVs
+    print("\nLoading existing CSVs...")
+    tests_df = pd.read_csv(tests_path)
+    responses_df = pd.read_csv(responses_path)
+
+    print(f"  tests.csv: {len(tests_df)} rows")
+    print(f"  responses.csv: {len(responses_df)} rows")
+
+    # Get unique institutions
+    unique_institutions = set(tests_df["customer_institution"].dropna().unique())
+    unique_institutions.update(responses_df["customer_institution"].dropna().unique())
+    print(f"\nFound {len(unique_institutions)} unique institutions")
+
+    # Classify all institutions
+    print("\nClassifying institutions by country...")
+    institution_country_map = classify_all_institutions(unique_institutions)
+
+    # Update the DataFrames
+    print("\nUpdating CSVs...")
+    tests_df["institution_country"] = tests_df["customer_institution"].map(
+        lambda x: institution_country_map.get(x, "Others") if pd.notna(x) else "Others"
+    )
+    responses_df["institution_country"] = responses_df["customer_institution"].map(
+        lambda x: institution_country_map.get(x, "Others") if pd.notna(x) else "Others"
+    )
+
+    # Save updated CSVs
+    tests_df.to_csv(tests_path, index=False)
+    responses_df.to_csv(responses_path, index=False)
+
+    print(f"\nUpdated: {tests_path}")
+    print(f"Updated: {responses_path}")
+
+    # Print country distribution
+    print("\nCountry distribution:")
+    for country, count in tests_df["institution_country"].value_counts().items():
+        print(f"  {country}: {count}")
+
+    print("\nDone!")
 
 
 def load_json(filepath: Path) -> dict:
@@ -563,7 +819,13 @@ def find_ground_truth_flags(customer_info: str, ground_truth: dict) -> dict:
     return default_flags
 
 
-def generate_tests_csv(all_results: list, customer_data: dict, ground_truth: dict, output_path: Path):
+def generate_tests_csv(
+    all_results: list,
+    customer_data: dict,
+    ground_truth: dict,
+    output_path: Path,
+    institution_country_map: dict[str, str],
+):
     """Generate tests.csv with one row per test (assertion) result."""
 
     fieldnames = [
@@ -571,6 +833,7 @@ def generate_tests_csv(all_results: list, customer_data: dict, ground_truth: dic
         "result_id",
         "customer_name",
         "customer_institution",
+        "institution_country",
         "customer_type",
         "order",
         "work_url",
@@ -731,11 +994,13 @@ def generate_tests_csv(all_results: list, customer_data: dict, ground_truth: dic
                             extracted_flag, ground_truth_val
                         )
 
+                institution = customer_meta.get("Institution", extract_institution_from_customer_info(customer_info))
                 row = {
                     "eval_id": result_info["eval_id"],
                     "result_id": result.get("id", ""),
                     "customer_name": customer_meta.get("Name", extract_name_from_customer_info(customer_info)),
-                    "customer_institution": customer_meta.get("Institution", extract_institution_from_customer_info(customer_info)),
+                    "customer_institution": institution,
+                    "institution_country": institution_country_map.get(institution, "Others"),
                     "customer_type": customer_meta.get("Type", ""),
                     "order": customer_meta.get("Order", ""),
                     "work_url": result.get("vars", {}).get("work_url", ""),
@@ -775,6 +1040,7 @@ def generate_responses_csv(
     all_results: list,
     customer_data: dict,
     output_path: Path,
+    institution_country_map: dict[str, str],
     result_latencies: Optional[dict[str, int]] = None,
 ):
     """Generate responses.csv with one row per model response."""
@@ -785,6 +1051,7 @@ def generate_responses_csv(
         "result_id",
         "customer_name",
         "customer_institution",
+        "institution_country",
         "customer_type",
         "order",
         "is_human_baseline_dataset",
@@ -854,11 +1121,13 @@ def generate_responses_csv(
             num_assertions = len(component_results)
             num_passed = sum(1 for cr in component_results if cr.get("pass", False))
 
+            institution = customer_meta.get("Institution", extract_institution_from_customer_info(customer_info))
             row = {
                 "eval_id": result_info["eval_id"],
                 "result_id": result.get("id", ""),
                 "customer_name": customer_meta.get("Name", extract_name_from_customer_info(customer_info)),
-                "customer_institution": customer_meta.get("Institution", extract_institution_from_customer_info(customer_info)),
+                "customer_institution": institution,
+                "institution_country": institution_country_map.get(institution, "Others"),
                 "customer_type": customer_meta.get("Type", ""),
                 "order": customer_meta.get("Order", ""),
                 "is_human_baseline_dataset": file_meta["is_human_baseline_dataset"],
@@ -894,11 +1163,58 @@ def generate_responses_csv(
     print(f"Generated: {output_path}")
 
 
+def parse_args():
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Generate analysis datasets for KYC paper",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+    # Full regeneration (default)
+    python generate_analysis_datasets.py
+
+    # Skip latency fetching (use existing latencies from processed/responses.csv)
+    python generate_analysis_datasets.py --skip-latency
+
+    # Skip country classification (use existing from processed/tests.csv)
+    python generate_analysis_datasets.py --skip-country
+
+    # Only run country classification (updates institution_country in existing CSVs)
+    python generate_analysis_datasets.py --only-country
+        """
+    )
+
+    parser.add_argument(
+        "--skip-latency",
+        action="store_true",
+        help="Skip fetching latencies from OpenRouter API, use existing from responses.csv",
+    )
+    parser.add_argument(
+        "--skip-country",
+        action="store_true",
+        help="Skip country classification, use existing from tests.csv",
+    )
+    parser.add_argument(
+        "--only-country",
+        action="store_true",
+        help="Only run country classification on existing CSVs (no full regeneration)",
+    )
+
+    return parser.parse_args()
+
+
 def main():
     """Main entry point."""
+    args = parse_args()
+
+    # Handle --only-country mode separately
+    if args.only_country:
+        run_only_country_classification()
+        return
+
     # Load environment variables from .env file
     load_dotenv()
-    
+
     print("Loading reference datasets...")
 
     # Load customer metadata from both CSVs
@@ -938,17 +1254,42 @@ def main():
 
     print(f"\nTotal results to process: {len(all_results)}")
 
-    # Fetch latencies from OpenRouter API in parallel
-    print("\nFetching latencies from OpenRouter...")
-    result_latencies = fetch_all_generation_latencies(all_results)
+    # Fetch latencies from OpenRouter API in parallel (or use existing)
+    if args.skip_latency:
+        print("\nLoading existing latencies (--skip-latency)...")
+        result_latencies = load_existing_latencies()
+    else:
+        print("\nFetching latencies from OpenRouter...")
+        result_latencies = fetch_all_generation_latencies(all_results)
+
+    # Collect all unique institutions and classify by country (or use existing)
+    unique_institutions = set()
+    for result_info in all_results:
+        result = result_info["result"]
+        customer_info = result.get("vars", {}).get("customer_info", "")
+        customer_meta = customer_data.get(customer_info, {})
+        institution = customer_meta.get("Institution", extract_institution_from_customer_info(customer_info))
+        if institution:
+            unique_institutions.add(institution)
+
+    if args.skip_country:
+        print("\nLoading existing country classifications (--skip-country)...")
+        institution_country_map = load_existing_country_classifications()
+        # Fill in any missing institutions with "Others"
+        for inst in unique_institutions:
+            if inst not in institution_country_map:
+                institution_country_map[inst] = "Others"
+    else:
+        print("\nClassifying institutions by country...")
+        institution_country_map = classify_all_institutions(unique_institutions)
 
     # Create output directory
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     # Generate datasets
     print("\nGenerating datasets...")
-    generate_tests_csv(all_results, customer_data, ground_truth, OUTPUT_DIR / "tests.csv")
-    generate_responses_csv(all_results, customer_data, OUTPUT_DIR / "responses.csv", result_latencies)
+    generate_tests_csv(all_results, customer_data, ground_truth, OUTPUT_DIR / "tests.csv", institution_country_map)
+    generate_responses_csv(all_results, customer_data, OUTPUT_DIR / "responses.csv", institution_country_map, result_latencies)
 
     print("\nDone!")
 
