@@ -1,0 +1,78 @@
+template: |
+  Review a customer screening report for fabricated, unsupported, or misrepresented claims.
+
+  <verification_questionl>
+  {{CRITERION_NAME}}: {{CRITERION_INSTRUCTION}}
+  </verification_question>
+
+  <report_output>
+  {{EXTRACTED_SECTION}}
+  </report_output>
+
+  <source_text>
+  {{SOURCES}}
+  </source_text>
+
+  <customer_details>
+  {{CUSTOMER_INFO}}
+  </customer_details>
+
+  ---
+
+  Confirm the sources support the report's answer to the verification question: {{CRITERION_INSTRUCTION}}.
+
+  Focus on substantive claims. Ignore minor discrepancies (e.g., rewordings, typos) that don't affect the verification question.
+
+  A claim FAILS if:
+  - The source flatly contradicts it
+  - There's no source providing relevant information for the claim
+  - It presents speculation or inference as established fact
+
+  Otherwise, the claim is PASS. Negative claims reporting absence of evidence (e.g., "no matching records found," "could not locate") are PASS. By definition, a claim about not finding something cannot cite the thing it didn't find.
+  
+  If all claims pass, return PASS in <answer> tags. Otherwise, return FAIL.
+
+  Present your answer in the following format:
+
+  <claims>
+  <claim_1>
+  <assertion>[Restate the claim]</assertion>
+  <reasoning>[Evaluate if the claim contains any of the FAIL conditions. Under 50 words.]</reasoning>
+  <status>PASS | FAIL</status>
+  </claim_1>
+
+  <claim_2>
+  ...
+  </claim_2>
+  </claims>
+  <answer>
+  [PASS if all claims pass, FAIL otherwise]
+  </answer>
+
+  Return only the requested output in the specified xml tags and nothing else.
+  
+
+# =============================================================================
+# CRITERION CONFIGURATIONS
+# =============================================================================
+
+claim_types:
+  affiliation:
+    criterion_name: "Customer Institutional Affiliation"
+    criterion_instruction: "Verify the customer is currently affiliated with their claimed institution"
+
+  institution:
+    criterion_name: "Institution Type and Biomedical Focus"
+    criterion_instruction: "Verify the institution is a legitimate research institution or biomedical company with biomedical/biological research focus"
+
+  domain:
+    criterion_name: "Email Domain Verification"
+    criterion_instruction: "Verify the customer's email domain legitimately belongs to their claimed institution"
+
+  sanctions:
+    criterion_name: "Sanctions and Export Control Screening"
+    criterion_instruction: "Verify the institution is not subject to sanctions or export control restrictions"
+
+  background_work:
+    criterion_name: "Relevant Background Work"
+    criterion_instruction: "Identify laboratory work by the customer or institution relevant to the ordered organism"
