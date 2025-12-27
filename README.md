@@ -2,39 +2,14 @@
 
 This directory contains all the code and data for analyzing the KYC (Know Your Customer) evaluation results.
 
-## Directory Structure
+To get context on the results, I'd recommend starting by:
 
-```
-analysis/
-├── data/                           # Raw input data
-│   ├── full-dataset.csv            # Full customer dataset (100 customers)
-│   ├── final-human-baseline.csv    # Human baseline subset (30 customers)
-│   ├── ground_truth_flags.json     # Ground truth flag values for each customer
-│   ├── agreements.json             # Inter-rater agreement data
-│   └── results/                    # Evaluation result JSON files
-│       ├── full_dataset_main.json
-│       ├── full_dataset_background_work.json
-│       ├── human_baseline_subset_main.json
-│       └── human_baseline_subset_background_work.json
-├── processed/                      # Processed CSV datasets
-│   ├── tests.csv                   # One row per test/assertion result
-│   └── responses.csv               # One row per model response
-├── scripts/                        # Data processing scripts
-│   └── generate_analysis_datasets.py
-├── plots/                          # Visualization code and outputs
-│   ├── figures/                    # Generated plot images
-│   ├── style.py                    # Common styling for plots
-│   ├── plot_pass_rates.py
-│   ├── plot_model_comparison.py
-│   ├── plot_cost_latency.py
-│   ├── plot_sources.py
-│   ├── plot_advanced_analysis.py
-│   ├── flag_accuracy_comparison.py
-│   └── generate_all_plots.py
-├── viewer/                         # Next.js app for browsing results
-│   └── ...
-└── README.md                       # This file
-```
+- Looking at the plots on `plots/figures``
+- Running `cd viewer && npm install && npm run dev` to see the responses directly
+- Reading the prompts at `prompts/`
+- Asking Cursor/Claude Code to explain which corrections are done inside `scripts/generate_analysis_datasets.py`
+
+After that, you can use Claude Code to play around generation plots from the processed datasets at `processed`.
 
 ## Data Files
 
