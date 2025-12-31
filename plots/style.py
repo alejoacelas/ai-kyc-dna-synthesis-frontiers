@@ -47,6 +47,12 @@ COLORS = {
     "Controlled Agent Industry": "#2ecc71",
     "General Life Science Customers": "#f39c12",
     "Sanctioned Institution Customers": "#e74c3c",
+
+    # Countries
+    "USA": "#3498db",                # Blue
+    "Europe + Australia": "#2ecc71", # Green
+    "China": "#e74c3c",              # Red
+    "Others": "#95a5a6",             # Gray
 }
 
 # Model display names (shorter for plots)
@@ -90,6 +96,18 @@ CATEGORY_LABELS = {
     "source_reliability": "Source Reliability",
     "claim_support": "Claim Support",
     "flag_accuracy": "Flag Accuracy",
+}
+
+# Country order
+COUNTRY_ORDER = ["USA", "Europe + Australia", "China", "Others"]
+
+# Flag criteria order and labels
+FLAG_ORDER = ["affiliation", "institution", "domain", "sanctions"]
+FLAG_LABELS = {
+    "affiliation": "Affiliation",
+    "institution": "Institution",
+    "domain": "Domain",
+    "sanctions": "Sanctions",
 }
 
 

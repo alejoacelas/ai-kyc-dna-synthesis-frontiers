@@ -1,0 +1,1343 @@
+[
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b9836706-0f7d-4972-b68b-55b04414b216",
+    "assertionIndex": 0,
+    "originalIndex": 380,
+    "status": "ungraded",
+    "timestamp": "2025-12-29T22:36:51.519Z",
+    "timeSpentMs": 14057
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "6bd8111d-02b6-425b-be3a-bf7328cc856f",
+    "assertionIndex": 0,
+    "originalIndex": 460,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:43:12.676Z",
+    "timeSpentMs": 18115
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1bd65fba-27bb-428c-abd1-75ea879af53d",
+    "assertionIndex": 0,
+    "originalIndex": 283,
+    "status": "ungraded",
+    "timestamp": "2025-12-29T22:46:26.371Z",
+    "timeSpentMs": 3042
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1bd65fba-27bb-428c-abd1-75ea879af53d",
+    "assertionIndex": 1,
+    "originalIndex": 283,
+    "status": "ungraded",
+    "timestamp": "2025-12-29T22:46:27.314Z",
+    "timeSpentMs": 4047
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 0,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:48:21.449Z",
+    "timeSpentMs": 14042
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 1,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:49:24.976Z",
+    "timeSpentMs": 78038
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 2,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:49:46.466Z",
+    "timeSpentMs": 99039
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 3,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:50:50.111Z",
+    "timeSpentMs": 163037
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 4,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:51:25.472Z",
+    "timeSpentMs": 198036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 5,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:52:45.010Z",
+    "timeSpentMs": 278033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 6,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:53:13.632Z",
+    "timeSpentMs": 306031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 7,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:55:11.890Z",
+    "timeSpentMs": 425027
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 0,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:55:23.921Z",
+    "timeSpentMs": 10040
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 1,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:56:58.923Z",
+    "timeSpentMs": 105036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 2,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:58:12.991Z",
+    "timeSpentMs": 179033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 3,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:58:41.428Z",
+    "timeSpentMs": 207032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 4,
+    "originalIndex": 403,
+    "status": "fail",
+    "timestamp": "2025-12-29T22:59:51.898Z",
+    "timeSpentMs": 278029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 5,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:00:40.666Z",
+    "timeSpentMs": 327029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 6,
+    "originalIndex": 403,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:00:57.065Z",
+    "timeSpentMs": 343075
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 7,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:01:00.500Z",
+    "timeSpentMs": 346028
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 0,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:03:24.981Z",
+    "timeSpentMs": 96046
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 1,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:04:24.144Z",
+    "timeSpentMs": 155044
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 2,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:04:29.531Z",
+    "timeSpentMs": 161044
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 3,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:05:45.187Z",
+    "timeSpentMs": 236042
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 4,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:08:18.911Z",
+    "timeSpentMs": 390037
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 5,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:08:21.314Z",
+    "timeSpentMs": 393036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 6,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:08:58.046Z",
+    "timeSpentMs": 429037
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 7,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:09:00.292Z",
+    "timeSpentMs": 432035
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 0,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:10:32.456Z",
+    "timeSpentMs": 88045
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 1,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:10:33.922Z",
+    "timeSpentMs": 90045
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 2,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:11:14.160Z",
+    "timeSpentMs": 130044
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 3,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:11:27.300Z",
+    "timeSpentMs": 143044
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 4,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:13:23.424Z",
+    "timeSpentMs": 259041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 5,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:13:26.716Z",
+    "timeSpentMs": 262041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 6,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:14:23.941Z",
+    "timeSpentMs": 320039
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 7,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:14:39.908Z",
+    "timeSpentMs": 336039
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 0,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:16:01.341Z",
+    "timeSpentMs": 58033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 1,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:16:03.716Z",
+    "timeSpentMs": 60033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 2,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:16:26.613Z",
+    "timeSpentMs": 83031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 3,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:16:30.639Z",
+    "timeSpentMs": 87033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 4,
+    "originalIndex": 309,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:17:51.216Z",
+    "timeSpentMs": 168004
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 5,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:18:09.116Z",
+    "timeSpentMs": 186003
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 6,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:19:04.958Z",
+    "timeSpentMs": 241000
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 7,
+    "originalIndex": 309,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:22:31.823Z",
+    "timeSpentMs": 5034
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 0,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:22:59.977Z",
+    "timeSpentMs": 20031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 1,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:23:22.235Z",
+    "timeSpentMs": 43031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 2,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:24:13.889Z",
+    "timeSpentMs": 94029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 3,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:24:22.131Z",
+    "timeSpentMs": 103029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 4,
+    "originalIndex": 135,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:24:39.030Z",
+    "timeSpentMs": 119027
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 5,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:25:46.034Z",
+    "timeSpentMs": 187026
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 6,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:25:52.945Z",
+    "timeSpentMs": 193025
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 7,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:25:54.111Z",
+    "timeSpentMs": 195026
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 0,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:26:46.445Z",
+    "timeSpentMs": 40032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 1,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:26:52.154Z",
+    "timeSpentMs": 45032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 2,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:28:02.941Z",
+    "timeSpentMs": 116029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 3,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:28:05.167Z",
+    "timeSpentMs": 118029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 4,
+    "originalIndex": 176,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:28:11.104Z",
+    "timeSpentMs": 124029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 5,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:47:54.239Z",
+    "timeSpentMs": 1307774
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 6,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:48:05.326Z",
+    "timeSpentMs": 1318774
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 7,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:48:08.276Z",
+    "timeSpentMs": 1321774
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 0,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:50:18.615Z",
+    "timeSpentMs": 85034
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 1,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:50:30.757Z",
+    "timeSpentMs": 98032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 2,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:50:34.426Z",
+    "timeSpentMs": 101033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 3,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:50:44.636Z",
+    "timeSpentMs": 112033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 4,
+    "originalIndex": 163,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:50:57.570Z",
+    "timeSpentMs": 124032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 5,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:51:27.666Z",
+    "timeSpentMs": 155031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 6,
+    "originalIndex": 163,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:51:58.148Z",
+    "timeSpentMs": 185030
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 7,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:52:27.691Z",
+    "timeSpentMs": 215028
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 0,
+    "originalIndex": 55,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:53:04.915Z",
+    "timeSpentMs": 35029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 1,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:55:55.614Z",
+    "timeSpentMs": 206023
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 2,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:56:07.022Z",
+    "timeSpentMs": 217023
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 3,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:56:10.258Z",
+    "timeSpentMs": 220022
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 4,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:57:31.020Z",
+    "timeSpentMs": 301020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 5,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:57:34.016Z",
+    "timeSpentMs": 304020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 6,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:59:30.919Z",
+    "timeSpentMs": 421016
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 7,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:59:35.079Z",
+    "timeSpentMs": 425015
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 0,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:59:46.100Z",
+    "timeSpentMs": 9023
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 1,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-30T00:00:51.145Z",
+    "timeSpentMs": 74021
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 2,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-30T00:01:04.283Z",
+    "timeSpentMs": 87021
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 3,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-30T00:01:07.414Z",
+    "timeSpentMs": 90020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b448007e-2973-4c27-ad68-179d0aaaa513",
+    "assertionIndex": 10,
+    "originalIndex": 139,
+    "status": "pass",
+    "timestamp": "2025-12-30T00:41:22.976Z",
+    "timeSpentMs": 54193
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "71cd60b0-f085-4e90-981c-423ce2bc5cd0",
+    "assertionIndex": 4,
+    "originalIndex": 156,
+    "status": "fail",
+    "timestamp": "2025-12-30T00:41:34.971Z",
+    "timeSpentMs": 7089
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "71cd60b0-f085-4e90-981c-423ce2bc5cd0",
+    "assertionIndex": 5,
+    "originalIndex": 156,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:05:24.781Z",
+    "timeSpentMs": 48177
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b618e8aa-4265-40bf-8a00-6a8a189b474b",
+    "assertionIndex": 8,
+    "originalIndex": 335,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:06:30.030Z",
+    "timeSpentMs": 62097
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d3ddae29-2b2e-41fb-9363-ff3bf09a0f1d",
+    "assertionIndex": 11,
+    "originalIndex": 458,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:07:36.234Z",
+    "timeSpentMs": 65153
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "df208d3e-d4db-472e-8db7-8912df280ef2",
+    "assertionIndex": 11,
+    "originalIndex": 366,
+    "status": "fail",
+    "timestamp": "2025-12-30T01:08:32.735Z",
+    "timeSpentMs": 23158
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1e5963e0-3032-425e-bb43-65b4b36ad4a5",
+    "assertionIndex": 8,
+    "originalIndex": 192,
+    "status": "fail",
+    "timestamp": "2025-12-30T01:08:36.488Z",
+    "timeSpentMs": 2068
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4906ea80-f38f-490e-9dcd-a99a18056b92",
+    "assertionIndex": 8,
+    "originalIndex": 442,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:09:15.634Z",
+    "timeSpentMs": 29080
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4906ea80-f38f-490e-9dcd-a99a18056b92",
+    "assertionIndex": 9,
+    "originalIndex": 442,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:09:31.709Z",
+    "timeSpentMs": 45079
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "71388d4a-9c5e-4665-ad2d-dc113df2413d",
+    "assertionIndex": 5,
+    "originalIndex": 51,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:10:08.789Z",
+    "timeSpentMs": 32084
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "0369b730-2062-4b59-9417-1e3625891260",
+    "assertionIndex": 9,
+    "originalIndex": 162,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:11:59.763Z",
+    "timeSpentMs": 107058
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "a07b9fc9-df36-45cf-88a8-3d3eabe9389f",
+    "assertionIndex": 8,
+    "originalIndex": 222,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:12:20.676Z",
+    "timeSpentMs": 19154
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "64aae71c-c47c-4d7f-9301-cb086394e28f",
+    "assertionIndex": 8,
+    "originalIndex": 67,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:12:39.398Z",
+    "timeSpentMs": 17069
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4da8bb4e-134d-4328-8dac-d74cb4163613",
+    "assertionIndex": 8,
+    "originalIndex": 461,
+    "status": "fail",
+    "timestamp": "2025-12-30T01:13:00.612Z",
+    "timeSpentMs": 12063
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "6ba16d04-9189-4d64-81be-66a4c6f8795c",
+    "assertionIndex": 7,
+    "originalIndex": 427,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:13:30.523Z",
+    "timeSpentMs": 28052
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "7f1642ca-d3bf-4d74-a6ec-e40bd3035c19",
+    "assertionIndex": 5,
+    "originalIndex": 23,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:15:19.109Z",
+    "timeSpentMs": 107100
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3562193a-f5a1-4994-9be6-a1573e8c2264",
+    "assertionIndex": 6,
+    "originalIndex": 228,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:15:32.830Z",
+    "timeSpentMs": 11117
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "36285772-bf6d-47a2-9ed8-ce3764eb2953",
+    "assertionIndex": 4,
+    "originalIndex": 402,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:16:35.863Z",
+    "timeSpentMs": 60104
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "a0767fee-8a58-41ea-9e6b-31b1053306b0",
+    "assertionIndex": 5,
+    "originalIndex": 21,
+    "status": "fail",
+    "timestamp": "2025-12-30T01:18:34.369Z",
+    "timeSpentMs": 104129
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "fdfd147a-06ad-4bf6-865d-444f85c9263f",
+    "assertionIndex": 4,
+    "originalIndex": 312,
+    "status": "fail",
+    "timestamp": "2025-12-30T01:18:41.730Z",
+    "timeSpentMs": 6048
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 4,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-31T16:30:51.315Z",
+    "timeSpentMs": 566059
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 5,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-31T19:11:05.664Z",
+    "timeSpentMs": 214035
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 6,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-31T19:11:09.177Z",
+    "timeSpentMs": 217036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 7,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-31T19:11:15.697Z",
+    "timeSpentMs": 224035
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 0,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T21:59:48.864Z",
+    "timeSpentMs": 36032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 1,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T21:59:50.297Z",
+    "timeSpentMs": 38032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 2,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:00:28.297Z",
+    "timeSpentMs": 76031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 3,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:00:30.981Z",
+    "timeSpentMs": 78030
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 4,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:05:52.631Z",
+    "timeSpentMs": 400020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 5,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:05:59.238Z",
+    "timeSpentMs": 407020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 6,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:05.261Z",
+    "timeSpentMs": 413020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 7,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:07.198Z",
+    "timeSpentMs": 414019
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 0,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:30.311Z",
+    "timeSpentMs": 22033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 1,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:31.863Z",
+    "timeSpentMs": 23033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 2,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:37.790Z",
+    "timeSpentMs": 29033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 3,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:38.878Z",
+    "timeSpentMs": 30033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 4,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:07:43.703Z",
+    "timeSpentMs": 95030
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 5,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:07:55.226Z",
+    "timeSpentMs": 107031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 6,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:08:01.881Z",
+    "timeSpentMs": 113030
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 7,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:08:02.820Z",
+    "timeSpentMs": 114031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 0,
+    "originalIndex": 275,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:08:25.371Z",
+    "timeSpentMs": 21032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 1,
+    "originalIndex": 275,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:10:50.253Z",
+    "timeSpentMs": 166027
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 2,
+    "originalIndex": 275,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:11:02.719Z",
+    "timeSpentMs": 179028
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 3,
+    "originalIndex": 275,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:11:25.312Z",
+    "timeSpentMs": 201058
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 4,
+    "originalIndex": 275,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:12:54.186Z",
+    "timeSpentMs": 290024
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 5,
+    "originalIndex": 275,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:14:03.776Z",
+    "timeSpentMs": 360021
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 6,
+    "originalIndex": 275,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:14:11.634Z",
+    "timeSpentMs": 367022
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 7,
+    "originalIndex": 275,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:14:32.365Z",
+    "timeSpentMs": 388021
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 0,
+    "originalIndex": 25,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:15:54.158Z",
+    "timeSpentMs": 68033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 1,
+    "originalIndex": 25,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:15:55.345Z",
+    "timeSpentMs": 69033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 2,
+    "originalIndex": 25,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:15:59.503Z",
+    "timeSpentMs": 74034
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 3,
+    "originalIndex": 25,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:16:03.694Z",
+    "timeSpentMs": 78033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 4,
+    "originalIndex": 25,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:16:08.817Z",
+    "timeSpentMs": 83032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 5,
+    "originalIndex": 25,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:16:09.750Z",
+    "timeSpentMs": 84033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 6,
+    "originalIndex": 25,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:16:15.760Z",
+    "timeSpentMs": 90032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 7,
+    "originalIndex": 25,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:16:16.806Z",
+    "timeSpentMs": 91032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 0,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:17:22.976Z",
+    "timeSpentMs": 65043
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 1,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:17:45.161Z",
+    "timeSpentMs": 87042
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 2,
+    "originalIndex": 469,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:18:06.591Z",
+    "timeSpentMs": 108042
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 3,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:18:07.438Z",
+    "timeSpentMs": 109041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 4,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:18:22.600Z",
+    "timeSpentMs": 124041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 5,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:18:31.861Z",
+    "timeSpentMs": 133040
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 6,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:18:38.467Z",
+    "timeSpentMs": 140041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 7,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:18:40.143Z",
+    "timeSpentMs": 142041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "9252bf24-7687-4393-82f0-163dfe80c133",
+    "assertionIndex": 0,
+    "originalIndex": 171,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:19:26.843Z",
+    "timeSpentMs": 42023
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "9252bf24-7687-4393-82f0-163dfe80c133",
+    "assertionIndex": 1,
+    "originalIndex": 171,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:19:28.190Z",
+    "timeSpentMs": 44023
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "9252bf24-7687-4393-82f0-163dfe80c133",
+    "assertionIndex": 2,
+    "originalIndex": 171,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:21:29.857Z",
+    "timeSpentMs": 165019
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "9252bf24-7687-4393-82f0-163dfe80c133",
+    "assertionIndex": 3,
+    "originalIndex": 171,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:21:31.181Z",
+    "timeSpentMs": 167019
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "9252bf24-7687-4393-82f0-163dfe80c133",
+    "assertionIndex": 4,
+    "originalIndex": 171,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:22:00.490Z",
+    "timeSpentMs": 196017
+  }
+]

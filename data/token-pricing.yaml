@@ -43,3 +43,8 @@ grok:
   default:
     input: -1.00
     output: -1.00
+
+
+web_search:
+  tavily:
+    search_query: 0.08 # $0.08 per search query

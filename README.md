@@ -9,7 +9,9 @@ To get context on the results, I'd recommend starting by:
 - Reading the prompts at `prompts/`
 - Asking Cursor/Claude Code to explain which corrections are done inside `scripts/generate_analysis_datasets.py`
 
-After that, you can use Claude Code to play around generation plots from the processed datasets at `processed`.
+Because the json results are really large files, you may need to do `git lfs pull` or similar to get them on your machine. 
+
+And even without downloading the raw json results, you can use Claude Code to play around generation plots from the processed datasets at `processed`.
 
 ## Data Files
 
