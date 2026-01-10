@@ -42,6 +42,14 @@ def extract_customer_name(customer_info: str) -> str:
     return 'Unknown'
 
 
+def find_assertion_by_metric_name(component_results: list, metric_name: str) -> tuple[int, dict] | None:
+    """Find an assertion by its metric name. Returns (index, assertion) or None."""
+    for i, comp in enumerate(component_results):
+        if comp.get('metricName', '') == metric_name:
+            return (i, comp)
+    return None
+
+
 def main():
     # Paths
     data_dir = Path(__file__).parent.parent / 'data'
@@ -61,12 +69,6 @@ def main():
     blind_gradings = load_json(blind_gradings_path)
     print(f"Loaded {len(blind_gradings)} blind grading records")
 
-    # Create a lookup for blind gradings by (evalId, testId, assertionIndex)
-    grading_lookup: dict[tuple[str, str, int], dict] = {}
-    for g in blind_gradings:
-        key = (g['evalId'], g['testId'], g['assertionIndex'])
-        grading_lookup[key] = g
-
     # Find all result files and load them
     all_results: dict[str, dict] = {}
     for result_file in results_dir.glob('*.json'):
@@ -85,6 +87,7 @@ def main():
         eval_id = grading['evalId']
         test_id = grading['testId']
         assertion_index = grading['assertionIndex']
+        metric_name = grading.get('metricName', '')  # New field for reliable matching
 
         # Find the original result
         if eval_id not in all_results:
@@ -105,22 +108,32 @@ def main():
             print(f"Warning: Could not find test with id={test_id}")
             continue
 
-        # Get the assertion
-        # NOTE: The viewer filters out FLAG-ACCURACY metrics, so assertion_index
-        # is an index into the filtered list. We need to map it back to the original.
         component_results = original_test.get('gradingResult', {}).get('componentResults', [])
 
-        # Filter out FLAG-ACCURACY metrics (same logic as viewer)
-        filtered_results = [
-            (i, comp) for i, comp in enumerate(component_results)
-            if 'FLAG-ACCURACY' not in comp.get('metricName', '').upper()
-        ]
+        # Try to match by metricName first (new reliable method)
+        assertion = None
+        original_assertion_index = -1
 
-        if assertion_index >= len(filtered_results):
-            print(f"Warning: Assertion index {assertion_index} out of range for test {test_id}")
-            continue
+        if metric_name:
+            result = find_assertion_by_metric_name(component_results, metric_name)
+            if result:
+                original_assertion_index, assertion = result
+            else:
+                print(f"Warning: Could not find assertion with metricName={metric_name} for test {test_id}")
+                continue
+        else:
+            # Fallback for old records without metricName: use assertionIndex
+            # Filter out FLAG-ACCURACY metrics (same logic as old viewer)
+            filtered_results = [
+                (i, comp) for i, comp in enumerate(component_results)
+                if 'FLAG-ACCURACY' not in comp.get('metricName', '').upper()
+            ]
 
-        original_assertion_index, assertion = filtered_results[assertion_index]
+            if assertion_index >= len(filtered_results):
+                print(f"Warning: Assertion index {assertion_index} out of range for test {test_id}")
+                continue
+
+            original_assertion_index, assertion = filtered_results[assertion_index]
 
         # Get customer info
         customer_info = original_test.get('vars', {}).get('customer_info', '')

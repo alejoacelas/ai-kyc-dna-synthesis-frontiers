@@ -83,6 +83,7 @@ interface BlindGradingRecord {
   testId: string;
   assertionIndex: number;
   originalIndex: number; // Original index before randomization
+  metricName: string; // Stable identifier for matching
   status: GradingStatus;
   timestamp: string;
   comment?: string;
@@ -108,6 +109,13 @@ interface AssertionDetailsProps {
   removeImagesFromMarkdown: (markdown: string) => string;
   groundTruthFlag?: FlagValue;
   claimType?: FlagType | null;
+  // AI reasoning fields
+  reason: string;
+  llmEvaluation: string;
+  workUrl?: string | null;
+  passingSourceUrl?: string | null;
+  extractedAiResponse?: string;
+  claims?: Claim[];
 }
 
 const isWorkRelevanceMetric = (metricName?: string): boolean => {
@@ -142,6 +150,12 @@ const AssertionDetails = memo(function AssertionDetails({
   removeImagesFromMarkdown,
   groundTruthFlag,
   claimType,
+  reason,
+  llmEvaluation,
+  workUrl,
+  passingSourceUrl,
+  extractedAiResponse,
+  claims,
 }: AssertionDetailsProps) {
   return (
     <Card
@@ -184,6 +198,46 @@ const AssertionDetails = memo(function AssertionDetails({
                 {currentAssertion.extractedSection}
               </ReactMarkdown>
             </div>
+          </div>
+        )}
+
+        {/* AI Reasoning - why this was marked as failed */}
+        {reason && (
+          <div>
+            <h4 className="font-semibold text-lg mb-3 text-red-700">AI Reasoning (Marked as Fail)</h4>
+            {isWorkRelevanceMetric(currentAssertion.metricName) ? (
+              <WorkRelevanceDisplay
+                reason={reason}
+                workUrl={workUrl}
+                passingSourceUrl={passingSourceUrl}
+                extractedAiResponse={extractedAiResponse}
+              />
+            ) : isClaimSupportMetric(currentAssertion.metricName) ? (
+              <ClaimSupportDisplay
+                reason={reason}
+                claims={claims}
+              />
+            ) : (
+              <div className="space-y-4">
+                <div className="bg-red-50 border border-red-200 rounded p-4">
+                  <div className="markdown text-sm">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {reason}
+                    </ReactMarkdown>
+                  </div>
+                </div>
+                {llmEvaluation && (
+                  <div className="bg-gray-50 border border-gray-200 rounded p-4">
+                    <h5 className="font-medium text-sm text-gray-600 mb-2">LLM Evaluation</h5>
+                    <div className="markdown text-sm">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {llmEvaluation}
+                      </ReactMarkdown>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 
@@ -397,6 +451,13 @@ export default function Home() {
     const currentTest = results[originalIndex];
     if (!currentTest) return;
 
+    // Get the filtered assertion to access metricName
+    const filteredAssertions = currentTest.gradingResult.componentResults.filter(
+      (a) => !isFlagAccuracyMetric(a.metricName) && !a.pass
+    );
+    const currentAssertion = filteredAssertions[currentAssertionIndex];
+    if (!currentAssertion) return;
+
     const key = getGradingKey(currentTest.id, currentAssertionIndex);
 
     setGradings(prevGradings => {
@@ -418,6 +479,7 @@ export default function Home() {
         testId: currentTest.id,
         assertionIndex: currentAssertionIndex,
         originalIndex: originalIndex,
+        metricName: currentAssertion.metricName || '',
         status: nextStatus,
         timestamp: new Date().toISOString(),
         comment: currentComment || undefined,
@@ -447,6 +509,13 @@ export default function Home() {
     const currentTest = results[originalIndex];
     if (!currentTest) return;
 
+    // Get the filtered assertion to access metricName
+    const filteredAssertions = currentTest.gradingResult.componentResults.filter(
+      (a) => !isFlagAccuracyMetric(a.metricName) && !a.pass
+    );
+    const currentAssertion = filteredAssertions[currentAssertionIndex];
+    if (!currentAssertion) return;
+
     const key = getGradingKey(currentTest.id, currentAssertionIndex);
     const textToSave = commentTextRef.current.trim();
 
@@ -470,6 +539,7 @@ export default function Home() {
             testId: currentTest.id,
             assertionIndex: currentAssertionIndex,
             originalIndex: originalIndex,
+            metricName: currentAssertion.metricName || '',
             status: currentStatus,
             timestamp: new Date().toISOString(),
             comment: textToSave || undefined,
@@ -536,9 +606,9 @@ export default function Home() {
       const results = resultsData.results.results;
       const originalIndex = shuffledIndices[currentTestIndex];
       const currentTest = results[originalIndex];
-      // Filter out FLAG-ACCURACY assertions for navigation
+      // Filter to only show failed assertions (excluding FLAG-ACCURACY) for navigation
       const filteredAssertions = currentTest?.gradingResult.componentResults.filter(
-        (a) => !isFlagAccuracyMetric(a.metricName)
+        (a) => !isFlagAccuracyMetric(a.metricName) && !a.pass
       ) ?? [];
 
       switch (e.key) {
@@ -614,9 +684,9 @@ export default function Home() {
   const originalIndex = shuffledIndices[currentTestIndex] ?? 0;
   const currentTest = results[originalIndex];
 
-  // Filter out FLAG-ACCURACY assertions - they don't need validation
+  // Filter to only show failed assertions (excluding FLAG-ACCURACY)
   const filteredAssertions = currentTest?.gradingResult.componentResults.filter(
-    (a) => !isFlagAccuracyMetric(a.metricName)
+    (a) => !isFlagAccuracyMetric(a.metricName) && !a.pass
   ) ?? [];
   const currentAssertion = filteredAssertions[currentAssertionIndex];
 
@@ -752,6 +822,12 @@ export default function Home() {
             removeImagesFromMarkdown={removeImagesFromMarkdown}
             groundTruthFlag={currentGroundTruthFlag}
             claimType={currentClaimType}
+            reason={currentAssertion.reason}
+            llmEvaluation={currentAssertion.llmEvaluation}
+            workUrl={currentAssertion.workUrl}
+            passingSourceUrl={currentAssertion.passingSourceUrl}
+            extractedAiResponse={currentAssertion.extractedAiResponse}
+            claims={currentAssertion.claims}
           />
         )}
 
