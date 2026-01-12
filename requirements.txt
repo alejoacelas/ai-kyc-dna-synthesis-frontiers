@@ -4,6 +4,8 @@ seaborn
 numpy
 requests
 python-dotenv
+scikit-learn
+
 
 
 

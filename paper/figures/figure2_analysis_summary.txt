@@ -1,0 +1,51 @@
+Figure 2: Human vs AI Comparison by Verification Task - Analysis Summary
+========================================================================
+
+Data Source: /Users/alejo/Code/ai-kyc-results/processed/tests.csv
+Filter: is_human_baseline_dataset == True
+Sample Size: 41 tests per model per task
+
+TASK-SPECIFIC PERFORMANCE (ERROR RATES):
+
+Customer Institutional Affiliation:
+  Human Baseline (30min): 7.3% error rate
+  Best AI Model: GLM 4.6 (All Tools) - 4.9% error rate
+  Worst AI Model: Gemini 2.5 Pro (All Tools) - 19.5% error rate
+
+Institution Type:
+  Human Baseline (30min): 17.1% error rate
+  Best AI Model: Claude Sonnet 4 (Web) - 2.4% error rate
+  Worst AI Model: Grok 4 (All Tools) - 7.3% error rate
+
+Email Domain Verification:
+  Human Baseline (30min): 17.1% error rate
+  Best AI Model: Grok 4 (Web) - 4.9% error rate
+  Worst AI Model: MiniMax M2 (All Tools) - 19.5% error rate
+
+Sanctions Screening:
+  Human Baseline (30min): 2.4% error rate
+  Best AI Model: Claude Sonnet 4 (All Tools) - 0.0% error rate
+  Worst AI Model: Gemini 2.5 Pro (Web) - 22.0% error rate
+
+Background Work Relevance:
+  Human Baseline (30min): 36.6% error rate
+  Best AI Model: Claude Sonnet 4 (All Tools) - 9.8% error rate
+  Worst AI Model: Grok 4 (All Tools) - 29.3% error rate
+
+KEY FINDINGS:
+- AI models outperform human baselines on 4 out of 5 tasks (all except affiliation)
+- Best performance gaps: Institution Type (14.7 percentage points), Work Relevance (26.8 percentage points)
+- Most challenging task for humans: Work Relevance (36.6% error rate)
+- Easiest task for humans: Sanctions Screening (2.4% error rate)
+- Claude Sonnet 4 appears as best performer on 2 tasks (Institution Type, Work Relevance, Sanctions Screening)
+
+FIGURE SPECIFICATIONS:
+- Format: Grouped bar chart showing ERROR RATES (not pass rates)
+- X-axis: Verification tasks
+- Y-axis: Error rate (%)
+- Groups: Human 30min (red), Best AI (green), Worst AI (gray)
+- DPI: 300 (publication quality)
+- Output: /Users/alejo/Code/ai-kyc-results/paper/figures/figure2_human_vs_ai_comparison.png
+
+CAPTION:
+Error rates by verification task comparing human baseline (30 min) with best and worst performing AI models for each task. Lower bars indicate better performance. AI models match or exceed human performance on most information-gathering tasks.

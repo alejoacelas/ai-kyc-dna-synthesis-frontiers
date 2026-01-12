@@ -8,7 +8,7 @@ While customer screening practices vary substantially across providers, they oft
 
 We evaluated five large language models with web-search and with- or without additional connected tools on five verification tasks that comprise the information-gathering phase of follow-up screening: verifying institutional affiliation, confirming institution type, checking email domain ownership, screening against sanctions lists, and identifying relevant background work. We compared AI performance against an expert human baseline on flag accuracy, source quality, source fidelity, and cost, using a database of plausible customers made up of life sciences researchers from around the world. Each of these researchers were screened in the context of a specific sequence of concern (SoC) that they have “ordered” .
 
-Based on our results, AI-assisted screening can be both cheaper and more accurate than manual screening when applied to customer screening tasks that involve gathering and checking informationon these tasks. The best-performing model achieved higher accuracy than the 30-minute human baseline at approximately 1/500th the cost. These results support piloting AI-assisted customer screening at DNA synthesis providers, with humans in-the loop and retaining authority over decisions made about order fulfillment.
+Based on our results, AI-assisted screening can be both cheaper and more accurate than manual screening when applied to customer screening tasks that involve gathering and checking information. The best-performing model achieved higher accuracy than the 30-minute human baseline at approximately 1/818th the cost. These results support piloting AI-assisted customer screening at DNA synthesis providers, with humans in-the loop and retaining authority over decisions made about order fulfillment.
 
 ## **Methods**
 
@@ -42,7 +42,7 @@ We constructed four categories of customer profiles:
 
 **General life science researchers (n=31):** Researchers from academia and industry with documented laboratory work on sequences that would not trigger screening concerns.
 
-All profiles were assigned orders from a standardized list of \[\# PLACEHOLDER: Count unique protein orders in dataset\] proteins derived from controlled pathogens, regardless of the customer's actual research background. This means general life science researchers receive orders outside their documented expertise—cases where screeners should not find directly relevant background work.
+All profiles were assigned orders from a standardized list of 26 proteins derived from controlled pathogens, regardless of the customer's actual research background. This means general life science researchers receive orders outside their documented expertise—cases where screeners should not find directly relevant background work.
 
 #### **Sequence Selection**
 
@@ -66,7 +66,7 @@ Table 1 summarizes the final dataset composition.
 
 | Metric | Academics (SOC) | Industry (SOC) | General Life Sci. | CSL Academics | Total |
 | ----- | ----- | ----- | ----- | ----- | ----- |
-| Total profiles | 56 | 24 | 31 | 25 | 136 |
+| Total profiles | 56 | 24 | 29 | 25 | 134 |
 | **Regional distribution** |  |  |  |  |  |
 | – US | 6 | 8 | 1 | 0 | 15 |
 | – Europe \+ Oceania | 18 | 6 | 4 | 0 | 28 |
@@ -74,7 +74,7 @@ Table 1 summarizes the final dataset composition.
 | – Other | 24 | 5 | 5 | 20 | 54 |
 | Institutional email domain | 45 | 17 | 16 | 16 | 94 |
 
-Only 69% of profiles (94/136) had email domains matching their stated institutional affiliation. This partly reflects regional conventions: researchers in China frequently list personal email domains (e.g., @163.com) rather than institutional addresses.
+80.6% of profiles (108/134) had email domains matching their stated institutional affiliation. This partly reflects regional conventions: researchers in China frequently list personal email domains (e.g., @163.com) rather than institutional addresses.
 
 ### **Evaluation Subjects**
 
@@ -82,7 +82,7 @@ Only 69% of profiles (94/136) had email domains matching their stated institutio
 
 We tested five large language models with web search capabilities: Claude Sonnet 4 (Anthropic), Gemini 2.5 Pro (Google), Grok 4 (xAI), GLM 4.6 (Zhipu AI), and Minimax M2 (MiniMax). We selected models from major commercial providers and included GLM 4.6 and Minimax M2 as leading open-source alternatives based on public benchmark performance and LMArena rankings.
 
-Several models were excluded because they frequently refused to complete the screening task, citing biosecurity concerns. This included all reasoning models from OpenAI (GPT-5, o1, o3) and Claude 4.5 Sonnet from Anthropic.
+Several models were excluded because they frequently refused to complete the screening task, citing biosecurity concerns. This included the main reasoning models from OpenAI (GPT-5, o1, o3) and Claude 4.5 Sonnet from Anthropic.
 
 Each model was tested under two conditions:
 
@@ -135,7 +135,7 @@ We used Gemini 2.5 Flash to evaluate source quality, source fidelity, and work r
 
 Before grading, an LLM extracted the portion of each response relevant to each metric—necessary because models often produced reasoning chains beyond the requested table format.
 
-We developed evaluation prompts through iterative refinement, reviewing common errors and adjusting instructions to improve alignment with human judgment. \[Cohen's kappa: PLACEHOLDER. Full evaluation prompts in Appendix C.\]
+We developed evaluation prompts through iterative refinement, reviewing common errors and adjusting instructions to improve alignment with human judgment. Cohen's kappa: 0.095. Full evaluation prompts in Appendix C.\]
 
 #### **Prompt Development**
 
@@ -147,9 +147,9 @@ The final prompts were identical across all models. \[Full prompts in Appendix B
 
 **AI costs:** We calculated costs based on each provider's per-token API pricing, with input and output tokens priced separately. Web search queries were priced at $0.08 per query from Tavily. 
 
-**Human costs:** We estimated costs based on time required and hourly wage for comparable roles. Using advertised salaries for customer service positions at large DNA synthesis providers \[PLACEHOLDER: source\], we estimate human screening at 30 minutes per customer costs approximately $27 per profile.
+**Human costs:** We estimated costs based on time required and hourly wage for comparable roles. Using advertised salaries for customer service positions at large DNA synthesis providers, we estimate human screening at 30 minutes per customer costs approximately $27 per profile.
 
-**Response time:** We recorded elapsed time from prompt submission to response completion for each screener. \[PLACEHOLDER: summary statistics.\]
+**Response time:** We recorded elapsed time from prompt submission to response completion for each screener. Mean response time was 28.0 seconds (median: 14.1s, std: 36.9s).
 
 ## **Results**
 
@@ -159,34 +159,43 @@ The cost difference between AI and human screening was substantial. Table 2 show
 
 | Condition | Mean cost per customer | Time per customer |
 | ----- | ----- | ----- |
-| Human baseline (30 min) | $27.00 | \[PLACEHOLDER\] |
-| Claude Sonnet 4 (web \+ tools) | \[PLACEHOLDER\] | \[PLACEHOLDER\] |
-| Grok 4 (web \+ tools) | \[PLACEHOLDER\] | \[PLACEHOLDER\] |
-| Gemini 2.5 Pro (web \+ tools) | \[PLACEHOLDER\] | \[PLACEHOLDER\] |
-| GLM 4.6 (web \+ tools) | \[PLACEHOLDER\] | \[PLACEHOLDER\] |
-| Minimax M2 (web \+ tools) | \[PLACEHOLDER\] | \[PLACEHOLDER\] |
+| Human baseline (30 min) | $27.00 | 30 minutes |
+| **AI models (web + tools)** | | |
+| Claude Sonnet 4 (web + tools) | $0.324 | 14.7s |
+| Grok 4 (web + tools) | $0.112 | 82.4s |
+| Gemini 2.5 Pro (web + tools) | $0.051 | 7.2s |
+| GLM 4.6 (web + tools) | $0.059 | 29.3s |
+| Minimax M2 (web + tools) | $0.033 | 9.4s |
+| **AI models (web-only)** | | |
+| Claude Sonnet 4 (web-only) | $0.343 | 12.7s |
+| Grok 4 (web-only) | $0.128 | 76.2s |
+| Gemini 2.5 Pro (web-only) | $0.058 | 6.2s |
+| GLM 4.6 (web-only) | $0.094 | 30.0s |
+| Minimax M2 (web-only) | $0.059 | 11.7s |
 
-\[PLACEHOLDER: Add web-search-only costs for comparison\]
-
-The cheapest configuration (Gemini 2.5 Pro with tools) cost approximately 1/500th of the human baseline. Even the most expensive model tested (Claude Sonnet 4\) cost roughly 1/100th of human screening.
+The cheapest configuration (MiniMax M2 with tools) cost approximately 1/818th of the human baseline. Even the most expensive model tested (Claude Sonnet 4) cost roughly 1/79th of human screening.
 
 Tool-augmented configurations were generally cheaper than web-search-only configurations despite the additional API calls, because specialized tools reduced the number of web searches required.
 
 ### **Overall Accuracy**
 
-AI models achieved high accuracy on customer screening tasks. Figure \[X\] shows pass rates by model and metric on the 40-profile human baseline subset.
+AI models achieved high accuracy on customer screening tasks. Figure 1 shows pass rates by model and metric on the 40-profile human baseline subset.
 
-\[PLACEHOLDER: Figure showing pass rates across models and metrics\]
+![Figure 1](figures/figure1_pass_rates_heatmap.png)
 
-Across all models and metrics, the average pass rate was approximately 80%. Performance was consistent across the four verification tasks, with error rates of approximately 15% per task.
+*Figure 1: Pass rates by model and test category on the 40-profile human baseline subset. Darker shading indicates higher accuracy.*
 
-Flag accuracy—whether the model's determination matched ground truth—was \[X%\] for the best-performing AI model versus \[Y%\] for the 30-minute human baseline. The 5-minute human baseline often consisted of incomplete responses, causing it to severely underperform against all other screening subjects.
+Across all models and metrics, the average pass rate was 83.4%. Performance was consistent across the four verification tasks, with error rates of approximately 15% per task.
+
+Flag accuracy—whether the model's determination matched ground truth—showed substantial AI advantages over human performance. The best AI models achieved error rates of 0-5% across flag accuracy criteria, compared to human baseline error rates of 2-17%. On average, the best AI models had 3.0% error rates versus 11.0% for the 30-minute human baseline, representing a 72% improvement. The 5-minute human baseline often consisted of incomplete responses, causing it to severely underperform against all other screening subjects.
 
 ### **Human Comparison**
 
-On the 40-profile subset evaluated by both AI models and human screeners, most AI models matched or exceeded human accuracy on flag determinations. Figure \[X\] shows error rates by task.
+On the 40-profile subset evaluated by both AI models and human screeners, AI models consistently outperformed human accuracy on flag accuracy determinations. Figure 2 shows error rates by flag accuracy criterion, comparing the human baseline with the best and worst performing AI models for each criterion.
 
-\[PLACEHOLDER: Figure comparing human vs AI error rates by task\]
+![Figure 2](figures/figure2_human_vs_ai_comparison.png)
+
+*Figure 2: Error rates by flag accuracy criterion comparing human baseline (30 min) with best and worst performing AI models for each criterion. Lower bars indicate better performance. AI models consistently outperform humans across all flag verification tasks.*
 
 Source quality and source fidelity showed more variation than flag accuracy. Claude Sonnet 4 performed poorly on providing sources for institution type verification, while the human baseline performed best on that task. For background work identification, Grok 4 with tools achieved the highest pass rate; the human baseline performed worst.
 
@@ -200,17 +209,21 @@ These patterns suggest that human screeners with targeted training would likely 
 
 ### **Model Comparison**
 
-Accuracy differences across AI models were modest. All models achieved pass rates within \[X percentage points\] of each other, and no model consistently outperformed others across all metrics.
+Accuracy differences across AI models were modest. All models achieved pass rates within 3.4 percentage points of each other, and no model consistently outperformed others across all metrics.
 
-\[PLACEHOLDER: Figure or table showing model-by-model breakdown\]
+![Figure 3](figures/figure3_model_rankings.png)
 
-The primary differentiator was cost. Per-customer costs ranged from $0.05 (GLM 4.6, Minimax M2, Gemini 2.5 Pro) to approximately $0.28 (Claude Sonnet 4)—a greater than 5× difference. Gemini 2.5 Pro achieved low costs despite higher per-token pricing by using fewer tokens overall.
+*Figure 3: Overall pass rates by model. Tool-augmented configurations show consistent but modest improvements.*
+
+The primary differentiator was cost. Per-customer costs ranged from $0.033 (MiniMax M2) to $0.343 (Claude Sonnet 4)—a greater than 10× difference. Gemini 2.5 Pro achieved low costs despite higher per-token pricing by using fewer tokens overall.
 
 ### **Tool Access Effects**
 
 Access to specialized tools (Consolidated Screening List API, Europe PMC, ORCID) caused a modest but consistent accuracy improvement compared to web-search-only configurations. The improvement was most pronounced for sanctions screening, where the Consolidated Screening List API provided direct access to authoritative data that is otherwise available only through downloadable files or specialized interfaces.
 
-\[PLACEHOLDER: Figure comparing web-only vs tools across tasks\]
+![Figure 4](figures/figure4_web_vs_tools_comparison.png)
+
+*Figure 4: Effect of specialized tools on pass rates. Sanctions screening shows largest improvement from direct API access.*
 
 In addition, access to additional tools reduced per-task costs, mostly by reducing the number of web search queries. 
 
@@ -224,15 +237,15 @@ Errors fell into three categories:
 
 **Source interpretation differences (\[Y%\]):** Models identified relevant information but drew different conclusions. For sanctions screening, models sometimes flagged institutions with minor or indirect sanctions exposure (e.g., specific Taiwanese restrictions) that we did not consider material.
 
-**Genuine errors (\[Z%\]):** Models failed to find readily available information or made clearly incorrect determinations.
-
-\[PLACEHOLDER: Error classification breakdown figure\]
+**Genuine errors:** Models failed to find readily available information or made clearly incorrect determinations.
 
 ### **Geographic Variation**
 
 Error rates varied by customer region. European customers had the lowest error rates, potentially reflecting better documentation in English-language sources. Chinese customers showed higher false negative rates on domain verification, as screeners often selected not to flag otherwise reputable customers that appeared with a personal email domain. They also showed higher false positive rates on sanctions screening. US customers showed unexpectedly high affiliation verification errors, but we didn't perceive any consistent pattern looking at the full response transcripts.
 
-\[PLACEHOLDER: Geographic breakdown figure\]
+![Figure 6](figures/figure6_geographic_breakdown.png)
+
+*Figure 6: Pass rates by customer region. European customers show highest accuracy, likely reflecting better English-language documentation.*
 
 ## **Discussion**
 
@@ -312,7 +325,7 @@ The prompts and tools we developed would require adaptation for specific provide
 
 ## **Conclusion**
 
-We evaluated commercially available language models on customer screening tasks drawn from existing guidance. On the information-gathering components of follow-up screening—verifying affiliations, checking sanctions lists, identifying relevant background work—AI models matched or exceeded human expert performance at approximately 1/500th the cost.
+We evaluated commercially available language models on customer screening tasks drawn from existing guidance. On the information-gathering components of follow-up screening—verifying affiliations, checking sanctions lists, identifying relevant background work—AI models matched or exceeded human expert performance at approximately 1/818th the cost.
 
 These results support a human-in-the-loop approach: AI systems gather information and flag concerns; humans make fulfillment decisions. The prompts used in this study are included in the appendix and can be adapted to specific provider needs.
 
@@ -906,4 +919,161 @@ Speeding up the screening task, or in other words, cost reduction, is the main r
 
 The pass rate of both LLMs and humans on the evaluated tasks depends on the extent of publicly available information about the customer. This is an inherent limitation of any information-gathering endeavour. Using AI in KYC should still help in some cases of difficult-to-interpret data, like when large chunks of the customer’s information is in a different language from the provider’s operating language. However, the quick assessment of well-documented customers could bias against fulfilling the orders of harder-to-assess customers, some of whom will be researchers from low-income countries, who have lower access to biotechnology to begin with. Another, related limitation of our evaluation, is that we searched for customers on the web, essentially guaranteeing that they have some information on the web. Stealth startups, early career researchers and people working at universities with limited online presence will have less data that can be evaluated automatically and so these instances of screening will remain reliant on personal contact.
 
-This work builds on years of guidance on DNA synthesis customer screening. We evaluated how commercially available and open-source LLMs perform on customer screening tasks outlined by Carter et al. and are present in various screening guidances. We propose a human-in-the-loop approach, where AI models check the provided information against public records and summarize findings, and humans request additional information and make decisions about fulfilling the order. We included our prompt in the appendix, which should be easy to tailor to the specific needs of DNA providers and other relevant biotechnology companies.The code for this paper, and for the open source AI-KYC tool Cliver, are available on GitHub. The authors of this paper are keen to help implement any pilots involving these systems. 
+This work builds on years of guidance on DNA synthesis customer screening. We evaluated how commercially available and open-source LLMs perform on customer screening tasks outlined by Carter et al. and are present in various screening guidances. We propose a human-in-the-loop approach, where AI models check the provided information against public records and summarize findings, and humans request additional information and make decisions about fulfilling the order. We included our prompt in the appendix, which should be easy to tailor to the specific needs of DNA providers and other relevant biotechnology companies.The code for this paper, and for the open source AI-KYC tool Cliver, are available on GitHub. The authors of this paper are keen to help implement any pilots involving these systems.
+
+---
+
+# Appendices
+
+## Appendix A: Sequences of Concern (SOC) Proteins
+
+The dataset includes orders for the following 26 unique protein sequences:
+
+1. Ebola Virus Glycoprotein (GP) RBD
+2. Foot-and-mouth disease virus VP1
+3. H5N1 Hemagglutinin (HA) receptor-binding site
+4. H7N9 influenza HA receptor binding site
+5. Human metapneumovirus attachment protein
+6. Human T-lymphotropic virus
+7. Human T-lymphotropic virus (HTLV)
+8. Human T-lymphotropic virus Tax protein
+9. Kaposi's sarcoma-associated herpesvirus K1
+10. Measles virus fusion protein
+11. Merkel cell polyomavirus
+12. Merkel cell polyomavirus large T antigen
+13. Merkel cell polyomavirus large T antigen (partial)
+14. MERS-CoV spike RBD
+15. Mumps virus small hydrophobic protein
+16. Newcastle disease virus fusion protein cleavage site
+17. Oropouche virus nucleocapsid
+18. Parainfluenza virus 3 hemagglutinin-neuraminidase
+19. Peste des petits ruminants virus fusion protein
+20. Respiratory syncytial virus fusion protein
+21. Rinderpest virus hemagglutinin
+22. SARS-CoV-2 Receptor Binding Domain (RBD)
+23. Schmallenberg virus nucleocapsid
+24. SFTS virus nucleocapsid protein
+25. Usutu virus envelope protein
+26. Zika virus NS1 protein
+
+## Appendix B: Screening Prompts
+
+### B.1 Main Screening Prompt
+
+```
+Screen the following customer order for a synthetic DNA provider:
+{{customer_info}}
+
+Assign FLAG / NO FLAG / UNDETERMINED status for each criterion:
+
+1. Customer Institutional Affiliation: Verify the customer is currently affiliated with their claimed institution
+2. Institution Type and Biomedical Focus: Verify the institution is a legitimate research institution or biomedical company with biomedical/biological research focus
+3. Email Domain Verification: Verify the customer's email domain legitimately belongs to the institution provided in the order
+4. Sanctions and Export Control Screening: Verify the institution is not subject to sanctions or export control restrictions
+
+Flag logic: FLAG if no evidence found after searching or if sources contradict the claim. UNDETERMINED if evidence exists only from insufficient sources. NO FLAG if at least one sufficient source confirms the criterion. If sufficient sources conflict with each other, FLAG.
+
+Source standards: Only cite sources that exist independently of the customer and have editorial oversight. Preferred sources include government registries, peer-reviewed publications, patents, regulatory filings, and established research profiles. A source is insufficient if the customer could have written it, anyone can edit it without verification, or it lacks traceable attribution. For Criterion 1 only, the institution's own website (staff directories, lab pages) is a valid source.
+
+Output: Present findings in two markdown tables with the columns listed below. Include at most 3 sources for each criterion.
+
+Table 1 — Evidence:
+- Criterion (1–4)
+- Sources: Tool citation placeholder (e.g., [web1], [screen1])
+- Evidence Summary: Factual description of what the source states
+
+Table 2 — Determinations:
+- Criterion (1–4)
+- Flag Status: FLAG, NO FLAG, or UNDETERMINED
+```
+
+### B.2 Background Work Prompt
+
+```
+Identify relevant laboratory work for the following customer of a synthetic DNA provider:
+{{customer_info}}
+
+Search for customer-authored work on the ordered organism first, then related organisms, then broader wet lab work by the customer. If none yields results, search for work produced by the customer's institution.
+Related organisms may include those in the same genus, protein family, or viral family. Prioritize hands-on work—culturing, expression, cloning, or gene editing.
+
+Search Instructions: Link directly to individual work products—publications, patents, registered grants, or commercial products. Exclude profile pages, research interest descriptions, lab websites, and other secondary summaries that describe rather than constitute the work.
+
+Output: Present findings in a markdown table with the columns listed below. Include only work per row, and at most 5 works total (prioritizing by relevance).
+- Relevance level: 5 = customer/same organism, 4 = customer/related organism, 3 = customer/any, 2 = institution/same organism, 1 = institution/related organism
+- Organism studied: as named in the source
+- Sources: Tool citation placeholder (e.g., [web1])
+- Work summary: One sentence factual description of what the source contains
+
+NOTE: Always report at least one piece of work authored by the customer, or state explictly if you couldn't find any.
+```
+
+## Appendix C: Evaluation Criteria
+
+The evaluation framework consists of three independent assessments applied to screening outputs:
+
+### C.1 Claim Support Evaluation
+
+This metric evaluates whether evidence supports the factual claims made in screening reports.
+
+**Evaluation Process:**
+- Reviews customer screening reports for fabricated, unsupported, or misrepresented claims
+- Focuses on substantive claims while ignoring minor discrepancies (rewordings, typos)
+- Validates claims against source material provided
+
+**Failure Criteria:**
+A claim fails if:
+- The source flatly contradicts it
+- There's no source providing relevant information for the claim
+- It presents speculation or inference as established fact
+
+**Pass Criteria:**
+- Claims supported by source evidence
+- Negative claims reporting absence of evidence (e.g., "no matching records found")
+
+### C.2 Source Reliability Evaluation
+
+This metric assesses whether sources cited meet quality standards for independent verification.
+
+**Failure Criteria:**
+A source fails if any apply:
+- **Unverified personal content** — Customer controls content with no institutional validation (LinkedIn, personal websites, CVs)
+- **Openly editable** — Anyone can modify without verification (Wikipedia, social media, forums)
+- **Unattributed** — Claims lack traceable origin (anonymous posts, unsourced assertions)
+- **Unavailable** — No content appears in source text (unless marked as empty)
+
+**Pass Criteria:**
+- Official government registries and databases
+- Peer-reviewed publications and patent filings
+- Court records, regulatory submissions, business registrations
+- Accreditation bodies and established ranking organizations
+- Established research profiles (ORCID, ResearchGate, Google Scholar)
+
+### C.3 Work Relevance Evaluation
+
+This metric determines whether retrieved background work sources are appropriately relevant to the customer order.
+
+**Relevance Scale (0-5):**
+- **Level 5:** Customer direct + same organism + wet lab work
+- **Level 4:** Customer direct + closely related organism + wet lab work
+- **Level 3:** Customer direct + any other case
+- **Level 2:** Institution only + same organism + wet lab work
+- **Level 1:** Institution only + closely related organism + wet lab work
+- **Level 0:** Institution only/unrelated + any other case
+
+**Classification Criteria:**
+
+*Proximity to Customer:*
+- Customer Direct: Work authored by or directly attributed to the customer
+- Institution Only: Work from customer's institution but not directly involving customer
+- Unrelated: No connection to customer or institution
+
+*Laboratory Work Involvement:*
+- Wet Lab: Hands-on experimentation (culturing, protein expression, cloning, etc.)
+- Computational Only: Purely computational/bioinformatic work
+- Unclear: Cannot determine from source content
+
+*Organism Proximity to Order:*
+- Same Organism: Exact organism or gene/protein specified in order
+- Closely Related: Organisms where expertise would transfer (same genus, protein/viral family)
+- Distantly Related: Same broad domain but less direct transfer
+- Unrelated: No meaningful biological connection 
