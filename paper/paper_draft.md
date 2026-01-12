@@ -1,6 +1,4 @@
-# Draft
-
-## **Introduction**
+## Introduction
 
 As nucleic acid synthesis becomes cheaper and more accessible, strengthening safeguards against misuse becomes increasingly important. Organizations like the International Gene Synthesis Consortium (IGSC) have committed to screening practices that reduce misuse risk, but widespread adoption remains limited (Crawford et al., 2024). A major barrier is cost: customer screening—particularly the follow-up verification triggered by potentially risky sequences—remains expensive and labor-intensive (Carter and Friedman, 2015; Alexanian and Carter, 2024).
 
@@ -8,11 +6,11 @@ While customer screening practices vary substantially across providers, they oft
 
 We evaluated five large language models with web-search and with- or without additional connected tools on five verification tasks that comprise the information-gathering phase of follow-up screening: verifying institutional affiliation, confirming institution type, checking email domain ownership, screening against sanctions lists, and identifying relevant background work. We compared AI performance against an expert human baseline on flag accuracy, source quality, source fidelity, and cost, using a database of plausible customers made up of life sciences researchers from around the world. Each of these researchers were screened in the context of a specific sequence of concern (SoC) that they have “ordered” .
 
-Based on our results, AI-assisted screening can be both cheaper and more accurate than manual screening when applied to customer screening tasks that involve gathering and checking information. The best-performing model achieved higher accuracy than the 30-minute human baseline at approximately 1/818th the cost. These results support piloting AI-assisted customer screening at DNA synthesis providers, with humans in-the loop and retaining authority over decisions made about order fulfillment.
+Based on our results, AI-assisted screening can be both cheaper and more accurate than manual screening when applied to customer screening tasks that involve gathering and checking informationon these tasks. The best-performing model achieved higher accuracy than the 30-minute human baseline at approximately 1/500th the cost. These results support piloting AI-assisted customer screening at DNA synthesis providers, with humans in-the loop and retaining authority over decisions made about order fulfillment.
 
-## **Methods**
+## Methods
 
-### **Task Definition**
+### Task Definition
 
 We evaluate AI and human screeners on five verification tasks relevant to customer follow-up screening:
 
@@ -26,7 +24,7 @@ For tasks 1–4, screeners assign a determination: FLAG (concern identified or i
 
 These tasks were selected because they can often be resolved using publicly available information, they appear in existing screening guidance (Alexanian and Carter, 2024), and they represent the information-gathering phase of follow-up screening rather than the judgment-intensive decision phase.
 
-### **Dataset**
+### Dataset
 
 Our evaluation dataset comprises 134 synthetic customer profiles representing plausible DNA synthesis orders. Each profile includes the customer's name, institutional affiliation, email address, and a reference work (publication or patent) through which we identified them. The reference work serves as a point of comparison for whether screeners can find relevant background work.
 
@@ -74,9 +72,11 @@ Table 1 summarizes the final dataset composition.
 | – Other | 24 | 5 | 5 | 20 | 54 |
 | Institutional email domain | 45 | 17 | 16 | 16 | 94 |
 
-80.6% of profiles (108/134) had email domains matching their stated institutional affiliation. This partly reflects regional conventions: researchers in China frequently list personal email domains (e.g., @163.com) rather than institutional addresses.
+**Table 1:**  
 
-### **Evaluation Subjects**
+Only 81% of profiles (108/134) had email domains matching their stated institutional affiliation. This partly reflects regional conventions: researchers in China frequently list personal email domains rather than institutional addresses.
+
+### Evaluation Subjects
 
 #### **AI Models**
 
@@ -105,11 +105,11 @@ Both evaluators were familiar with the research plan but received no task-specif
 
 The interface recorded snapshots of each evaluator's work at 5 and 30 minutes. If they submitted a final answer earlier, that submission was used as the 30-minute snapshot. Each evaluator screened 20 customer profiles, for a total of 40 profiles in the human baseline subset. Profiles were randomly sampled from the full dataset with the constraint that no two shared the same reference work.
 
-### **Evaluation Metrics**
+### Evaluation Metrics
 
 #### **Verification Tasks (Tasks 1–4)**
 
-**Flag accuracy:** Whether the response's determination (flag, no flag, or undetermined) matches ground truth. Ground truth was established for the 40-profile human baseline subset through manual review of all model and human responses. When responses disagreed, we reviewed justifications and occasionally followed cited sources to verify claims. We were not blind to which screener produced each response.
+**Flag accuracy:** Whether the response's determination (flag, no flag, or undetermined) matches ground truth. Ground truth was established for the 40-profile human baseline subset through manual review of all model and human responses. When responses disagreed, we reviewed justifications and occasionally followed cited sources to verify claims. We were not blind to which screener produced each response, but none of the screeners participating in the human baseline were involved for ground truth annotation.
 
 **Source quality:** Whether cited sources meet standards for independent verification. A source passes if it exists independently of the customer and has editorial oversight. Sources explicitly marked as acceptable included government registries, peer-reviewed publications, patent filings, regulatory submissions, business registrations, and established research profile aggregators. Sources marked as unacceptable included LinkedIn profiles, personal websites, Wikipedia, or social media sites. Responses citing no sources automatically failed.
 
@@ -127,7 +127,7 @@ We evaluated source quality and source fidelity using the same criteria above, p
 
 A response passes if at least one retrieved source scores at or above the reference work's relevance level.
 
-### **Evaluation Procedure**
+### Evaluation Procedure
 
 #### **Automated Grading**
 
@@ -135,7 +135,7 @@ We used Gemini 2.5 Flash to evaluate source quality, source fidelity, and work r
 
 Before grading, an LLM extracted the portion of each response relevant to each metric—necessary because models often produced reasoning chains beyond the requested table format.
 
-We developed evaluation prompts through iterative refinement, reviewing common errors and adjusting instructions to improve alignment with human judgment. Cohen's kappa: 0.095. Full evaluation prompts in Appendix C.\]
+We developed evaluation prompts through iterative refinement, reviewing common errors and adjusting instructions to improve alignment with human judgment. \[Cohen's kappa: ADD ONCE COMPUTED\] \[Full evaluation prompts in Appendix C.\]
 
 #### **Prompt Development**
 
@@ -147,107 +147,89 @@ The final prompts were identical across all models. \[Full prompts in Appendix B
 
 **AI costs:** We calculated costs based on each provider's per-token API pricing, with input and output tokens priced separately. Web search queries were priced at $0.08 per query from Tavily. 
 
-**Human costs:** We estimated costs based on time required and hourly wage for comparable roles. Using advertised salaries for customer service positions at large DNA synthesis providers, we estimate human screening at 30 minutes per customer costs approximately $27 per profile.
+**Human costs:** We estimated costs based on time required and hourly wage for comparable roles. Using advertised salaries for customer service positions at large DNA synthesis providers \[ADD SOURCE\], we estimate human screening at 30 minutes per customer costs approximately $27 per profile.
 
-**Response time:** We recorded elapsed time from prompt submission to response completion for each screener. Mean response time was 28.0 seconds (median: 14.1s, std: 36.9s).
+**Response time:** For AI models, we record the wall-clock time from when the prompt is submitted until when the final response is generated. For the human baseline, we record the time from when the customer record is shown, to when the response is manually submitted 
 
-## **Results**
+## Results
 
-### **Cost Comparison**
+### Cost Comparison
 
 The cost difference between AI and human screening was substantial. Table 2 shows per-customer costs across conditions.
 
-| Condition | Mean cost per customer | Time per customer |
+| Model | Mean Cost | Mean Time to Completion  |
 | ----- | ----- | ----- |
-| Human baseline (30 min) | $27.00 | 30 minutes |
-| **AI models (web + tools)** | | |
-| Claude Sonnet 4 (web + tools) | $0.324 | 14.7s |
-| Grok 4 (web + tools) | $0.112 | 82.4s |
-| Gemini 2.5 Pro (web + tools) | $0.051 | 7.2s |
-| GLM 4.6 (web + tools) | $0.059 | 29.3s |
-| Minimax M2 (web + tools) | $0.033 | 9.4s |
-| **AI models (web-only)** | | |
-| Claude Sonnet 4 (web-only) | $0.343 | 12.7s |
-| Grok 4 (web-only) | $0.128 | 76.2s |
-| Gemini 2.5 Pro (web-only) | $0.058 | 6.2s |
-| GLM 4.6 (web-only) | $0.094 | 30.0s |
-| Minimax M2 (web-only) | $0.059 | 11.7s |
+| **Human baseline** |  |  |
+| Human baseline (5 min) | (time \* $54 / hour) | \[compute from data\] |
+| Human baseline (30 min) | (time \* $54 / hour) | (time \* $54 / hour) |
+| **AI models (web \+ tools)** |  |  |
+| Claude Sonnet 4 | $0.324 | 1.4 minutes |
+| Grok 4 | $0.112 | 2.4 minutes |
+| Gemini 2.5 Pro | $0.051 | 1.4 minutes |
+| GLM 4.6 | $0.059 | 3.2 minutes |
+| Minimax M2 | $0.033 | 2.2 minutes |
+| **AI models (web-only)** |  |  |
+| Claude Sonnet 4 | $0.343 | 1.6 minutes |
+| Grok 4 | $0.128 | 2.6 minutes |
+| Gemini 2.5 Pro | $0.058 | 1.3 minutes |
+| GLM 4.6 | $0.094 | 3.1 minutes |
+| Minimax M2 | $0.059 | 2.1 minutes |
 
-The cheapest configuration (MiniMax M2 with tools) cost approximately 1/818th of the human baseline. Even the most expensive model tested (Claude Sonnet 4) cost roughly 1/79th of human screening.
+**Table 2:** \[add label. Mention AI model time estimates were computed on a random 10 customer sample\]
 
-Tool-augmented configurations were generally cheaper than web-search-only configurations despite the additional API calls, because specialized tools reduced the number of web searches required.
+The cheapest configuration (MiniMax M2 with tools) cost approximately 1/800th of the human baseline. Even the most expensive model tested (Claude Sonnet 4\) cost roughly 1/79th of human screening.
 
-### **Overall Accuracy**
+Models with access to specialized tools completed tasks more cheaply on average than web-search-only models, as they made fewer web search calls, which was the only tool that incurred a cost.
+
+The primary differentiator was cost. Per-customer costs ranged from $0.05 (GLM 4.6, Minimax M2, Gemini 2.5 Pro) to approximately $0.28 (Claude Sonnet 4)—a greater than 5× difference. Gemini 2.5 Pro achieved low costs despite higher per-token pricing by using fewer tokens overall.
+
+### Overall Accuracy
 
 AI models achieved high accuracy on customer screening tasks. Figure 1 shows pass rates by model and metric on the 40-profile human baseline subset.
 
-![Figure 1](figures/figure1_pass_rates_heatmap.png)
-
-*Figure 1: Pass rates by model and test category on the 40-profile human baseline subset. Darker shading indicates higher accuracy.*
+**Figure 1:** Pass rates by model and test category on the 40-profile human baseline subset. Darker shading indicates higher accuracy.
 
 Across all models and metrics, the average pass rate was 83.4%. Performance was consistent across the four verification tasks, with error rates of approximately 15% per task.
 
-Flag accuracy—whether the model's determination matched ground truth—showed substantial AI advantages over human performance. The best AI models achieved error rates of 0-5% across flag accuracy criteria, compared to human baseline error rates of 2-17%. On average, the best AI models had 3.0% error rates versus 11.0% for the 30-minute human baseline, representing a 72% improvement. The 5-minute human baseline often consisted of incomplete responses, causing it to severely underperform against all other screening subjects.
+Flag accuracy—whether the model's determination matched ground truth—was 94.5% for the best-performing AI model versus 89% for the 30-minute human baseline. The 5-minute human baseline often consisted of incomplete responses, which resulted in much lower performance than all other screening subjects.
 
-### **Human Comparison**
+### Human Comparison
 
-On the 40-profile subset evaluated by both AI models and human screeners, AI models consistently outperformed human accuracy on flag accuracy determinations. Figure 2 shows error rates by flag accuracy criterion, comparing the human baseline with the best and worst performing AI models for each criterion.
+On the 40-profile subset evaluated by both AI models and human screeners, most AI models matched or exceeded human accuracy on flag determinations. Figure 2 shows error rates by task.
 
-![Figure 2](figures/figure2_human_vs_ai_comparison.png)
+![][image1]
 
-*Figure 2: Error rates by flag accuracy criterion comparing human baseline (30 min) with best and worst performing AI models for each criterion. Lower bars indicate better performance. AI models consistently outperform humans across all flag verification tasks.*
+**Figure 2:** Error rates by flag accuracy criterion comparing human baseline (30 min) with best and worst performing AI models for each criterion. \[ADD ERROR CLASSIFICATION FIGURE ONCE DATA IS COMPUTED\]
 
 Source quality and source fidelity showed more variation than flag accuracy. Claude Sonnet 4 performed poorly on providing sources for institution type verification, while the human baseline performed best on that task. For background work identification, Grok 4 with tools achieved the highest pass rate; the human baseline performed worst.
 
-Qualitative review of human baseline errors revealed three failure modes:
-
-1. **Unsourced claims:** Assertions based on background knowledge without citing retrievable sources.  
-2. **Instruction deviation:** Not following protocol (e.g., failing to search for institutional publications when individual searches returned no results).  
-3. **Ambiguous language:** Wording that did not clearly distinguish FLAG, NO FLAG, and UNDETERMINED.
-
-These patterns suggest that human screeners with targeted training would likely improve. However, the comparison reflects a realistic deployment scenario: organizations investing in AI screening would optimize prompts before deployment, just as they would train human screeners.
-
-### **Model Comparison**
-
-Accuracy differences across AI models were modest. All models achieved pass rates within 3.4 percentage points of each other, and no model consistently outperformed others across all metrics.
-
-![Figure 3](figures/figure3_model_rankings.png)
-
-*Figure 3: Overall pass rates by model. Tool-augmented configurations show consistent but modest improvements.*
-
-The primary differentiator was cost. Per-customer costs ranged from $0.033 (MiniMax M2) to $0.343 (Claude Sonnet 4)—a greater than 10× difference. Gemini 2.5 Pro achieved low costs despite higher per-token pricing by using fewer tokens overall.
-
-### **Tool Access Effects**
-
-Access to specialized tools (Consolidated Screening List API, Europe PMC, ORCID) caused a modest but consistent accuracy improvement compared to web-search-only configurations. The improvement was most pronounced for sanctions screening, where the Consolidated Screening List API provided direct access to authoritative data that is otherwise available only through downloadable files or specialized interfaces.
-
-![Figure 4](figures/figure4_web_vs_tools_comparison.png)
-
-*Figure 4: Effect of specialized tools on pass rates. Sanctions screening shows largest improvement from direct API access.*
-
-In addition, access to additional tools reduced per-task costs, mostly by reducing the number of web search queries. 
-
-### **Error Analysis**
-
-We reviewed failing test cases to characterize what benchmark errors represent in practice. 
-
-Errors fell into three categories:
+We reviewed failing test cases to characterize what benchmark errors represent in practice. Errors fell into three categories:
 
 **Ambiguous ground truth (\[X%\] of errors):** Cases where reasonable screeners could disagree. For example, Chinese researchers frequently used personal email domains (e.g., @163.com) rather than institutional addresses. Our ground truth marked these as FLAG; some models and the human baseline marked them UNDETERMINED.
 
 **Source interpretation differences (\[Y%\]):** Models identified relevant information but drew different conclusions. For sanctions screening, models sometimes flagged institutions with minor or indirect sanctions exposure (e.g., specific Taiwanese restrictions) that we did not consider material.
 
-**Genuine errors:** Models failed to find readily available information or made clearly incorrect determinations.
+**Genuine errors (\[Z%\]):** Models failed to find readily available information or made clearly incorrect determinations.
 
-### **Geographic Variation**
+These patterns suggest that human screeners with targeted training would likely improve. However, the comparison reflects a realistic deployment scenario: organizations investing in AI screening would optimize prompts before deployment, just as they would train human screeners.
+
+### Tool Access Effects
+
+Access to specialized tools (Consolidated Screening List API, Europe PMC, ORCID) caused a modest but consistent accuracy improvement compared to web-search-only configurations. The improvement was most pronounced for sanctions screening, where the Consolidated Screening List API provided direct access to authoritative data that is otherwise available only through downloadable files or specialized interfaces.
+
+\[PLACEHOLDER: Figure comparing web-only vs tools across tasks. Another figure right after comparing costs for all tools vs web-only broken down by token costs and web search costs.
+
+In addition, access to additional tools reduced per-task costs, mostly by reducing the number of web search queries. 
+
+### Geographic Variation
 
 Error rates varied by customer region. European customers had the lowest error rates, potentially reflecting better documentation in English-language sources. Chinese customers showed higher false negative rates on domain verification, as screeners often selected not to flag otherwise reputable customers that appeared with a personal email domain. They also showed higher false positive rates on sanctions screening. US customers showed unexpectedly high affiliation verification errors, but we didn't perceive any consistent pattern looking at the full response transcripts.
 
-![Figure 6](figures/figure6_geographic_breakdown.png)
+![][image2]
 
-*Figure 6: Pass rates by customer region. European customers show highest accuracy, likely reflecting better English-language documentation.*
+**Figure 6:** Pass rates by customer region. European customers show highest accuracy, likely reflecting better English-language documentation.
 
-## **Discussion**
+## Discussion
 
 We evaluated large language AI models on the information-gathering phase of customer follow-up screening., Tcomparing the models were compared to each other with web-search-only and tool-augmented configurations, and against a human baseline. While our evaluation took place outside a DNA synthesis company, we simulated real customers going through a plausible screening workflow. 
 
@@ -323,757 +305,16 @@ Our evaluation simulated screening outside a DNA synthesis company. Real screeni
 
 The prompts and tools we developed would require adaptation for specific provider needs. Our results establish that AI-assisted screening can work; they do not establish that our specific implementation is deployment-ready.
 
-## **Conclusion**
+## Conclusion
 
-We evaluated commercially available language models on customer screening tasks drawn from existing guidance. On the information-gathering components of follow-up screening—verifying affiliations, checking sanctions lists, identifying relevant background work—AI models matched or exceeded human expert performance at approximately 1/818th the cost.
+We evaluated commercially available language models on customer screening tasks drawn from existing guidance. On the information-gathering components of follow-up screening—verifying affiliations, checking sanctions lists, identifying relevant background work—AI models matched or exceeded human expert performance at approximately 1/500th the cost.
 
 These results support a human-in-the-loop approach: AI systems gather information and flag concerns; humans make fulfillment decisions. The prompts used in this study are included in the appendix and can be adapted to specific provider needs.
 
 The code for this paper and for the open-source screening tool Cliver are available on GitHub. We welcome inquiries from organizations interested in piloting these systems.
 
-# Annotations
+## Appendix A
 
-Things we might want to draw more attention to
+[image1]: <data:image/png;base64,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>
 
-* The criteria for source fidelity was substantially softened, so that it consisted on not making false statements. A previous version was more focused on being correct in every detail   
-* Include anonymized responses in the body of the text to illustrate the model answers and the evaluation criteria
-
-Have several plot candidates for each missing part in the text.
-
-* Discussion kind of sucks a bit
-
-# Database collection prompts
-
-## Prompt 1: Paper Relevance Assessment
-
-You are analyzing a research paper to determine if it involves {clipboard} or closely related sequences and experimental work that would require DNA synthesis.
-
-TARGET SOC: {clipboard}
-
-Analyze the paper content and answer:
-
-1\. RELEVANCE: Does this paper work directly with {clipboard} or closely related sequences from the same pathogen? (YES/NO)
-
-2\. DNA SYNTHESIS LIKELY: Would the researchers likely need to order synthetic DNA to conduct this work? Consider if the work involves:  
-   \- Expression/production of proteins  
-   \- Functional studies requiring sequence cloning  
-   \- Vaccine development requiring sequence constructs  
-   \- Engineering/modification of sequences  
-   \- Laboratory/wet lab projects that are direct precursors to DNA synthesis work  
-     
-   EXCLUDE purely computational, bioinformatics, epidemiological, or structural analysis work that wouldn't require synthesized DNA. (YES/NO)
-
-3\. EXPLANATION: One sentence explaining your assessment for a non-scientist.
-
-Format: RELEVANCE: \[YES/NO\] | DNA SYNTHESIS: \[YES/NO\] | EXPLANATION: \[your sentence\]
-
-## Prompt 1b: Patent Relevance Assessment
-
-You are analyzing a patent to determine if it involves {clipboard} or closely related sequences and experimental work that would require DNA synthesis.
-
-TARGET SOC: {clipboard}
-
-Analyze the patent content and answer:
-
-1\. RELEVANCE: Does this patent work directly with {clipboard} or closely related sequences from the same pathogen? (YES/NO)
-
-2\. DNA SYNTHESIS LIKELY: Would the researchers likely need to order synthetic DNA to conduct this work? Consider if the work involves:  
-   \- Expression/production of proteins  
-   \- Functional studies requiring sequence cloning  
-   \- Vaccine development requiring sequence constructs  
-   \- Engineering/modification of sequences  
-   \- Laboratory/wet lab projects that are direct precursors to DNA synthesis work  
-     
-   EXCLUDE purely computational, bioinformatics, epidemiological, or structural analysis work that wouldn't require synthesized DNA. (YES/NO)
-
-3\. EXPLANATION: One sentence explaining your assessment for a non-scientist.
-
-Format: RELEVANCE: \[YES/NO\] | DNA SYNTHESIS: \[YES/NO\] | EXPLANATION: \[your sentence\]
-
-## Prompt 1.5: Company info
-
-You are researching a patent applicant to collect comprehensive company profile data.
-
-TARGET COMPANY: {company\_name}
-
-Research and compile the following information in a markdown table format. Include a source link for each data point found:
-
-| Attribute | Value | Source |  
-|-----------|--------|---------|  
-| Company webpage domain | \[domain.com\] | \[Source\](URL) |  
-| Number of employees | \[X employees\] | \[Source\](URL) |  
-| Annual revenue | \[$X million/billion\] | \[Source\](URL) |  
-| Founding year | \[YYYY\] | \[Source\](URL) |  
-| Funding amounts | \[Series A: $X, Series B: $Y, etc.\] | \[Source\](URL) |  
-| Company status | \[Private/Public\] | \[Source\](URL) |  
-| Subsidiary status | \[Independent/Subsidiary of X Corp\] | \[Source\](URL) |  
-| Key employees | \[Name, Title, LinkedIn profile\] | \[Source\](URL) |
-
-Instructions:  
-\- Use "Not found" if information is unavailable  
-\- For employees, focus on C-level executives, founders, and technical staff  
-\- Include LinkedIn profile URLs where available  
-\- Prioritize recent/current data over historical information  
-\- Use multiple sources when possible for verification
-
-## Prompt 2: Author Information Extraction
-
-Result examples: [Test-academic-customers](https://docs.google.com/spreadsheets/d/1VC7ovcx0OqzAGYLZbJC3PeIUgvgHObqgdpmqW-sZjxo/edit?usp=sharing)
-
-Extract author information from this research paper/patent webpage and format for Google Sheets import.
-
-For each author listed on the paper/patent, provide the following information separated by tabs:
-
-Author Name | Institution | Position Number | Experimental Contribution | Email | SOC | Paper URL
-
-Where:  
-\- Institution: Author's institutional affiliation as listed on paper  
-\- Position Number: 1 for first author, 2 for second, etc. Use "L" for last/senior author  
-\- Experimental Contribution: Only include if explicitly stated in paper/patent; otherwise use "Not stated"  
-\- Email: Email address as it appears on paper, or "Not provided" if none listed  
-\- SOC: {clipboard}  
-\- Paper URL: The current webpage URL
-
-Start your response with this header row:  
-Author Name	Institution	Position Number	Experimental Contribution	Email	SOC	Paper URL
-
-Then provide one row per author. Do not assume or infer author contributions \- only include what is explicitly stated in the available text.
-
-## Patent table authors
-
-Extract inventor information from this patent webpage and format for Google Sheets import.  
-For each inventor listed on the patent, provide the following information separated by tabs:  
-Inventor Name | Institution/Applicant | Position Number | Patent Office | Email | LinkedIn Profile | SOC | Patent URL
-
-Where:  
-\- Institution/Applicant: Inventor's company/institutional affiliation or patent applicant as listed  
-\- Position Number: 1 for first inventor, 2 for second, etc.  
-\- Patent Office: USPTO, EPO, WIPO, etc. as indicated on the patent  
-\- Email: Email address if provided on patent, or "Not provided" if none listed  
-\- LinkedIn Profile: Search for and include LinkedIn profile URL if found, or "Not found"  
-\- SOC: {clipboard}  
-\- Patent URL: The current webpage URL
-
-Start your response with this header row:  
-Inventor Name	Institution/Applicant	Position Number	Patent Office	Email	LinkedIn Profile	SOC	Patent URL
-
-Then provide one row per inventor. For LinkedIn profiles, conduct a brief search using the inventor's name and company affiliation to locate their professional profile.
-
-## Prompt 3A: Author Background Investigation
-
-Research this academic's publication history to assess their experience in the research domain of {SOC name}.
-
-AUTHOR: \[Name\]  
-INSTITUTION: \[Institution\]  
-TARGET SOC: {SOC name}
-
-Search for this author's publications in the same research domain as {SOC name} (e.g., if the SOC is MERS-CoV spike RBD, look for respiratory virus research; if Zika NS1, look for flavivirus/arbovirus research). Exclude publications on viruses that would require significantly less stringent biosafety oversight or pose minimal dual-use research concerns relative to {SOC name}. 
-
-1\. MULTIPLE PUBLICATIONS: Can you find at least 2 publications by this author in the same research domain as {SOC name}? (YES/NO)
-
-2\. PUBLICATION LINKS: List up to 5 publication URLs/DOIs you found in this research domain:  
-   \- \[URL/DOI 1\]  
-   \- \[URL/DOI 2\]  
-   \- \[URL/DOI 3\]  
-   \- \[URL/DOI 4\]  
-   \- \[URL/DOI 5\]
-
-3\. DOMAIN RELEVANCE: One sentence explaining why these publications are related to the {SOC name} research domain.
-
-Format:   
-MULTIPLE PUBLICATIONS: \[YES/NO\]  
-PUBLICATION LINKS:  
-\- \[URL 1\]  
-\- \[URL 2\]  
-\- \[etc.\]  
-DOMAIN RELEVANCE: \[your sentence\]
-
-Focus on actual experimental work in the domain, not just computational analysis or reviews.
-
-## Prompt 3B: In-place Author Background Investigation
-
-Research this academic's publication history to assess their experience in the research domain of the SOC from the previous analysis.
-
-AUTHOR: {clipboard}
-
-Given that this author has already published on the SOC in the current paper, search for additional publications by this author in the same research domain (e.g., if the SOC is MERS-CoV spike RBD, look for respiratory virus research; if Zika NS1, look for flavivirus/arbovirus research). Exclude publications on viruses that would require significantly less stringent biosafety oversight or pose minimal dual-use research concerns relative to the SOC in the current paper. 
-
-1\. ADDITIONAL PUBLICATIONS: Can you find at least 1 additional publication by this author in the same research domain as the SOC? (YES/NO)
-
-2\. PUBLICATION LINKS: List additional publication URLs/DOIs you found in this research domain (ideally 3+ more, up to 5 total):  
-   \- \[URL/DOI 1\]  
-   \- \[URL/DOI 2\]   
-   \- \[URL/DOI 3\]  
-   \- \[URL/DOI 4\]  
-   \- \[URL/DOI 5\]
-
-3\. DOMAIN RELEVANCE: One sentence explaining why these additional publications are related to the SOC research domain.
-
-Format:   
-ADDITIONAL PUBLICATIONS: \[YES/NO\]  
-PUBLICATION LINKS:  
-\- \[URL 1\]  
-\- \[URL 2\]  
-\- \[etc.\]  
-DOMAIN RELEVANCE: \[your sentence\]
-
-Focus on actual experimental work in the domain, not just computational analysis or reviews. Invest substantial effort in attempting to find additional publications. 
-
-## Prompt 4A: Presence of experimental work
-
-Research this academic's publication history to assess their experience with experimental work that would require DNA synthesis.
-
-AUTHOR: {Author Name}  
-INSTITUTION: {Institution}  
-TARGET SOC: {SOC name}
-
-Search for this author's publications and determine if they have experience with experimental work requiring DNA synthesis.
-
-1\. LABORATORY PUBLICATIONS: Can you find at least 1 additional publication by this author involving laboratory work that would likely require DNA synthesis? (YESNO)
-
-2\. PUBLICATION LINKS: List publication URLs/DOIs you found involving DNA synthesis-like laboratory work (up to 5):  
-   \- \[URL/DOI 1\]  
-   \- \[URL/DOI 2\]  
-   \- \[URL/DOI 3\]  
-   \- \[URL/DOI 4\]  
-   \- \[URL/DOI 5\]
-
-3\. LABORATORY RATIONALE: One sentence explaining why these publications suggest DNA synthesis requirements (e.g., protein expression, cloning, vaccine constructs, sequence engineering).
-
-DNA synthesis work includes: protein expression/production, functional studies requiring cloning, vaccine development with sequence constructs, sequence engineering/modification.
-
-EXCLUDE: purely computational, bioinformatics, epidemiological, or structural analysis work.
-
-Format:   
-LABORATORY PUBLICATIONS: \[YES/NO\]  
-PUBLICATION LINKS:  
-\- \[URL 1\]  
-\- \[URL 2\]  
-\- \[etc.\]  
-EXPERIMENTAL RATIONALE: \[your sentence\]
-
-## Prompt 4B: In-place Presence of Experimental Work
-
-Research this academic's publication history to assess their experience with experimental work that would require DNA synthesis.
-
-AUTHOR: {clipboard}
-
-Given that this author has already published work involving the SOC from the previous analysis, search for additional publications by this author involving experimental work that would likely require DNA synthesis.
-
-1\. LABORATORY PUBLICATIONS: Can you find at least 1 additional publication by this author involving laboratory work that would likely require DNA synthesis? (YES/NO)
-
-2\. PUBLICATION LINKS: List publication URLs/DOIs you found involving DNA synthesis-like laboratory work (up to 5):  
-   \- \[URL/DOI 1\]  
-   \- \[URL/DOI 2\]  
-   \- \[URL/DOI 3\]  
-   \- \[URL/DOI 4\]  
-   \- \[URL/DOI 5\]
-
-3\. LABORATORY RATIONALE: One sentence explaining why these publications suggest DNA synthesis requirements (e.g., protein expression, cloning, vaccine constructs, sequence engineering). 
-
-DNA synthesis work includes: protein expression/production, functional studies requiring cloning, vaccine development with sequence constructs, sequence engineering/modification.
-
-EXCLUDE: purely computational, bioinformatics, epidemiological, or structural analysis work.
-
-Format:   
-LABORATORY PUBLICATIONS: \[YES/NO\]  
-PUBLICATION LINKS:  
-\- \[URL 1\]  
-\- \[URL 2\]  
-\- \[etc.\]  
-EXPERIMENTAL RATIONALE: \[your sentence\]
-
-# Task prompts
-
-## Verification checks
-
-Screen the following customer order for a synthetic DNA provider:  
-{{customer\_info}}
-
-Assign FLAG / NO FLAG / UNDETERMINED status for each criterion:
-
-1\. Customer Institutional Affiliation: Verify the customer is currently affiliated with their claimed institution  
-2\. Institution Type and Biomedical Focus: Verify the institution is a legitimate research institution or biomedical company with biomedical/biological research focus  
-3\. Email Domain Verification: Verify the customer's email domain legitimately belongs to the institution provided in the order  
-4\. Sanctions and Export Control Screening: Verify the institution is not subject to sanctions or export control restrictions
-
-Flag logic: FLAG if no evidence found after searching or if sources contradict the claim. UNDETERMINED if evidence exists only from insufficient sources. NO FLAG if at least one sufficient source confirms the criterion. If sufficient sources conflict with each other, FLAG.
-
-Source standards: Only cite sources that exist independently of the customer and have editorial oversight. Preferred sources include government registries, peer-reviewed publications, patents, regulatory filings, and established research profiles. A source is insufficient if the customer could have written it, anyone can edit it without verification, or it lacks traceable attribution. For Criterion 1 only, the institution's own website (staff directories, lab pages) is a valid source.
-
-Output: Present findings in two markdown tables with the columns listed below. Include at most 3 sources for each criterion.
-
-Table 1 — Evidence:  
-\- Criterion (1–4)  
-\- Sources: Tool citation placeholder (e.g., \[web1\], \[screen1\])  
-\- Evidence Summary: Factual description of what the source states
-
-Table 2 — Determinations:  
-\- Criterion (1–4)  
-\- Flag Status: FLAG, NO FLAG, or UNDETERMINED
-
-## Relevant work
-
-Identify relevant laboratory work for the following customer of a synthetic DNA provider:  
-{{customer\_info}}
-
-Search for customer-authored work on the ordered organism first, then related organisms, then broader wet lab work by the customer. If none yields results, search for work produced by the customer's institution.  
-Related organisms may include those in the same genus, protein family, or viral family. Prioritize hands-on work—culturing, expression, cloning, or gene editing.
-
-Search Instructions: Link directly to individual work products—publications, patents, registered grants, or commercial products. Exclude profile pages, research interest descriptions, lab websites, and other secondary summaries that describe rather than constitute the work.
-
-Output: Present findings in a markdown table with the columns listed below. Include only work per row, and at most 5 works total (prioritizing by relevance).  
-\- Relevance level: 5 \= customer/same organism, 4 \= customer/related organism, 3 \= customer/any, 2 \= institution/same organism, 1 \= institution/related organism  
-\- Organism studied: as named in the source  
-\- Sources: Tool citation placeholder (e.g., \[web1\])  
-\- Work summary: One sentence factual description of what the source contains
-
-NOTE: Always report at least one piece of work authored by the customer, or state explictly if you couldn't find any.
-
-# Eval prompts
-
-## Source Fidelity
-
-template: |  
- Review a customer screening report for fabricated, unsupported, or misrepresented claims.
-
- \<verification\_questionl\>  
- {{CRITERION\_NAME}}: {{CRITERION\_INSTRUCTION}}  
- \</verification\_question\>
-
- \<report\_output\>  
- {{EXTRACTED\_SECTION}}  
- \</report\_output\>
-
- \<source\_text\>  
- {{SOURCES}}  
- \</source\_text\>
-
- \<customer\_details\>  
- {{CUSTOMER\_INFO}}  
- \</customer\_details\>
-
- \---
-
- Confirm the sources support the report's answer to the verification question: {{CRITERION\_INSTRUCTION}}.
-
- Focus on substantive claims. Ignore minor discrepancies (e.g., rewordings, typos) that don't affect the verification question.
-
- A claim FAILS if:  
- \- The source flatly contradicts it  
- \- There's no source providing relevant information for the claim  
- \- It presents speculation or inference as established fact
-
- Otherwise, the claim is PASS. Negative claims reporting absence of evidence (e.g., "no matching records found," "could not locate") are PASS. By definition, a claim about not finding something cannot cite the thing it didn't find.  
-  If all claims pass, return PASS in \<answer\> tags. Otherwise, return FAIL.
-
- Present your answer in the following format:
-
- \<claims\>  
- \<claim\_1\>  
- \<assertion\>\[Restate the claim\]\</assertion\>  
- \<reasoning\>\[Evaluate if the claim contains any of the FAIL conditions. Under 50 words.\]\</reasoning\>  
- \<status\>PASS | FAIL\</status\>  
- \</claim\_1\>
-
- \<claim\_2\>  
- ...  
- \</claim\_2\>  
- \</claims\>  
- \<answer\>  
- \[PASS if all claims pass, FAIL otherwise\]  
- \</answer\>
-
- Return only the requested output in the specified xml tags and nothing else.
-
-*\# \=============================================================================*  
-*\# CRITERION CONFIGURATIONS*  
-*\# \=============================================================================*
-
-claim\_types:  
- affiliation:  
-   criterion\_name: "Customer Institutional Affiliation"  
-   criterion\_instruction: "Verify the customer is currently affiliated with their claimed institution"
-
- institution:  
-   criterion\_name: "Institution Type and Biomedical Focus"  
-   criterion\_instruction: "Verify the institution is a legitimate research institution or biomedical company with biomedical/biological research focus"
-
- domain:  
-   criterion\_name: "Email Domain Verification"  
-   criterion\_instruction: "Verify the customer's email domain legitimately belongs to their claimed institution"
-
- sanctions:  
-   criterion\_name: "Sanctions and Export Control Screening"  
-   criterion\_instruction: "Verify the institution is not subject to sanctions or export control restrictions"
-
- background\_work:  
-   criterion\_name: "Relevant Background Work"  
-   criterion\_instruction: "Identify laboratory work by the customer or institution relevant to the ordered organism"
-
-## Source quality
-
-template: |  
- Evaluate whether sources cited in a customer screening report meet quality standards for independent verification.
-
- \<report\_output\>  
- {{EXTRACTED\_SECTION}}  
- \</report\_output\>
-
- \<source\_text\>  
- {{SOURCES}}  
- \</source\_text\>
-
- \<customer\_details\>  
- {{CUSTOMER\_INFO}}  
- \</customer\_details\>
-
- \---
-
- First, identify all sources cited in the report.
-
- A source FAILS if any of these apply:  
- \- Unverified personal content — The customer controls the content and no institution or third party validates it (LinkedIn, personal websites, CVs)  
- \- Openly editable — Anyone can modify without verification (Wikipedia, social media, forums). These are different from verified user-editable sources such as Google Scholar, ORCID, and ResearchGate.  
- \- Unattributed — Claims lack traceable origin (anonymous posts, unsourced assertions)  
- \- Unavailable — No content appears in the source text (unless the source is marked as empty in the report)
-
- Otherwise, the source is PASS. Examples of PASS sources:  
- \- Official government registries and databases  
- \- Peer-reviewed publications and patent filings  
- \- Court records, regulatory submissions, business registrations  
- \- Accreditation bodies and established ranking organizations  
- \- Established research profiles and content aggregators drawing from official sources (ORCID, ResearchGate, Google Scholar, OpenSanctions)
-
- If no sources are cited → return FAIL.  
- If all sources pass → return PASS. Otherwise, return FAIL.
-
- Present your answer in the following format:
-
- \<sources\_to\_audit\>  
- \[List all sources cited in the report\]  
- \</sources\_to\_audit\>
-
- \<source\_evaluation\>  
- \<source\_1\>  
- \<identifier\>\[Source URL or name\]\</identifier\>  
- \<reasoning\>\[Evaluate if the source contains any FAIL conditions. Under 50 words.\]\</reasoning\>  
- \<status\>PASS | FAIL\</status\>  
- \</source\_1\>
-
- \<source\_2\>  
- ...  
- \</source\_2\>  
- \</source\_evaluation\>
-
- \<reason\>  
- \[Under 100 words: summarize the quality of cited sources\]  
- \</reason\>
-
- \<answer\>  
- \[PASS if all sources pass, FAIL otherwise\]  
- \</answer\>
-
- Return only the requested output in the specified xml tags and nothing else.
-
-*\# \=============================================================================*  
-*\# CRITERION CONFIGURATIONS*  
-*\# \=============================================================================*
-
-claim\_types:  
- affiliation:  
-   criterion\_name: "Customer Institutional Affiliation"  
-   criterion\_instruction: "Verify the customer is currently affiliated with their claimed institution"
-
- institution:  
-   criterion\_name: "Institution Type and Biomedical Focus"  
-   criterion\_instruction: "Verify the institution is a legitimate research institution or biomedical company with biomedical/biological research focus"
-
- domain:  
-   criterion\_name: "Email Domain Verification"  
-   criterion\_instruction: "Verify the customer's email domain legitimately belongs to their claimed institution"
-
- sanctions:  
-   criterion\_name: "Sanctions and Export Control Screening"  
-   criterion\_instruction: "Verify the institution is not subject to sanctions or export control restrictions"
-
- background\_work:  
-   criterion\_name: "Relevant Background Work"  
-   criterion\_instruction: "Identify laboratory work by the customer or institution relevant to the ordered organism"
-
-## Work relevance
-
-*\# Work Relevance Evaluation Metric*  
-*\# Available placeholders: {{CUSTOMER\_INFO}}, {{SOURCES\_TABLE}}, {{WORK\_CONTENT}} (runtime)*
-
-template: |  
- You are evaluating the quality of background work sources retrieved for customer screening at a DNA synthesis provider. Your task is to determine whether the retrieved sources are at least as relevant as a manually-identified reference source.
-
- \<order\_details\>  
- {{CUSTOMER\_INFO}}  
- \</order\_details\>
-
- \<reference\_source\>  
- {{WORK\_CONTENT}}  
- \</reference\_source\>
-
- \<provided\_sources\_table\>  
- {{SOURCES\_TABLE}}  
- \</provided\_sources\_table\>
-
- The relevance levels in this table are the screener's assessment and may be incorrect. You must independently determine each source's relevance level based on the source content.
-
- \<provided\_sources\>  
- {{SOURCES}}  
- \</provided\_sources\>
-
- EVALUATION TASK  
- 1\. Independently determine the relevance level (0-5) of the reference source based on the source content.  
- 2\. Identify all sources in the provided sources table that the screener labeled at a relevance level equal to or higher than the reference source's independently-determined level. These are the sources you will audit.  
- 3\. Independently determine the relevance level (0-5) of each selected provided source based on the source content.  
- 4\. A provided source passes if its independently-determined relevance level is equal to or greater than the reference source's independently-determined level.
-
- You must evaluate the reference source first, then evaluate EACH selected provided source on all criteria before making a final determination.
-
- RELEVANCE SCALE  
- Relevance is determined by three factors: proximity to customer, organism proximity to order, and laboratory work involvement. These are defined in detail under CLASSIFICATION CRITERIA below.
-
- \- Level 5: CUSTOMER\_DIRECT \+ SAME\_ORGANISM \+ WET\_LAB  
- \- Level 4: CUSTOMER\_DIRECT \+ CLOSELY\_RELATED \+ WET\_LAB  
- \- Level 3: CUSTOMER\_DIRECT, any other case  
- \- Level 2: INSTITUTION\_ONLY \+ SAME\_ORGANISM \+ WET\_LAB  
- \- Level 1: INSTITUTION\_ONLY \+ CLOSELY\_RELATED \+ WET\_LAB  
- \- Level 0: INSTITUTION\_ONLY/UNRELATED, any other case
-
- CLASSIFICATION CRITERIA
-
- 1\. Proximity to Customer  
-   Classify as one of:  
-     \- CUSTOMER\_DIRECT: Work authored by or directly attributed to the customer  
-     \- INSTITUTION\_ONLY: Work from the customer's institution but not directly involving the customer  
-     \- UNRELATED: Work not connected to either the customer or their institution
-
- 2\. Laboratory Work Involvement  
-   Classify as one of:  
-     \- WET\_LAB: Involves hands-on laboratory experimentation (e.g., culturing organisms, protein expression, sequencing, cloning, animal studies, etc.)  
-     \- COMPUTATIONAL\_ONLY: Purely computational, bioinformatic, or theoretical work with no laboratory component  
-     \- UNCLEAR: Cannot determine from the source content
-
- 3\. Organism Proximity to Order  
-   Classify the relationship between the organism(s) in the work and the ordered organism as one of:  
-     \- SAME\_ORGANISM: Work involves the exact organism or gene/protein specified in the order  
-     \- CLOSELY\_RELATED: Work involves organisms/sequences where expertise would naturally transfer (e.g., same genus, same protein family, same viral family, similar model systems)  
-     \- DISTANTLY\_RELATED: Work involves organisms in the same broad domain but expertise transfer is less direct (e.g., both are bacteria but different classes; both are viruses but different families)  
-     \- UNRELATED: No meaningful biological connection to the ordered organism
-
- OUTPUT FORMAT  
- Structure your response as follows:
-
- \<order\_organism\>  
- State what organism or sequence is being ordered.  
- \</order\_organism\>
-
- \<reference\_source\_analysis\>  
- \- Description: Brief description of the reference work  
- \- Proximity to Customer: \[CUSTOMER\_DIRECT / INSTITUTION\_ONLY / UNRELATED\] \- Justification  
- \- Organism Proximity to Order: \[SAME\_ORGANISM / CLOSELY\_RELATED / DISTANTLY\_RELATED / UNRELATED\] \- Justification including specific organism(s) involved  
- \- Laboratory Work Involvement: \[WET\_LAB / COMPUTATIONAL\_ONLY / UNCLEAR\] \- Justification  
- \- Relevance Level: \[0-5\]  
- \</reference\_source\_analysis\>
-
- \<selected\_sources\>  
- List the titles of all sources the screener labeled at a relevance level equal to or higher than the reference source's. Produce a title if not present in the source table. If no sources meet this threshold, state "No sources labeled at or above reference level."  
- \</selected\_sources\>
-
- Repeat the following block for EACH selected source:
-
- \<provided\_source\_analysis id="\[source title\]"\>  
- \- Description: Brief description of the work  
- \- Proximity to Customer: \[CUSTOMER\_DIRECT / INSTITUTION\_ONLY / UNRELATED\] \- Justification  
- \- Organism Proximity to Order: \[SAME\_ORGANISM / CLOSELY\_RELATED / DISTANTLY\_RELATED / UNRELATED\] \- Justification including specific organism(s) involved  
- \- Laboratory Work Involvement: \[WET\_LAB / COMPUTATIONAL\_ONLY / UNCLEAR\] \- Justification  
- \- Relevance Level: \[0-5 as determined by your independent assessment\]  
- \- Source Result: \[PASS if this source's relevance level is equal to or greater than the reference level, otherwise FAIL\]  
- \</provided\_source\_analysis\>
-
- \<answer\>  
- PASS if AT LEAST ONE provided source passes. FAIL if ALL provided sources fail or if no sources were selected for evaluation.  
- \[PASS/FAIL\]  
- \</answer\>
-
- IMPORTANT NOTES  
- \- If the provided sources table is empty or contains no sources labeled at or above the reference source's level, output FAIL  
- \- Evaluate ALL sources that the screener labeled at or above the reference level, even if one has already passed
-
-# Discussion ideas
-
-We evaluated AI models with web-search only and AI models with additional connected tools on follow-up screening of customers who ordered sequences of concern against a human baseline. While our evaluation took place outside of a DNA synthesis company, we attempted to simulate real customers going through a plausible screening workflow. The observations we made warrant piloting AI-aided customer screening in DNA synthesis companies and possibly other providers with similar risk profiles (e.g., cloud labs and pathogen repositories). This fits with existing screening guidelines that pair sequence screening with customer screening and recommend follow-up screening when an order is flagged.
-
-Overall, AI models were more accurate than the 30-minute human baseline. However, we spent more time on creating and refining prompts than we did on instructing humans. High-context human screeners might outperform current models on the hardest cases, when domain context and judgment are needed. This is because of how current LLMs are trained and finetuned. Instruction-tuned models are explicitly optimized to follow written instructions (including via reinforcement learning from human feedback), which makes them good at executing checklists and structured procedures when the guidance is clear. In contrast, they do not reliably “learn on the job” across cases during deployment, unless an explicit update mechanism (e.g., fine-tuning or continual-learning methods) is implemented. This kind of adaptation is non-trivial and can lead to failures, like forgetting the previous task when learning a new one. Thus, our approach of finding clear customer-screening guidance and encoding it in a stable prompt, along with explicit rules for acceptable sources and quality of claims is the better option for now. 
-
-While there was little difference between models and the 30-minute human baseline in flag pass rates, there was greater variability in the pass rate for sources and free-text claims. For example, Claude performed particularly badly on providing sources for the institution’s type, while the human baseline performed best here. For providing background work claims, Grok with all tools did the best, and the human baseline did worst. The 5-minute human baseline severely underperformed compared to all the models and the 30-minute human baseline, as five minutes was insufficient to do many of the tasks. Overall, the all tools version of models had slightly higher pass rates but this varied between tasks and models. The all-tools versions of models performed consistently better than the web-search tools only in the sanctions check task. This is because sanctions lists are mostly only available through APIs or as downloadable material and not as webpages. Financial services use API-based sanctions screening as standard practice, like Sanctions.io and Dilisense. In our design, we only queried the US Consolidated Screening List, but many more lists could be added for better coverage. 
-
-The mix of tasks performed here could plausibly be part of one customer screening instance, but they could also be split into onboarding tasks and follow-up tasks. Onboarding tasks (or customer verification tasks) normally include checking customer name against government watchlists, requesting institutional affiliation, checking for institutional email and physical address and requesting whether the product is for research purposes. Some providers also check the institutional affiliation by verifying the institutional email address. Follow-up tasks have a wider range: the goal of these is to collect as much relevant information about the customer as needed (or as possible) for determining whether the customer is a legitimate user of the ordered sequence. Many of these are tasks that require requesting additional information, like institutional oversight, from customers and then checking the information given. In attempts to deal with this workload, some policy recommendations from others include whitelisting customers who are legitimate for a set of SOCs, and re-checking this legitimacy every year or so but not at every order. Another solution is to frontload as much of plausibly necessary information as possible. IBBIS has created templates for this, so when a customer knows that they are ordering an SOC (which they should, given that they need the appropriate BSL lab for it), they can provide more information that’s necessary for screening. This way, more of the request tasks can be turned into check tasks, which can then be sped up by using LLMs. Crucially, the ship/follow-up/not-ship decision should remain in the hands of humans.
-
-Speeding up the screening task, or in other words, cost reduction, is the main reason AI-aided KYC is worth piloting in DNA synthesis companies. In our setup, the mean cost per response was in general lower for the all-tools versions of the models, because they used fewer tokens for websearch. The cheapest model to run coincided with the best performing model based on pass rates \- this was the all-tool version of Gemini with $0.051/response. We estimate our 30-minute human baseline to cost $27, based on the median customer service rep base pay at one of the largest DNA providers. This is a more than 500-fold reduction in costs of these specific tasks. Open-sourced tools that perform these tasks, like Cliver, could therefore aid the efforts of providers who already screen, and incentivize those who do not yet. For-profit tools also have legitimacy here, which could help drive the adoption of customer screening, especially if they are coupled with profit-making products.
-
-The pass rate of both LLMs and humans on the evaluated tasks depends on the extent of publicly available information about the customer. This is an inherent limitation of any information-gathering endeavour. Using AI in KYC should still help in some cases of difficult-to-interpret data, like when large chunks of the customer’s information is in a different language from the provider’s operating language. However, the quick assessment of well-documented customers could bias against fulfilling the orders of harder-to-assess customers, some of whom will be researchers from low-income countries, who have lower access to biotechnology to begin with. Another, related limitation of our evaluation, is that we searched for customers on the web, essentially guaranteeing that they have some information on the web. Stealth startups, early career researchers and people working at universities with limited online presence will have less data that can be evaluated automatically and so these instances of screening will remain reliant on personal contact.
-
-This work builds on years of guidance on DNA synthesis customer screening. We evaluated how commercially available and open-source LLMs perform on customer screening tasks outlined by Carter et al. and are present in various screening guidances. We propose a human-in-the-loop approach, where AI models check the provided information against public records and summarize findings, and humans request additional information and make decisions about fulfilling the order. We included our prompt in the appendix, which should be easy to tailor to the specific needs of DNA providers and other relevant biotechnology companies.The code for this paper, and for the open source AI-KYC tool Cliver, are available on GitHub. The authors of this paper are keen to help implement any pilots involving these systems.
-
----
-
-# Appendices
-
-## Appendix A: Sequences of Concern (SOC) Proteins
-
-The dataset includes orders for the following 26 unique protein sequences:
-
-1. Ebola Virus Glycoprotein (GP) RBD
-2. Foot-and-mouth disease virus VP1
-3. H5N1 Hemagglutinin (HA) receptor-binding site
-4. H7N9 influenza HA receptor binding site
-5. Human metapneumovirus attachment protein
-6. Human T-lymphotropic virus
-7. Human T-lymphotropic virus (HTLV)
-8. Human T-lymphotropic virus Tax protein
-9. Kaposi's sarcoma-associated herpesvirus K1
-10. Measles virus fusion protein
-11. Merkel cell polyomavirus
-12. Merkel cell polyomavirus large T antigen
-13. Merkel cell polyomavirus large T antigen (partial)
-14. MERS-CoV spike RBD
-15. Mumps virus small hydrophobic protein
-16. Newcastle disease virus fusion protein cleavage site
-17. Oropouche virus nucleocapsid
-18. Parainfluenza virus 3 hemagglutinin-neuraminidase
-19. Peste des petits ruminants virus fusion protein
-20. Respiratory syncytial virus fusion protein
-21. Rinderpest virus hemagglutinin
-22. SARS-CoV-2 Receptor Binding Domain (RBD)
-23. Schmallenberg virus nucleocapsid
-24. SFTS virus nucleocapsid protein
-25. Usutu virus envelope protein
-26. Zika virus NS1 protein
-
-## Appendix B: Screening Prompts
-
-### B.1 Main Screening Prompt
-
-```
-Screen the following customer order for a synthetic DNA provider:
-{{customer_info}}
-
-Assign FLAG / NO FLAG / UNDETERMINED status for each criterion:
-
-1. Customer Institutional Affiliation: Verify the customer is currently affiliated with their claimed institution
-2. Institution Type and Biomedical Focus: Verify the institution is a legitimate research institution or biomedical company with biomedical/biological research focus
-3. Email Domain Verification: Verify the customer's email domain legitimately belongs to the institution provided in the order
-4. Sanctions and Export Control Screening: Verify the institution is not subject to sanctions or export control restrictions
-
-Flag logic: FLAG if no evidence found after searching or if sources contradict the claim. UNDETERMINED if evidence exists only from insufficient sources. NO FLAG if at least one sufficient source confirms the criterion. If sufficient sources conflict with each other, FLAG.
-
-Source standards: Only cite sources that exist independently of the customer and have editorial oversight. Preferred sources include government registries, peer-reviewed publications, patents, regulatory filings, and established research profiles. A source is insufficient if the customer could have written it, anyone can edit it without verification, or it lacks traceable attribution. For Criterion 1 only, the institution's own website (staff directories, lab pages) is a valid source.
-
-Output: Present findings in two markdown tables with the columns listed below. Include at most 3 sources for each criterion.
-
-Table 1 — Evidence:
-- Criterion (1–4)
-- Sources: Tool citation placeholder (e.g., [web1], [screen1])
-- Evidence Summary: Factual description of what the source states
-
-Table 2 — Determinations:
-- Criterion (1–4)
-- Flag Status: FLAG, NO FLAG, or UNDETERMINED
-```
-
-### B.2 Background Work Prompt
-
-```
-Identify relevant laboratory work for the following customer of a synthetic DNA provider:
-{{customer_info}}
-
-Search for customer-authored work on the ordered organism first, then related organisms, then broader wet lab work by the customer. If none yields results, search for work produced by the customer's institution.
-Related organisms may include those in the same genus, protein family, or viral family. Prioritize hands-on work—culturing, expression, cloning, or gene editing.
-
-Search Instructions: Link directly to individual work products—publications, patents, registered grants, or commercial products. Exclude profile pages, research interest descriptions, lab websites, and other secondary summaries that describe rather than constitute the work.
-
-Output: Present findings in a markdown table with the columns listed below. Include only work per row, and at most 5 works total (prioritizing by relevance).
-- Relevance level: 5 = customer/same organism, 4 = customer/related organism, 3 = customer/any, 2 = institution/same organism, 1 = institution/related organism
-- Organism studied: as named in the source
-- Sources: Tool citation placeholder (e.g., [web1])
-- Work summary: One sentence factual description of what the source contains
-
-NOTE: Always report at least one piece of work authored by the customer, or state explictly if you couldn't find any.
-```
-
-## Appendix C: Evaluation Criteria
-
-The evaluation framework consists of three independent assessments applied to screening outputs:
-
-### C.1 Claim Support Evaluation
-
-This metric evaluates whether evidence supports the factual claims made in screening reports.
-
-**Evaluation Process:**
-- Reviews customer screening reports for fabricated, unsupported, or misrepresented claims
-- Focuses on substantive claims while ignoring minor discrepancies (rewordings, typos)
-- Validates claims against source material provided
-
-**Failure Criteria:**
-A claim fails if:
-- The source flatly contradicts it
-- There's no source providing relevant information for the claim
-- It presents speculation or inference as established fact
-
-**Pass Criteria:**
-- Claims supported by source evidence
-- Negative claims reporting absence of evidence (e.g., "no matching records found")
-
-### C.2 Source Reliability Evaluation
-
-This metric assesses whether sources cited meet quality standards for independent verification.
-
-**Failure Criteria:**
-A source fails if any apply:
-- **Unverified personal content** — Customer controls content with no institutional validation (LinkedIn, personal websites, CVs)
-- **Openly editable** — Anyone can modify without verification (Wikipedia, social media, forums)
-- **Unattributed** — Claims lack traceable origin (anonymous posts, unsourced assertions)
-- **Unavailable** — No content appears in source text (unless marked as empty)
-
-**Pass Criteria:**
-- Official government registries and databases
-- Peer-reviewed publications and patent filings
-- Court records, regulatory submissions, business registrations
-- Accreditation bodies and established ranking organizations
-- Established research profiles (ORCID, ResearchGate, Google Scholar)
-
-### C.3 Work Relevance Evaluation
-
-This metric determines whether retrieved background work sources are appropriately relevant to the customer order.
-
-**Relevance Scale (0-5):**
-- **Level 5:** Customer direct + same organism + wet lab work
-- **Level 4:** Customer direct + closely related organism + wet lab work
-- **Level 3:** Customer direct + any other case
-- **Level 2:** Institution only + same organism + wet lab work
-- **Level 1:** Institution only + closely related organism + wet lab work
-- **Level 0:** Institution only/unrelated + any other case
-
-**Classification Criteria:**
-
-*Proximity to Customer:*
-- Customer Direct: Work authored by or directly attributed to the customer
-- Institution Only: Work from customer's institution but not directly involving customer
-- Unrelated: No connection to customer or institution
-
-*Laboratory Work Involvement:*
-- Wet Lab: Hands-on experimentation (culturing, protein expression, cloning, etc.)
-- Computational Only: Purely computational/bioinformatic work
-- Unclear: Cannot determine from source content
-
-*Organism Proximity to Order:*
-- Same Organism: Exact organism or gene/protein specified in order
-- Closely Related: Organisms where expertise would transfer (same genus, protein/viral family)
-- Distantly Related: Same broad domain but less direct transfer
-- Unrelated: No meaningful biological connection 
+[image2]: <data:image/png;base64,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ZsyYESz5hrfffhuHknfffReHKqiVtUdbtj744INk3rx5OJwyffr0dBofpy80IXmPm+STlVvWGGn7hLnKtiFrW87si4G/xVZKbKGRcTm+R63/AEgcWYVmzpw56fR5553nLvfaa69kqaWWSqZMmeLmJQf5byzMq0OHDsmzzz6bjr3//vtJp06dkkmTJtXMU2hq2QsvvJD89Kc/dc8T/1izNpByOWbMmGTUqFFuXj6QL1577bVuXh775MmT3fSvf/3r5MUXX6y4HdxDs/HGG7v15cCYs2fPTtcjei6++OJkhx12wGH3O5bnhRyA1H8YOMxx+eWXT3bddddku+22c2PyJYs99tgjWWGFFZosrKRlad++fcW8ZPn666+7y5VWWikdE3v27Jl07drVjZ1zzjlu27H22msnn3zySbpeu3btkvXXX99N9+3bN+nRo0d6241O7S0maVFqFRpBXjw7duyYjv3qV79yu69xPdJ8YgqNf2G//fbb0+V+3TCPgQMHJu+9954bW2WVVZzyjYYFCxak6wh+4xaKhGN+utbYgQcemI4j4XNMNqZ4f1ho3njjjSYfF8lnrbXWyvzHo1Z+tZYJW2yxhXseMYvWS5cuXSrmpYgKtTINM5d/RMRazwPZnpBv4V9BK0VeKF966aV0PmuDFT7J5fMU4kYbbcS3BAogq9B89dVX6fR+++3nLiUn/99T+CIl/4EJks1nn33mppdbbrn0M1AamlpvwIABaeZ+g4kbu5A333yzYt4TniHYH8H3pptuSsew0DR1H0SHPE+yvpqb9bvFy7wx0vrAbPLyy1ruyRrbeeedcahhqf7tkFaDPHkfffTRZPHFF09uu+02Nya7G++77z73JJZpYZ999gmvlvmkJ3FIoTnppJNSPd26dUtGjBiRbL755m4+LDSC/O7//Oc/V2yUZG/aww8/nI59/PHHbvqpp55K1ltvvfS6SK0csz7XIo/hhBNOSDbccMPk2GOPTa+7zjrruL13vXr1StfdZptt3NtLQlhopBg99thjyWabbZaOZRWaJ554wl3WenwkH/ndvfrqq276+OOPT8fC5VmXWWOjR49mFq2Yfv36JWPHjnXTsjft8MMPd9NZmYbTiy22WHLXXXe5abkNXE+2MwJu/xsZ/hUQYghfaAghpBy4tSXEkKuuugqHCCGEGMBCQwghhJA2DwsNIYQQQto8LDSENCgffvihOw6NeMYZZ+DiNod8cNJ75pln4uJo+MFnQtoW/GslpAGRb8j5F+xFfeFelOsWCf48i/q4irgNQkh58K+VkAak1ov1K6+8UjEu0/KVc0GOo+Ov549+WqtA+Hl/aIFw7Hvf+567lK+zP/LII1XXDdeVr67imHwFHdcPlwuXXHJJxTpyjB2/HK/rx+644w53efTRR1eM43rhz/T888+7sd13371qGSGkXKq3CoSQukYOqy8vvv/+979xUZOFRqZXX3315A9/+IM7JLsgx+ORcbn0x+bxL+xy5OTwRd4XAjn2jhQVP7/uuutW3acsl7fBZHq33XaruL7cXtZ5y/xyQU4TgLcpymkgwvX8tBzHRw45L9NZhcZP+9Ljx32hWWONNZLBgwdX3CchpFz410dIg3HkkUe6F145aSWSV2i84ck4w/VPO+20ivkhQ4ZUlQJBShHez9NPP50MHTq04n7C64TTWeB15DNCtZaFtxkeml7maxUaf5BBOX+OH/eFxiPTcq4uQkj51N46EELqlvDFOsSfNM8j077QeOQoyjL+r3/9K11HTukg4Au8P4meX89PX3/99VX3I4UmPLEnUusxe8LlcvJMmQ5P3DlhwoRw9XTcX2fWrFluulahkbfKhJVXXjkdx59XplloCGkZam8dCCF1i3+xDhX8uaa22mqrdDzcQyNne5YzBMu03wOCt+GnDzvsMHe57LLLVowLtQpNuJ7sSZK9J3i7tcDlWY/p4IMPTvr06ZOOy4le/TJvrUIjymHrw3EWGkJaD7W3DoSQugfPVSXMnDnTfc4Gkb0dw4YNS4455hhcVMU999zjTuAZns07hvHjxycHHXRQ8re//Q0XNRs5KaQ8Jnm7Kwt/jq17770XFznkDOpy/S+++AIXEUJaASw0hJCGZcGCBRV7Z/xJAAkhbQ8WGkIIIYS0eVhoCCGEENLmYaEhhBBCSJuHhYYQQgghbR4WGkIIIYS0ef4fn6ffeX7DHpoAAAAASUVORK5CYII=>
