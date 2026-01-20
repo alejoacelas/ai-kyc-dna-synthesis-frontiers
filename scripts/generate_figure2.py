@@ -178,7 +178,7 @@ def create_figure(results):
     add_value_labels(bars3)
 
     # Add legend
-    ax.legend(loc='upper right', fontsize=10)
+    ax.legend(loc='center right', fontsize=10)
 
     # Add grid for better readability
     ax.grid(True, linestyle='--', alpha=0.3, axis='y')

@@ -1,159 +1,235 @@
 #!/usr/bin/env python3
 """
-Generate Figure 6: Geographic breakdown by customer region
-Shows pass rates by customer region and test category for AI models on human baseline dataset
+Generate Figure 6: Flag accuracy error breakdown by task and region.
+
+Shows error rates by customer region and flag task (affiliation, domain,
+institution, sanctions), split by error type:
+- Missed flag: Should have flagged but didn't (False Negative)
+- False flag: Should not have flagged but did (False Positive)
+- Undetermined: Model returned undetermined flag
 """
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
+
+
+# Task mapping from metric_name to display label and ground truth column
+TASK_CONFIG = {
+    'AFFILIATION-FLAG-ACCURACY': {
+        'label': 'Institutional\nAffiliation',
+        'ground_truth_col': 'ground_truth_affiliation',
+        'order': 0,
+    },
+    'INSTITUTION-FLAG-ACCURACY': {
+        'label': 'Institution\nType',
+        'ground_truth_col': 'ground_truth_institution',
+        'order': 1,
+    },
+    'DOMAIN-FLAG-ACCURACY': {
+        'label': 'Email\nDomain',
+        'ground_truth_col': 'ground_truth_domain',
+        'order': 2,
+    },
+    'SANCTIONS-FLAG-ACCURACY': {
+        'label': 'Sanctions\nScreening',
+        'ground_truth_col': 'ground_truth_sanctions',
+        'order': 3,
+    },
+}
+
+
+def classify_error(row):
+    """Classify the type of error for a flag accuracy test."""
+    metric = row['metric_name']
+    if metric not in TASK_CONFIG:
+        return None
+
+    gt_col = TASK_CONFIG[metric]['ground_truth_col']
+    ground_truth = row[gt_col]
+    extracted = row['extracted_flag']
+
+    # If passed, no error
+    if row['pass']:
+        return 'correct'
+
+    # Classify error type
+    if extracted == 'UNDETERMINED':
+        return 'undetermined'
+    elif ground_truth == 'FLAG' and extracted == 'NO FLAG':
+        return 'missed_flag'  # False negative
+    elif ground_truth == 'NO FLAG' and extracted == 'FLAG':
+        return 'false_flag'  # False positive
+    else:
+        # Other cases (e.g., ground_truth is UNDETERMINED)
+        return 'other'
+
 
 def generate_figure6():
     # Read the data
     df = pd.read_csv('processed/tests.csv')
 
-    # Apply filters according to requirements
-    # 1. Use human baseline subset only
-    df_filtered = df[df['is_human_baseline_dataset'] == True].copy()
+    # Filter for flag accuracy, AI models only, human baseline dataset
+    df_flag = df[
+        (df['test_category'] == 'flag_accuracy') &
+        (df['is_human_baseline'] == False) &
+        (df['is_human_baseline_dataset'] == True)
+    ].copy()
 
-    # 2. Only include AI models (exclude human baselines)
-    df_filtered = df_filtered[df_filtered['is_human_baseline'] == False].copy()
+    print(f"Total flag accuracy records: {len(df_flag)}")
+    print(f"Records by metric: \n{df_flag['metric_name'].value_counts()}")
+    print(f"Records by region: \n{df_flag['institution_country'].value_counts()}")
 
-    print(f"Total records after filtering: {len(df_filtered)}")
-    print(f"Records by region: \n{df_filtered['institution_country'].value_counts()}")
-    print(f"Records by test category: \n{df_filtered['test_category'].value_counts()}")
+    # Classify each error
+    df_flag['error_type'] = df_flag.apply(classify_error, axis=1)
 
-    # Calculate average pass rate by institution_country and test_category
-    pass_rates = df_filtered.groupby(['institution_country', 'test_category'])['pass'].mean() * 100
-    pass_rates_df = pass_rates.reset_index()
-    pass_rates_df.columns = ['region', 'test_category', 'pass_rate']
+    print(f"\nError type distribution:")
+    print(df_flag['error_type'].value_counts())
 
-    # Map regions according to requirements (already correctly named in data)
-    region_mapping = {
-        'USA': 'USA',
-        'Europe + Australia': 'Europe + Australia',
-        'China': 'China',
-        'Others': 'Others'
+    # Extract task from metric_name
+    df_flag['task'] = df_flag['metric_name'].map(lambda x: TASK_CONFIG.get(x, {}).get('label', x))
+    df_flag['task_order'] = df_flag['metric_name'].map(lambda x: TASK_CONFIG.get(x, {}).get('order', 99))
+
+    # Rename regions
+    df_flag['region'] = df_flag['institution_country'].replace({'Others': 'Other countries'})
+
+    # Calculate error rates by region and task
+    error_types = ['missed_flag', 'false_flag', 'undetermined']
+    error_labels = {
+        'missed_flag': 'Missed Flag',
+        'false_flag': 'False Flag',
+        'undetermined': 'Undetermined',
     }
 
-    # Order regions and test categories
-    region_order = ['USA', 'Europe + Australia', 'China', 'Others']
-    test_category_order = ['flag_accuracy', 'claim_support', 'source_reliability', 'work_relevance']
+    # Get unique tasks and regions
+    tasks = sorted(df_flag['task'].unique(), key=lambda x: df_flag[df_flag['task'] == x]['task_order'].iloc[0])
+    region_order = ['USA', 'Europe + Australia', 'China', 'Other countries']
+    regions = [r for r in region_order if r in df_flag['region'].unique()]
 
-    # Pivot data for plotting
-    pivot_data = pass_rates_df.pivot(index='region', columns='test_category', values='pass_rate')
-    pivot_data = pivot_data.reindex(region_order)[test_category_order]
+    # Calculate error rates
+    results = []
+    for region in regions:
+        for task in tasks:
+            subset = df_flag[(df_flag['region'] == region) & (df_flag['task'] == task)]
+            total = len(subset)
+            if total > 0:
+                for error_type in error_types:
+                    count = (subset['error_type'] == error_type).sum()
+                    rate = count / total * 100
+                    results.append({
+                        'region': region,
+                        'task': task,
+                        'error_type': error_type,
+                        'error_rate': rate,
+                        'count': count,
+                        'total': total,
+                    })
 
-    print("\nPass rates by region and test category:")
-    print(pivot_data.round(1))
+    results_df = pd.DataFrame(results)
 
-    # Set up the plot with high DPI
-    plt.figure(figsize=(12, 8), dpi=300)
+    # Print summary
+    print("\nError rates by region and task:")
+    pivot = results_df.pivot_table(
+        index=['region', 'task'],
+        columns='error_type',
+        values='error_rate',
+        aggfunc='first'
+    )
+    print(pivot.round(1))
 
-    # Define colors for each test category
-    colors = ['#2E8B57', '#4682B4', '#CD853F', '#9932CC']  # Sea green, steel blue, peru, purple
+    # Create the plot
+    fig, axes = plt.subplots(1, len(tasks), figsize=(14, 6), sharey=True)
 
-    # Set up positions for grouped bars
-    x = np.arange(len(region_order))
-    width = 0.2
+    # Colors for error types
+    error_colors = {
+        'missed_flag': '#dc2626',    # Red - missed flags are serious
+        'false_flag': '#f97316',     # Orange - false flags are less serious
+        'undetermined': '#6b7280',   # Gray - undetermined
+    }
 
-    # Create bars for each test category
-    for i, test_cat in enumerate(test_category_order):
-        offset = (i - 1.5) * width
-        values = [pivot_data.loc[region, test_cat] if region in pivot_data.index else 0
-                 for region in region_order]
+    bar_width = 0.25
+    x = np.arange(len(regions))
 
-        bars = plt.bar(x + offset, values, width, label=test_cat.replace('_', ' ').title(),
-                      color=colors[i], alpha=0.8, edgecolor='black', linewidth=0.5)
+    for idx, task in enumerate(tasks):
+        ax = axes[idx]
+        task_data = results_df[results_df['task'] == task]
 
-        # Annotate bars with exact percentage values
-        for j, (bar, value) in enumerate(zip(bars, values)):
-            if value > 0:  # Only annotate if there's data
-                height = bar.get_height()
-                plt.text(bar.get_x() + bar.get_width()/2., height + 0.5,
-                        f'{value:.1f}%', ha='center', va='bottom', fontsize=9,
-                        fontweight='bold')
+        for i, error_type in enumerate(error_types):
+            error_data = task_data[task_data['error_type'] == error_type]
+            values = [error_data[error_data['region'] == r]['error_rate'].values[0]
+                     if len(error_data[error_data['region'] == r]) > 0 else 0
+                     for r in regions]
 
-    # Customize the plot
-    plt.xlabel('Customer Region', fontsize=14, fontweight='bold')
-    plt.ylabel('Pass Rate (%)', fontsize=14, fontweight='bold')
-    plt.title('Pass Rates by Customer Region and Test Category\n(AI Models on Human Baseline Dataset)',
-              fontsize=16, fontweight='bold', pad=20)
+            offset = (i - 1) * bar_width
+            bars = ax.bar(x + offset, values, bar_width,
+                         label=error_labels[error_type] if idx == 0 else '',
+                         color=error_colors[error_type],
+                         alpha=0.85,
+                         edgecolor='white',
+                         linewidth=0.5)
 
-    # Set y-axis from 0 to 105% to give room for bar labels
-    plt.ylim(0, 105)
+            # Add value labels on bars
+            for bar, val in zip(bars, values):
+                if val > 0.5:  # Only label if visible
+                    ax.text(bar.get_x() + bar.get_width()/2., bar.get_height() + 0.3,
+                           f'{val:.1f}', ha='center', va='bottom', fontsize=8)
 
-    # Set x-axis labels
-    plt.xticks(x, region_order, fontsize=12)
-    plt.yticks(fontsize=12)
+        ax.set_title(task, fontsize=12, fontweight='bold')
+        ax.set_xticks(x)
+        ax.set_xticklabels([r.replace(' + ', '\n+ ').replace(' countries', '\ncountries')
+                          for r in regions], fontsize=9)
+        ax.set_ylim(0, max(results_df['error_rate']) * 1.15)
 
-    # Add legend (bottom right corner)
-    plt.legend(title='Test Category', title_fontsize=12, fontsize=11,
-              loc='lower right', frameon=True, fancybox=True, shadow=True)
+        if idx == 0:
+            ax.set_ylabel('Error Rate (%)', fontsize=12, fontweight='bold')
 
-    # Add grid for better readability
-    plt.grid(True, axis='y', alpha=0.3, linestyle='-', linewidth=0.5)
+        ax.grid(True, axis='y', alpha=0.3, linestyle='-', linewidth=0.5)
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
 
-    # Remove top spine to avoid overlap with bar number annotations
-    ax = plt.gca()
-    ax.spines['top'].set_visible(False)
+    # Add shared legend at bottom
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc='lower center', ncol=3, fontsize=10,
+              bbox_to_anchor=(0.5, -0.02), frameon=True)
 
-    # Adjust layout to prevent label cutoff
+    fig.suptitle('Flag Accuracy Error Rates by Task and Customer Region\n(Average across AI Models)',
+                fontsize=14, fontweight='bold', y=1.02)
+
     plt.tight_layout()
+    plt.subplots_adjust(bottom=0.18)
 
     # Save the figure
-    output_path = 'paper/figures/figure6_geographic_breakdown.png'
+    output_path = 'paper/figures/figure6_flag_errors_by_task_region.png'
     plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"\nFigure saved to: {output_path}")
 
     # Analysis
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("ANALYSIS")
-    print("="*60)
+    print("=" * 60)
 
-    # Overall performance by region
-    overall_by_region = pivot_data.mean(axis=1).sort_values(ascending=False)
-    print(f"\nOverall average pass rates by region:")
-    for region, rate in overall_by_region.items():
-        print(f"  {region}: {rate:.1f}%")
+    # Overall error rates by type
+    overall_by_type = results_df.groupby('error_type')['error_rate'].mean()
+    print("\nOverall average error rates by type:")
+    for error_type in error_types:
+        print(f"  {error_labels[error_type].replace(chr(10), ' ')}: {overall_by_type[error_type]:.1f}%")
 
-    best_region = overall_by_region.index[0]
-    worst_region = overall_by_region.index[-1]
-    print(f"\nBest performing region: {best_region} ({overall_by_region[best_region]:.1f}%)")
-    print(f"Worst performing region: {worst_region} ({overall_by_region[worst_region]:.1f}%)")
+    # Error rates by region
+    overall_by_region = results_df.groupby('region')['error_rate'].sum()
+    print("\nTotal error rate by region:")
+    for region in regions:
+        print(f"  {region}: {overall_by_region[region]:.1f}%")
 
-    # Performance range
-    performance_range = overall_by_region.max() - overall_by_region.min()
-    print(f"Performance range across regions: {performance_range:.1f} percentage points")
-
-    # Test category patterns
-    print(f"\nPerformance by test category (averaged across all regions):")
-    overall_by_category = pivot_data.mean(axis=0).sort_values(ascending=False)
-    for category, rate in overall_by_category.items():
-        print(f"  {category.replace('_', ' ').title()}: {rate:.1f}%")
-
-    # European vs Chinese comparison
-    if 'Europe + Australia' in pivot_data.index and 'China' in pivot_data.index:
-        europe_avg = pivot_data.loc['Europe + Australia'].mean()
-        china_avg = pivot_data.loc['China'].mean()
-        difference = europe_avg - china_avg
-        print(f"\nEuropean vs Chinese customer performance:")
-        print(f"  Europe + Australia average: {europe_avg:.1f}%")
-        print(f"  China average: {china_avg:.1f}%")
-        print(f"  Difference: {difference:.1f} percentage points in favor of Europe + Australia")
-
-    # Category-specific regional patterns
-    print(f"\nBest performing region by test category:")
-    for category in test_category_order:
-        if category in pivot_data.columns:
-            best_region_for_category = pivot_data[category].idxmax()
-            best_rate = pivot_data[category].max()
-            print(f"  {category.replace('_', ' ').title()}: {best_region_for_category} ({best_rate:.1f}%)")
+    # Error rates by task
+    overall_by_task = results_df.groupby('task')['error_rate'].sum()
+    print("\nTotal error rate by task:")
+    for task in tasks:
+        print(f"  {task.replace(chr(10), ' ')}: {overall_by_task[task]:.1f}%")
 
     plt.show()
 
-    return pivot_data
+    return results_df
+
 
 if __name__ == "__main__":
     result = generate_figure6()

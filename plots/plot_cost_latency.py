@@ -156,12 +156,34 @@ def plot_latency_by_model(df: pd.DataFrame):
 
 def plot_cost_vs_performance(df: pd.DataFrame):
     """Plot cost vs pass rate scatter."""
+    # Custom colors matching Figure 3 palette
+    FIGURE_COLORS = {
+        'all_tools': '#1e40af',      # Dark blue for AI with all tools
+        'web_only': '#93c5fd',       # Light blue for AI web-only
+        'human_baseline': '#f59e0b', # Amber/orange for human
+    }
+
+    def get_figure_color(model_label):
+        if "(All Tools)" in model_label:
+            return FIGURE_COLORS['all_tools']
+        elif "(Web)" in model_label:
+            return FIGURE_COLORS['web_only']
+        else:
+            return FIGURE_COLORS['human_baseline']
+
     # Filter AI models only
     df_ai = df[df["model_type"] != "human_baseline"].copy()
 
-    # Calculate aggregates per model
-    agg = df_ai.groupby("model_label").agg({
-        "total_cost": "mean",
+    # Sum costs across both prompts (main + background_work) per customer per model
+    customer_costs = df_ai.groupby(["customer_name", "model_label"]).agg({
+        "total_cost": "sum",  # Sum both prompt costs per customer
+        "num_assertions_passed": "sum",
+        "num_assertions": "sum",
+    }).reset_index()
+
+    # Now calculate average cost per customer for each model
+    agg = customer_costs.groupby("model_label").agg({
+        "total_cost": "mean",  # Average across customers
         "num_assertions_passed": "sum",
         "num_assertions": "sum",
     })
@@ -174,8 +196,8 @@ def plot_cost_vs_performance(df: pd.DataFrame):
     # Create figure
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    # Scatter plot
-    colors = [get_model_color(m) for m in models]
+    # Scatter plot with Figure 3 colors
+    colors = [get_figure_color(m) for m in models]
     scatter = ax.scatter(
         agg["total_cost"],
         agg["pass_rate"],
@@ -197,15 +219,15 @@ def plot_cost_vs_performance(df: pd.DataFrame):
         )
 
     # Customize
-    ax.set_xlabel("Average Cost per Response ($)")
+    ax.set_xlabel("Average Screening Cost per Customer (USD)")
     ax.set_ylabel("Overall Pass Rate (%)")
-    ax.set_title("Cost vs Performance Trade-off")
+    ax.set_title("Screening Cost vs Overall Pass Rate")
 
-    # Add legend
+    # Add legend with Figure 3 colors
     from matplotlib.patches import Patch
     legend_elements = [
-        Patch(facecolor=COLORS["web_only"], label="Web Only"),
-        Patch(facecolor=COLORS["all_tools"], label="All Tools"),
+        Patch(facecolor=FIGURE_COLORS["web_only"], label="Web Only"),
+        Patch(facecolor=FIGURE_COLORS["all_tools"], label="All Tools"),
     ]
     ax.legend(handles=legend_elements, loc="lower right")
 

@@ -23,13 +23,13 @@ def load_and_filter_data():
     return df_filtered
 
 def map_metric_to_tasks(df):
-    """Map metric names to task categories."""
+    """Map metric names to flag accuracy criteria only."""
     tasks_data = []
 
     for _, row in df.iterrows():
         metric = row['metric_name']
 
-        # Map metric names to the five required tasks
+        # Map metric names to the four flag accuracy criteria
         if metric == 'AFFILIATION-FLAG-ACCURACY':
             task = 'affiliation'
         elif metric == 'INSTITUTION-FLAG-ACCURACY':
@@ -38,8 +38,6 @@ def map_metric_to_tasks(df):
             task = 'domain'
         elif metric == 'SANCTIONS-FLAG-ACCURACY':
             task = 'sanctions'
-        elif metric == 'WORK-RELEVANCE':
-            task = 'work_relevance'
         else:
             # Skip other metrics not relevant for this figure
             continue
@@ -102,25 +100,29 @@ def identify_best_worst_models(performance):
     return results
 
 def create_figure(results):
-    """Create the grouped bar chart."""
+    """Create the grouped bar chart with AI range bars."""
 
     # Set up the plot with publication quality settings
     plt.style.use('default')
     fig, ax = plt.subplots(figsize=(12, 8))
 
-    # Define task order and clean labels
-    task_order = ['affiliation', 'institution', 'domain', 'sanctions', 'work_relevance']
+    # Colors matching Figure 3 palette
+    HUMAN_COLOR = '#f59e0b'      # Amber for human (same as Figure 3)
+    AI_BEST_COLOR = '#1e40af'    # Dark blue for lowest AI error (same as Figure 3 AT)
+    AI_RANGE_COLOR = '#93c5fd'   # Light blue for AI range extension (same as Figure 3 W)
+
+    # Define task order and clean labels (flag accuracy criteria only)
+    task_order = ['affiliation', 'institution', 'domain', 'sanctions']
     task_labels = {
-        'affiliation': 'Affiliation',
-        'institution': 'Institution Type',
-        'domain': 'Email Domain',
-        'sanctions': 'Sanctions',
-        'work_relevance': 'Work Relevance'
+        'affiliation': 'Institutional\nAffiliation',
+        'institution': 'Institution\nType',
+        'domain': 'Email\nDomain',
+        'sanctions': 'Sanctions'
     }
 
     # Prepare data for plotting
     x_pos = np.arange(len(task_order))
-    width = 0.25
+    width = 0.35
 
     human_errors = []
     best_errors = []
@@ -136,47 +138,64 @@ def create_figure(results):
             best_errors.append(0)
             worst_errors.append(0)
 
-    # Create the grouped bars
-    bars1 = ax.bar(x_pos - width, human_errors, width,
-                   label='Human Baseline (30 min)', color='#E74C3C', alpha=0.8)
-    bars2 = ax.bar(x_pos, best_errors, width,
-                   label='Best AI Model', color='#27AE60', alpha=0.8)
-    bars3 = ax.bar(x_pos + width, worst_errors, width,
-                   label='Worst AI Model', color='#95A5A6', alpha=0.8)
+    # Calculate the range (difference between worst and best)
+    ai_range = [worst - best for worst, best in zip(worst_errors, best_errors)]
+
+    # Create the bars: Human baseline and AI stacked range
+    # Human baseline bar
+    bars_human = ax.bar(x_pos - width/2, human_errors, width,
+                        label='Human Baseline (30 min)', color=HUMAN_COLOR, alpha=0.9)
+
+    # AI bars: base is lowest error rate (best), stacked is the range to highest (worst)
+    bars_ai_best = ax.bar(x_pos + width/2, best_errors, width,
+                          label='Lowest Error from AI Screener', color=AI_BEST_COLOR, alpha=0.9)
+    bars_ai_range = ax.bar(x_pos + width/2, ai_range, width, bottom=best_errors,
+                           label='Highest Error from AI Screener', color=AI_RANGE_COLOR, alpha=0.9)
 
     # Customize the plot
-    ax.set_xlabel('Verification Task', fontsize=12, fontweight='bold')
+    ax.set_xlabel('Flag Accuracy Criterion', fontsize=12, fontweight='bold')
     ax.set_ylabel('Error Rate (%)', fontsize=12, fontweight='bold')
-    ax.set_title('Human vs AI Performance by Verification Task', fontsize=14, fontweight='bold', pad=20)
+    ax.set_title('Human vs AI Error Rates by Flag Accuracy Criterion', fontsize=14, fontweight='bold', pad=20)
 
     # Set x-axis labels
     ax.set_xticks(x_pos)
     ax.set_xticklabels([task_labels[task] for task in task_order], rotation=45, ha='right')
 
     # Format y-axis
-    max_error = max(max(human_errors), max(best_errors), max(worst_errors))
-    ax.set_ylim(0, max_error * 1.1)
-    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'{x:.1f}%'))
+    max_error = max(max(human_errors), max(worst_errors))
+    ax.set_ylim(0, max_error * 1.15)
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'{x:.0f}%'))
 
     # Add value labels on bars
-    def add_value_labels(bars):
-        for bar in bars:
-            height = bar.get_height()
-            if height > 0:  # Only label non-zero bars
-                ax.text(bar.get_x() + bar.get_width()/2., height,
-                       f'{height:.1f}%',
-                       ha='center', va='bottom', fontsize=9)
+    # Human bars - single value
+    for bar in bars_human:
+        height = bar.get_height()
+        if height > 0:
+            ax.text(bar.get_x() + bar.get_width()/2., height + 0.5,
+                   f'{height:.1f}%',
+                   ha='center', va='bottom', fontsize=9, fontweight='bold')
 
-    add_value_labels(bars1)
-    add_value_labels(bars2)
-    add_value_labels(bars3)
+    # AI bars - show range (best - worst)
+    for i, (bar_best, bar_range) in enumerate(zip(bars_ai_best, bars_ai_range)):
+        best_val = best_errors[i]
+        worst_val = worst_errors[i]
+        total_height = worst_val
+
+        # Show range label at top
+        ax.text(bar_best.get_x() + bar_best.get_width()/2., total_height + 0.5,
+               f'{best_val:.1f}-{worst_val:.1f}%',
+               ha='center', va='bottom', fontsize=9, fontweight='bold')
 
     # Add legend
-    ax.legend(loc='upper right', fontsize=10)
+    ax.legend(loc='upper left', fontsize=10)
 
     # Add grid for better readability
     ax.grid(True, linestyle='--', alpha=0.3, axis='y')
     ax.set_axisbelow(True)
+
+    # Remove top and right spines
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
 
     # Tight layout
     plt.tight_layout()
@@ -184,19 +203,18 @@ def create_figure(results):
     return fig
 
 def print_model_details(results):
-    """Print which specific models were best/worst for each task."""
-    print("\nBest and Worst AI Models by Task:")
+    """Print which specific models were best/worst for each criterion."""
+    print("\nBest and Worst AI Models by Flag Accuracy Criterion:")
     print("=" * 60)
 
     task_labels = {
-        'affiliation': 'Customer Institutional Affiliation',
+        'affiliation': 'Institutional Affiliation',
         'institution': 'Institution Type',
-        'domain': 'Email Domain Verification',
-        'sanctions': 'Sanctions Screening',
-        'work_relevance': 'Background Work Relevance'
+        'domain': 'Email Domain',
+        'sanctions': 'Sanctions'
     }
 
-    for task in ['affiliation', 'institution', 'domain', 'sanctions', 'work_relevance']:
+    for task in ['affiliation', 'institution', 'domain', 'sanctions']:
         if task in results:
             data = results[task]
             print(f"\n{task_labels[task].upper()}:")
@@ -241,7 +259,7 @@ def main():
 
     # Print caption
     print("\nSuggested Caption:")
-    print("Error rates by verification task comparing human baseline (30 min) with best and worst performing AI models for each task. Lower bars indicate better performance. AI models match or exceed human performance on most information-gathering tasks.")
+    print("Error rates by flag accuracy criterion comparing human baseline (30 min) with best and worst performing AI models. Lower bars indicate better performance. The stacked blue bars show the range of AI performance from lowest to highest error rate.")
 
     plt.close(fig)  # Close the figure to prevent display issues
 

@@ -143,7 +143,11 @@ def plot_pass_rates_by_category(df: pd.DataFrame, suffix: str = ""):
 
 
 def plot_pass_rates_heatmap(df: pd.DataFrame, suffix: str = ""):
-    """Plot heatmap of pass rates by model and category."""
+    """Plot heatmap of pass rates by model and category.
+
+    Groups models into three blocks: All Tools (AT), Web-only (W), and Human baseline,
+    with visual separation between groups.
+    """
     # Calculate pass rates
     pivot = df.pivot_table(
         values="pass",
@@ -152,32 +156,108 @@ def plot_pass_rates_heatmap(df: pd.DataFrame, suffix: str = ""):
         aggfunc="mean"
     ) * 100
 
-    # Reorder
-    models = [m for m in MODEL_ORDER if m in pivot.index]
+    # Group models by type: AT first, then W, then Human
+    at_models = [m for m in MODEL_ORDER if "(All Tools)" in m and m in pivot.index]
+    w_models = [m for m in MODEL_ORDER if "(Web)" in m and m in pivot.index]
+    human_models = [m for m in MODEL_ORDER if "Human" in m and m in pivot.index]
+
+    # Combine in order: AT, W, Human
+    models_grouped = at_models + w_models + human_models
     categories = [c for c in CATEGORY_ORDER if c in pivot.columns]
-    pivot = pivot.loc[models, categories]
+    pivot = pivot.loc[models_grouped, categories]
 
-    # Create figure
-    fig, ax = plt.subplots(figsize=(10, 8))
+    # Create figure with extra height for spacing
+    n_at = len(at_models)
+    n_w = len(w_models)
+    n_human = len(human_models)
 
-    # Create heatmap
-    sns.heatmap(
-        pivot,
-        annot=True,
-        fmt=".1f",
-        cmap="RdYlGn",
-        vmin=50,
-        vmax=100,
-        center=75,
-        ax=ax,
-        cbar_kws={"label": "Pass Rate (%)"},
-        yticklabels=[shorten_model_label(m) for m in models],
-        xticklabels=[CATEGORY_LABELS.get(c, c) for c in categories],
-    )
+    # Calculate spacing - we'll add gaps between groups
+    gap_size = 0.5  # Size of gap between groups in row units
+    total_height = n_at + n_w + n_human + 2 * gap_size
+
+    fig, ax = plt.subplots(figsize=(10, max(8, total_height * 0.7)))
+
+    # Create three separate heatmaps with gaps
+    # We'll use imshow with custom positioning
+    from matplotlib.colors import Normalize
+    from matplotlib.cm import ScalarMappable
+
+    cmap = plt.cm.RdYlGn
+    norm = Normalize(vmin=50, vmax=100)
+
+    # Calculate y positions for each group
+    y_positions = []
+    current_y = 0
+
+    # Human group (top - will be at bottom of y-axis after inversion)
+    for i in range(n_human):
+        y_positions.append(current_y + i)
+    current_y += n_human + gap_size
+
+    # W group (middle)
+    for i in range(n_w):
+        y_positions.append(current_y + i)
+    current_y += n_w + gap_size
+
+    # AT group (bottom - will be at top of y-axis after inversion)
+    for i in range(n_at):
+        y_positions.append(current_y + i)
+
+    # Reverse y_positions to match the model order (AT at top, Human at bottom)
+    y_positions = y_positions[::-1]
+
+    # Reorder models to match: Human, W, AT (for y-axis from bottom to top)
+    models_display_order = human_models + w_models + at_models
+    pivot_display = pivot.loc[models_display_order, categories]
+
+    # Draw cells manually
+    cell_width = 1.0
+    cell_height = 1.0
+
+    for i, (model, y_pos) in enumerate(zip(models_display_order, y_positions)):
+        for j, cat in enumerate(categories):
+            value = pivot_display.loc[model, cat]
+            color = cmap(norm(value))
+            rect = plt.Rectangle((j, y_pos), cell_width, cell_height,
+                                  facecolor=color, edgecolor='white', linewidth=0.5)
+            ax.add_patch(rect)
+            # Add text annotation
+            ax.text(j + cell_width/2, y_pos + cell_height/2, f"{value:.1f}",
+                   ha='center', va='center', fontsize=9,
+                   color='white' if value < 70 else 'black')
+
+    # Set axis limits and ticks
+    ax.set_xlim(0, len(categories))
+    ax.set_ylim(0, max(y_positions) + cell_height)
+
+    # Y-axis ticks and labels
+    ax.set_yticks([y + cell_height/2 for y in y_positions])
+    ax.set_yticklabels([shorten_model_label(m) for m in models_display_order])
+
+    # X-axis ticks and labels
+    ax.set_xticks([i + cell_width/2 for i in range(len(categories))])
+    ax.set_xticklabels([CATEGORY_LABELS.get(c, c) for c in categories])
+
+    # Add horizontal lines to emphasize group separation
+    if n_human > 0 and n_w > 0:
+        sep_y1 = y_positions[n_human - 1] + cell_height + gap_size/2
+        ax.axhline(y=sep_y1, color='gray', linestyle='-', linewidth=1.5)
+    if n_w > 0 and n_at > 0:
+        sep_y2 = y_positions[n_human + n_w - 1] + cell_height + gap_size/2
+        ax.axhline(y=sep_y2, color='gray', linestyle='-', linewidth=1.5)
+
+    # Add colorbar
+    sm = ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+    cbar = plt.colorbar(sm, ax=ax, label="Pass Rate (%)")
 
     ax.set_title("Pass Rate by Model and Test Category")
     ax.set_xlabel("Test Category")
-    ax.set_ylabel("Model")
+    ax.set_ylabel("Screener")
+
+    # Remove spines
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
 
     plt.tight_layout()
     save_figure(fig, f"pass_rates_heatmap{suffix}")

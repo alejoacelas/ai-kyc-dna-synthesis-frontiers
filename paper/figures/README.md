@@ -13,12 +13,23 @@ All figures should be generated from `/Users/alejo/Code/ai-kyc-results/processed
 
 ## Figure Specifications
 
-### Figure 1: Pass Rates Heatmap
-- Format: Heatmap
-- Rows: Model labels (12 total)
-- Columns: Test categories (affiliation, institution, domain, sanctions, work)
-- Color: Sequential (white→green)
-- Annotations: Percentage values
+### Figure 1 & 3: Screener Performance Overview
+Figures 1 and 3 are presented together to provide a comprehensive view of screener performance.
+
+**Figure 1: Pass Rates Heatmap**
+- Format: Heatmap with three visually separated blocks
+- Rows: Screeners grouped by type:
+  - **AT (All Tools)**: AI screeners with full tool access (web search, databases, APIs)
+  - **W (Web-only)**: AI screeners limited to web search capabilities
+  - **Human**: Human baseline screeners (5min and 30min time allocations)
+- Columns: Test categories (Flag Accuracy, Claim Support, Source Reliability, Work Relevance)
+- Color: Sequential RdYlGn (red=50%→green=100%)
+- Annotations: Pass rate percentage values
+
+**Figure 3: Average Pass Rate by Screener**
+- Format: Horizontal bar chart
+- Shows overall pass rates across all tasks for each screener
+- Color-coded by screener type (blue shades for AI, amber for human)
 
 ### Figure 2: Human vs AI Comparison
 - Format: Grouped bar chart

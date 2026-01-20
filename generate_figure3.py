@@ -62,14 +62,26 @@ def create_figure(model_stats):
     """Create the horizontal bar chart."""
     setup_style()
 
+    # Custom colors for better AI vs Human distinction
+    # AI models: shades of blue (tech/digital feel) - more distinct shades
+    # Human: warm orange/amber (organic/human feel)
+    FIGURE3_COLORS = {
+        'all_tools': '#1e40af',      # Dark blue for AI with all tools
+        'web_only': '#93c5fd',       # Much lighter blue for AI web-only
+        'human_baseline': '#f59e0b', # Amber/orange for human
+    }
+
     # Create figure with appropriate size for horizontal bars
     fig, ax = plt.subplots(figsize=(12, 8))
 
     # Get colors for each model based on model type
-    colors = [get_model_color(label) for label in model_stats['model_label']]
+    def get_figure3_color(model_type):
+        return FIGURE3_COLORS.get(model_type, '#6b7280')
+
+    colors = [get_figure3_color(mt) for mt in model_stats['model_type']]
 
     # Create horizontal bar chart
-    bars = ax.barh(range(len(model_stats)), model_stats['pass_rate'], color=colors, alpha=0.8)
+    bars = ax.barh(range(len(model_stats)), model_stats['pass_rate'], color=colors, alpha=0.9)
 
     # Customize y-axis (model labels)
     ax.set_yticks(range(len(model_stats)))
@@ -83,7 +95,7 @@ def create_figure(model_stats):
     ax.set_xticks(range(0, 101, 10))
 
     # Add title
-    ax.set_title('Model Performance Rankings: Overall Pass Rates',
+    ax.set_title('Average Pass Rate by Screener Across All Tasks',
                 fontsize=14, fontweight='bold', pad=20)
 
     # Add value labels on bars
@@ -91,22 +103,19 @@ def create_figure(model_stats):
         ax.text(bar.get_width() + 1, bar.get_y() + bar.get_height()/2,
                 f'{rate:.1f}%', va='center', fontsize=10, fontweight='bold')
 
-    # Create legend
+    # Create legend with intuitive AI vs Human grouping
     legend_elements = []
     legend_labels = []
 
-    # Add legend entries for each model type
-    for model_type, color in [('web_only', COLORS['web_only']),
-                             ('all_tools', COLORS['all_tools']),
-                             ('human_baseline', COLORS['human_baseline'])]:
+    # Add legend entries for each model type with new colors
+    for model_type, color, label in [
+        ('all_tools', FIGURE3_COLORS['all_tools'], 'AI - All Tools (AT)'),
+        ('web_only', FIGURE3_COLORS['web_only'], 'AI - Web Only (W)'),
+        ('human_baseline', FIGURE3_COLORS['human_baseline'], 'Human Baseline'),
+    ]:
         if model_type in model_stats['model_type'].values:
-            legend_elements.append(plt.Rectangle((0,0),1,1, fc=color, alpha=0.8))
-            if model_type == 'web_only':
-                legend_labels.append('Web Only')
-            elif model_type == 'all_tools':
-                legend_labels.append('All Tools')
-            else:
-                legend_labels.append('Human Baseline')
+            legend_elements.append(plt.Rectangle((0,0),1,1, fc=color, alpha=0.9))
+            legend_labels.append(label)
 
     ax.legend(legend_elements, legend_labels,
              loc='lower right', frameon=True, framealpha=0.9)

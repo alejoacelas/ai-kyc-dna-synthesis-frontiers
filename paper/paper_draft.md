@@ -67,12 +67,12 @@ Table 1 summarizes the final dataset composition.
 | Total profiles | 56 | 24 | 29 | 25 | 134 |
 | **Regional distribution** |  |  |  |  |  |
 | – US | 6 | 8 | 1 | 0 | 15 |
-| – Europe \+ Oceania | 18 | 6 | 4 | 0 | 28 |
-| – China | 8 | 5 | 21 | 5 | 39 |
-| – Other | 24 | 5 | 5 | 20 | 54 |
-| Institutional email domain | 45 | 17 | 16 | 16 | 94 |
+| – Europe \+ Oceania | 18 | 6 | 4 | 6 | 34 |
+| – China | 8 | 6 | 19 | 5 | 38 |
+| – Other | 24 | 4 | 5 | 14 | 47 |
+| Institutional email domain | 49 | 22 | 18 | 19 | 108 |
 
-**Table 1:**  
+**Table 1:** Dataset composition by customer category. Regional distribution based on institution location. Institutional email indicates profiles with email domains matching their stated affiliation.
 
 Only 81% of profiles (108/134) had email domains matching their stated institutional affiliation. This partly reflects regional conventions: researchers in China frequently list personal email domains rather than institutional addresses.
 
@@ -160,8 +160,8 @@ The cost difference between AI and human screening was substantial. Table 2 show
 | Model | Mean Cost | Mean Time to Completion  |
 | ----- | ----- | ----- |
 | **Human baseline** |  |  |
-| Human baseline (5 min) | (time \* $54 / hour) | \[compute from data\] |
-| Human baseline (30 min) | (time \* $54 / hour) | (time \* $54 / hour) |
+| Human baseline (5 min) | $5.43 | 6.0 minutes |
+| Human baseline (30 min) | $12.99 | 14.4 minutes |
 | **AI models (web \+ tools)** |  |  |
 | Claude Sonnet 4 | $0.324 | 1.4 minutes |
 | Grok 4 | $0.112 | 2.4 minutes |
@@ -175,7 +175,7 @@ The cost difference between AI and human screening was substantial. Table 2 show
 | GLM 4.6 | $0.094 | 3.1 minutes |
 | Minimax M2 | $0.059 | 2.1 minutes |
 
-**Table 2:** \[add label. Mention AI model time estimates were computed on a random 10 customer sample\]
+**Table 2:** Per-customer screening costs and completion times. Human baseline costs computed at $54/hour. AI model time estimates were computed on a random 10-customer sample.
 
 The cheapest configuration (MiniMax M2 with tools) cost approximately 1/800th of the human baseline. Even the most expensive model tested (Claude Sonnet 4\) cost roughly 1/79th of human screening.
 
