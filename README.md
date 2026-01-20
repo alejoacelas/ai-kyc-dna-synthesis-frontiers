@@ -1,56 +1,90 @@
 # KYC Evaluation Analysis
 
-This directory contains all the code and data for analyzing the KYC (Know Your Customer) evaluation results.
+This repository contains all the code and data for analyzing the KYC (Know Your Customer) evaluation results comparing AI models against human experts on customer screening tasks.
 
-To get context on the results, I'd recommend starting by:
+## Quick Start
 
-- Looking at the plots on `plots/figures``
-- Running `cd viewer && npm install && npm run dev` to see the responses directly
-- Reading the prompts at `prompts/`
-- Asking Cursor/Claude Code to explain which corrections are done inside `scripts/generate_analysis_datasets.py`
+To get context on the results:
 
-Because the json results are really large files, you may need to do `git lfs pull` or similar to get them on your machine. 
+- See the paper draft at `paper/paper_draft.md`
+- Run `cd viewer && npm install && npm run dev` to browse the raw responses
+- Read the prompts at `prompts/`
+- Explore the processed datasets at `processed/`
 
-And even without downloading the raw json results, you can use Claude Code to play around generation plots from the processed datasets at `processed`.
+Because the JSON results are large files (886MB total), you may need to run `git lfs pull` to download them.
+
+## Repository Structure
+
+```
+ai-kyc-results/
+├── data/
+│   ├── customers/               # Customer profile datasets
+│   │   ├── full_dataset.csv     # 134 customer profiles
+│   │   └── human_baseline_subset.csv  # 40-customer subset for human comparison
+│   ├── annotations/             # Human annotations and ground truth
+│   │   ├── ground_truth_flags.json
+│   │   ├── blind_gradings.json
+│   │   └── agreements.json
+│   ├── raw_results/             # PromptFoo evaluation outputs (886MB)
+│   │   └── *.json
+│   └── token_pricing.yaml
+│
+├── processed/                   # Derived analysis datasets
+│   ├── tests.csv                # One row per test assertion (233k rows)
+│   ├── responses.csv            # One row per model response (54k rows)
+│   └── blind_grading/           # Blind grading analysis
+│
+├── scripts/
+│   ├── generate_datasets.py     # Main data processing pipeline
+│   ├── merge_blind_gradings.py  # Merge blind grading results
+│   └── figures/                 # Figure generation scripts
+│       ├── generate_figure1.py  # Pass rates heatmap
+│       ├── generate_figure2.py  # Human vs AI comparison
+│       ├── generate_figure3.py  # Model rankings
+│       ├── generate_figure6.py  # Geographic error breakdown
+│       └── style.py             # Shared plotting styles
+│
+├── paper/
+│   ├── paper_draft.md           # Paper manuscript
+│   ├── figures/                 # Figures referenced in paper
+│   └── supplementary/           # Additional figures for appendix
+│
+├── prompts/                     # Prompt templates and test definitions
+│
+├── viewer/                      # Next.js app for browsing responses
+│
+└── archive/                     # Historical/one-time scripts
+```
 
 ## Data Files
 
 ### Customer Datasets
 
-#### `data/full-dataset.csv`
-Contains >100 customer records for evaluation. Each row includes:
+#### `data/customers/full_dataset.csv`
+Contains 134 customer records for evaluation. Each row includes:
 - `customer_info`: Full customer information text (Name, Institution, Email, etc.)
 - `Name`: Customer name
 - `Institution`: Affiliated institution
 - `Type`: Customer category
 - `Order`: Ordering/priority field
 
-#### `data/final-human-baseline.csv`
-A ~40-customer subset used for human baseline comparison. Same schema as full-dataset.csv.
+#### `data/customers/human_baseline_subset.csv`
+A 40-customer subset used for human baseline comparison. Same schema as full_dataset.csv.
 
 ### Result Files
 
-The evaluation was run with two different prompts and on two different customer subsets:
+Located in `data/raw_results/`:
 
 | File | Prompt Type | Dataset | Description |
 |------|-------------|---------|-------------|
-| `full_dataset_main.json` | main | Full (100) | Main evaluation prompt on full dataset |
-| `full_dataset_background_work.json` | background_work | Full (100) | Background work prompt on full dataset |
-| `human_baseline_subset_main.json` | main | Subset (30) | Main prompt with human baseline comparison |
-| `human_baseline_subset_background_work.json` | background_work | Subset (30) | Background work with human baseline |
-
-Each JSON file contains:
-- `evalId`: Unique evaluation identifier
-- `results.results[]`: Array of evaluation results
-  - `id`: Unique result ID
-  - `vars`: Input variables (customer_info, work_url)
-  - `provider`: Model/provider information
-  - `response`: Model output and metadata
-  - `gradingResult.componentResults[]`: Individual test/assertion results
+| `full_dataset_main.json` | main | Full (134) | Main evaluation prompt on full dataset |
+| `full_dataset_background_work.json` | background_work | Full (134) | Background work prompt on full dataset |
+| `human_baseline_subset_main.json` | main | Subset (40) | Main prompt with human baseline comparison |
+| `human_baseline_subset_background_work.json` | background_work | Subset (40) | Background work with human baseline |
 
 ### Ground Truth
 
-#### `data/ground_truth_flags.json`
+#### `data/annotations/ground_truth_flags.json`
 Contains manually verified ground truth values for each customer's flags:
 - `affiliation`: FLAG, NO FLAG, or UNDETERMINED
 - `institution`: FLAG, NO FLAG, or UNDETERMINED
@@ -69,31 +103,14 @@ One row per test (assertion) result. Used for accuracy/reliability analysis.
 | `customer_name` | Customer name |
 | `customer_institution` | Customer institution |
 | `customer_type` | Customer category |
-| `order` | Customer ordering |
-| `work_url` | Work URL if applicable (background_work prompt) |
-| `is_human_baseline_dataset` | Whether from human baseline subset |
 | `model_label` | Human-readable model name |
-| `model_name` | Technical model identifier |
 | `model_type` | `human_baseline`, `web_only`, or `all_tools` |
-| `is_human_baseline` | Whether this is a human baseline response |
-| `prompt_type` | `main` or `background_work` |
 | `metric_name` | Test/assertion name |
 | `test_category` | `flag_accuracy`, `claim_support`, `source_reliability`, or `work_relevance` |
 | `original_pass` | Original pass/fail value from evaluation |
-| `pass` | Corrected pass/fail value (see corrections below) |
-| `pass_correction_applied` | Description of any correction applied |
-| `reason` | LLM-generated reasoning for the result |
-| `extracted_section` | Extracted text section being evaluated |
-| `num_sources_used` | Total sources used for this assertion |
-| `num_web_sources` | Count of web search sources |
-| `num_epmc_sources` | Count of Europe PMC (publication) sources |
-| `num_orcid_sources` | Count of ORCID profile sources |
-| `num_screen_sources` | Count of sanctions screening sources |
-| `source_urls` | JSON array of source URLs |
-| `sources_json` | Full source metadata as JSON |
+| `pass` | Corrected pass/fail value |
 | `ground_truth_*` | Ground truth flag values |
 | `extracted_flag` | Extracted flag value from model response |
-| `claims_json` | Extracted claims as JSON (for claim_support tests) |
 
 ### `processed/responses.csv`
 One row per model response. Used for cost/latency analysis.
@@ -101,128 +118,34 @@ One row per model response. Used for cost/latency analysis.
 | Field | Description |
 |-------|-------------|
 | `eval_id` | Evaluation run identifier |
-| `result_id` | Unique result identifier |
-| `customer_name` | Customer name |
-| `customer_institution` | Customer institution |
-| `customer_type` | Customer category |
-| `order` | Customer ordering |
-| `is_human_baseline_dataset` | Whether from human baseline subset |
 | `model_label` | Human-readable model name |
-| `model_name` | Technical model identifier |
-| `model_type` | `human_baseline`, `web_only`, or `all_tools` |
-| `is_human_baseline` | Whether this is a human baseline response |
-| `prompt_type` | `main` or `background_work` |
-| `full_response` | Complete model response (thinking blocks stripped) |
-| `response_length` | Character count of response |
-| `latency_ms` | Total latency in milliseconds (from OpenRouter API) |
+| `latency_ms` | Total latency in milliseconds |
 | `total_cost` | Total cost in USD |
-| `model_cost` | Model inference cost |
-| `web_search_cost` | Web search API cost |
 | `num_web_searches` | Number of web searches performed |
-| `prompt_tokens` | Input token count |
-| `completion_tokens` | Output token count |
-| `total_tokens` | Total token count |
-| `num_sources` | Total number of sources used |
-| `num_*_sources` | Breakdown by source type |
-| `source_urls` | JSON array of source URLs |
-| `sources_json` | Full source metadata as JSON |
-| `num_assertions` | Number of test assertions |
 | `num_assertions_passed` | Number of passing assertions |
-| `time_to_complete_minutes` | Time for human baseline (if applicable) |
-
-## Data Processing and Corrections
-
-### Flag Accuracy Corrections
-
-The `pass` field in tests.csv has corrections applied to the original evaluation results:
-
-1. **Ground Truth UNDETERMINED**: If ground truth is `UNDETERMINED`, any extracted value passes
-   - Correction type: `gt_undetermined_pass`
-
-2. **Exact Match Required**: If ground truth is NOT `UNDETERMINED`, require exact match
-   - `FLAG` must match `FLAG`, `NO FLAG` must match `NO FLAG`
-   - Correction type: `exact_match_pass` or `exact_match_fail`
-
-### Human Baseline Corrections
-
-Additional corrections applied only to human baseline responses on the human baseline dataset:
-
-1. **Empty Evidence Fail**: Claim support tests now deterministically fail if no sources/evidence provided
-   - Correction type: `empty_evidence_fail`
-   - Logic: Parses Table 1 (for criteria) or Table 3 (for background work) in the response
-
-2. **Sanctions Exact Match**: Sanctions claim support passes if the sanctions flag passes as well (to fix the case where human reviewers cited the CSL API but the link did not contain information specific to the customer/institution)
-   - Correction type: `sanctions_exact_match`
-
-### Source Extraction
-
-Sources are extracted from tool outputs and categorized by type:
-- `web`: Web search results (URLs, titles)
-- `epmc`: Europe PMC publications (DOI, authors, journal, citations)
-- `orcid`: ORCID profiles (name, emails, works)
-- `orcworks`: ORCID works search results
-- `screen`: Sanctions screening results
-
-### Latency Calculation
-
-To route around some issues with timing cached responses, latency is fetched from the OpenRouter API by:
-
-1. Extracting `generation_ids` from each response's metadata
-2. Fetching individual generation metadata from OpenRouter API in parallel
-3. Summing latencies across multiple generations (for tool-use responses with multiple API calls)
-
-Falls back to PromptFoo's `latencyMs` if OpenRouter fetch fails.
-
-## Test Categories
-
-### Flag Accuracy (`flag_accuracy`)
-Tests whether the model correctly identified each flag:
-- Affiliation with Prohibited Regions
-- Institution Verification
-- Domain/Email Verification
-- Sanctions Screening
-
-### Claim Support (`claim_support`)
-Tests whether claims in the response are supported by cited sources.
-
-### Source Reliability (`source_reliability`)
-Tests whether sources used are reliable and authoritative.
-
-### Work Relevance (`work_relevance`)
-Tests whether identified background work is relevant to the customer.
-
-## Model Types
-
-- `human_baseline`: Human expert responses
-- `web_only`: Models using only web search tools
-- `all_tools`: Models using full tool suite (web, ORCID, EPMC, sanctions screening)
 
 ## Running the Scripts
 
 ### Generate Processed Datasets
 
 ```bash
-cd scripts
-python generate_analysis_datasets.py
+uv run python scripts/generate_datasets.py
 ```
 
-Requires:
-- `OPENROUTER_API_KEY` environment variable for latency fetching
+Options:
+- `--skip-latency`: Use existing latencies from processed/responses.csv
+- `--skip-country`: Use existing country classifications
+- `--only-country`: Only update institution_country columns
 
-### Generate Plots
+Requires `OPENROUTER_API_KEY` environment variable for latency fetching.
+
+### Generate Figures
 
 ```bash
-cd plots
-python generate_all_plots.py
-```
-
-Or run individual plot scripts:
-```bash
-python plot_pass_rates.py
-python plot_model_comparison.py
-python plot_cost_latency.py
-python plot_sources.py
-python plot_advanced_analysis.py
+uv run python scripts/figures/generate_figure1.py
+uv run python scripts/figures/generate_figure2.py
+uv run python scripts/figures/generate_figure3.py
+uv run python scripts/figures/generate_figure6.py
 ```
 
 ### Run the Viewer App
@@ -235,6 +158,33 @@ npm run dev
 
 Then open http://localhost:3000
 
+## Data Processing and Corrections
+
+### Flag Accuracy Corrections
+
+The `pass` field in tests.csv has corrections applied:
+
+1. **Ground Truth UNDETERMINED**: If ground truth is `UNDETERMINED`, any extracted value passes
+2. **Exact Match Required**: If ground truth is determined, require exact match
+
+### Human Baseline Corrections
+
+1. **Empty Evidence Fail**: Claim support tests fail if no sources provided
+2. **Sanctions Exact Match**: Sanctions claim support passes if the sanctions flag passes
+
+## Test Categories
+
+- **Flag Accuracy**: Whether the model correctly identified each flag
+- **Claim Support**: Whether claims are supported by cited sources
+- **Source Reliability**: Whether sources are reliable and authoritative
+- **Work Relevance**: Whether background work is relevant to the customer
+
+## Model Types
+
+- `human_baseline`: Human expert responses
+- `web_only`: Models using only web search tools
+- `all_tools`: Models using full tool suite (web, ORCID, EPMC, sanctions screening)
+
 ## Dependencies
 
 ### Python
@@ -243,6 +193,7 @@ Then open http://localhost:3000
 - seaborn
 - requests
 - python-dotenv
+- scikit-learn
 
 ### Node.js (viewer app)
 - Next.js 14
