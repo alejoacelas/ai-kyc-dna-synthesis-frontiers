@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "created": "2025-12-13T21:10:08.552Z",
-  "lastUpdated": "2025-12-25T23:55:48.926Z",
+  "lastUpdated": "2026-01-21T22:46:54.336Z",
   "records": {
     "88b9ca80051c6f95": {
       "customerInfoPreview": "Name: Jianguo Wu\nInstitution: Guangdong Key Laboratory of Virology, Institute of Medical Microbiolog...",
@@ -504,10 +504,10 @@
         "affiliation": "NO FLAG",
         "institution": "NO FLAG",
         "domain": "NO FLAG",
-        "sanctions": "NO FLAG"
+        "sanctions": "UNDETERMINED"
       },
       "notes": "",
-      "lastReviewed": "2025-12-25T22:03:36.028Z"
+      "lastReviewed": "2026-01-21T22:46:54.336Z"
     },
     "d140d83cd9020fb0": {
       "customerInfoPreview": "Name: Carlos Alberto Santiviago Cid\nInstitution: Universidad de Chile\nEmail: csantiviago@ciq.uchile....",
@@ -700,12 +700,12 @@
       "customerInfoPreview": "Name: Cheng Hua\nInstitution: Beijing Yibo Puhui Biotechnology Development Co. Ltd.\nEmail: wanglin@ce...",
       "flags": {
         "affiliation": "UNDETERMINED",
-        "institution": "UNDETERMINED",
-        "domain": "FLAG",
+        "institution": "FLAG",
+        "domain": "NO FLAG",
         "sanctions": "NO FLAG"
       },
       "notes": "",
-      "lastReviewed": "2025-12-25T21:13:25.293Z"
+      "lastReviewed": "2026-01-21T22:46:44.392Z"
     },
     "9263566d532150f2": {
       "customerInfoPreview": "Name: Alexander B. Sigalov\nInstitution: Signablok Inc\nEmail: sigalov@signablok.com\nOrder matches Hum...",
@@ -1183,10 +1183,10 @@
     "f06f10959b6fe4dc": {
       "customerInfoPreview": "Name: Guo Zhigang\nInstitution: Nanjing Miracle Biotechnology Co., Ltd\nEmail: guo@njnu.edu.cn\nOrder m...",
       "flags": {
-        "affiliation": "UNDETERMINED",
-        "institution": "UNDETERMINED",
-        "domain": "UNDETERMINED",
-        "sanctions": "UNDETERMINED"
+        "affiliation": "FLAG",
+        "institution": "NO FLAG",
+        "domain": "NO FLAG",
+        "sanctions": "NO FLAG"
       },
       "notes": "",
       "lastReviewed": null

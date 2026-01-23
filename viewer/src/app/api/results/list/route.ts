@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-// Data directory: analysis/data/results (relative to viewer/)
-const RESULTS_DIR = path.join(process.cwd(), '..', 'data', 'results');
+// Data directory: data/raw_results (relative to viewer/)
+const RESULTS_DIR = path.join(process.cwd(), '..', 'data', 'raw_results');
 
 export async function GET() {
   try {

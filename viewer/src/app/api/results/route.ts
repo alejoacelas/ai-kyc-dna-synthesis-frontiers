@@ -2,9 +2,9 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-// Data directory: analysis/data/results (relative to viewer/)
+// Data directory: data/raw_results (relative to viewer/)
 const DATA_DIR = path.join(process.cwd(), '..', 'data');
-const RESULTS_DIR = path.join(DATA_DIR, 'results');
+const RESULTS_DIR = path.join(DATA_DIR, 'raw_results');
 
 function getAllResultsFiles() {
   const files = fs.readdirSync(RESULTS_DIR);

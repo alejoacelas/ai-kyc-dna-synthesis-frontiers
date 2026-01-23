@@ -5,7 +5,7 @@ import crypto from 'crypto';
 
 // Data directory: analysis/data (relative to viewer/)
 const DATA_DIR = path.join(process.cwd(), '..', 'data');
-const GROUND_TRUTH_FILE = path.join(DATA_DIR, 'ground_truth_flags.json');
+const GROUND_TRUTH_FILE = path.join(DATA_DIR, 'annotations', 'ground_truth_flags.json');
 
 type FlagValue = 'FLAG' | 'NO FLAG' | 'UNDETERMINED';
 type FlagType = 'affiliation' | 'institution' | 'domain' | 'sanctions';
