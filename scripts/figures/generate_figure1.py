@@ -56,6 +56,10 @@ def create_figure(df):
 
     categories = [c for c in CATEGORY_ORDER if c in pivot.columns]
 
+    # Add "All Metrics" column as the average across all metrics
+    pivot["all_metrics"] = pivot[categories].mean(axis=1)
+    categories_with_all = categories + ["all_metrics"]
+
     n_at = len(at_models)
     n_w = len(w_models)
     n_human = len(human_models)
@@ -65,15 +69,18 @@ def create_figure(df):
     # Gap size between groups (for annotation text above each group)
     gap_size = 0.7
 
-    # Create figure (reduced width)
-    fig, ax = plt.subplots(figsize=(5, 12))
+    # Gap size before "All Metrics" column
+    all_metrics_gap = 0.3
+
+    # Create figure (increased width to accommodate extra column with gap)
+    fig, ax = plt.subplots(figsize=(6, 12))
 
     from matplotlib.colors import Normalize, LinearSegmentedColormap
     from matplotlib.cm import ScalarMappable
 
     # Green-only color palette (light to dark green)
     cmap = LinearSegmentedColormap.from_list('greens', ['#dcfce7', '#166534'])
-    norm = Normalize(vmin=50, vmax=100)
+    norm = Normalize(vmin=60, vmax=100)
 
     cell_width = 1.0
     cell_height = 1.0
@@ -108,25 +115,38 @@ def create_figure(df):
     # Order for display (bottom to top): Human, W, AT
     models_display_order = human_models + w_models + at_models
 
+    # Build x positions: regular categories, then gap, then "All Metrics"
+    x_positions = {}
+    for j, cat in enumerate(categories):
+        x_positions[cat] = j * cell_width
+    # Add gap before "All Metrics"
+    x_positions["all_metrics"] = len(categories) * cell_width + all_metrics_gap
+
     # Draw cells
     for model in models_display_order:
         y_pos = y_positions[model]
-        for j, cat in enumerate(categories):
+        is_5min = "(5min)" in model
+        for cat in categories_with_all:
+            x_pos = x_positions[cat]
             if model in pivot.index and cat in pivot.columns:
                 value = pivot.loc[model, cat]
                 if pd.notna(value):
-                    color = cmap(norm(value))
-                    rect = plt.Rectangle((j, y_pos), cell_width, cell_height,
+                    if is_5min:
+                        # Gray out 5-minute human baseline
+                        color = '#d1d5db'
+                        text_color = '#6b7280'
+                    else:
+                        color = cmap(norm(value))
+                        text_color = 'white' if value > 75 else 'black'
+                    rect = plt.Rectangle((x_pos, y_pos), cell_width, cell_height,
                                           facecolor=color, edgecolor='white', linewidth=1)
                     ax.add_patch(rect)
-                    # Text color based on value (white on dark green, black on light green)
-                    text_color = 'white' if value > 75 else 'black'
-                    ax.text(j + cell_width/2, y_pos + cell_height/2, f"{value:.1f}",
+                    ax.text(x_pos + cell_width/2, y_pos + cell_height/2, f"{value:.1f}",
                            ha='center', va='center', fontsize=10, fontweight='bold',
                            color=text_color)
 
-    # Set axis limits
-    ax.set_xlim(0, len(categories))
+    # Set axis limits (account for gap before All Metrics)
+    ax.set_xlim(0, x_positions["all_metrics"] + cell_width)
     ax.set_ylim(0, current_y)
 
     # Y-axis ticks and labels
@@ -140,12 +160,25 @@ def create_figure(df):
         "claim_support": "Source\nFidelity",
         "source_reliability": "Source\nQuality",
         "work_relevance": "Work\nRelevance",
+        "all_metrics": "All\nMetrics",
     }
-    ax.set_xticks([i + cell_width/2 for i in range(len(categories))])
-    ax.set_xticklabels([FIGURE1_CATEGORY_LABELS.get(c, c) for c in categories], fontsize=11)
+    x_ticks = [x_positions[cat] + cell_width/2 for cat in categories_with_all]
+    ax.set_xticks(x_ticks)
+
+    # Create labels, with "All Metrics" in bold
+    x_labels = []
+    for cat in categories_with_all:
+        x_labels.append(FIGURE1_CATEGORY_LABELS.get(cat, cat))
+    ax.set_xticklabels(x_labels, fontsize=11)
+
+    # Bold the "All Metrics" label
+    tick_labels = ax.get_xticklabels()
+    tick_labels[-1].set_fontweight('bold')
 
     # Add centered section annotations ABOVE each group
-    center_x = len(categories) / 2
+    # Center is midpoint of total width including gap
+    total_width = x_positions["all_metrics"] + cell_width
+    center_x = total_width / 2
 
     if n_human > 0:
         ax.text(center_x, annotation_positions['human'],

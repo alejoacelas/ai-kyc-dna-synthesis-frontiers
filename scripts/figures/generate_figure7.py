@@ -109,6 +109,10 @@ def create_figure(df):
     ax.set_ylabel("Overall Pass Rate (%)")
     ax.set_title("Screening Cost vs Overall Pass Rate")
 
+    # Extend y-axis downward to leave space for manual axis break annotation
+    y_min = agg["pass_rate"].min()
+    ax.set_ylim(bottom=y_min - 1.5)
+
     # Add R² annotation in top right corner
     ax.annotate(
         f"$R^2$ = {r_squared:.3f}",
@@ -145,7 +149,7 @@ def main():
     fig = create_figure(df)
 
     # Save the figure
-    output_path = Path(__file__).parent.parent.parent / "paper" / "supplementary" / "figure7_cost_vs_performance.png"
+    output_path = Path(__file__).parent.parent.parent / "paper" / "figures" / "figure7_cost_vs_performance.png"
     fig.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"\nFigure saved to: {output_path}")
 

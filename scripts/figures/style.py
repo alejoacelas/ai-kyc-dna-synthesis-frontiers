@@ -166,8 +166,30 @@ def get_model_colors(model_labels: list) -> list:
 
 
 def shorten_model_label(label: str) -> str:
-    """Get shortened model label for plots."""
+    """Get shortened model label for plots (used in Figure 1)."""
     return MODEL_LABELS.get(label, label)
+
+
+# Alternative labels for non-Figure-1 plots (no time indication for humans)
+MODEL_LABELS_NO_TIME = {
+    "Gemini 2.5 Pro (All Tools)": "Gemini (AT)",
+    "Gemini 2.5 Pro (Web)": "Gemini (W)",
+    "GLM 4.6 (All Tools)": "GLM (AT)",
+    "GLM 4.6 (Web)": "GLM (W)",
+    "Claude Sonnet 4 (All Tools)": "Claude (AT)",
+    "Claude Sonnet 4 (Web)": "Claude (W)",
+    "Grok 4 (All Tools)": "Grok (AT)",
+    "Grok 4 (Web)": "Grok (W)",
+    "MiniMax M2 (All Tools)": "MiniMax (AT)",
+    "MiniMax M2 (Web)": "MiniMax (W)",
+    "Human Baseline (30min)": "Human baseline",
+    "Human Baseline (5min)": "Human (5m)",
+}
+
+
+def shorten_model_label_no_time(label: str) -> str:
+    """Get shortened model label without time indication (for non-Figure-1 plots)."""
+    return MODEL_LABELS_NO_TIME.get(label, label)
 
 
 def save_figure(fig, name: str, formats: list = None):

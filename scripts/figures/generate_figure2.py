@@ -145,7 +145,7 @@ def create_figure(results):
     # Create the bars: Human baseline and AI stacked range
     # Human baseline bar
     bars_human = ax.bar(x_pos - width/2, human_errors, width,
-                        label='Human Baseline (30 min)', color=HUMAN_COLOR, alpha=0.9)
+                        label='Human baseline', color=HUMAN_COLOR, alpha=0.9)
 
     # AI bars: base is lowest error rate (best), stacked is the range to highest (worst)
     bars_ai_best = ax.bar(x_pos + width/2, best_errors, width,

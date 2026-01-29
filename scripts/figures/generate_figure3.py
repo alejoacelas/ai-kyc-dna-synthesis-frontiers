@@ -12,7 +12,7 @@ import numpy as np
 from pathlib import Path
 
 # Import style from same directory
-from style import COLORS, MODEL_LABELS, get_model_color, setup_style
+from style import COLORS, MODEL_LABELS, MODEL_LABELS_NO_TIME, get_model_color, setup_style
 
 def load_and_filter_data():
     """Load test data and filter for human baseline dataset."""
@@ -83,8 +83,8 @@ def create_figure(model_stats):
 
     # Customize y-axis (model labels)
     ax.set_yticks(range(len(model_stats)))
-    # Use shortened labels for better readability
-    short_labels = [MODEL_LABELS.get(label, label) for label in model_stats['model_label']]
+    # Use shortened labels for better readability (no time indication for human baseline)
+    short_labels = [MODEL_LABELS_NO_TIME.get(label, label) for label in model_stats['model_label']]
     ax.set_yticklabels(short_labels)
 
     # Customize x-axis (pass rate)
@@ -109,7 +109,7 @@ def create_figure(model_stats):
     for model_type, color, label in [
         ('all_tools', FIGURE3_COLORS['all_tools'], 'AI - All Tools (AT)'),
         ('web_only', FIGURE3_COLORS['web_only'], 'AI - Web Only (W)'),
-        ('human_baseline', FIGURE3_COLORS['human_baseline'], 'Human Baseline'),
+        ('human_baseline', FIGURE3_COLORS['human_baseline'], 'Human baseline'),
     ]:
         if model_type in model_stats['model_type'].values:
             legend_elements.append(plt.Rectangle((0,0),1,1, fc=color, alpha=0.9))
@@ -148,7 +148,7 @@ def main():
     print("and human baseline (red). Tool-augmented configurations show consistent")
     print("but modest improvements over web-only versions.")
 
-    plt.show()
+    plt.close()
 
 if __name__ == "__main__":
     main()

@@ -19,7 +19,7 @@ from pathlib import Path
 # Import style from same directory
 from style import (
     COLORS, MODEL_LABELS, MODEL_ORDER, CATEGORY_ORDER, CATEGORY_LABELS,
-    get_model_color, shorten_model_label, setup_style
+    get_model_color, shorten_model_label, shorten_model_label_no_time, setup_style
 )
 
 
@@ -170,10 +170,10 @@ def create_figure(df):
     ax.set_xlim(0, len(tasks))
     ax.set_ylim(0, current_y)
 
-    # Y-axis ticks and labels
+    # Y-axis ticks and labels (no time indication for human baseline)
     y_ticks = [y_positions[m] + cell_height/2 for m in models_display_order]
     ax.set_yticks(y_ticks)
-    ax.set_yticklabels([shorten_model_label(m) for m in models_display_order], fontsize=11)
+    ax.set_yticklabels([shorten_model_label_no_time(m) for m in models_display_order], fontsize=11)
 
     # X-axis ticks and labels
     ax.set_xticks([i + cell_width/2 for i in range(len(tasks))])
