@@ -30,6 +30,8 @@ We found that incorporating AI tools into the legitimate use assessment process 
 
 ## Methods
 
+### ![][image1]
+
 ### Task Definition
 
 We evaluate AI and human screeners on five verification tasks relevant to customer follow-up screening:
@@ -56,13 +58,13 @@ To simulate realistic screening scenarios, we compiled profiles of researchers f
 
 We constructed four categories of customer profiles:
 
-**Academic users of SOCs (n=56):** Life science researchers from academic institutions with documented laboratory work on SOCs.
+**Academic users of SOCs:** Life science researchers from academic institutions with documented laboratory work on SOCs.
 
-**Industry users of SOCs (n=24):** Researchers at biotechnology or pharmaceutical companies with documented work, either personal or from their institution, on SOCs.
+**Industry users of SOCs:** Researchers at biotechnology or pharmaceutical companies with documented work, either personal or from their institution, on SOCs.
 
-**CSL-affiliated academics (n=25):** Researchers at academic institutions appearing on the U.S. Consolidated Screening List, with documented work on SOCs.
+**CSL-affiliated academics:** Researchers at academic institutions appearing on the U.S. Consolidated Screening List, with documented work on SOCs.
 
-**General life science researchers (n=31):** Researchers from academia and industry with documented laboratory work on typical non-SOC sequences: antibodies (scFv fragments), CAR-T constructs, protein engineering targets (TEM-1 beta-lactamase, cytochrome P450 BM3), and diagnostic antigens.
+**General life science researchers:** Researchers from academia and industry with documented laboratory work on typical non-SOC sequences: antibodies (scFv fragments), CAR-T constructs, common protein engineering targets, and diagnostic antigens.
 
 All profiles in our dataset—including general life science researchers identified through non-SOC work—were assigned simulated orders from a standardized list of 22 SOC proteins. We selected proteins that would be reasonable to order for vaccine or therapeutics research while still being categorized as sequences of concern. \[Full list in Appendix A.\]
 
@@ -82,19 +84,19 @@ For news-based collection, we searched on Google for articles combining organism
 
 #### **Dataset Characteristics**
 
-Table 1 summarizes the final dataset composition.
+Table 1 summarizes the final dataset composition, showing statistics for both the full dataset and the human baseline subset. 
 
 | Metric | Academics SOC | Industry SOC | General Life Sci. | CSL Academics | Total |
 | ----- | ----- | ----- | ----- | ----- | ----- |
-| Total profiles | 56 | 24 | 29 | 25 | 134 |
-| **Regional distribution** |  |  |  |  |  |
-| – US | 6 | 8 | 1 | 0 | 15 |
-| – Europe \+ Oceania | 18 | 6 | 4 | 6 | 34 |
-| – China | 8 | 6 | 19 | 5 | 38 |
-| – Other countries | 24 | 4 | 5 | 14 | 47 |
-| With institutional email domain | 49 | 22 | 18 | 19 | 108 |
+| Total profiles | 56 (16) | 24 (11) | 29 (7) | 25 (7) | 134 (41) |
+| Regional distribution |  |  |  |  |  |
+| – US | 6 (2) | 8 (4) | 1 (0) | 0 (0) | 15 (6) |
+| – Europe \+ Oceania | 18 (5) | 6 (2) | 4 (0) | 6 (0) | 34 (7) |
+| – China | 8 (2) | 6 (3) | 19 (6) | 5 (1) | 38 (12) |
+| – Other countries | 24 (7) | 4 (2) | 5 (1) | 14 (6) | 47 (16) |
+| With institutional email domain | 49 (15) | 22 (10) | 18 (5) | 19 (3) | 108 (33) |
 
-**Table 1:**  Dataset composition by customer category. Regional distribution based on institution location. Institutional email indicates profiles with business, academic, or government domains.
+**Table 1:** Dataset composition by customer category. Numbers in parentheses indicate the 41-profile human baseline subset. Regional distribution based on institution location. Institutional email indicates profiles with business, academic, or government domains.
 
 Only 81% of profiles (108/134) had email domains matching at least one stated institutional affiliation, as some researchers were affiliated with multiple institutions. This partly reflects regional conventions: for example, we found that researchers in China frequently list personal email domains rather than institutional addresses.
 
@@ -125,9 +127,9 @@ Two coauthors served as the human baseline: Kevin Flyangolts, founder of Aclid, 
 
 Both evaluators were familiar with the research plan but received no task-specific training. They were given an earlier version of the screening instructions (developed in the process of optimizing prompts for model performance) and did not have previous access to the profiles they evaluated. They submitted responses through a custom interface that enforced the same output format as model responses.
 
-The interface recorded snapshots of each screener's work at 5 and 30 minutes. If they submitted a final answer earlier, that submission was used as the 30-minute snapshot. Each evaluator screened 20 customer profiles, for a total of 40 profiles in the human baseline subset. Profiles were randomly sampled from the full dataset with the constraint that no two shared the same reference work to encourage diversity.
+The interface recorded snapshots of each screener's work at around 5 and 30 minutes. If they submitted a final answer earlier, that submission was used as the 30-minute snapshot. Each evaluator screened 20 customer profiles, for a total of 40 profiles in the human baseline subset. Profiles were randomly sampled from the full dataset with the constraint that no two shared the same reference work to encourage diversity.
 
-We collected the 5-minute snapshot to estimate human performance under a time budget comparable to AI models, which averaged under 2 minutes per profile. However, responses at 5 minutes were typically incomplete, and this baseline underperformed AI models by a large margin. References to "human baseline" throughout this paper therefore denote the 30-minute baseline unless otherwise noted.
+We collected the 5-minute snapshot to estimate human performance under a time budget comparable to AI models, which averaged under 2 minutes per profile. However, responses at 5 minutes were typically incomplete, and this baseline underperformed AI models by a large margin. References to "human baseline" throughout the rest of this paper denote the 30-minute baseline unless otherwise noted.
 
 ### Evaluation Metrics
 
@@ -171,9 +173,9 @@ Evaluation prompts underwent a similar iterative process to improve alignment wi
 
 ### Metrics Aggregate Pass Rate
 
-![][image1]
+![][image2]
 
-**Figure 1:** Pass rates by screener and metric on the 40-profile human baseline subset. Lighter shading indicates higher pass rate.
+**Figure 1:** Pass rates by screener and metric on the 40-profile human baseline subset. Darker shading indicates higher pass rate.
 
 As Figure 1 shows, for each metric other than flag accuracy, all evaluated models had a higher pass rate than the human baseline at either the 5-minute or 30-minute snapshot. Even for flag accuracy, the 30-minute human baseline beat only two of the ten model configurations studied.
 
@@ -181,11 +183,9 @@ The 5-minute human baseline performed much worse than any other screener setup, 
 
 Pass rates did not vary substantially across models. The best-performing model (Gemini with access to specialized tools) passed 89.8% of tests on the human baseline subset, while the worst-performing model (Gemini with only web search) passed 83.7%.
 
-![][image2]
-
-**Figure 2:** Average pass rates by screener on the human baseline subset.
-
 Access to specialized tools (Consolidated Screening List API, Europe PMC, ORCID) produced a modest but consistent accuracy improvement compared to web-search-only configurations. The improvement was most pronounced for sanctions screening, where the Consolidated Screening List API provided direct access to authoritative data otherwise available only through downloadable files or specialized interfaces.
+
+\[Discuss why work relevance scores are lower with all tools\]
 
 ### Cost Comparison
 
@@ -223,25 +223,41 @@ Even with substantially cheaper AI models, per-customer costs are driven by web 
 
 ### Flag Error Analysis
 
-![][image4]
+​​We manually reviewed a random sample of 126 flag errors across all screeners and assigned each to one of five categories:
 
-**Figure 4:** Error rates by flag accuracy criterion comparing human baseline (30 min) with highest and lowest error rates from AI models. \[ADD ERROR CLASSIFICATION FIGURE ONCE DATA IS COMPUTED\]
+* **Criterion Deviation:** The screener's flag determination conflicted with the criteria used to decide the ground truth flag. These criteria were often specified explicitly in the screening prompt, though some frequent edge cases were not addressed directly and required interpretation.  
+* **Search Failure:** The screener did not locate information that was central to the flag determination but that other screeners successfully found.  
+* **Missing Response:** The screener produced no response in the relevant field, the response was incomplete or not formatted according to task instructions.  
+* **Ambiguous Case:** The screener had access to all relevant information, but no clear rule in the flag determination criteria resolved the case. These situations required judgment calls where reasonable screeners might disagree.  
+* **Source Misinterpretation:** The screener cited appropriate sources but misrepresented their content, leading to an incorrect flag.
 
-We reviewed failing test cases to characterize what benchmark errors represent in practice. Errors fell into three categories:
+#### **Error Distribution**
 
-**Category A (X%):** \[Description\]
+Table X summarizes error category distributions across screener types.
 
-**Category B (Y%):** \[Description\]
+| Error Category | Example | Human Baseline | AI (All Tools) | AI (Web Only) | Overall |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| Criterion Deviation | Flagging a biology department as "not biomedical" because its university appears on a sanctions list | 35% (6) | 39% (19) | 42% (25) | 40% (50) |
+| Search Failure | Missing that a researcher moved to a different academic institution | 35% (6) | 35% (17) | 17% (10) | 26% (33) |
+| Missing Response | Empty response field or abruptly terminated output | 18% (3) | 20% (10) | 23% (14) | 21% (27) |
+| Ambiguous Case | Email domain matches recently outdated company domain | 12% (2) | 6% (3) | 15% (9) | 11% (14) |
+| Source Misinterpretation | Assuming connections between nearby organizations without evidence | 0% (0) | 0% (0) | 2% (1) | 1% (1) |
 
-**Category C (Z%):** \[Description\]
+The frequency of each error type was similar across screeners. Criterion deviation was the most common category, accounting for 39.7% of all errors. On inspection, a small number of recurring patterns accounted for the majority of mistakes in this category, such as not flagging personal email addresses from otherwise reputable Chinese researchers.
 
-These patterns suggest that human screeners with targeted training would likely improve. However, the comparison reflects a realistic deployment scenario: organizations investing in AI screening would optimize prompts before deployment, just as they would train human screeners.
+Because grading flags required substantial manual work, we only graded them after settling on the final prompts provided to human and AI models. We expect that including explicit guidance addressing these specific cases could substantially reduce criterion deviation errors for both AI and human screeners. 
+
+Search failure was the next most common error type. Notably, web-only models had a lower rate (16.7%) than AI models with access to specialized tools or human screeners. \[TODO: explain this later with the stats on tool use by model\]
+
+Missing responses accounted for 21.4% of errors. For human screeners, these typically arose from deliberate decisions to skip a criterion—for example, skipping remaining checks after confirming a customer's institution appears on a sanctions list—that coincided with a flag error. For AI models, missing responses often resulted from outputs that did not adhere to the requested table format or, occasionally, from extraction failures when parsing model responses.
+
+Ambiguous cases and source misinterpretation were least common, accounting for 11.1% and 0.8% of errors respectively. Ambiguous cases typically involved conflicting or partial evidence that made it difficult to establish clear ground truth. Source misinterpretation was rare despite the fact that around 15% of criterion descriptions contained some factual inaccuracy, as measured by the source fidelity metric. Most of these inaccuracies were minor and did not affect the final flag determination.
 
 **Geographic Variation**
 
 Error rates varied by customer region. European customers had the highest pass rates, potentially reflecting better documentation in English-language sources. Chinese customers showed higher false negative rates on domain verification, as screeners often selected not to flag otherwise reputable customers that appeared with a personal email domain. They also showed higher false positive rates on sanctions screening. US customers showed unexpectedly high affiliation verification errors, but we didn't perceive any consistent pattern looking at the full response transcripts.
 
-![][image5]
+![][image4]
 
 **Figure 6:** Flag accuracy error rates averaged for all AI models by task and customer region on the human baseline subset.
 
@@ -261,7 +277,7 @@ Access to specialized tools provided modest but consistent improvements. Overall
 
 The mix of tasks performed here could plausibly be part of one customer screening instance, but they could also be split into onboarding tasks and follow-up tasks. Crucially, the “ship/follow-up/not-ship” decision should remain in the hands of humans. We caution against the development of AI tools leveraging a “human-out-of-the-loop” (HOOTL) design until such time as any biases in large language models has been addressed. Early implementation of HOOTL systems could result in innovation being stifled through autonomous AI judgments on legitimate use, and this in a potentially inequitable way.
 
-Speeding up the screening task, or in other words, cost reduction, is the main reason AI-aided KYC is worth piloting in DNA synthesis companies. The cheapest model to run coincided with the best performing model based on pass rates \- this was the all-tool version of Gemini with $0.051/response. We estimate our 30-minute human baseline to cost $14, based on the median customer service rep base pay at one of the largest DNA providers. This is a more than 500-fold reduction in costs of these specific tasks. Open-sourced tools that perform these tasks, like Cliver, could therefore aid the efforts of providers who already screen, and incentivize those who do not yet. For-profit tools also have legitimacy here, which could help drive the adoption of customer screening, especially if they are coupled with profit-making products.
+Speeding up the screening task, or in other words, cost reduction, is the main reason AI-aided KYC is worth piloting in DNA synthesis companies. The cheapest model to run coincided with the best performing model based on pass rates \- this was the all-tool version of Gemini with $0.051/response. We estimate our human baseline to cost $14, based on the median customer service rep base pay at one of the largest DNA providers. This is a more than 500-fold reduction in costs of these specific tasks. Open-sourced tools that perform these tasks, like Cliver, could therefore aid the efforts of providers who already screen, and incentivize those who do not yet. For-profit tools also have legitimacy here, which could help drive the adoption of customer screening, especially if they are coupled with profit-making products.
 
 Onboarding tasks (or customer verification tasks) normally include checking customer name against government watchlists, requesting institutional affiliation, checking for institutional email and physical address and requesting whether the product is for research purposes, prior to screening the ordered sequence. Follow-up tasks have a wider range: the goal of these is to collect as much relevant information about the customer as needed (or as possible) for determining whether the customer is a legitimate user of the ordered sequence. Many of these are tasks that require requesting additional information, like institutional oversight, from customers and then checking the information given. The “checking” tasks lend themselves well to automation, while “requesting” tasks rely on human interaction.
 

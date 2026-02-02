@@ -38,8 +38,11 @@ def load_data():
 
 def calculate_costs(df):
     """Calculate average cost per customer for each model."""
-    # Filter AI models only
-    df_ai = df[df["model_type"] != "human_baseline"].copy()
+    # Filter AI models only and use human baseline subset (40 profiles)
+    df_ai = df[
+        (df["model_type"] != "human_baseline") &
+        (df["is_human_baseline_dataset"] == True)
+    ].copy()
 
     # Sum costs across both prompts (main + background_work) per customer per model
     customer_costs = df_ai.groupby(["customer_name", "model_label"]).agg({
