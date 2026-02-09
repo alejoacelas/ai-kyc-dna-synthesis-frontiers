@@ -100,7 +100,7 @@ const MethodologyDiagram = () => {
         {/* Header row */}
         <rect x="0" y="10" width="600" height="22" rx="4" fill={colors.lightGray} />
         <rect x="0" y="28" width="600" height="4" fill={colors.lightGray} />
-        <text x="70" y="25" textAnchor="middle" className="table-header">Criterion</text>
+        <text x="70" y="25" textAnchor="middle" className="table-header">Task</text>
         <line x1="140" y1="10" x2="140" y2="130" stroke={colors.lightGray} strokeWidth="1" />
         
         {/* Blue highlighted column header and full column */}
@@ -154,7 +154,7 @@ const MethodologyDiagram = () => {
         {/* Header */}
         <rect x="0" y="8" width="220" height="18" rx="4" fill={colors.green} fillOpacity="0.15" />
         <rect x="0" y="22" width="220" height="4" fill={colors.green} fillOpacity="0.15" />
-        <text x="70" y="21" textAnchor="middle" className="table-header">Criterion</text>
+        <text x="70" y="21" textAnchor="middle" className="table-header">Task</text>
         <text x="170" y="21" textAnchor="middle" className="table-header">Flag Status</text>
         
         {/* Content row */}
@@ -213,7 +213,7 @@ const MethodologyDiagram = () => {
         <text x="80" y="40" textAnchor="middle" className="small"><tspan fontSize="9" className="emoji">👤</tspan> Manual grading</text>
         <text x="80" y="55" textAnchor="middle" className="tiny">"Does flag match</text>
         <text x="80" y="67" textAnchor="middle" className="tiny">ground truth?"</text>
-        <text x="80" y="82" textAnchor="middle" className="tiny" fill={colors.gray}>×4 criteria</text>
+        <text x="80" y="82" textAnchor="middle" className="tiny" fill={colors.gray}>×4 tasks</text>
       </g>
 
       {/* Source Quality */}
@@ -225,7 +225,7 @@ const MethodologyDiagram = () => {
         <text x="80" y="40" textAnchor="middle" className="small"><tspan fontSize="9" className="emoji">🤖</tspan> LLM-as-judge</text>
         <text x="80" y="55" textAnchor="middle" className="tiny">"Are sources independently</text>
         <text x="80" y="67" textAnchor="middle" className="tiny">verifiable?"</text>
-        <text x="80" y="82" textAnchor="middle" className="tiny" fill={colors.gray}>×4 criteria</text>
+        <text x="80" y="82" textAnchor="middle" className="tiny" fill={colors.gray}>×4 tasks</text>
       </g>
 
       {/* Source Fidelity */}
@@ -237,7 +237,7 @@ const MethodologyDiagram = () => {
         <text x="80" y="40" textAnchor="middle" className="small"><tspan fontSize="9" className="emoji">🤖</tspan> LLM-as-judge</text>
         <text x="80" y="55" textAnchor="middle" className="tiny">"Do sources support</text>
         <text x="80" y="67" textAnchor="middle" className="tiny">the claims made?"</text>
-        <text x="80" y="82" textAnchor="middle" className="tiny" fill={colors.gray}>×4 criteria</text>
+        <text x="80" y="82" textAnchor="middle" className="tiny" fill={colors.gray}>×4 tasks</text>
       </g>
 
       {/* Work Relevance */}

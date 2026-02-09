@@ -83,7 +83,7 @@
         <!-- Header row -->
         <rect x="0" y="10" width="600" height="22" rx="4" fill="#E5E7EB" />
         <rect x="0" y="28" width="600" height="4" fill="#E5E7EB" />
-        <text x="70" y="25" text-anchor="middle" class="table-header">Criterion</text>
+        <text x="70" y="25" text-anchor="middle" class="table-header">Task</text>
         <line x1="140" y1="10" x2="140" y2="130" stroke="#E5E7EB" stroke-width="1" />
         
         <!-- Blue highlighted column header and full column -->
@@ -137,7 +137,7 @@
         <!-- Header -->
         <rect x="0" y="8" width="220" height="18" rx="4" fill="#22C55E" fill-opacity="0.15" />
         <rect x="0" y="22" width="220" height="4" fill="#22C55E" fill-opacity="0.15" />
-        <text x="70" y="21" text-anchor="middle" class="table-header">Criterion</text>
+        <text x="70" y="21" text-anchor="middle" class="table-header">Task</text>
         <text x="170" y="21" text-anchor="middle" class="table-header">Flag Status</text>
         
         <!-- Content row -->
@@ -196,7 +196,7 @@
         <text x="80" y="40" text-anchor="middle" class="small"><tspan font-size="9" class="emoji">👤</tspan> Manual grading</text>
         <text x="80" y="55" text-anchor="middle" class="tiny">"Does flag match</text>
         <text x="80" y="67" text-anchor="middle" class="tiny">ground truth?"</text>
-        <text x="80" y="82" text-anchor="middle" class="tiny" fill="#6B7280">×4 criteria</text>
+        <text x="80" y="82" text-anchor="middle" class="tiny" fill="#6B7280">×4 tasks</text>
       </g>
 
       <!-- Source Quality -->
@@ -208,7 +208,7 @@
         <text x="80" y="40" text-anchor="middle" class="small"><tspan font-size="9" class="emoji">🤖</tspan> LLM-as-judge</text>
         <text x="80" y="55" text-anchor="middle" class="tiny">"Are sources independently</text>
         <text x="80" y="67" text-anchor="middle" class="tiny">verifiable?"</text>
-        <text x="80" y="82" text-anchor="middle" class="tiny" fill="#6B7280">×4 criteria</text>
+        <text x="80" y="82" text-anchor="middle" class="tiny" fill="#6B7280">×4 tasks</text>
       </g>
 
       <!-- Source Fidelity -->
@@ -220,7 +220,7 @@
         <text x="80" y="40" text-anchor="middle" class="small"><tspan font-size="9" class="emoji">🤖</tspan> LLM-as-judge</text>
         <text x="80" y="55" text-anchor="middle" class="tiny">"Do sources support</text>
         <text x="80" y="67" text-anchor="middle" class="tiny">the claims made?"</text>
-        <text x="80" y="82" text-anchor="middle" class="tiny" fill="#6B7280">×4 criteria</text>
+        <text x="80" y="82" text-anchor="middle" class="tiny" fill="#6B7280">×4 tasks</text>
       </g>
 
       <!-- Work Relevance -->

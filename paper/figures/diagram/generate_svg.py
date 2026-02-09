@@ -123,7 +123,7 @@ full_svg = f'''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" {svg_content[4:]}'''
 
 # Save to figures folder
-output_path = Path(__file__).parent.parent / "figures" / "figure0_methodology_diagram.svg"
+output_path = Path(__file__).parent.parent / "figure0_methodology_diagram.svg"
 output_path.write_text(full_svg)
 print(f"SVG saved to {output_path}")
 
