@@ -1,0 +1,17 @@
+Figure S1: Pass Rates by Screener and Task (40-profile subset)
+======================================================================
+
+task                         affiliation  domain  institution  sanctions  work
+model_label                                                                   
+Claude Sonnet 4 (All Tools)         87.0    85.4         78.9       98.4  85.4
+Claude Sonnet 4 (Web)               87.8    87.8         77.2       92.7  80.5
+GLM 4.6 (All Tools)                 89.4    87.0         87.8       95.9  79.7
+GLM 4.6 (Web)                       91.9    82.1         86.2       90.2  90.2
+Gemini 2.5 Pro (All Tools)          84.6    95.9         87.8       96.7  83.7
+Gemini 2.5 Pro (Web)                78.9    87.8         87.8       79.7  84.6
+Grok 4 (All Tools)                  87.8    87.0         83.7       92.7  80.5
+Grok 4 (Web)                        84.6    84.6         80.5       87.8  87.0
+Human Baseline (30min)              82.1    77.2         87.8       86.2  65.0
+Human Baseline (5min)               71.5    37.4         60.2       22.8   6.5
+MiniMax M2 (All Tools)              86.2    82.9         80.5       91.1  87.8
+MiniMax M2 (Web)                    86.2    87.0         88.6       76.4  83.7

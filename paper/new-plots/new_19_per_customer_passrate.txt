@@ -1,0 +1,1 @@
+Swarm plot of per-customer overall pass rates on the 40-profile human baseline subset, grouped by customer type and colored accordingly. Each dot represents one customer's average pass rate across all AI models. Horizontal colored bars show group means; the dashed black line shows the overall mean across all customers.

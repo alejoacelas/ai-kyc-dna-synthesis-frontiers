@@ -1,0 +1,8 @@
+Figure S12: Error Category Distribution by Screener Type
+======================================================================
+
+errorCategory  difference_in_judgment  empty_response  factual_mistake  flag_instructions_not_followed  information_not_found
+screener_type                                                                                                                
+All Tools                         6.1            20.4              0.0                            38.8                   34.7
+Human                            11.8            17.6              0.0                            35.3                   35.3
+Web Only                         15.3            23.7              1.7                            42.4                   16.9

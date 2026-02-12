@@ -1,0 +1,1 @@
+Figure S13: Error category distribution by flag criterion and screener type (40-profile subset). Detailed 100% stacked bars showing error category proportions for each combination of flag criterion and screener type (H = Human, AT = All Tools, W = Web Only). Reveals how error patterns differ across both criteria and screener configurations.

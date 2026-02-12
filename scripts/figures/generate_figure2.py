@@ -1,268 +1,251 @@
 #!/usr/bin/env python3
 """
-Generate Figure 2: Human vs AI comparison by verification task.
+Generate Figure 1: Pass rates heatmap by screener and test category.
+
+Shows pass rates with models grouped into three blocks:
+- AT (All Tools): AI screeners with full tool access
+- W (Web-only): AI screeners with web search only
+- Human: Human baseline screeners
+
+Visual separation between groups emphasizes the different screener configurations.
 """
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-import seaborn as sns
 from pathlib import Path
 
+# Import style from same directory
+from style import (
+    COLORS, MODEL_LABELS, MODEL_ORDER, CATEGORY_ORDER, CATEGORY_LABELS,
+    get_model_color, shorten_model_label, setup_style
+)
+
+
 def load_and_filter_data():
-    """Load data and filter for human baseline dataset."""
-    print("Loading data...")
+    """Load test data and filter for human baseline dataset."""
     data_path = Path(__file__).parent.parent.parent / "processed" / "tests.csv"
+    print(f"Loading data from: {data_path}")
+
     df = pd.read_csv(data_path)
+    print(f"Total rows: {len(df):,}")
 
     # Filter for human baseline dataset
     df_filtered = df[df['is_human_baseline_dataset'] == True].copy()
-
-    print(f"Total rows in dataset: {len(df)}")
-    print(f"Rows in human baseline dataset: {len(df_filtered)}")
+    print(f"Rows after human baseline filter: {len(df_filtered):,}")
 
     return df_filtered
 
-def map_metric_to_tasks(df):
-    """Map metric names to flag accuracy criteria only."""
-    tasks_data = []
 
-    for _, row in df.iterrows():
-        metric = row['metric_name']
+def create_figure(df):
+    """Create the heatmap with three separated blocks."""
+    setup_style()
 
-        # Map metric names to the four flag accuracy criteria
-        if metric == 'AFFILIATION-FLAG-ACCURACY':
-            task = 'affiliation'
-        elif metric == 'INSTITUTION-FLAG-ACCURACY':
-            task = 'institution'
-        elif metric == 'DOMAIN-FLAG-ACCURACY':
-            task = 'domain'
-        elif metric == 'SANCTIONS-FLAG-ACCURACY':
-            task = 'sanctions'
-        else:
-            # Skip other metrics not relevant for this figure
-            continue
+    # Calculate pass rates
+    pivot = df.pivot_table(
+        values="pass",
+        index="model_label",
+        columns="test_category",
+        aggfunc="mean"
+    ) * 100
 
-        tasks_data.append({
-            'task': task,
-            'model_label': row['model_label'],
-            'pass': row['pass'],
-            'is_human_baseline': row['is_human_baseline']
-        })
+    # Group models by type: AT first, then W, then Human
+    at_models = [m for m in MODEL_ORDER if "(All Tools)" in m and m in pivot.index]
+    w_models = [m for m in MODEL_ORDER if "(Web)" in m and m in pivot.index]
+    human_models = [m for m in MODEL_ORDER if "Human" in m and m in pivot.index]
 
-    return pd.DataFrame(tasks_data)
+    categories = [c for c in CATEGORY_ORDER if c in pivot.columns]
 
-def calculate_performance_metrics(df_tasks):
-    """Calculate error rates by task and model."""
+    # Add "All Metrics" column as the average across all metrics
+    pivot["all_metrics"] = pivot[categories].mean(axis=1)
+    categories_with_all = categories + ["all_metrics"]
 
-    # Group by task and model, calculate pass rates and error rates
-    performance = df_tasks.groupby(['task', 'model_label'])['pass'].agg(['count', 'sum']).reset_index()
-    performance['pass_rate'] = performance['sum'] / performance['count']
-    performance['error_rate'] = 1 - performance['pass_rate']
-    performance['error_rate_pct'] = performance['error_rate'] * 100
+    n_at = len(at_models)
+    n_w = len(w_models)
+    n_human = len(human_models)
 
-    return performance
+    print(f"AT models: {n_at}, W models: {n_w}, Human models: {n_human}")
 
-def identify_best_worst_models(performance):
-    """Identify best and worst performing AI models for each task."""
+    # Gap size between groups (for annotation text above each group)
+    gap_size = 0.7
 
-    results = {}
+    # Gap size before "All Metrics" column
+    all_metrics_gap = 0.3
 
-    for task in performance['task'].unique():
-        task_data = performance[performance['task'] == task].copy()
+    # Create figure (increased width to accommodate extra column with gap)
+    fig, ax = plt.subplots(figsize=(6, 12))
 
-        # Get human baseline error rate (30 min)
-        human_data = task_data[task_data['model_label'] == 'Human Baseline (30min)']
-        human_error = human_data['error_rate_pct'].iloc[0] if len(human_data) > 0 else None
+    from matplotlib.colors import Normalize, LinearSegmentedColormap
+    from matplotlib.cm import ScalarMappable
 
-        # Get AI models only (exclude human baselines)
-        ai_data = task_data[~task_data['model_label'].str.contains('Human Baseline')]
+    # Green-only color palette (light to dark green)
+    cmap = LinearSegmentedColormap.from_list('greens', ['#dcfce7', '#166534'])
+    norm = Normalize(vmin=60, vmax=100)
 
-        if len(ai_data) > 0:
-            # Best model (lowest error rate)
-            best_idx = ai_data['error_rate_pct'].idxmin()
-            best_model = ai_data.loc[best_idx]
+    cell_width = 1.0
+    cell_height = 1.0
 
-            # Worst model (highest error rate)
-            worst_idx = ai_data['error_rate_pct'].idxmax()
-            worst_model = ai_data.loc[worst_idx]
+    # Build y positions: AT at top, then gap, W in middle, then gap, Human at bottom
+    # Each group has annotation space ABOVE it
+    y_positions = {}
+    annotation_positions = {}
+    current_y = 0
 
-            results[task] = {
-                'human_error': human_error,
-                'human_count': human_data['count'].iloc[0] if len(human_data) > 0 else 0,
-                'best_model': best_model['model_label'],
-                'best_error': best_model['error_rate_pct'],
-                'best_count': best_model['count'],
-                'worst_model': worst_model['model_label'],
-                'worst_error': worst_model['error_rate_pct'],
-                'worst_count': worst_model['count']
-            }
+    # Human models at bottom (with annotation space above)
+    annotation_positions['human'] = current_y + gap_size / 2
+    current_y += gap_size
+    for i, model in enumerate(human_models):
+        y_positions[model] = current_y
+        current_y += cell_height
 
-    return results
+    # W models in middle (with annotation space above)
+    annotation_positions['w'] = current_y + gap_size / 2
+    current_y += gap_size
+    for i, model in enumerate(w_models):
+        y_positions[model] = current_y
+        current_y += cell_height
 
-def create_figure(results):
-    """Create the grouped bar chart with AI range bars."""
+    # AT models at top (with annotation space above)
+    annotation_positions['at'] = current_y + gap_size / 2
+    current_y += gap_size
+    for i, model in enumerate(at_models):
+        y_positions[model] = current_y
+        current_y += cell_height
 
-    # Set up the plot with publication quality settings
-    plt.style.use('default')
-    fig, ax = plt.subplots(figsize=(12, 8))
+    # Order for display (bottom to top): Human, W, AT
+    models_display_order = human_models + w_models + at_models
 
-    # Colors matching Figure 3 palette
-    HUMAN_COLOR = '#f59e0b'      # Amber for human (same as Figure 3)
-    AI_BEST_COLOR = '#1e40af'    # Dark blue for lowest AI error (same as Figure 3 AT)
-    AI_RANGE_COLOR = '#93c5fd'   # Light blue for AI range extension (same as Figure 3 W)
+    # Build x positions: regular categories, then gap, then "All Metrics"
+    x_positions = {}
+    for j, cat in enumerate(categories):
+        x_positions[cat] = j * cell_width
+    # Add gap before "All Metrics"
+    x_positions["all_metrics"] = len(categories) * cell_width + all_metrics_gap
 
-    # Define task order and clean labels (flag accuracy criteria only)
-    task_order = ['affiliation', 'institution', 'domain', 'sanctions']
-    task_labels = {
-        'affiliation': 'Institutional\nAffiliation',
-        'institution': 'Institution\nType',
-        'domain': 'Email\nDomain',
-        'sanctions': 'Sanctions'
+    # Draw cells
+    for model in models_display_order:
+        y_pos = y_positions[model]
+        is_5min = "(5min)" in model
+        for cat in categories_with_all:
+            x_pos = x_positions[cat]
+            if model in pivot.index and cat in pivot.columns:
+                value = pivot.loc[model, cat]
+                if pd.notna(value):
+                    if is_5min:
+                        # Gray out 5-minute human baseline
+                        color = '#d1d5db'
+                        text_color = '#6b7280'
+                    else:
+                        color = cmap(norm(value))
+                        text_color = 'white' if value > 75 else 'black'
+                    rect = plt.Rectangle((x_pos, y_pos), cell_width, cell_height,
+                                          facecolor=color, edgecolor='white', linewidth=1)
+                    ax.add_patch(rect)
+                    ax.text(x_pos + cell_width/2, y_pos + cell_height/2, f"{value:.1f}",
+                           ha='center', va='center', fontsize=10, fontweight='bold',
+                           color=text_color)
+
+    # Set axis limits (account for gap before All Metrics)
+    ax.set_xlim(0, x_positions["all_metrics"] + cell_width)
+    ax.set_ylim(0, current_y)
+
+    # Y-axis ticks and labels
+    y_ticks = [y_positions[m] + cell_height/2 for m in models_display_order]
+    ax.set_yticks(y_ticks)
+    ax.set_yticklabels([shorten_model_label(m) for m in models_display_order], fontsize=11)
+
+    # X-axis ticks and labels (with line breaks and renamed categories)
+    FIGURE1_CATEGORY_LABELS = {
+        "flag_accuracy": "Flag\nAccuracy",
+        "claim_support": "Source\nFidelity",
+        "source_reliability": "Source\nQuality",
+        "work_relevance": "Work\nRelevance",
+        "all_metrics": "All\nMetrics",
     }
+    x_ticks = [x_positions[cat] + cell_width/2 for cat in categories_with_all]
+    ax.set_xticks(x_ticks)
 
-    # Prepare data for plotting
-    x_pos = np.arange(len(task_order))
-    width = 0.35
+    # Create labels, with "All Metrics" in bold
+    x_labels = []
+    for cat in categories_with_all:
+        x_labels.append(FIGURE1_CATEGORY_LABELS.get(cat, cat))
+    ax.set_xticklabels(x_labels, fontsize=11)
 
-    human_errors = []
-    best_errors = []
-    worst_errors = []
+    # Bold the "All Metrics" label
+    tick_labels = ax.get_xticklabels()
+    tick_labels[-1].set_fontweight('bold')
 
-    for task in task_order:
-        if task in results:
-            human_errors.append(results[task]['human_error'])
-            best_errors.append(results[task]['best_error'])
-            worst_errors.append(results[task]['worst_error'])
-        else:
-            human_errors.append(0)
-            best_errors.append(0)
-            worst_errors.append(0)
+    # Add centered section annotations ABOVE each group
+    # Center is midpoint of total width including gap
+    total_width = x_positions["all_metrics"] + cell_width
+    center_x = total_width / 2
 
-    # Calculate the range (difference between worst and best)
-    ai_range = [worst - best for worst, best in zip(worst_errors, best_errors)]
+    if n_human > 0:
+        ax.text(center_x, annotation_positions['human'],
+                "Human Baseline",
+                ha='center', va='center', fontsize=11, fontweight='bold',
+                color='black', style='italic')
 
-    # Create the bars: Human baseline and AI stacked range
-    # Human baseline bar
-    bars_human = ax.bar(x_pos - width/2, human_errors, width,
-                        label='Human baseline', color=HUMAN_COLOR, alpha=0.9)
+    if n_w > 0:
+        ax.text(center_x, annotation_positions['w'],
+                "AI - Web Only (W)",
+                ha='center', va='center', fontsize=11, fontweight='bold',
+                color='black', style='italic')
 
-    # AI bars: base is lowest error rate (best), stacked is the range to highest (worst)
-    bars_ai_best = ax.bar(x_pos + width/2, best_errors, width,
-                          label='Lowest Error from AI Screener', color=AI_BEST_COLOR, alpha=0.9)
-    bars_ai_range = ax.bar(x_pos + width/2, ai_range, width, bottom=best_errors,
-                           label='Highest Error from AI Screener', color=AI_RANGE_COLOR, alpha=0.9)
+    if n_at > 0:
+        ax.text(center_x, annotation_positions['at'],
+                "AI - All Tools (AT)",
+                ha='center', va='center', fontsize=11, fontweight='bold',
+                color='black', style='italic')
 
-    # Customize the plot
-    ax.set_xlabel('Flag Accuracy Criterion', fontsize=12, fontweight='bold')
-    ax.set_ylabel('Error Rate (%)', fontsize=12, fontweight='bold')
-    ax.set_title('Human vs AI Error Rates by Flag Accuracy Criterion', fontsize=14, fontweight='bold', pad=20)
+    # Add colorbar
+    sm = ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+    cbar = plt.colorbar(sm, ax=ax, shrink=0.5, aspect=20)
+    cbar.set_label("Pass Rate (%)", fontsize=12)
 
-    # Set x-axis labels
-    ax.set_xticks(x_pos)
-    ax.set_xticklabels([task_labels[task] for task in task_order], rotation=45, ha='right')
+    ax.set_title("Pass Rate by Screener and Test Category", fontsize=14, fontweight='bold', pad=15)
+    ax.set_xlabel("Test Category", fontsize=12, fontweight='bold')
+    ax.set_ylabel("Screener", fontsize=12, fontweight='bold')
 
-    # Format y-axis
-    max_error = max(max(human_errors), max(worst_errors))
-    ax.set_ylim(0, max_error * 1.15)
-    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'{x:.0f}%'))
-
-    # Add value labels on bars
-    # Human bars - single value
-    for bar in bars_human:
-        height = bar.get_height()
-        if height > 0:
-            ax.text(bar.get_x() + bar.get_width()/2., height + 0.5,
-                   f'{height:.1f}%',
-                   ha='center', va='bottom', fontsize=9, fontweight='bold')
-
-    # AI bars - show range (best - worst)
-    for i, (bar_best, bar_range) in enumerate(zip(bars_ai_best, bars_ai_range)):
-        best_val = best_errors[i]
-        worst_val = worst_errors[i]
-        total_height = worst_val
-
-        # Show range label at top
-        ax.text(bar_best.get_x() + bar_best.get_width()/2., total_height + 0.5,
-               f'{best_val:.1f}-{worst_val:.1f}%',
-               ha='center', va='bottom', fontsize=9, fontweight='bold')
-
-    # Add legend
-    ax.legend(loc='upper left', fontsize=10)
-
-    # Add grid for better readability
-    ax.grid(True, linestyle='--', alpha=0.3, axis='y')
-    ax.set_axisbelow(True)
-
-    # Remove top and right spines
+    # Clean up spines
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_visible(False)
+    ax.spines['bottom'].set_visible(False)
 
-    # Tight layout
+    ax.tick_params(left=False, bottom=False)
+
     plt.tight_layout()
 
     return fig
 
-def print_model_details(results):
-    """Print which specific models were best/worst for each criterion."""
-    print("\nBest and Worst AI Models by Flag Accuracy Criterion:")
-    print("=" * 60)
-
-    task_labels = {
-        'affiliation': 'Institutional Affiliation',
-        'institution': 'Institution Type',
-        'domain': 'Email Domain',
-        'sanctions': 'Sanctions'
-    }
-
-    for task in ['affiliation', 'institution', 'domain', 'sanctions']:
-        if task in results:
-            data = results[task]
-            print(f"\n{task_labels[task].upper()}:")
-            print(f"  Human Baseline (30min): {data['human_error']:.1f}% error rate (n={data['human_count']})")
-            print(f"  Best AI Model: {data['best_model']} ({data['best_error']:.1f}% error rate, n={data['best_count']})")
-            print(f"  Worst AI Model: {data['worst_model']} ({data['worst_error']:.1f}% error rate, n={data['worst_count']})")
 
 def main():
-    """Main function to generate the figure."""
+    """Main function to generate Figure 1."""
+    print("Generating Figure 1: Pass rates heatmap with grouped screeners")
+    print("=" * 60)
 
-    # Load and process data
+    # Load data
     df = load_and_filter_data()
-    df_tasks = map_metric_to_tasks(df)
 
-    print(f"\nTask breakdown:")
-    print(df_tasks['task'].value_counts())
+    # Create the figure
+    fig = create_figure(df)
 
-    print(f"\nModel breakdown for relevant tasks:")
-    print(df_tasks['model_label'].value_counts())
-
-    # Calculate performance metrics
-    performance = calculate_performance_metrics(df_tasks)
-
-    # Identify best and worst models
-    results = identify_best_worst_models(performance)
-
-    # Print model details
-    print_model_details(results)
-
-    # Create and save figure
-    fig = create_figure(results)
-
-    # Create output directory if it doesn't exist
-    output_dir = Path(__file__).parent.parent.parent / "paper" / "figures"
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    # Save figure
-    output_path = output_dir / 'figure2_human_vs_ai_comparison.png'
+    # Save the figure
+    output_path = Path(__file__).parent.parent.parent / "paper" / "figures" / "figure2_pass_rates_heatmap.png"
     fig.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
-
     print(f"\nFigure saved to: {output_path}")
 
-    # Print caption
-    print("\nSuggested Caption:")
-    print("Error rates by flag accuracy criterion comparing human baseline (30 min) with best and worst performing AI models. Lower bars indicate better performance. The stacked blue bars show the range of AI performance from lowest to highest error rate.")
+    plt.close()
 
-    plt.close(fig)  # Close the figure to prevent display issues
+    print("\n" + "=" * 60)
+    print("Caption:")
+    print("Pass rates by screener and test category. Screeners are grouped into")
+    print("three blocks: AT (All Tools) - AI with full tool access, W (Web-only) -")
+    print("AI with web search only, and Human baseline screeners. Color intensity")
+    print("indicates pass rate from 50% (red) to 100% (green).")
+
 
 if __name__ == "__main__":
     main()

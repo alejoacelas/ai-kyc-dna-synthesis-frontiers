@@ -1,59 +1,91 @@
-# KYC Evaluation Analysis
+# Evaluating AI-Assisted Customer Verification for DNA Synthesis Screening
 
-This repository contains all the code and data for analyzing the KYC (Know Your Customer) evaluation results comparing AI models against human experts on customer screening tasks.
+This repository contains the code and data for analyzing KYC (Know Your Customer) evaluation results comparing AI models against human experts on customer screening tasks.
 
-## Quick Start
+See the full manuscript at `paper/paper_draft.md`.
 
-To get context on the results:
+## Reproducing the Paper
 
-- See the paper draft at `paper/paper_draft.md`
-- Run `cd viewer && npm install && npm run dev` to browse the raw responses
-- Read the prompts at `prompts/`
-- Explore the processed datasets at `processed/`
+The processed datasets (`processed/tests.csv` and `processed/responses.csv`) are committed via Git LFS, so you can regenerate all figures and metrics without running the full data pipeline.
 
-Because the JSON results are large files (886MB total), you may need to run `git lfs pull` to download them.
+```bash
+# 1. Clone and pull LFS data
+git clone <repo-url>
+git lfs pull
+
+# 2. Install dependencies
+uv sync
+
+# 3. Regenerate all figures
+make figures
+
+# 4. Compute paper metrics (Tables 1, 2, inline statistics N1–N11)
+make metrics
+```
+
+To re-run the full data pipeline from raw JSON (requires `OPENROUTER_API_KEY`; see `.env.example`):
+
+```bash
+uv run python scripts/generate_datasets.py
+```
+
+Use `--skip-latency` and `--skip-country` to skip API-dependent steps.
 
 ## Repository Structure
 
 ```
 ai-kyc-results/
 ├── data/
-│   ├── customers/               # Customer profile datasets
-│   │   ├── full_dataset.csv     # 134 customer profiles
+│   ├── customers/                  # Customer profile datasets
+│   │   ├── full_dataset.csv        # 134 customer profiles
 │   │   └── human_baseline_subset.csv  # 40-customer subset for human comparison
-│   ├── annotations/             # Human annotations and ground truth
+│   ├── annotations/                # Human annotations and ground truth
 │   │   ├── ground_truth_flags.json
 │   │   ├── blind_gradings.json
-│   │   └── agreements.json
-│   ├── raw_results/             # PromptFoo evaluation outputs (886MB)
+│   │   ├── agreements.json
+│   │   └── flag_error_comments.json
+│   ├── raw_results/                # PromptFoo evaluation outputs (886MB, Git LFS)
 │   │   └── *.json
 │   └── token_pricing.yaml
 │
-├── processed/                   # Derived analysis datasets
-│   ├── tests.csv                # One row per test assertion (233k rows)
-│   ├── responses.csv            # One row per model response (54k rows)
-│   └── blind_grading/           # Blind grading analysis
+├── processed/                      # Derived analysis datasets (Git LFS)
+│   ├── tests.csv                   # One row per test assertion (~234k rows)
+│   ├── responses.csv               # One row per model response (~55k rows)
+│   └── blind_grading/              # Blind grading analysis
 │
 ├── scripts/
-│   ├── generate_datasets.py     # Main data processing pipeline
-│   ├── merge_blind_gradings.py  # Merge blind grading results
-│   └── figures/                 # Figure generation scripts
-│       ├── generate_figure1.py  # Pass rates heatmap
-│       ├── generate_figure2.py  # Human vs AI comparison
-│       ├── generate_figure3.py  # Model rankings
-│       ├── generate_figure6.py  # Geographic error breakdown
-│       └── style.py             # Shared plotting styles
+│   ├── generate_datasets.py        # Main data processing pipeline
+│   ├── merge_blind_gradings.py     # Merge blind grading results
+│   ├── match_blind_gradings.py     # Match blind gradings to assertion-level results
+│   └── figures/                    # Figure and metric generation scripts
+│       ├── style.py                # Shared colors, model labels, ordering
+│       ├── compute_paper_metrics.py  # Tables 1, 2, and inline stats N1–N11
+│       ├── generate_figure2.py     # Figure 2: pass rates heatmap
+│       ├── generate_figure2b.py    # Supplementary: pass rates by task
+│       ├── generate_figure2c.py    # Supplementary: pass rates by customer type
+│       ├── generate_figure3.py     # Figure 3: cost breakdown by model
+│       ├── generate_figure4.py     # Figure 4: cost vs performance scatter
+│       ├── generate_figure5.py     # Figure 5: flag errors by region and task
+│       ├── generate_figure_human_vs_ai.py     # Supplementary: human vs AI comparison
+│       ├── generate_figure_model_rankings.py  # Supplementary: model rankings
+│       └── generate_figure_error_by_criterion.py  # Supplementary: error by criterion
 │
 ├── paper/
-│   ├── paper_draft.md           # Paper manuscript
-│   ├── figures/                 # Figures referenced in paper
-│   └── supplementary/           # Additional figures for appendix
+│   ├── paper_draft.md              # Paper manuscript
+│   ├── figures/                    # Main figures referenced in paper
+│   └── supplementary/              # Appendix figures
 │
-├── prompts/                     # Prompt templates and test definitions
+├── prompts/                        # Prompt templates and test definitions
+│   ├── simple.txt                  # Main screening prompt
+│   ├── background_work.txt         # Background work search prompt
+│   └── tests/                      # Evaluation test definitions
+│       ├── claim_support.yaml
+│       ├── source_reliability.yaml
+│       └── work_relevance.yaml
 │
-├── viewer/                      # Next.js app for browsing responses
-│
-└── archive/                     # Historical/one-time scripts
+├── archive/                        # Historical/one-time scripts
+├── Makefile                        # One-command reproduction targets
+└── pyproject.toml
 ```
 
 ## Data Files
@@ -137,26 +169,27 @@ Options:
 - `--skip-country`: Use existing country classifications
 - `--only-country`: Only update institution_country columns
 
-Requires `OPENROUTER_API_KEY` environment variable for latency fetching.
+Requires `OPENROUTER_API_KEY` environment variable for latency fetching (see `.env.example`).
 
 ### Generate Figures
 
 ```bash
-uv run python scripts/figures/generate_figure1.py
-uv run python scripts/figures/generate_figure2.py
-uv run python scripts/figures/generate_figure3.py
-uv run python scripts/figures/generate_figure6.py
+make figures
 ```
 
-### Run the Viewer App
+Or individually:
 
 ```bash
-cd viewer
-npm install
-npm run dev
+uv run python scripts/figures/generate_figure2.py
+uv run python scripts/figures/generate_figure3.py
+# etc.
 ```
 
-Then open http://localhost:3000
+### Compute Paper Metrics
+
+```bash
+make metrics
+```
 
 ## Data Processing and Corrections
 
@@ -187,16 +220,10 @@ The `pass` field in tests.csv has corrections applied:
 
 ## Dependencies
 
-### Python
-- pandas
-- matplotlib
-- seaborn
-- requests
-- python-dotenv
-- scikit-learn
+Managed via `uv`. Install with:
 
-### Node.js (viewer app)
-- Next.js 14
-- React
-- TailwindCSS
-- shadcn/ui components
+```bash
+uv sync
+```
+
+See `pyproject.toml` for the full dependency list.

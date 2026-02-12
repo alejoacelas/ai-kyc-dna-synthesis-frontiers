@@ -1,0 +1,268 @@
+{
+  "by_model_prompt": {
+    "Claude Sonnet 4 (All Tools) | background_work": {
+      "mean_ms": 40848.39035465892,
+      "mean_s": 40.84839035465892,
+      "count": 41,
+      "total_ms": 1674784.0045410157
+    },
+    "Claude Sonnet 4 (All Tools) | simple": {
+      "mean_ms": 47929.38397768278,
+      "mean_s": 47.92938397768278,
+      "count": 41,
+      "total_ms": 1965104.743084994
+    },
+    "Claude Sonnet 4 (Web) | background_work": {
+      "mean_ms": 40049.00120526828,
+      "mean_s": 40.04900120526828,
+      "count": 41,
+      "total_ms": 1642009.0494159996
+    },
+    "Claude Sonnet 4 (Web) | simple": {
+      "mean_ms": 21460.309675829194,
+      "mean_s": 21.460309675829194,
+      "count": 41,
+      "total_ms": 879872.696708997
+    },
+    "GLM 4.6 (All Tools) | background_work": {
+      "mean_ms": 54809.36881304873,
+      "mean_s": 54.80936881304873,
+      "count": 41,
+      "total_ms": 2247184.121334998
+    },
+    "GLM 4.6 (All Tools) | simple": {
+      "mean_ms": 46056.95651317071,
+      "mean_s": 46.05695651317071,
+      "count": 41,
+      "total_ms": 1888335.2170399993
+    },
+    "GLM 4.6 (Web) | background_work": {
+      "mean_ms": 57581.05229465866,
+      "mean_s": 57.581052294658654,
+      "count": 41,
+      "total_ms": 2360823.144081005
+    },
+    "GLM 4.6 (Web) | simple": {
+      "mean_ms": 26308.494366878087,
+      "mean_s": 26.308494366878087,
+      "count": 41,
+      "total_ms": 1078648.2690420016
+    },
+    "Gemini 2.5 Pro (All Tools) | background_work": {
+      "mean_ms": 38032.33765956114,
+      "mean_s": 38.03233765956114,
+      "count": 41,
+      "total_ms": 1559325.8440420069
+    },
+    "Gemini 2.5 Pro (All Tools) | simple": {
+      "mean_ms": 42397.240158536566,
+      "mean_s": 42.39724015853657,
+      "count": 41,
+      "total_ms": 1738286.8464999993
+    },
+    "Gemini 2.5 Pro (Web) | background_work": {
+      "mean_ms": 34272.895198146,
+      "mean_s": 34.272895198145996,
+      "count": 41,
+      "total_ms": 1405188.7031239858
+    },
+    "Gemini 2.5 Pro (Web) | simple": {
+      "mean_ms": 45582.31649700025,
+      "mean_s": 45.58231649700025,
+      "count": 41,
+      "total_ms": 1868874.97637701
+    },
+    "Grok 4 (All Tools) | background_work": {
+      "mean_ms": 83008.00443897526,
+      "mean_s": 83.00800443897526,
+      "count": 41,
+      "total_ms": 3403328.1819979856
+    },
+    "Grok 4 (All Tools) | simple": {
+      "mean_ms": 76137.90436387851,
+      "mean_s": 76.1379043638785,
+      "count": 41,
+      "total_ms": 3121654.0789190186
+    },
+    "Grok 4 (Web) | background_work": {
+      "mean_ms": 87268.20560422493,
+      "mean_s": 87.26820560422493,
+      "count": 40,
+      "total_ms": 3490728.2241689973
+    },
+    "Grok 4 (Web) | simple": {
+      "mean_ms": 69412.27908531703,
+      "mean_s": 69.41227908531702,
+      "count": 41,
+      "total_ms": 2845903.442497998
+    },
+    "MiniMax M2 (All Tools) | background_work": {
+      "mean_ms": 65894.82866973174,
+      "mean_s": 65.89482866973174,
+      "count": 41,
+      "total_ms": 2701687.975459001
+    },
+    "MiniMax M2 (All Tools) | simple": {
+      "mean_ms": 67257.43479166704,
+      "mean_s": 67.25743479166704,
+      "count": 39,
+      "total_ms": 2623039.9568750146
+    },
+    "MiniMax M2 (Web) | background_work": {
+      "mean_ms": 67030.7504928049,
+      "mean_s": 67.0307504928049,
+      "count": 41,
+      "total_ms": 2748260.770205001
+    },
+    "MiniMax M2 (Web) | simple": {
+      "mean_ms": 79985.40056092652,
+      "mean_s": 79.98540056092652,
+      "count": 41,
+      "total_ms": 3279401.4229979874
+    }
+  },
+  "by_model": {
+    "Claude Sonnet 4 (All Tools)": {
+      "mean_ms": 44388.887166170854,
+      "mean_s": 44.38888716617085,
+      "count": 82,
+      "total_ms": 3639888.74762601
+    },
+    "Claude Sonnet 4 (Web)": {
+      "mean_ms": 30754.655440548737,
+      "mean_s": 30.75465544054874,
+      "count": 82,
+      "total_ms": 2521881.7461249963
+    },
+    "GLM 4.6 (All Tools)": {
+      "mean_ms": 50433.162663109724,
+      "mean_s": 50.43316266310973,
+      "count": 82,
+      "total_ms": 4135519.3383749975
+    },
+    "GLM 4.6 (Web)": {
+      "mean_ms": 41944.773330768374,
+      "mean_s": 41.94477333076837,
+      "count": 82,
+      "total_ms": 3439471.4131230065
+    },
+    "Gemini 2.5 Pro (All Tools)": {
+      "mean_ms": 40214.78890904885,
+      "mean_s": 40.214788909048856,
+      "count": 82,
+      "total_ms": 3297612.690542006
+    },
+    "Gemini 2.5 Pro (Web)": {
+      "mean_ms": 39927.605847573126,
+      "mean_s": 39.927605847573126,
+      "count": 82,
+      "total_ms": 3274063.679500996
+    },
+    "Grok 4 (All Tools)": {
+      "mean_ms": 79572.95440142688,
+      "mean_s": 79.57295440142687,
+      "count": 82,
+      "total_ms": 6524982.260917004
+    },
+    "Grok 4 (Web)": {
+      "mean_ms": 78230.02057613575,
+      "mean_s": 78.23002057613574,
+      "count": 81,
+      "total_ms": 6336631.666666996
+    },
+    "MiniMax M2 (All Tools)": {
+      "mean_ms": 66559.09915417519,
+      "mean_s": 66.55909915417519,
+      "count": 80,
+      "total_ms": 5324727.932334015
+    },
+    "MiniMax M2 (Web)": {
+      "mean_ms": 73508.07552686571,
+      "mean_s": 73.50807552686571,
+      "count": 82,
+      "total_ms": 6027662.193202988
+    }
+  },
+  "summary": [
+    {
+      "model_label": "Claude Sonnet 4 (Web)",
+      "background_work_mean_s": 40.04900120526828,
+      "simple_mean_s": 21.460309675829194,
+      "total_s": 61.50931088109748,
+      "bg_count": 41,
+      "simple_count": 41
+    },
+    {
+      "model_label": "Gemini 2.5 Pro (Web)",
+      "background_work_mean_s": 34.272895198145996,
+      "simple_mean_s": 45.58231649700025,
+      "total_s": 79.85521169514625,
+      "bg_count": 41,
+      "simple_count": 41
+    },
+    {
+      "model_label": "Gemini 2.5 Pro (All Tools)",
+      "background_work_mean_s": 38.03233765956114,
+      "simple_mean_s": 42.39724015853657,
+      "total_s": 80.42957781809771,
+      "bg_count": 41,
+      "simple_count": 41
+    },
+    {
+      "model_label": "GLM 4.6 (Web)",
+      "background_work_mean_s": 57.581052294658654,
+      "simple_mean_s": 26.308494366878087,
+      "total_s": 83.88954666153674,
+      "bg_count": 41,
+      "simple_count": 41
+    },
+    {
+      "model_label": "Claude Sonnet 4 (All Tools)",
+      "background_work_mean_s": 40.84839035465892,
+      "simple_mean_s": 47.92938397768278,
+      "total_s": 88.7777743323417,
+      "bg_count": 41,
+      "simple_count": 41
+    },
+    {
+      "model_label": "GLM 4.6 (All Tools)",
+      "background_work_mean_s": 54.80936881304873,
+      "simple_mean_s": 46.05695651317071,
+      "total_s": 100.86632532621944,
+      "bg_count": 41,
+      "simple_count": 41
+    },
+    {
+      "model_label": "MiniMax M2 (All Tools)",
+      "background_work_mean_s": 65.89482866973174,
+      "simple_mean_s": 67.25743479166704,
+      "total_s": 133.15226346139877,
+      "bg_count": 41,
+      "simple_count": 39
+    },
+    {
+      "model_label": "MiniMax M2 (Web)",
+      "background_work_mean_s": 67.0307504928049,
+      "simple_mean_s": 79.98540056092652,
+      "total_s": 147.01615105373142,
+      "bg_count": 41,
+      "simple_count": 41
+    },
+    {
+      "model_label": "Grok 4 (Web)",
+      "background_work_mean_s": 87.26820560422493,
+      "simple_mean_s": 69.41227908531702,
+      "total_s": 156.68048468954197,
+      "bg_count": 40,
+      "simple_count": 41
+    },
+    {
+      "model_label": "Grok 4 (All Tools)",
+      "background_work_mean_s": 83.00800443897526,
+      "simple_mean_s": 76.1379043638785,
+      "total_s": 159.14590880285377,
+      "bg_count": 41,
+      "simple_count": 41
+    }
+  ]
+}

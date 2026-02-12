@@ -1,0 +1,15 @@
+Mean Total Sources per Customer vs Overall Pass Rate by Model
+(Human Baseline Subset, AI Models Only)
+======================================================================
+
+              Mean Sources  Pass Rate (%)
+Gemini (AT)          36.39          89.76
+Gemini (W)           30.95          83.74
+GLM (AT)             59.44          87.97
+GLM (W)             109.02          88.13
+Claude (AT)          91.17          86.99
+Claude (W)           93.37          85.20
+Grok (AT)            53.00          86.34
+Grok (W)             59.15          84.88
+MiniMax (AT)         54.93          85.69
+MiniMax (W)          90.85          84.39

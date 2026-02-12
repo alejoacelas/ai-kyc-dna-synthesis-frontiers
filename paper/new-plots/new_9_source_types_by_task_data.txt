@@ -1,0 +1,7 @@
+Mean Source Counts by Type and Prompt Type (All-Tools Models, Human Baseline Subset)
+================================================================================
+
+                    Web    EPMC  ORCID  Screen   Total
+prompt_type                                           
+Background Work   6.488  18.278  0.312   0.015  25.093
+Main Screening   26.327   6.454  0.107   1.005  33.893

@@ -1,0 +1,1 @@
+Pearson correlation matrix of per-customer pass rates across the four test categories (Flag Accuracy, Claim Support, Source Reliability, Work Relevance), computed on the 40-profile human baseline subset with pass rates averaged across all AI models. The lower triangle of the matrix is shown; color scale ranges from -1 (red) to +1 (blue).

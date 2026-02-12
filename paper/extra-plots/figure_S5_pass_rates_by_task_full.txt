@@ -1,0 +1,1 @@
+Figure S5: Pass rates by screener and task on the full dataset (134 profiles, AI models only). Replication of Figure S1 using all customer profiles. Task-level patterns remain consistent with the subset analysis, confirming that the 40-profile subset is representative of overall model behavior.

@@ -1,0 +1,1 @@
+Figure 11: Distribution of extracted flag values (FLAG, NO FLAG, UNDETERMINED) across AI models and flag criteria. Each heatmap panel shows the percentage of responses for one flag value. Rows represent AI models; columns represent the four flag criteria (Affiliation, Institution, Domain, Sanctions). Only AI models evaluated on the 40-profile human baseline dataset are included.

@@ -1,0 +1,1 @@
+Pairwise McNemar's test p-values for overall pass rate across 10 AI models on the 40-profile subset. 8 of 45 pairs show significant differences at p < 0.05 (continuity-corrected). Asterisks mark significant pairs.

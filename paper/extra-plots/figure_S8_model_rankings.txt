@@ -1,0 +1,1 @@
+Figure S8: Overall pass rates by screener, sorted from lowest to highest (40-profile subset). Horizontal bars show the average pass rate across all test categories. Color coding: dark blue = AI with all tools, light blue = AI with web search only, amber = human baseline.

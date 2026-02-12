@@ -1,0 +1,1 @@
+Side-by-side heatmaps of overall pass rates by customer type and region, averaged across AI models. Left: 40-profile human baseline subset. Right: full 134-profile dataset. Each cell shows the pass rate and number of customers (n) in that combination. N/A = no data.

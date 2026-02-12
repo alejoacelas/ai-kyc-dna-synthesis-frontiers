@@ -1,0 +1,12 @@
+                                    Label  Mean Response Length (chars)  Pass Rate (%)
+Model                                                                                 
+Claude Sonnet 4 (All Tools)   Claude (AT)                          4169          86.99
+Claude Sonnet 4 (Web)          Claude (W)                          4185          85.20
+GLM 4.6 (All Tools)              GLM (AT)                          3912          87.97
+GLM 4.6 (Web)                     GLM (W)                          3604          88.13
+Gemini 2.5 Pro (All Tools)    Gemini (AT)                          2239          89.76
+Gemini 2.5 Pro (Web)           Gemini (W)                          2158          83.74
+Grok 4 (All Tools)              Grok (AT)                          3775          86.34
+Grok 4 (Web)                     Grok (W)                          4463          84.88
+MiniMax M2 (All Tools)       MiniMax (AT)                          4158          85.69
+MiniMax M2 (Web)              MiniMax (W)                          4266          84.39

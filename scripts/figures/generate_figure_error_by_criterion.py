@@ -440,16 +440,46 @@ def main():
 
     # Create and save Figure 1: Error rates by screener type (main figures)
     fig1 = create_figure_error_rates(error_data)
-    output_path1 = Path(__file__).parent.parent.parent / "paper" / "figures" / "figure_error_by_criterion.png"
+    output_path1 = Path(__file__).parent.parent.parent / "paper" / "supplementary" / "figure_error_by_criterion.png"
     fig1.savefig(output_path1, dpi=300, bbox_inches="tight", facecolor="white")
     print(f"\nFigure 1 saved to: {output_path1}")
+
+    # Save to extra-plots
+    extra_plots_dir = Path(__file__).parent.parent.parent / "paper" / "extra-plots"
+    extra_plots_dir.mkdir(parents=True, exist_ok=True)
+    fig1.savefig(extra_plots_dir / "figure_S11_error_by_criterion.png", dpi=300, bbox_inches="tight", facecolor="white")
+
+    # Save data summary
+    data_path_s11 = extra_plots_dir / "figure_S11_error_by_criterion_data.txt"
+    summary = error_data.groupby(["flag_type", "screener_type"])["error_rate"].sum().unstack()
+    with open(data_path_s11, "w") as f:
+        f.write("Figure S11: Error Rate by Flag Criterion and Screener Type\n")
+        f.write("=" * 70 + "\n\n")
+        f.write(summary.round(1).to_string())
+        f.write("\n")
+    print(f"Data saved to: {data_path_s11}")
+
     plt.close(fig1)
 
     # Create and save Figure 2: Simple error category breakdown by screener (main figures)
     fig2 = create_figure_error_categories_simple(df_errors_filtered)
-    output_path2 = Path(__file__).parent.parent.parent / "paper" / "figures" / "figure_error_categories_by_screener.png"
+    output_path2 = Path(__file__).parent.parent.parent / "paper" / "supplementary" / "figure_error_categories_by_screener.png"
     fig2.savefig(output_path2, dpi=300, bbox_inches="tight", facecolor="white")
     print(f"Figure 2 saved to: {output_path2}")
+
+    fig2.savefig(extra_plots_dir / "figure_S12_error_categories_by_screener.png", dpi=300, bbox_inches="tight", facecolor="white")
+
+    # Save data summary
+    pivot_for_data = pd.crosstab(df_errors_filtered["screener_type"], df_errors_filtered["errorCategory"])
+    pivot_pct_for_data = pivot_for_data.div(pivot_for_data.sum(axis=1), axis=0) * 100
+    data_path_s12 = extra_plots_dir / "figure_S12_error_categories_by_screener_data.txt"
+    with open(data_path_s12, "w") as f:
+        f.write("Figure S12: Error Category Distribution by Screener Type\n")
+        f.write("=" * 70 + "\n\n")
+        f.write(pivot_pct_for_data.round(1).to_string())
+        f.write("\n")
+    print(f"Data saved to: {data_path_s12}")
+
     plt.close(fig2)
 
     # Create and save Figure 3: Detailed error category breakdown (supplementary)
@@ -457,6 +487,23 @@ def main():
     output_path3 = Path(__file__).parent.parent.parent / "paper" / "supplementary" / "figure_error_categories_by_criterion.png"
     fig3.savefig(output_path3, dpi=300, bbox_inches="tight", facecolor="white")
     print(f"Figure 3 (supplementary) saved to: {output_path3}")
+
+    fig3.savefig(extra_plots_dir / "figure_S13_error_categories_by_criterion.png", dpi=300, bbox_inches="tight", facecolor="white")
+
+    # Save data summary
+    data_path_s13 = extra_plots_dir / "figure_S13_error_categories_by_criterion_data.txt"
+    with open(data_path_s13, "w") as f:
+        f.write("Figure S13: Error Category Distribution by Flag Criterion and Screener Type\n")
+        f.write("=" * 70 + "\n\n")
+        for screener in ["Human", "All Tools", "Web Only"]:
+            screener_data = df_errors_filtered[df_errors_filtered["screener_type"] == screener]
+            pivot = pd.crosstab(screener_data["flagType"], screener_data["errorCategory"])
+            pivot_pct = pivot.div(pivot.sum(axis=1).replace(0, 1), axis=0) * 100
+            f.write(f"\n{screener}:\n")
+            f.write(pivot_pct.round(1).to_string())
+            f.write("\n")
+    print(f"Data saved to: {data_path_s13}")
+
     plt.close(fig3)
 
     print("\n" + "=" * 60)

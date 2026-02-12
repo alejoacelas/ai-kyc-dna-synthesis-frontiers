@@ -1,0 +1,1 @@
+Scatter plot of mean information gathering time (wall-clock) per customer vs overall pass rate for each AI model. Latency data from dedicated benchmark across 41 customer profiles; pass rates from 40-profile human baseline subset.

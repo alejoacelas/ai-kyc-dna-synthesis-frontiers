@@ -1,0 +1,1 @@
+Scatter plot of mean total response length per customer vs overall pass rate for each AI model on the 40-profile human baseline subset.

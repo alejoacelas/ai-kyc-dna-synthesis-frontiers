@@ -1,0 +1,1 @@
+Token cost decomposition per customer for each AI model: input token cost (indigo), output token cost (coral), and web search cost (teal) on the 40-profile human baseline subset.

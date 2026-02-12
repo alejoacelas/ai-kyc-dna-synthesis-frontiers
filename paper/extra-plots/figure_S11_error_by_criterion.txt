@@ -1,0 +1,1 @@
+Figure S11: Error rates by flag criterion and screener type (40-profile subset). Grouped bars show total error rates for each flag accuracy criterion (affiliation, institution, domain, sanctions) broken down by screener type: human baseline (amber), all tools (dark blue), and web only (light blue).

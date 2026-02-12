@@ -1,0 +1,17 @@
+New Plot 14: Ground Truth Flag Prevalence
+======================================================================
+
+Number of profiles per flag value per criterion:
+
+flag_value       FLAG  NO FLAG  UNDETERMINED
+criterion_label                             
+Affiliation         3       35             3
+Institution         1       38             2
+Domain             11       29             1
+Sanctions           7       33             1
+
+Total profiles per criterion:
+  Affiliation: 41
+  Institution: 41
+  Domain: 41
+  Sanctions: 41

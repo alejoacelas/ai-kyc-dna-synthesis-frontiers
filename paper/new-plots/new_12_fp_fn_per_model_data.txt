@@ -1,0 +1,59 @@
+New Plot 12: FP / FN / Undetermined Rates per Model per Criterion
+======================================================================
+
+
+--- Affiliation ---
+error_type     FP   FN  UND
+model_short                
+Gemini (AT)   9.8  7.3  2.4
+Gemini (W)    7.3  7.3  7.3
+GLM (AT)      0.0  4.9  0.0
+GLM (W)       0.0  7.3  2.4
+Claude (AT)   2.4  4.9  7.3
+Claude (W)    4.9  4.9  0.0
+Grok (AT)     4.9  2.4  7.3
+Grok (W)      4.9  2.4  4.9
+MiniMax (AT)  2.4  4.9  7.3
+MiniMax (W)   2.4  4.9  4.9
+
+--- Institution ---
+error_type     FP   FN  UND
+model_short                
+Gemini (AT)   2.4  2.4  2.4
+Gemini (W)    0.0  2.4  2.4
+GLM (AT)      0.0  2.4  0.0
+GLM (W)       0.0  2.4  0.0
+Claude (AT)   2.4  2.4  0.0
+Claude (W)    0.0  2.4  0.0
+Grok (AT)     0.0  2.4  7.3
+Grok (W)      2.4  2.4  2.4
+MiniMax (AT)  0.0  2.4  0.0
+MiniMax (W)   2.4  2.4  0.0
+
+--- Domain ---
+error_type     FP    FN  UND
+model_short                 
+Gemini (AT)   2.4   2.4  2.4
+Gemini (W)    0.0   2.4  7.3
+GLM (AT)      0.0  14.6  0.0
+GLM (W)       0.0  12.2  4.9
+Claude (AT)   0.0  14.6  2.4
+Claude (W)    0.0  14.6  0.0
+Grok (AT)     0.0   0.0  7.3
+Grok (W)      0.0   0.0  4.9
+MiniMax (AT)  2.4   9.8  7.3
+MiniMax (W)   2.4   2.4  7.3
+
+--- Sanctions ---
+error_type     FP   FN   UND
+model_short                 
+Gemini (AT)   0.0  4.9   2.4
+Gemini (W)    9.8  0.0  12.2
+GLM (AT)      0.0  0.0   0.0
+GLM (W)       0.0  0.0   0.0
+Claude (AT)   0.0  0.0   0.0
+Claude (W)    2.4  0.0   2.4
+Grok (AT)     0.0  2.4   7.3
+Grok (W)      0.0  2.4   4.9
+MiniMax (AT)  0.0  2.4   0.0
+MiniMax (W)   2.4  2.4  17.1

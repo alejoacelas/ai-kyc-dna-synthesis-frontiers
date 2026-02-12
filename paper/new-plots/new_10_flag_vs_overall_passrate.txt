@@ -1,0 +1,1 @@
+Scatter plot of flag accuracy pass rate vs non-flag pass rate per customer, averaged across AI models on the 40-profile subset (r = 0.38). Each point is one customer, colored by customer type. Dashed line indicates y = x.

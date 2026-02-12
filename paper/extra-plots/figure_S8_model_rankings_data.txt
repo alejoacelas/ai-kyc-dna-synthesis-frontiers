@@ -1,0 +1,15 @@
+Figure S8: Model Rankings - Overall Pass Rate (40-profile subset)
+======================================================================
+
+Human Baseline (5min)                      39.7% (244/615)
+Human Baseline (30min)                     79.7% (490/615)
+Gemini 2.5 Pro (Web)                       83.7% (515/615)
+MiniMax M2 (Web)                           84.4% (519/615)
+Grok 4 (Web)                               84.9% (522/615)
+Claude Sonnet 4 (Web)                      85.2% (524/615)
+MiniMax M2 (All Tools)                     85.7% (527/615)
+Grok 4 (All Tools)                         86.3% (531/615)
+Claude Sonnet 4 (All Tools)                87.0% (535/615)
+GLM 4.6 (All Tools)                        88.0% (541/615)
+GLM 4.6 (Web)                              88.1% (542/615)
+Gemini 2.5 Pro (All Tools)                 89.8% (552/615)

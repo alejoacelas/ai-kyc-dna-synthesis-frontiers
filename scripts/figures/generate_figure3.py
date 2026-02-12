@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """
-Generate Figure 3: Model rankings horizontal bar chart.
+Generate Cost Breakdown Figure: Stacked bar chart showing cost components by model.
 
-Shows overall pass rates by model sorted from lowest to highest performance.
-Color coded by model configuration type (web-only, all-tools, human baseline).
+Shows cost breakdown for all 10 AI models with three components:
+- AI tokens cost (model inference cost)
+- Web search cost
+- Human review cost ($1.08 flat rate)
 """
 
 import pandas as pd
@@ -12,143 +14,171 @@ import numpy as np
 from pathlib import Path
 
 # Import style from same directory
-from style import COLORS, MODEL_LABELS, MODEL_LABELS_NO_TIME, get_model_color, setup_style
+from style import MODEL_ORDER, MODEL_LABELS_NO_TIME, setup_style
 
-def load_and_filter_data():
-    """Load test data and filter for human baseline dataset."""
-    data_path = Path(__file__).parent.parent.parent / "processed" / "tests.csv"
+# Human review cost per screening (flat rate)
+HUMAN_REVIEW_COST = 1.08
+
+# Colors for cost components
+COST_COLORS = {
+    "ai_tokens": "#6366f1",     # Indigo/purple for AI inference
+    "web_search": "#14b8a6",    # Teal for web search
+    "human_review": "#f59e0b",  # Amber for human review (kept as requested)
+}
+
+
+def load_data():
+    """Load the responses dataset."""
+    data_path = Path(__file__).parent.parent.parent / "processed" / "responses.csv"
     print(f"Loading data from: {data_path}")
-
-    # Read the CSV file
     df = pd.read_csv(data_path)
     print(f"Total rows: {len(df):,}")
+    return df
 
-    # Filter for human baseline dataset
-    df_filtered = df[df['is_human_baseline_dataset'] == True].copy()
-    print(f"Rows after human baseline filter: {len(df_filtered):,}")
 
-    print("Available models:", df_filtered['model_label'].unique())
-    print("Available model types:", df_filtered['model_type'].unique())
+def calculate_costs(df):
+    """Calculate average cost per customer for each model."""
+    # Filter AI models only and use human baseline subset (40 profiles)
+    df_ai = df[
+        (df["model_type"] != "human_baseline") &
+        (df["is_human_baseline_dataset"] == True)
+    ].copy()
 
-    return df_filtered
-
-def calculate_overall_pass_rates(df):
-    """Calculate overall pass rate for each model across all test categories."""
-    print("\nCalculating overall pass rates...")
-
-    # Group by model and calculate pass rate
-    model_stats = df.groupby(['model_label', 'model_type']).agg({
-        'pass': ['sum', 'count']
+    # Sum costs across both prompts (main + background_work) per customer per model
+    customer_costs = df_ai.groupby(["customer_name", "model_label"]).agg({
+        "model_cost": "sum",
+        "web_search_cost": "sum",
     }).reset_index()
 
-    # Flatten column names
-    model_stats.columns = ['model_label', 'model_type', 'pass_count', 'total_count']
+    # Calculate average cost per customer for each model
+    model_costs = customer_costs.groupby("model_label").agg({
+        "model_cost": "mean",
+        "web_search_cost": "mean",
+    })
 
-    # Calculate pass rate as percentage
-    model_stats['pass_rate'] = (model_stats['pass_count'] / model_stats['total_count']) * 100
+    # Add human review cost (flat rate per screening)
+    model_costs["human_review_cost"] = HUMAN_REVIEW_COST
 
-    # Sort by pass rate (ascending - worst to best)
-    model_stats = model_stats.sort_values('pass_rate', ascending=True)
+    # Calculate total cost and sort by descending total cost
+    model_costs["total_cost"] = (
+        model_costs["model_cost"] +
+        model_costs["web_search_cost"] +
+        model_costs["human_review_cost"]
+    )
+    model_costs = model_costs.sort_values("total_cost", ascending=False)
 
-    print("Pass rates by model:")
-    for _, row in model_stats.iterrows():
-        print(f"  {row['model_label']}: {row['pass_rate']:.1f}% ({row['pass_count']}/{row['total_count']})")
+    print("\nCost breakdown by model:")
+    for model in model_costs.index:
+        ai = model_costs.loc[model, "model_cost"]
+        web = model_costs.loc[model, "web_search_cost"]
+        human = model_costs.loc[model, "human_review_cost"]
+        total = ai + web + human
+        print(f"  {MODEL_LABELS_NO_TIME.get(model, model)}: "
+              f"AI=${ai:.3f}, Web=${web:.3f}, Human=${human:.2f}, Total=${total:.2f}")
 
-    return model_stats
+    return model_costs
 
-def create_figure(model_stats):
-    """Create the horizontal bar chart."""
+
+def create_figure(model_costs):
+    """Create the stacked bar chart."""
     setup_style()
 
-    # Custom colors for better AI vs Human distinction
-    # AI models: shades of blue (tech/digital feel) - more distinct shades
-    # Human: warm orange/amber (organic/human feel)
-    FIGURE3_COLORS = {
-        'all_tools': '#1e40af',      # Dark blue for AI with all tools
-        'web_only': '#93c5fd',       # Much lighter blue for AI web-only
-        'human_baseline': '#f59e0b', # Amber/orange for human
-    }
+    fig, ax = plt.subplots(figsize=(12, 7))
 
-    # Create figure with appropriate size for horizontal bars
-    fig, ax = plt.subplots(figsize=(12, 8))
+    models = model_costs.index.tolist()
+    x = np.arange(len(models))
+    width = 0.7
 
-    # Get colors for each model based on model type
-    def get_figure3_color(model_type):
-        return FIGURE3_COLORS.get(model_type, '#6b7280')
+    # Create stacked bars
+    ai_costs = model_costs["model_cost"].values
+    web_costs = model_costs["web_search_cost"].values
+    human_costs = model_costs["human_review_cost"].values
 
-    colors = [get_figure3_color(mt) for mt in model_stats['model_type']]
+    # Stack: Human review at base, AI tokens in middle, web search on top
+    bars_human = ax.bar(x, human_costs, width,
+                        label="Human review cost",
+                        color=COST_COLORS["human_review"],
+                        alpha=0.9)
 
-    # Create horizontal bar chart
-    bars = ax.barh(range(len(model_stats)), model_stats['pass_rate'], color=colors, alpha=0.9)
+    bars_ai = ax.bar(x, ai_costs, width,
+                     bottom=human_costs,
+                     label="AI tokens cost",
+                     color=COST_COLORS["ai_tokens"],
+                     alpha=0.9)
 
-    # Customize y-axis (model labels)
-    ax.set_yticks(range(len(model_stats)))
-    # Use shortened labels for better readability (no time indication for human baseline)
-    short_labels = [MODEL_LABELS_NO_TIME.get(label, label) for label in model_stats['model_label']]
-    ax.set_yticklabels(short_labels)
+    bars_web = ax.bar(x, web_costs, width,
+                      bottom=human_costs + ai_costs,
+                      label="Web search cost",
+                      color=COST_COLORS["web_search"],
+                      alpha=0.9)
 
-    # Customize x-axis (pass rate)
-    ax.set_xlabel('Pass Rate (%)', fontsize=12, fontweight='bold')
-    ax.set_xlim(0, 100)
-    ax.set_xticks(range(0, 101, 10))
+    # Customize x-axis
+    ax.set_xticks(x)
+    short_labels = [MODEL_LABELS_NO_TIME.get(m, m) for m in models]
+    ax.set_xticklabels(short_labels, rotation=45, ha="right", fontsize=10)
+
+    # Customize y-axis
+    ax.set_ylabel("Cost per Customer (USD)", fontsize=12, fontweight="bold")
+    ax.set_xlabel("Model", fontsize=12, fontweight="bold")
+
+    # Add total cost labels on top of bars
+    for i, (ai, web, human) in enumerate(zip(ai_costs, web_costs, human_costs)):
+        total = ai + web + human
+        ax.text(i, total + 0.02, f"${total:.2f}",
+                ha="center", va="bottom", fontsize=9, fontweight="bold")
+
+    # Set y-axis limit to accommodate labels
+    max_total = max(ai_costs + web_costs + human_costs)
+    ax.set_ylim(0, max_total * 1.12)
 
     # Add title
-    ax.set_title('Average Pass Rate by Screener Across All Tasks',
-                fontsize=14, fontweight='bold', pad=20)
+    ax.set_title("Screening Cost Breakdown by Model",
+                 fontsize=14, fontweight="bold", pad=15)
 
-    # Add value labels on bars
-    for i, (bar, rate) in enumerate(zip(bars, model_stats['pass_rate'])):
-        ax.text(bar.get_width() + 1, bar.get_y() + bar.get_height()/2,
-                f'{rate:.1f}%', va='center', fontsize=10, fontweight='bold')
+    # Add legend
+    ax.legend(loc="upper right", fontsize=10)
 
-    # Create legend with intuitive AI vs Human grouping
-    legend_elements = []
-    legend_labels = []
+    # Add grid for readability
+    ax.grid(True, axis="y", alpha=0.3, linestyle="--")
+    ax.set_axisbelow(True)
 
-    # Add legend entries for each model type with new colors
-    for model_type, color, label in [
-        ('all_tools', FIGURE3_COLORS['all_tools'], 'AI - All Tools (AT)'),
-        ('web_only', FIGURE3_COLORS['web_only'], 'AI - Web Only (W)'),
-        ('human_baseline', FIGURE3_COLORS['human_baseline'], 'Human baseline'),
-    ]:
-        if model_type in model_stats['model_type'].values:
-            legend_elements.append(plt.Rectangle((0,0),1,1, fc=color, alpha=0.9))
-            legend_labels.append(label)
+    # Clean up spines
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
 
-    ax.legend(legend_elements, legend_labels,
-             loc='lower right', frameon=True, framealpha=0.9)
-
-    # Improve layout
     plt.tight_layout()
 
     return fig
 
+
 def main():
-    """Main function to generate Figure 3."""
-    print("Generating Figure 3: Model rankings horizontal bar chart")
+    """Main function to generate the cost breakdown figure."""
+    print("Generating Cost Breakdown Figure: Stacked bar chart")
     print("=" * 60)
 
-    # Load and filter data
-    df = load_and_filter_data()
+    # Load data
+    df = load_data()
 
-    # Calculate overall pass rates
-    model_stats = calculate_overall_pass_rates(df)
+    # Calculate costs
+    model_costs = calculate_costs(df)
 
     # Create the figure
-    fig = create_figure(model_stats)
+    fig = create_figure(model_costs)
 
     # Save the figure
-    output_path = Path(__file__).parent.parent.parent / "paper" / "figures" / "figure3_model_rankings.png"
-    fig.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
+    output_path = Path(__file__).parent.parent.parent / "paper" / "figures" / "figure3_cost_breakdown.png"
+    fig.savefig(output_path, dpi=300, bbox_inches="tight", facecolor="white")
     print(f"\nFigure saved to: {output_path}")
 
-    print("\nCaption:")
-    print("Overall pass rates by model sorted from lowest to highest performance.")
-    print("Color coding shows model configuration: web-only (blue), all-tools (green),")
-    print("and human baseline (red). Tool-augmented configurations show consistent")
-    print("but modest improvements over web-only versions.")
-
     plt.close()
+
+    print("\n" + "=" * 60)
+    print("Caption:")
+    print("Cost breakdown per customer screening by model, ordered by total cost.")
+    print("Each bar shows three components: human review (amber, at base),")
+    print("AI token costs (indigo), and web search costs (teal).")
+    print(f"Human review is a fixed ${HUMAN_REVIEW_COST:.2f} per screening.")
+
 
 if __name__ == "__main__":
     main()

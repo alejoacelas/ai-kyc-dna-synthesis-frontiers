@@ -1,0 +1,1 @@
+Figure S6: Pass rates by screener and customer type on the full dataset (134 profiles, AI models only). Replication of Figure S2 using all customer profiles. The full dataset provides larger sample sizes per customer category and confirms patterns observed in the subset.

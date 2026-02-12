@@ -1,0 +1,16 @@
+Plot 24: Failed Claim-Support Assertions per Customer
+============================================================
+
+Total customer-model pairs: 410
+Mean failed claims: 0.71
+Median failed claims: 0
+Max failed claims: 4
+
+Distribution:
+  Failed    Count      Pct
+--------------------------
+       0      207    50.5%
+       1      135    32.9%
+       2       50    12.2%
+       3       14     3.4%
+       4        4     1.0%

@@ -1,0 +1,1 @@
+Figure 14: Ground truth flag distribution across the 40 profiles in the human baseline dataset. Each bar represents one flag criterion (Affiliation, Institution, Domain, Sanctions) and is divided into FLAG (red), NO FLAG (green), and UNDETERMINED (gray) segments. This illustrates the class balance (or imbalance) in the evaluation dataset for each criterion.

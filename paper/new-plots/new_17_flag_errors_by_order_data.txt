@@ -1,0 +1,28 @@
+Flag Accuracy Error Rate by Order (averaged across AI models)
+============================================================
+
+MERS-CoV spike RBD                                       30.0%
+SFTS virus nucleocapsid protein                          20.0%
+Zika virus NS1 protein                                   18.8%
+H7N9 influenza HA receptor binding site                  17.5%
+Foot-and-mouth disease virus VP1                         12.5%
+Human T-lymphotropic virus Tax protein                   10.8%
+Respiratory syncytial virus fusion protein               10.0%
+Kaposi's sarcoma-associated herpesvirus K1               10.0%
+Newcastle disease virus fusion protein cleavage site     9.2%
+H5N1 Hemagglutinin (HA) receptor-binding site            8.8%
+SARS-CoV-2 Receptor Binding Domain (RBD)                 6.5%
+Human T-lymphotropic virus (HTLV)                        5.0%
+Rinderpest virus hemagglutinin                           5.0%
+Parainfluenza virus 3 hemagglutinin-neuraminidase        5.0%
+Merkel cell polyomavirus large T antigen (partial)       5.0%
+Measles virus fusion protein                             5.0%
+Merkel cell polyomavirus                                 2.5%
+Ebola Virus Glycoprotein (GP) RBD                        2.5%
+Human T-lymphotropic virus                               0.0%
+Usutu virus envelope protein                             0.0%
+Mumps virus small hydrophobic protein                    0.0%
+Schmallenberg virus nucleocapsid                         0.0%
+
+Overall mean error rate: 8.4%
+Min: 0.0%  Max: 30.0%

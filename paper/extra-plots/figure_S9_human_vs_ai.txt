@@ -1,0 +1,1 @@
+Figure S9: Human versus AI error rates by flag accuracy criterion (40-profile subset). Amber bars show the 30-minute human baseline error rate. Blue stacked bars show the range of AI model error rates from lowest (dark blue) to highest (light blue). Lower bars indicate better performance.

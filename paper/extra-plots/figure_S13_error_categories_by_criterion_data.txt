@@ -1,0 +1,27 @@
+Figure S13: Error Category Distribution by Flag Criterion and Screener Type
+======================================================================
+
+
+Human:
+errorCategory  difference_in_judgment  empty_response  flag_instructions_not_followed  information_not_found
+flagType                                                                                                    
+affiliation                       0.0            33.3                             0.0                   66.7
+domain                            0.0            28.6                            57.1                   14.3
+institution                      33.3             0.0                            33.3                   33.3
+sanctions                         0.0             0.0                             0.0                  100.0
+
+All Tools:
+errorCategory  difference_in_judgment  empty_response  flag_instructions_not_followed  information_not_found
+flagType                                                                                                    
+affiliation                       0.0            17.6                            11.8                   70.6
+domain                           14.3             9.5                            76.2                    0.0
+institution                       0.0            66.7                             0.0                   33.3
+sanctions                         0.0            37.5                            12.5                   50.0
+
+Web Only:
+errorCategory  difference_in_judgment  empty_response  factual_mistake  flag_instructions_not_followed  information_not_found
+flagType                                                                                                                     
+affiliation                       9.1            18.2              0.0                            36.4                   36.4
+domain                           25.0            16.7              0.0                            58.3                    0.0
+institution                       0.0            50.0              0.0                            50.0                    0.0
+sanctions                        10.0            30.0              5.0                            25.0                   30.0
