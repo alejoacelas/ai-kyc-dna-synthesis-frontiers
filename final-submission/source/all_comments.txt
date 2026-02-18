@@ -22,55 +22,23 @@ Might be better to split this into best performing model's ability to correctly 
 "... but its cost and labor intensity present major challenges to the already highly competitive synthesis industry""
 #AAAB0IvQVYI [open] Cassidy Nelson 2026-02-10
   "I think this is important; could emphasise that alternative verification pathways are needed (FYI we are currently working on a manuscript on this topic); sharing in confidence here so we don't contradict it https://docs.google.com/document/d/1dIpDx0D787EoKK64W3a7q1KxTLqCvXDWEBWisNaPBIc/edit?usp=sharing"
-#AAAB0IvQVPo [resolved] Cassidy Nelson 2026-02-10
-  "excellent graph! just double checking that the example Maria is fictional?"
-  -> Alejandro Acelas: "yes, entirely fictional. I added a bit to clarify on the figure label"
 #AAAB0IvQVOo [open] Cassidy Nelson 2026-02-10
   "quick comment on why Gemini 3.0 Pro wasn't used/date cut off would be useful"
   -> Alejandro Acelas: "done!"
 #AAABvV2f0Kg [open] Alejandro Acelas 2026-02-08
   "Change information-gathering for another description."
-#AAABvJ-eUcc [resolved] Paul-Enguerrand Fady 2026-02-05
-  "Let me know if you want me to review when done"
-#AAABvJ-eUcM [resolved] Paul-Enguerrand Fady 2026-02-05
-  "Nice"
-#AAABvJ-eUcA [resolved] Paul-Enguerrand Fady 2026-02-05
-  "Really? It looks to me like AI (Web only) was about half as likely as humans to make Search Failure errors (17% vs 35%)."
-  -> Alejandro Acelas: "yep, worth noting"
-#AAABvJ-eUb4 [resolved] Paul-Enguerrand Fady 2026-02-05
-  "Should clarify somewhere that this is the percentage of total errors committed by humans, i.e. "humans committed 17 errors, 6 of them were criterion deviations, that is 35% of all human errors were criterion deviations".
-
-Maybe even write it out as plainly as that (but less shorthand) somewhere in-test"
-  -> Alejandro Acelas: "done!"
 #AAABvJ-eUa8 [open] Paul-Enguerrand Fady 2026-02-05
   "This still feels like something which goes into the data availability statement, not the conclusion"
 #AAABvJ-eUaE [open] Paul-Enguerrand Fady 2026-02-05
   "Not sure I entirely understand this phrase or what it's implying"
-#AAABvJ-eUZ8 [resolved] Paul-Enguerrand Fady 2026-02-05
-  "Maybe add a citation here to point to the Cliver website/"
-  -> Alejandro Acelas: "added a placeholder for that. will add when reviewing"
-#AAABvJ-eUYk [resolved] Paul-Enguerrand Fady 2026-02-05
-  "Nice, I like the broken axis, I think it's more honest!"
-#AAABvJ-eUYY [resolved] Paul-Enguerrand Fady 2026-02-05
-  "Presumably these are different in that total time includes the human review of AI-generated reports (as stated above)? If so, worth specifying in the figure legend or in the table, so that someone just finding the figure by itself/with its legend but without the accompanying text can still make sense of this"
-  -> Alejandro Acelas: "done!"
-#AAABvJ-eUYU [resolved] Paul-Enguerrand Fady 2026-02-05
-  "Note 2 decimal places here but 1 decimal place above. Worth harmonising; how much extra info do we get from the second decimal place?"
-  -> Alejandro Acelas: "fixed!"
 #AAABvJ-eUYQ [open] Paul-Enguerrand Fady 2026-02-05
   "How can the total time taken in the 5 min limit be longer than 5 min?"
   -> Paul-Enguerrand Fady: "I guess because the 5 mins was allowed for information gathering only, and then there's however much extra time was required to make a judgement?
 
 If so, while this makes sense when explained it is counterintuitive. Should be explained in 1 sentence somewhere in the text"
-#AAABvJ-eUX4 [resolved] Paul-Enguerrand Fady 2026-02-05
-  "This is the only one which is hyperlinked. Not sure why? Also not clear to me how references are being handled, since there is no bibliography. Very happy to help with this if it's useful"
-  -> Alejandro Acelas: "I'm in the process of turning these into real references. Just left the link there so I didn't miss the original reference"
 #AAABvJ-eUXw [open] Paul-Enguerrand Fady 2026-02-05
   "Carlson curves disagree that this is currently happening (https://www.synthesis.cc/synthesis/category/Carlson+Curves). Maybe we want some language about the fact that synthesis could become cheaper e.g. thanks to new chemistries?"
   -> Alejandro Acelas: "I'll just delete the word 'cheaper'"
-#AAABzWPzLt8 [resolved] Hanna Palya 2026-02-05
-  "is this true?"
-  -> Alejandro Acelas: "I checked that they worked with organisms from our SOC sequences list (eg. Covid, Mers-Cov) in a lab setting, which was the same thing we did for the academic users of SOCs"
 #AAABzRzwAW0 [open] Alejandro Acelas 2026-02-02
   "Add something about how the EU AI Act applies or not to this task"
   -> Cassidy Nelson: "I'd recommend looking at the draft EU Biotech Act and its annexes and seeing how it might apply https://health.ec.europa.eu/publications/proposal-regulation-establish-measures-strengthen-unions-biotechnology-and-biomanufacturing-sectors_en"
@@ -78,52 +46,14 @@ If so, while this makes sense when explained it is counterintuitive. Should be e
   "Add plots to Appendix D"
   -> Paul-Enguerrand Fady: "Presumably all the appendices will be contained in one single Supplementary Information file?"
   -> Cassidy Nelson: "I think fine to signal where in the supp materials it will be; the journal may have preference on supplementary materials vs listed appendices"
-#AAABvI5teLM [resolved] Alejandro Acelas 2026-02-02
-  "Discuss why work relevance scores are lower with all tools"
-#AAABzKnDbEs [resolved] Alejandro Acelas 2026-01-29
-  "Add the 1 minute of human costs it takes to review the AI report to take a decision"
 #AAABvE4wtYs [open] Alejandro Acelas 2026-01-28
   "Make explicit here that all the comparisons including humans were evaluated only on 40 profiles"
-#AAABx66YXkY [resolved] Paul-Enguerrand Fady 2026-01-27
-  "There is no appendix B currently"
-  -> Alejandro Acelas: "Renamed the other tabs to indicate which appendix they correspond to"
 #AAABx66YXkU [open] Paul-Enguerrand Fady 2026-01-27
   "Strongly agree with Cassidy's point, this should be removed. Instead, focus on key points ("we demonstrated that AI-enabled KYC is substantially less costly and time-consuming than human-only screening...") and contextualise. 
 
 Consider something like "Uplifting screening tool developers with LLMs is a quintessential example of defensive acceleration, enabling good actors in biosecurity to outpace novel threats, and thus enabling thriving, secure bioeconomies".
 
 Not wedded to this language, but try to land the key points that you want the reader to come away with in this section."
-#AAABx66YXi4 [resolved] Paul-Enguerrand Fady 2026-01-27
-  "I think I would rework this paragraph with a slightly different framing. Something like 
-
-"AI-assisted KYC sits within a broader framework of options for enhancing biosecurity regarding access to synthetic nucleic acids. It can be bolstered through front-loading the obtention of work through template [mention IBBIS templates] or through rigorous use of metadata [mention the NTI metadata proposal https://www.nti.org/analysis/articles/white-paper-a-proposal-for-biodesign-metadata-exchange-for-use-in-biosecurity/]"
-
-I like what you’ve done with the "request-versus-check tasks". I would keep that, but I think it is worth emphasising that what we propose is a CRUCIAL  part of a wider ecosystem, to really drive home the value of AI-KYC."
-  -> Hanna Palya: "I think I mostly made the changes (see paragraph above). I did not include the metadata sharing because that felt only tangentially related to customer screening. Maybe you think that's a reason to include it (then I would also mention other sequence screening developments too), lmk!"
-  -> Paul-Enguerrand Fady: "Looks good to me!"
-#AAABx66YXhk [resolved] Paul-Enguerrand Fady 2026-01-27
-  "Nice, I was hoping you would mention this."
-#AAABx66YXg4 [resolved] Paul-Enguerrand Fady 2026-01-27
-  "As opposed to what, diagnostic use? Consider rephrasing"
-#AAABx66YXf4 [resolved] Paul-Enguerrand Fady 2026-01-27
-  "What does this mean in this context?"
-#AAABx66YXfw [resolved] Paul-Enguerrand Fady 2026-01-27
-  "On page 7, we say "we estimate each hour of work from a human screener costs around $54."
-
-How can half an hour of work cost less than $27?"
-  -> Alejandro Acelas: "Because on average screeners in the 30-min human baseline condition spent less than 30 minutes per case. 
-
-In practice, they basically got the instruction to submit around the 30 min mark (and had a timer clearly indicating time left), but could submit earlier or later (which they did on a few cases, but only a few minutes late)"
-  -> Alejandro Acelas: "I think I'll rename it "Human baseline (30 min limit)", make clearer that the 5 min baseline is only there for completeness (what can humans do when allotted similar time to models), and discuss the 30-min baseline in the text simply as human baseline."
-#AAABx66YXcI [resolved] Paul-Enguerrand Fady 2026-01-27
-  "When can we expect this to stop being the case? Since this is the Discussion section, we should frame our findings in the broader context of technological development. Are there current efforts to develop models with continual-learning methods?"
-  -> Alejandro Acelas: "there is, though I'm not sure I want to take the effort to back that up here, so I just rephrased slightly"
-#AAABx66YXb4 [resolved] Paul-Enguerrand Fady 2026-01-27
-  "Why?"
-  -> Alejandro Acelas: "I think screeners (both AIs and humans) defaulted to a common-sense intuition of when to flag, and the instructions did not include much explicit guidance of when to override that. 
-
-The relevant instructions were "Verify the customer's email domain legitimately belongs to the institution provided in the order""
-  -> Alejandro Acelas: "explained a bit more in the text"
 #AAABx66YXZM [open] Paul-Enguerrand Fady 2026-01-27
   "Some people might complain about the y axis (because it starts at ~82%, not 0%) and claim we are inflating the difference between models and unfairly making it look like e.g. MiniMax (W) is worse than it is. Worth considering whether you want to put in a broken y axis to signal clearly that all the tools are in quite a narrow window of pass rates"
 #AAABx66YXY8 [open] Paul-Enguerrand Fady 2026-01-27
@@ -131,114 +61,21 @@ The relevant instructions were "Verify the customer's email domain legitimately 
   -> Alejandro Acelas: "All plots that include a comparison to the human baseline are evaluated only on that 40-profile subset. And also those requiring a flag ground truth (because that required substantial manual input). 
 
 I'll clarify that on the dataset creation section"
-#AAABx66YXY0 [resolved] Paul-Enguerrand Fady 2026-01-27
-  "See above for query re:prompt development cost"
-#AAABx66YXYc [resolved] Paul-Enguerrand Fady 2026-01-27
-  "Where is this captured or reflected in the data? If this is information you have and want to refer to, I would encourage you to add it into supplementary information"
-  -> Paul-Enguerrand Fady: "From continuing to read, it looks like this is in Figure 6? If so, just point to that here"
-  -> Alejandro Acelas: "not figure 6, but will link to supplementary figure once that's numbered"
-#AAABx66YXYU [resolved] Paul-Enguerrand Fady 2026-01-27
-  "This appears to be a composite score which is just the arithmetic mean of the values in the table above (86.6, 86.8, 78.5, 82.9). If this is the case, and this composite score is the main readout, we should include an extra column in the figure that shows this composite score."
-  -> Paul-Enguerrand Fady: "I think this is what you have in figure 2, but not sure why this needs to be (or benefits from being) a different figure?"
-  -> Alejandro Acelas: "added it to the main figure, thanks!"
 #AAABx66YXYQ [open] Paul-Enguerrand Fady 2026-01-27
   "This appears to be a composite score which is just the arithmetic mean of the values in the table above (86.6, 86.8, 78.5, 82.9). If this is the case, and this composite score is the main readout, we should include an extra column in the figure that shows this composite score."
-#AAABx66YXWo [resolved] Paul-Enguerrand Fady 2026-01-27
-  "Should we include the time taken to develop the prompts * a cost per hour of human labour? Not doing so risks artificially deflating the AI cost, but the fixed cost of prompt development would be amortised much more over the lifetime use of the tool than in this experiment alone. Maybe amortised to such an extent that it tends towards 0, hence we don't include it? Worth including some reasoning at least"
-  -> Alejandro Acelas: "good idea, I'm adding that"
-#AAABx66YXVY [resolved] Paul-Enguerrand Fady 2026-01-27
-  "Not usual to name authors within the text, but I see why we're doing it here (lend credibility). Might be one for the editor/reviewers to decide on."
-  -> Cassidy Nelson: "I agree we shouldn't list names. We should also explain how they were setup by another co-author (without naming Alejo)"
-  -> Alejandro Acelas: "just added that"
-#AAABx66YXVU [resolved] Paul-Enguerrand Fady 2026-01-27
-  "What is this? Is likely to be well-known to reviewers or readers? If not, explain in 1 sentence or less"
 #AAABx66YXVQ [open] Paul-Enguerrand Fady 2026-01-27
   "Should we include any sort of qualitative statement about what this means re:appropriateness of existing guardrails and how they might have to be adapted to maximise defensive uplift? @cassidy@longtermresilience.org
 
 Not necessarily here, but in the discussion section below"
-#AAABx66YXRQ [resolved] Paul-Enguerrand Fady 2026-01-27
-  "This sounds like established fact. If this is something you encountered in your work, consider adding "we found that...""
-#AAABx66YXRA [resolved] Paul-Enguerrand Fady 2026-01-27
-  "Need to justify why"
-  -> Alejandro Acelas: "done"
 #AAABx66YXOo [open] Paul-Enguerrand Fady 2026-01-27
   "This makes it sound like these people actually received these orders. We should make clear that this is a simulation, with language along the lines of what I've proposed here. I'm not wedded to this specific wording so please feel free to edit, but we should specify the modality of the work (entirely safe and in silico)"
-#AAABx66YXOk [resolved] Paul-Enguerrand Fady 2026-01-27
-  "i.e. Researchers who have not previously worked on SOCs? This definition isn't super clear to me"
-  -> Alejandro Acelas: "maybe it's better now?"
-#AAABx66YXOY [resolved] Paul-Enguerrand Fady 2026-01-27
-  "Not defined or explained prior to this use. I think the chapeau above "customer categories" is a good place to explain + define this"
-  -> Alejandro Acelas: "good catch, just added a para about that"
-#AAABx66YXOM [resolved] Paul-Enguerrand Fady 2026-01-27
-  ""SOC background" strikes me as a bit odd. Could we change this to "Established academic users of SOCs" or something similar (then propagate to "industry" below)?"
 #AAABx66YXN0 [open] Paul-Enguerrand Fady 2026-01-27
   ""customers", presumably?"
   -> Alejandro Acelas: "reworded for clarity"
-#AAABx66YXNQ [resolved] Paul-Enguerrand Fady 2026-01-27
-  "Specifically? I mean this in contrast with "LIFE SCIENCE research organisation" or similar. What is someone is doing DNA origami for functional materials at an applied physics institute? 
-
-Not a big deal, but just thinking of edge cases and how they might/might not have been captured in our workflow"
-  -> Alejandro Acelas: "yep, I think it would have been better to use 'life science institution', but I didn't consider it when writing the task prompts for the LLMs. 
-
-I'd stick with the term here given that's what we used in the evaluations"
 #AAABzFZdEJk [open] Paul-Enguerrand Fady 2026-01-26
   "Are we using AmE spelling throughout for compliance with Frontiers guidelines?"
-#AAABzFYi1w8 [resolved] Paul-Enguerrand Fady 2026-01-26
-  "We used "legitimacy screening" and "legitimate-use assessment" in our cost-benefit analysis. Are you trying to stay away from this terminology intentionally? I've used the latter in my additions"
-  -> Alejandro Acelas: "I defaulted to follow-up screening because it's what the HHS and other guidances use, but don't have strong feelings one way or another. I'll check with Hanna and we may change it for the whole paper"
-  -> Hanna Palya: "Happy to change "customer screening" to "legitimacy screening". I would prefer to keep  "onboarding" and "follow-up screening", because the tasks are different for these"
-  -> Paul-Enguerrand Fady: "Okay, I've changed the language I added to reflect this. "Legitimate use assessment" no longer appears in the text"
-#AAABzFYizgw [resolved] Paul-Enguerrand Fady 2026-01-26
-  "Insert 1-sentence description of sequence screening"
-#AAABu_o0nls [resolved] Kevin Flyangolts 2026-01-16
-  "You also specifically linked Europe PMC which might be one of the reasons, you're getting better results for Europe"
-  -> Paul-Enguerrand Fady: "European = Anglophone is a non-intuitive shortcut given that there is only 1 natively anglophone country in the EU"
-#AAABu_o0nlQ [resolved] Kevin Flyangolts 2026-01-16
-  "Not sure I understand how this 89.8% pass rate corresponds to the pass rates by category. Is this saying that if any category fails, the entire screen fails, so this measures the actual false-positive / false-negative rate rather than the individual tests"
-#AAABu_o0nlM [resolved] Kevin Flyangolts 2026-01-16
-  "Counterintuitively adding some of the research tools (e.g., ORCID and Europe PMC) can dramatically affect Work Relevance scores. I think this is something we should talk about and explain"
-  -> Paul-Enguerrand Fady: "Agreed, this is worth discussing in this paper"
-  -> Alejandro Acelas: "Added discussion of this!"
-#AAABu_o0njc [resolved] Kevin Flyangolts 2026-01-16
-  "We might want to define what we mean by pass / fail in this context or use a different word"
-#AAABu_o0nis [resolved] Kevin Flyangolts 2026-01-16
-  "I might be confusing something, but it seems like we're saying above that all orders were derived from controlled pathogens – "all profiles were assigned orders from a standardized list of 22 proteins derived from controlled pathogens." Later we say for the general life science category we actually selected a representative batch of "typical orders that would not trigger screening concerns""
-  -> Paul-Enguerrand Fady: "Agreed, not sure I understand either"
-  -> Alejandro Acelas: "I just merged this part with the general life sciences description above. maybe it's clearer now?"
-#AAABu_o0nhw [resolved] Kevin Flyangolts 2026-01-16
-  "There's also a lot of back and forth with the customer at this stage (e.g., can the customer provide proof of a grant supporting the research, proof of a biosafety approval, etc)"
-  -> Alejandro Acelas: "Added a sentence about that to the paragraph"
 #AAABvs31gso [open] Cassidy Nelson 2026-01-14
   "I think not quite appropriate for an academic publication. I do think you should point to future research that could be done here: eg. how much we think we could reduce cost/get to great accuracy by having a AI-human hybrid system perhaps (fine tuning so that the AI is able to flag when it has uncertainty in its assessment, triggering human review etc)"
-#AAABvs31gsQ [resolved] Cassidy Nelson 2026-01-14
-  "is error rate assuming humans are 100% correct?"
-  -> Alejandro Acelas: "They're assuming that I was 100% correct in the flag decisions I made after reviewing both the human and AI screeners' answers"
-  -> Kevin Flyangolts: "Maybe a good idea to have some sanity check here with another reviewer on a small sample just to make sure"
-#AAABvs31gsM [resolved] Cassidy Nelson 2026-01-14
-  "do we have a sense of "gold standard" truth we can work out? I'm not sure if AI improves upon humans or is passing too many"
-  -> Alejandro Acelas: "The closest things we currently have are:
-- Every flag 'ground truth' was manually annotated by me
-- I reviewed a sample of the metric pass/fail decisions and I'm computing the inter-rater agreement with the automating grader (I've reviewed 100 so far, but got stuck in a linking error, so I want to make sure that works fine and probably review more cases)"
-#AAABvs31gsA [resolved] Cassidy Nelson 2026-01-14
-  "make a note about the relative difference between AI model costs also"
-  -> Alejandro Acelas: "done!"
-#AAABvs31gr4 [resolved] Cassidy Nelson 2026-01-14
-  "will circle back: do we have estimate cost of AI vs human, with the AI incorporating the human reviewer cost?"
-#AAABvs31grw [resolved] Cassidy Nelson 2026-01-14
-  "need to include somewhere the aim of this work, comparing humans vs AI but also different LLMs"
-  -> Paul-Enguerrand Fady: "Have included a brief paragraph above doing so"
-#AAABvs31grk [resolved] Cassidy Nelson 2026-01-14
-  "I think better to define above/have some commentary on SOCs in the introduction"
-  -> Paul-Enguerrand Fady: "I've added 2 sentences on this in paragraph 1 of the intro"
-#AAABvs31grc [resolved] Cassidy Nelson 2026-01-14
-  "this is better done in the abstract (shortened) than in the introduction section. Introduction should give background material and not summarise the work.
-
-You could expand in the introduction section on how little innovation has been done in customer screening, and how it has been done in other industries, and a bit on AI itself for this type of work."
-  -> Paul-Enguerrand Fady: "Agree, have moved this section here, will circle back once I've had a chance to read through in full"
-#AAABvs31grE [resolved] Cassidy Nelson 2026-01-14
-  "you could also cite our CBA where average per-order costs of customer screening is significantly higher than sequence screening (eg. £0.95 vs £0.10 for gene-length orders)"
-#AAAByg1IFmw [resolved] Alejandro Acelas 2026-01-14
-  "Update to use figures only on the human baseline subset to make it comparable with human costs"
 #AAAByg1IFjQ [open] Alejandro Acelas 2026-01-14
   "The reaso the human baseline looks weak on Sanctioned Academics is because empty responses were counted as fails and Kevin and Hanna (reasonably) stopped investigating customers that fell under export controls"
 #AAAByg1IFh8 [open] Alejandro Acelas 2026-01-14
@@ -251,12 +88,6 @@ You could expand in the introduction section on how little innovation has been 
 Use Cohen's kappa to correct for class imbalance"
 #AAABu8pUvj4 [open] Hanna Palya 2026-01-12
   "are the others definitely not from USA, Europe + Australia or China? I spent some time trying to make this graph and then got frustrated bc I thought some of the Others might be from these regions but couldnt quickly sort them"
-#AAAByYKyEzE [resolved] Alejandro Acelas 2026-01-12
-  "Convert cost table into heatmap. Split heatmap into three vertically stacked sections (AI web + tools, AI web-only, and human baseline). 
-
-Do the same for the Figure 1 heatmap. Pick a color palette deliberately to distinguish the three groups above. 
-
-Compute the cost by tools plot"
 #AAAByRvsO9g [open] Hanna Palya 2026-01-09
   "i think you could put my paragraph about the range of screening tasks here"
 #AAAByRvsO8M [open] Hanna Palya 2026-01-09

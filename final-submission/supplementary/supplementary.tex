@@ -1,0 +1,503 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Supplementary Material for:
+% Evaluating AI-Assisted Customer Verification for DNA Synthesis Screening
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[utf8]{frontiers_suppmat}
+\usepackage{url,hyperref,lineno,microtype}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+
+\begin{document}
+\onecolumn
+\firstpage{1}
+
+\title[Supplementary Material]{{\helveticaitalic{Supplementary Material}}}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX A
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix A: Sequences of Concern Used in Evaluation}
+
+All customer profiles in our dataset were assigned simulated orders from the following list of 22 proteins. These sequences are derived from controlled pathogens and would typically trigger follow-up screening at DNA synthesis providers. We selected sequences that would be plausible to order for legitimate vaccine or therapeutics research.
+
+\begin{itemize}
+\item Ebola Virus Glycoprotein (GP) RBD
+\item Foot-and-mouth disease virus VP1
+\item H5N1 Hemagglutinin (HA) receptor-binding site
+\item H7N9 influenza HA receptor binding site
+\item Human T-lymphotropic virus (HTLV) Tax protein
+\item Human metapneumovirus attachment protein
+\item Kaposi's sarcoma-associated herpesvirus K1
+\item MERS-CoV spike RBD
+\item Measles virus fusion protein
+\item Merkel cell polyomavirus large T antigen
+\item Mumps virus small hydrophobic protein
+\item Newcastle disease virus fusion protein cleavage site
+\item Oropouche virus nucleocapsid
+\item Parainfluenza virus 3 hemagglutinin-neuraminidase
+\item Peste des petits ruminants virus fusion protein
+\item Respiratory syncytial virus fusion protein
+\item Rinderpest virus hemagglutinin
+\item SARS-CoV-2 Receptor Binding Domain (RBD)
+\item SFTS virus nucleocapsid protein
+\item Schmallenberg virus nucleocapsid
+\item Usutu virus envelope protein
+\item Zika virus NS1 protein
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX B
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix B: Task Prompts}
+
+\subsection{Verification Checks (Tasks 1--4)}
+
+The following prompt was used for all models across both tool conditions:
+
+\begin{quote}
+\small
+Screen the following customer order for a synthetic DNA provider:\\
+\texttt{\{\{customer\_info\}\}}
+
+Assign FLAG / NO FLAG / UNDETERMINED status for each criterion:
+
+1. Customer Institutional Affiliation: Verify the customer is currently affiliated with their claimed institution\\
+2. Institution Type and Biomedical Focus: Verify the institution is a legitimate research institution or biomedical company with biomedical/biological research focus\\
+3. Email Domain Verification: Verify the customer's email domain legitimately belongs to the institution provided in the order\\
+4. Sanctions and Export Control Screening: Verify the institution is not subject to sanctions or export control restrictions
+
+Flag logic: FLAG if no evidence found after searching or if sources contradict the claim. UNDETERMINED if evidence exists only from insufficient sources. NO FLAG if at least one sufficient source confirms the criterion. If sufficient sources conflict with each other, FLAG.
+
+Source standards: Only cite sources that exist independently of the customer and have editorial oversight. Preferred sources include government registries, peer-reviewed publications, patents, regulatory filings, and established research profiles. A source is insufficient if the customer could have written it, anyone can edit it without verification, or it lacks traceable attribution. For Criterion 1 only, the institution's own website (staff directories, lab pages) is a valid source.
+
+Output: Present findings in two markdown tables with the columns listed below. Include at most 3 sources for each criterion.
+
+Table 1 --- Evidence:\\
+- Criterion (1--4)\\
+- Sources: Tool citation placeholder (e.g., [web1], [screen1])\\
+- Evidence Summary: Factual description of what the source states
+
+Table 2 --- Determinations:\\
+- Criterion (1--4)\\
+- Flag Status: FLAG, NO FLAG, or UNDETERMINED
+\end{quote}
+
+\subsection{Relevant Work Search (Task 5)}
+
+\begin{quote}
+\small
+Identify relevant laboratory work for the following customer of a synthetic DNA provider:\\
+\texttt{\{\{customer\_info\}\}}
+
+Search for customer-authored work on the ordered organism first, then related organisms, then broader wet lab work by the customer. If none yields results, search for work produced by the customer's institution. Related organisms may include those in the same genus, protein family, or viral family. Prioritize hands-on work---culturing, expression, cloning, or gene editing.
+
+Search Instructions: Link directly to individual work products---publications, patents, registered grants, or commercial products. Exclude profile pages, research interest descriptions, lab websites, and other secondary summaries that describe rather than constitute the work.
+
+Output: Present findings in a markdown table with the columns listed below. Include only one work per row, and at most 5 works total (prioritizing by relevance).\\
+- Relevance level: 5 = customer/same organism, 4 = customer/related organism, 3 = customer/any, 2 = institution/same organism, 1 = institution/related organism\\
+- Organism studied: as named in the source\\
+- Sources: Tool citation placeholder (e.g., [web1])\\
+- Work summary: One sentence factual description of what the source contains
+
+NOTE: Always report at least one piece of work authored by the customer, or state explicitly if you couldn't find any.
+\end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX C
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix C: Evaluation Prompts}
+
+We used Gemini 2.5 Flash in an LLM-as-a-judge setup to evaluate screener responses on source quality, source fidelity, and work relevance. Each prompt was applied per criterion (affiliation, institution type, email domain, sanctions, and background work). Flag accuracy was manually graded.
+
+Template variables are denoted with \texttt{\{\{VARIABLE\_NAME\}\}} and were populated as follows:
+
+\begin{itemize}
+\item \texttt{\{\{CRITERION\_NAME\}\}}: The verification task name
+\item \texttt{\{\{CRITERION\_INSTRUCTION\}\}}: The task description
+\item \texttt{\{\{EXTRACTED\_SECTION\}\}}: The relevant portion of the screener's response
+\item \texttt{\{\{SOURCES\}\}}: Full text content retrieved from cited URLs
+\item \texttt{\{\{CUSTOMER\_INFO\}\}}: The customer profile
+\item \texttt{\{\{WORK\_CONTENT\}\}}: Content of the reference publication or patent
+\item \texttt{\{\{SOURCES\_TABLE\}\}}: The screener's background work table with relevance labels
+\end{itemize}
+
+\subsection{C.1 Source Fidelity}
+
+The source fidelity prompt reviews claims in the screener's response against cited sources. A claim fails if the source contradicts it, no source provides relevant information, or the claim presents speculation as established fact. Negative claims reporting absence of evidence pass by default. The overall verdict is PASS if all claims pass; FAIL otherwise.
+
+\subsection{C.2 Source Quality}
+
+The source quality prompt evaluates whether cited sources meet standards for independent verification. Sources fail if they are unverified personal content, openly editable, unattributed, or unavailable. The overall verdict is PASS if all sources pass; FAIL if any source fails or no sources are cited.
+
+\subsection{C.3 Work Relevance}
+
+The work relevance prompt determines whether retrieved sources are at least as relevant as a manually-identified reference source. Relevance is scored 0--5 based on proximity to customer, organism proximity, and laboratory involvement. The verdict is PASS if at least one provided source meets or exceeds the reference relevance level.
+
+\begin{table}[htbp]
+\centering
+\caption{Work relevance scoring scale.}
+\begin{tabular}{cl}
+\toprule
+\textbf{Level} & \textbf{Criteria} \\
+\midrule
+5 & Customer-authored + same organism + wet lab work \\
+4 & Customer-authored + closely related organism + wet lab work \\
+3 & Customer-authored + any other case \\
+2 & Institution only + same organism + wet lab work \\
+1 & Institution only + closely related organism + wet lab work \\
+0 & Institution only or unrelated + any other case \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{C.4 Criteria Configurations}
+
+The source fidelity and source quality prompts were applied separately for each verification criterion:
+
+\begin{table}[htbp]
+\centering
+\caption{Verification criteria used in evaluation.}
+\begin{tabular}{lp{9cm}}
+\toprule
+\textbf{Criterion} & \textbf{Instruction} \\
+\midrule
+Affiliation & Verify the customer is currently affiliated with their claimed institution \\
+Institution & Verify the institution is a legitimate research institution or biomedical company \\
+Domain & Verify the customer's email domain legitimately belongs to their claimed institution \\
+Sanctions & Verify the institution is not subject to sanctions or export control restrictions \\
+Background work & Identify laboratory work by the customer or institution relevant to the ordered organism \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX D - EBRC Case Study
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix D: Adversarial Case Study --- Fabricated Researcher Profile}
+
+To stress-test AI screening capabilities against deliberate deception, we evaluated model performance on a synthetic customer profile created by the Engineering Biology Research Consortium (EBRC), originally developed to test customer screening practices at real nucleic acid synthesis providers.
+
+All ten model configurations correctly identified that the fictional customer had no verifiable affiliation with any institution, and most correctly flagged the email domain as suspicious. However, 8 of 10 configurations failed to recognize that the customer's claimed institution was not the legitimate organization it appeared to mimic---the dominant failure mode in this exercise and one with direct security implications.
+
+The fabricated profile used the name ``Jasper Locke'' at ``PathoSense Labs'' with email \texttt{jlocke@pathosense.org}. It was designed to exploit a common verification vulnerability: mimicking a legitimate organization with a slightly modified domain. ``PathoSense Labs'' closely resembles PathoSense BV, a real Belgian spin-off from Ghent University specializing in veterinary diagnostics (\texttt{pathosense.com}). The \texttt{.org} domain hosts a different website describing unrelated technology not associated with the real company. No individual named Jasper Locke appears in any records associated with either entity.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX E - Detailed Model Performance
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix E: Detailed Model Performance}
+
+All figures reference the 40-profile human baseline subset unless otherwise noted. AI models include five models (Claude Sonnet 4, Gemini 2.5 Pro, Grok 4, GLM 4.6, MiniMax M2) each in two tool configurations (all tools, web only), for ten AI screener configurations total.
+
+\subsection{E.1 Overall Pass Rates}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureE1.png}
+\caption{\textbf{Figure E1: Overall pass rate per model with 95\% Wilson score confidence intervals (40-profile subset).} Dots indicate point estimates; horizontal lines show confidence intervals. Green = all tools, blue = web only, red = human baseline.}
+\label{fig:E1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureE2.png}
+\caption{\textbf{Figure E2: Overall pass rates by screener, sorted from lowest to highest (40-profile subset).} Horizontal bars show the average pass rate across all test categories. Dark blue = AI with all tools, light blue = AI with web search only, amber = human baseline.}
+\label{fig:E2}
+\end{figure}
+
+\subsection{E.2 Pass Rate Breakdowns}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureE3.png}
+\caption{\textbf{Figure E3: Pass rates by screener and task (40-profile subset).} Each cell shows the percentage of tests passed. Tasks include institutional affiliation verification, institution type classification, email domain validation, sanctions screening, and relevant work assessment.}
+\label{fig:E3}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureE4.png}
+\caption{\textbf{Figure E4: Pass rates by screener and customer type (40-profile subset).} Each cell shows the percentage of tests passed across four customer categories.}
+\label{fig:E4}
+\end{figure}
+
+\subsection{E.3 Per-Customer Performance}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureE5.png}
+\caption{\textbf{Figure E5: Per-customer overall pass rates (40-profile subset).} Swarm plot grouped by customer type. Each dot represents one customer's average pass rate across all AI models.}
+\label{fig:E5}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureE6.png}
+\caption{\textbf{Figure E6: Flag accuracy vs non-flag pass rate per customer (40-profile subset).} Scatter plot with Pearson $r = 0.38$, averaged across AI models.}
+\label{fig:E6}
+\end{figure}
+
+\subsection{E.4 Statistical Comparisons}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureE7.png}
+\caption{\textbf{Figure E7: Pairwise McNemar's test p-values across 10 AI models (40-profile subset).} 8 of 45 pairs show significant differences at $p < 0.05$ (continuity-corrected).}
+\label{fig:E7}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureE8.png}
+\caption{\textbf{Figure E8: Correlation matrix of per-customer pass rates across test categories (40-profile subset).} Pearson correlations computed with pass rates averaged across AI models.}
+\label{fig:E8}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX F - Full Dataset Validation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix F: Full Dataset Validation}
+
+The main results are reported on the 40-profile subset where human baseline comparisons are available. To confirm that these findings generalize, we replicate key analyses on the full 134-profile dataset (AI models only; human screeners were not evaluated on the extended profiles).
+
+\subsection{F.1 Full Dataset Replications}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureF1.png}
+\caption{\textbf{Figure F1: Pass rates by screener and test category on the full dataset (134 profiles, AI models only).} Replication of main-text Figure 2.}
+\label{fig:F1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureF2.png}
+\caption{\textbf{Figure F2: Pass rates by screener and task on the full dataset (134 profiles, AI models only).} Task-level patterns remain consistent with the subset analysis.}
+\label{fig:F2}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureF3.png}
+\caption{\textbf{Figure F3: Pass rates by screener and customer type on the full dataset (134 profiles, AI models only).} The full dataset provides larger sample sizes per customer category.}
+\label{fig:F3}
+\end{figure}
+
+\subsection{F.2 Subset vs Full Dataset Comparison}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureF4.png}
+\caption{\textbf{Figure F4: Overall pass rates on the 40-profile subset vs the full 134-profile dataset for each AI model.} Mean difference: $-1.5$ percentage points.}
+\label{fig:F4}
+\end{figure}
+
+\subsection{F.3 Performance by Customer Type and Region}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureF5.png}
+\caption{\textbf{Figure F5: Pass rates by customer type and region.} Side-by-side heatmaps averaged across AI models. Left: 40-profile subset. Right: full 134-profile dataset.}
+\label{fig:F5}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX G - Flag Accuracy Deep Dive
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix G: Flag Accuracy Deep Dive}
+
+Flag accuracy is the only manually graded metric and the most relevant for screening decisions.
+
+\subsection{G.1 Ground Truth Distribution}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureG1.png}
+\caption{\textbf{Figure G1: Ground truth flag distribution across the 40 profiles.} Each bar represents one flag criterion divided into FLAG, NO FLAG, and UNDETERMINED segments.}
+\label{fig:G1}
+\end{figure}
+
+\subsection{G.2 Model Predictions}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureG2.png}
+\caption{\textbf{Figure G2: Distribution of extracted flag values across AI models and flag criteria.}}
+\label{fig:G2}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureG3.png}
+\caption{\textbf{Figure G3: False positive, false negative, and undetermined rates per model across flag criteria.}}
+\label{fig:G3}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureG4.png}
+\caption{\textbf{Figure G4: Confusion matrices for flag accuracy across four criteria, aggregated across all AI models (40-profile subset).}}
+\label{fig:G4}
+\end{figure}
+
+\subsection{G.3 Human vs AI Error Comparison}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureG5.png}
+\caption{\textbf{Figure G5: Human versus AI error rates by flag criterion (40-profile subset).}}
+\label{fig:G5}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureG6.png}
+\caption{\textbf{Figure G6: Error rates by flag criterion and screener type (40-profile subset).}}
+\label{fig:G6}
+\end{figure}
+
+\subsection{G.4 Error Categories}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureG7.png}
+\caption{\textbf{Figure G7: Error category distribution by screener type (40-profile subset).}}
+\label{fig:G7}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureG8.png}
+\caption{\textbf{Figure G8: Error category distribution by flag criterion and screener type (40-profile subset).}}
+\label{fig:G8}
+\end{figure}
+
+\subsection{G.5 Flag Errors by Gene/Protein Product}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureG9.png}
+\caption{\textbf{Figure G9: Flag accuracy error rate by gene/protein product (40-profile subset).} Error rate is 1 minus the mean pass rate for flag accuracy tests, averaged across all AI models.}
+\label{fig:G9}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX H - Cost and Latency Analysis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix H: Cost and Latency Analysis}
+
+\subsection{H.1 Cost Decomposition}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureH1.png}
+\caption{\textbf{Figure H1: Token cost decomposition per customer for each AI model (40-profile subset).} Stacked bars show input token cost (indigo), output token cost (coral), and web search cost (teal).}
+\label{fig:H1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureH2.png}
+\caption{\textbf{Figure H2: Cost vs pass rate on the full dataset (134 profiles).} Each point represents a model configuration.}
+\label{fig:H2}
+\end{figure}
+
+\subsection{H.2 Time and Latency}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureH3.png}
+\caption{\textbf{Figure H3: Human vs AI screening time per customer.}}
+\label{fig:H3}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureH4.png}
+\caption{\textbf{Figure H4: Wall-clock latency distribution by model.} Boxplots of information gathering time per customer.}
+\label{fig:H4}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureH5.png}
+\caption{\textbf{Figure H5: Information gathering time vs pass rate.}}
+\label{fig:H5}
+\end{figure}
+
+\subsection{H.3 Token and Response Characteristics}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureH6.png}
+\caption{\textbf{Figure H6: Token consumption by model (40-profile subset).} Mean prompt and completion tokens per customer.}
+\label{fig:H6}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureH7.png}
+\caption{\textbf{Figure H7: Response length vs pass rate.}}
+\label{fig:H7}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX I - Source and Tool Usage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix I: Source and Tool Usage}
+
+\subsection{I.1 Source Composition}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureI1.png}
+\caption{\textbf{Figure I1: Web searches per customer by model (40-profile subset).} Models with specialized tool access perform fewer web searches.}
+\label{fig:I1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureI2.png}
+\caption{\textbf{Figure I2: Source types per customer by model (40-profile subset).}}
+\label{fig:I2}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureI3.png}
+\caption{\textbf{Figure I3: Source types by task for all-tools models (40-profile subset).}}
+\label{fig:I3}
+\end{figure}
+
+\subsection{I.2 Sources and Performance}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureI4.png}
+\caption{\textbf{Figure I4: Sources vs pass rate.}}
+\label{fig:I4}
+\end{figure}
+
+\subsection{I.3 Tool Configuration Effects}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureI5.png}
+\caption{\textbf{Figure I5: Effect of specialized tools on pass rates by test category (40-profile subset).} Sanctions screening benefits most from tool access.}
+\label{fig:I5}
+\end{figure}
+
+\subsection{I.4 Claim Support Analysis}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/FigureI6.png}
+\caption{\textbf{Figure I6: Distribution of failed claim-support assertions (40-profile subset).} 207 of 410 customer-model pairs (50\%) had zero claim failures.}
+\label{fig:I6}
+\end{figure}
+
+\end{document}
