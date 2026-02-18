@@ -4,33 +4,41 @@
 
 This plan addresses preparing the DNA synthesis screening paper for Frontiers journal submission. The paper evaluates AI-assisted customer verification for synthetic biology screening, comparing 5 LLMs against human baseline across verification tasks. Key findings show the best AI model (Gemini 2.5 Pro) achieved 89.8% pass rate vs 79.5% human baseline at $1.18 vs $14.04 cost—a 10-fold reduction.
 
-**Google Docs is ground truth** - no need to compare with existing local files. The task involves downloading Google Doc content, addressing unresolved comments, converting to Frontiers LaTeX format, and creating a submission-ready package in a new `final-submission` folder.
+**Google Docs is ground truth** - All content has been pre-downloaded for remote session access (no authentication required). The task involves processing the downloaded Google Doc content, addressing unresolved comments, converting to Frontiers LaTeX format, and creating a submission-ready package.
+
+## Pre-Downloaded Materials (✅ COMPLETED)
+
+**Google Doc Content Retrieved:**
+- **Source:** `1uqpLplZZVsVDZ9k5S3By2Ujg47yjf7KINtxGtpEv434`
+- **Title:** Copy of 2026_01_AI-KYC_Full_text_draft
+- **Status:** 11,175 words, 35 open comments, 51 resolved comments
+- **Last Modified:** 2026-02-17
+
+**Available in `final-submission/source/`:**
+- `google_doc_content.md` - Clean manuscript content (authoritative source)
+- `google_doc_with_comments.md` - Content with inline comment annotations
+- `unresolved_comments.txt` - 35 open comments requiring attention
+- `all_comments.txt` - Complete comment history for reference
+
+**Frontiers Templates Ready:** Complete LaTeX package in `final-submission/templates/`
 
 ## Implementation Plan
 
-### Phase 1: Complete Setup and Downloads (60 min)
+### Phase 1: Content Analysis and Setup Verification (30 min)
 
-**1.1 Install All Required Tools**
-- Clone and install gdoc CLI tool:
-  ```bash
-  git clone https://github.com/LucaDeLeo/gdoc.git
-  cd gdoc
-  uv tool install .
-  ```
-- Configure Google API authentication:
-  1. Create a project in the [Google Cloud Console](https://console.cloud.google.com/)
-  2. Enable the **Google Drive API** and **Google Docs API**
-  3. Create **OAuth 2.0 credentials** (Desktop application type)
-  4. Download the credentials JSON and place it at `~/.config/gdoc/credentials.json`
-  5. Authenticate: `gdoc auth` (opens browser for OAuth flow)
-- Verify LaTeX installation with required packages (datetime, fmtcount, etoolbox, fcprefix)
+**✅ COMPLETED: All Content Pre-Downloaded**
+- Google Doc content: `final-submission/source/google_doc_content.md` (2.1MB)
+- Google Doc with comments: `final-submission/source/google_doc_with_comments.md` (2.1MB)
+- Unresolved comments: `final-submission/source/unresolved_comments.txt` (35 open comments)
+- All comments history: `final-submission/source/all_comments.txt` (86 total comments)
+- Frontiers LaTeX templates: `final-submission/templates/` (complete package)
+- Project structure: `final-submission/` (fully organized)
 
-**1.2 Download All Content and Dependencies**
-- Download Google Doc content: `gdoc cat 1uqpLplZZVsVDZ9k5S3By2Ujg47yjf7KINtxGtpEv434 > source/google_doc_content.md`
-- Download with comments: `gdoc cat --comments 1uqpLplZZVsVDZ9k5S3By2Ujg47yjf7KINtxGtpEv434 > source/google_doc_with_comments.md`
-- Extract all unresolved comments: `gdoc comments 1uqpLplZZVsVDZ9k5S3By2Ujg47yjf7KINtxGtpEv434 > source/unresolved_comments.txt`
-- Copy Frontiers LaTeX templates from `/Users/alejo/Downloads/Frontiers_LaTeX_Templates/` to working directory
-- Verify access to all figure directories (`paper/figures/`, `paper/new-plots/`, etc.)
+**1.1 Content Verification**
+- Verify Google Doc content integrity (11,175 words from authoritative source)
+- Review critical unresolved comments requiring immediate attention
+- Confirm LaTeX template compatibility and required packages
+- Validate figure directory access (`paper/figures/`, `paper/new-plots/`)
 
 **1.3 Create Complete Project Structure**
 ```
@@ -57,7 +65,7 @@ final-submission/
 - Commit with message: "Initial setup: Google Doc download, Frontiers templates, project structure"
 - This creates the starting point for the Claude Code Web session fork
 
-### Phase 2: Content Analysis and Comment Resolution (45 min)
+### Phase 2: Comment Analysis and Resolution Planning (45 min)
 
 **2.1 Google Doc Analysis**
 - Use Google Doc content as the authoritative source
