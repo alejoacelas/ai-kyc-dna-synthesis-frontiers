@@ -1,1 +1,0 @@
-Distribution of failed claim-support assertions per customer across 410 customer-model pairs (AI models, 40-profile subset). 207 pairs (50%) had zero failures.

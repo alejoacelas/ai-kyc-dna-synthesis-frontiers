@@ -1,23 +1,17 @@
-.PHONY: figures metrics pipeline all
+.PHONY: all figures tables clean
 
-# Regenerate all figures from processed CSVs (no API key needed)
+all: figures tables
+
 figures:
-	uv run python scripts/figures/generate_figure2.py
-	uv run python scripts/figures/generate_figure2b.py
-	uv run python scripts/figures/generate_figure2c.py
-	uv run python scripts/figures/generate_figure3.py
-	uv run python scripts/figures/generate_figure4.py
-	uv run python scripts/figures/generate_figure5.py
-	uv run python scripts/figures/generate_figure_human_vs_ai.py
-	uv run python scripts/figures/generate_figure_model_rankings.py
-	uv run python scripts/figures/generate_figure_error_by_criterion.py
+	uv run python scripts/generate_main_figures.py
+	uv run python scripts/generate_model_performance.py
+	uv run python scripts/generate_full_dataset.py
+	uv run python scripts/generate_flag_accuracy.py
+	uv run python scripts/generate_cost_latency.py
+	uv run python scripts/generate_source_analysis.py
 
-# Print paper metrics (Tables 1, 2, and inline statistics N1-N11)
-metrics:
-	uv run python scripts/figures/compute_paper_metrics.py
+tables:
+	uv run python scripts/compute_tables.py
 
-# Full pipeline from raw JSON (requires OPENROUTER_API_KEY)
-pipeline:
-	uv run python scripts/generate_datasets.py
-
-all: pipeline figures metrics
+clean:
+	rm -f paper/figures/Figure[2-5].png paper/figures/Figure[E-I]*.png

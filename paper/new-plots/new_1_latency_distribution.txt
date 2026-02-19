@@ -1,1 +1,0 @@
-Distribution of information gathering time (wall-clock) per customer (summed across both prompts) for each AI model, colored by model type. Data from dedicated latency benchmark across 41 customer profiles.

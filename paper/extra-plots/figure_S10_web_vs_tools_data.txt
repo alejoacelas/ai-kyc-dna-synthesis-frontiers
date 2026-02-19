@@ -1,9 +1,0 @@
-Figure S10: Web-only vs All-tools Pass Rate Comparison
-======================================================================
-
-Category             Web Only %  All Tools %  Difference
------------------------------------------------------
-Flag Accuracy              90.5         91.5 +       1.0 pp
-Source Fidelity            83.5         87.9 +       4.4 pp
-Source Quality             82.3         84.9 +       2.5 pp
-Work Relevance             87.8         80.5       -7.3 pp

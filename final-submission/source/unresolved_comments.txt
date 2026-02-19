@@ -1,4 +1,0 @@
-usage: gdoc [-h] [--version] [--json | --verbose | --plain]
-            [--allow-commands ALLOW_COMMANDS]
-            {update,auth,ls,find,cat,tabs,edit,diff,write,pull,push,_sync-hook,_pull-hook,comments,comment,reply,resolve,reopen,delete-comment,comment-info,images,info,share,new,cp} ...
-ERR: unrecognized arguments: --unresolved

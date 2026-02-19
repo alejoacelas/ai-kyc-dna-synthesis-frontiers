@@ -1,229 +1,107 @@
-# Evaluating AI-Assisted Customer Verification for DNA Synthesis Screening
+# Evaluating AI-assisted customer verification for DNA synthesis screening
 
-This repository contains the code and data for analyzing KYC (Know Your Customer) evaluation results comparing AI models against human experts on customer screening tasks.
+Replication package for the Frontiers manuscript. Contains anonymized data, figure generation scripts, and LaTeX source.
 
-See the full manuscript at `paper/paper_draft.md`.
-
-## Reproducing the Paper
-
-The processed datasets (`processed/tests.csv` and `processed/responses.csv`) are committed via Git LFS, so you can regenerate all figures and metrics without running the full data pipeline.
+## Quick start
 
 ```bash
-# 1. Clone and pull LFS data
-git clone <repo-url>
-git lfs pull
-
-# 2. Install dependencies
+# Install dependencies
 uv sync
 
-# 3. Regenerate all figures
+# Generate all figures (outputs to paper/figures/)
 make figures
 
-# 4. Compute paper metrics (Tables 1, 2, inline statistics N1–N11)
-make metrics
+# Compute table values and inline statistics
+make tables
 ```
 
-To re-run the full data pipeline from raw JSON (requires `OPENROUTER_API_KEY`; see `.env.example`):
-
-```bash
-uv run python scripts/generate_datasets.py
-```
-
-Use `--skip-latency` and `--skip-country` to skip API-dependent steps.
-
-## Repository Structure
+## Repository structure
 
 ```
-ai-kyc-results/
+frontiers-results/
 ├── data/
-│   ├── customers/                  # Customer profile datasets
-│   │   ├── full_dataset.csv        # 134 customer profiles
-│   │   └── human_baseline_subset.csv  # 40-customer subset for human comparison
-│   ├── annotations/                # Human annotations and ground truth
-│   │   ├── ground_truth_flags.json
-│   │   ├── blind_gradings.json
-│   │   ├── agreements.json
-│   │   └── flag_error_comments.json
-│   ├── raw_results/                # PromptFoo evaluation outputs (886MB, Git LFS)
-│   │   └── *.json
-│   └── token_pricing.yaml
-│
-├── processed/                      # Derived analysis datasets (Git LFS)
-│   ├── tests.csv                   # One row per test assertion (~234k rows)
-│   ├── responses.csv               # One row per model response (~55k rows)
-│   └── blind_grading/              # Blind grading analysis
+│   ├── tests.csv                       # One row per test assertion
+│   ├── responses.csv                   # One row per model response
+│   ├── token_pricing.yaml              # Per-token pricing by model
+│   ├── customers/
+│   │   ├── full_dataset.csv            # 134 anonymized customer profiles
+│   │   └── human_baseline_subset.csv   # 40-profile subset for human comparison
+│   └── annotations/
+│       ├── ground_truth_flags.json     # Verified flag determinations
+│       ├── blind_gradings.json         # Blind re-grading for validation
+│       ├── agreements.json             # Inter-rater agreement
+│       └── flag_error_comments.json    # Human notes on flag errors
 │
 ├── scripts/
-│   ├── generate_datasets.py        # Main data processing pipeline
-│   ├── merge_blind_gradings.py     # Merge blind grading results
-│   ├── match_blind_gradings.py     # Match blind gradings to assertion-level results
-│   └── figures/                    # Figure and metric generation scripts
-│       ├── style.py                # Shared colors, model labels, ordering
-│       ├── compute_paper_metrics.py  # Tables 1, 2, and inline stats N1–N11
-│       ├── generate_figure2.py     # Figure 2: pass rates heatmap
-│       ├── generate_figure2b.py    # Supplementary: pass rates by task
-│       ├── generate_figure2c.py    # Supplementary: pass rates by customer type
-│       ├── generate_figure3.py     # Figure 3: cost breakdown by model
-│       ├── generate_figure4.py     # Figure 4: cost vs performance scatter
-│       ├── generate_figure5.py     # Figure 5: flag errors by region and task
-│       ├── generate_figure_human_vs_ai.py     # Supplementary: human vs AI comparison
-│       ├── generate_figure_model_rankings.py  # Supplementary: model rankings
-│       └── generate_figure_error_by_criterion.py  # Supplementary: error by criterion
+│   ├── style.py                        # Shared colors, labels, matplotlib config
+│   ├── generate_main_figures.py        # Figures 2-5
+│   ├── generate_model_performance.py   # Figures E1-E8
+│   ├── generate_full_dataset.py        # Figures F1-F5
+│   ├── generate_flag_accuracy.py       # Figures G1-G9
+│   ├── generate_cost_latency.py        # Figures H1-H7
+│   ├── generate_source_analysis.py     # Figures I1-I6
+│   └── compute_tables.py              # Tables 1-2, inline statistics N1-N11
 │
 ├── paper/
-│   ├── paper_draft.md              # Paper manuscript
-│   ├── figures/                    # Main figures referenced in paper
-│   └── supplementary/              # Appendix figures
+│   ├── main.tex                        # Main manuscript (Frontiers template)
+│   ├── supplementary.tex               # Supplementary material
+│   ├── references.bib                  # Bibliography
+│   └── figures/                        # Generated figures (+ static Figure1.png)
 │
-├── prompts/                        # Prompt templates and test definitions
-│   ├── simple.txt                  # Main screening prompt
-│   ├── background_work.txt         # Background work search prompt
-│   └── tests/                      # Evaluation test definitions
+├── prompts/
+│   ├── screening.txt                   # Main screening prompt
+│   ├── background_work.txt             # Background work prompt
+│   └── evaluation/                     # Test definitions
 │       ├── claim_support.yaml
+│       ├── extraction.yaml
 │       ├── source_reliability.yaml
 │       └── work_relevance.yaml
 │
-├── archive/                        # Historical/one-time scripts
-├── Makefile                        # One-command reproduction targets
+├── Makefile
 └── pyproject.toml
 ```
 
-## Data Files
+## Data
 
-### Customer Datasets
+### tests.csv
 
-#### `data/customers/full_dataset.csv`
-Contains 134 customer records for evaluation. Each row includes:
-- `customer_info`: Full customer information text (Name, Institution, Email, etc.)
-- `Name`: Customer name
-- `Institution`: Affiliated institution
-- `Type`: Customer category
-- `Order`: Ordering/priority field
+One row per test assertion. Key columns:
 
-#### `data/customers/human_baseline_subset.csv`
-A 40-customer subset used for human baseline comparison. Same schema as full_dataset.csv.
-
-### Result Files
-
-Located in `data/raw_results/`:
-
-| File | Prompt Type | Dataset | Description |
-|------|-------------|---------|-------------|
-| `full_dataset_main.json` | main | Full (134) | Main evaluation prompt on full dataset |
-| `full_dataset_background_work.json` | background_work | Full (134) | Background work prompt on full dataset |
-| `human_baseline_subset_main.json` | main | Subset (40) | Main prompt with human baseline comparison |
-| `human_baseline_subset_background_work.json` | background_work | Subset (40) | Background work with human baseline |
-
-### Ground Truth
-
-#### `data/annotations/ground_truth_flags.json`
-Contains manually verified ground truth values for each customer's flags:
-- `affiliation`: FLAG, NO FLAG, or UNDETERMINED
-- `institution`: FLAG, NO FLAG, or UNDETERMINED
-- `domain`: FLAG, NO FLAG, or UNDETERMINED
-- `sanctions`: FLAG, NO FLAG, or UNDETERMINED
-
-## Processed Datasets
-
-### `processed/tests.csv`
-One row per test (assertion) result. Used for accuracy/reliability analysis.
-
-| Field | Description |
-|-------|-------------|
-| `eval_id` | Evaluation run identifier |
-| `result_id` | Unique result identifier |
-| `customer_name` | Customer name |
-| `customer_institution` | Customer institution |
-| `customer_type` | Customer category |
-| `model_label` | Human-readable model name |
-| `model_type` | `human_baseline`, `web_only`, or `all_tools` |
-| `metric_name` | Test/assertion name |
+| Column | Description |
+|--------|-------------|
+| `model_label` | Human-readable model name (e.g., "Gemini 2.5 Pro (All Tools)") |
+| `model_type` | `web_only`, `all_tools`, or `human_baseline` |
 | `test_category` | `flag_accuracy`, `claim_support`, `source_reliability`, or `work_relevance` |
-| `original_pass` | Original pass/fail value from evaluation |
-| `pass` | Corrected pass/fail value |
-| `ground_truth_*` | Ground truth flag values |
-| `extracted_flag` | Extracted flag value from model response |
+| `pass` | Corrected pass/fail result |
+| `customer_type` | Customer category |
+| `institution_country` | Region grouping |
 
-### `processed/responses.csv`
-One row per model response. Used for cost/latency analysis.
+### responses.csv
 
-| Field | Description |
-|-------|-------------|
-| `eval_id` | Evaluation run identifier |
+One row per model response. Key columns:
+
+| Column | Description |
+|--------|-------------|
 | `model_label` | Human-readable model name |
-| `latency_ms` | Total latency in milliseconds |
 | `total_cost` | Total cost in USD |
+| `latency_ms` | Response latency in milliseconds |
 | `num_web_searches` | Number of web searches performed |
-| `num_assertions_passed` | Number of passing assertions |
 
-## Running the Scripts
+## Figures
 
-### Generate Processed Datasets
-
-```bash
-uv run python scripts/generate_datasets.py
-```
-
-Options:
-- `--skip-latency`: Use existing latencies from processed/responses.csv
-- `--skip-country`: Use existing country classifications
-- `--only-country`: Only update institution_country columns
-
-Requires `OPENROUTER_API_KEY` environment variable for latency fetching (see `.env.example`).
-
-### Generate Figures
-
-```bash
-make figures
-```
-
-Or individually:
-
-```bash
-uv run python scripts/figures/generate_figure2.py
-uv run python scripts/figures/generate_figure3.py
-# etc.
-```
-
-### Compute Paper Metrics
-
-```bash
-make metrics
-```
-
-## Data Processing and Corrections
-
-### Flag Accuracy Corrections
-
-The `pass` field in tests.csv has corrections applied:
-
-1. **Ground Truth UNDETERMINED**: If ground truth is `UNDETERMINED`, any extracted value passes
-2. **Exact Match Required**: If ground truth is determined, require exact match
-
-### Human Baseline Corrections
-
-1. **Empty Evidence Fail**: Claim support tests fail if no sources provided
-2. **Sanctions Exact Match**: Sanctions claim support passes if the sanctions flag passes
-
-## Test Categories
-
-- **Flag Accuracy**: Whether the model correctly identified each flag
-- **Claim Support**: Whether claims are supported by cited sources
-- **Source Reliability**: Whether sources are reliable and authoritative
-- **Work Relevance**: Whether background work is relevant to the customer
-
-## Model Types
-
-- `human_baseline`: Human expert responses
-- `web_only`: Models using only web search tools
-- `all_tools`: Models using full tool suite (web, ORCID, EPMC, sanctions screening)
+| Script | Outputs | Description |
+|--------|---------|-------------|
+| `generate_main_figures.py` | Figure2-5 | Pass rates heatmap, cost breakdown, cost vs performance, flag errors |
+| `generate_model_performance.py` | FigureE1-E8 | Confidence intervals, rankings, per-task/customer analysis, pairwise tests |
+| `generate_full_dataset.py` | FigureF1-F5 | Full dataset validation, subset comparison |
+| `generate_flag_accuracy.py` | FigureG1-G9 | Ground truth, confusion matrices, human vs AI errors |
+| `generate_cost_latency.py` | FigureH1-H7 | Token costs, latency, human vs AI time |
+| `generate_source_analysis.py` | FigureI1-I6 | Web searches, source types, tool effects |
 
 ## Dependencies
 
-Managed via `uv`. Install with:
+Python >= 3.12, managed with [uv](https://docs.astral.sh/uv/). Run `uv sync` to install.
 
-```bash
-uv sync
-```
+## License
 
-See `pyproject.toml` for the full dependency list.
+See [LICENSE](LICENSE).

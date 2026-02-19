@@ -1,1 +1,0 @@
-Forest plot of overall pass rate per model with 95% Wilson score confidence intervals on the 40-profile human baseline subset. Dots indicate point estimates; horizontal lines show confidence intervals. Green = All Tools, blue = Web Only, red = Human Baseline.

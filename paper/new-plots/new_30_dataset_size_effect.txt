@@ -1,1 +1,0 @@
-Comparison of overall pass rates between the 40-profile human baseline subset and the full 134-profile dataset for each AI model. Mean difference: -1.5 percentage points.

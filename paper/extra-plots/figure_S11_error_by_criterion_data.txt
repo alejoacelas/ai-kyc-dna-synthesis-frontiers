@@ -1,9 +1,0 @@
-Figure S11: Error Rate by Flag Criterion and Screener Type
-======================================================================
-
-screener_type  All Tools  Human  Web Only
-flag_type                                
-affiliation          8.3    7.3       5.4
-domain              10.2   17.1      11.7
-institution          1.5   14.6       2.0
-sanctions            3.9    2.4       9.8

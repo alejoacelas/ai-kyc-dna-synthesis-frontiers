@@ -1,1 +1,0 @@
-Figure S7: AI screening cost versus overall pass rate on the full dataset (134 profiles). Each point represents a model configuration. Cost includes AI token costs and web search costs (excluding human review). Color coding: light blue = web-only, dark blue = all-tools. Y-axis starts at 82% with a break indicator.

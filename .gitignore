@@ -11,10 +11,9 @@ build/
 venv/
 .env
 
-# Node
-node_modules/
-.next/
+# OS
 .DS_Store
+Thumbs.db
 
 # IDE
 .idea/
@@ -22,9 +21,17 @@ node_modules/
 *.swp
 *.swo
 
-# OS
-.DS_Store
-Thumbs.db
+# Generated figures (Figure1.png is static and committed)
+paper/figures/*.png
+!paper/figures/Figure1.png
 
-# Temporary tools
-gdoc/
+# LaTeX build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.listing
+paper/*.synctex.gz
+paper/*.fdb_latexmk
+paper/*.fls

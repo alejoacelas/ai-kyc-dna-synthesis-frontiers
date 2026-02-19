@@ -1,1 +1,0 @@
-Figure S2: Pass rates by screener and customer type (40-profile human baseline subset). Each cell shows the percentage of evaluation tests passed across four customer categories: academic with substance-of-concern background, industry with substance-of-concern background, sanctioned academic institutions, and general life science customers.

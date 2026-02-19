@@ -1,1 +1,0 @@
-Mean source counts by type (web, EPMC, ORCID, screening DB) for main screening vs background work prompts across all-tools models on the 40-profile human baseline subset.

@@ -1,9 +1,0 @@
-Figure S9: Human vs AI Error Rates by Flag Accuracy Criterion
-======================================================================
-
-Criterion                 Human Error%  Best AI Error%  Worst AI Error% Best AI Model                      
--------------------------------------------------------------------------------------------------------
-Inst. Affiliation                  7.3             4.9             19.5 GLM 4.6 (All Tools)                
-Institution Type                  17.1             2.4              7.3 Claude Sonnet 4 (Web)              
-Email Domain                      17.1             4.9             19.5 Grok 4 (Web)                       
-Sanctions                          2.4             0.0             22.0 Claude Sonnet 4 (All Tools)        

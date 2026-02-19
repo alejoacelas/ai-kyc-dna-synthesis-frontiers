@@ -1,3 +1,0 @@
-data/raw_results/*.json filter=lfs diff=lfs merge=lfs -text
-processed/*.csv filter=lfs diff=lfs merge=lfs -text
-data/results/*.json filter=lfs diff=lfs merge=lfs -text

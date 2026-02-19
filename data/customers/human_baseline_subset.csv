@@ -1,165 +1,42 @@
-work_url,Type,Name,Institution,Email,Order,customer_info
-https://www.researchgate.net/profile/Jafar-Salimian/publication/363015888_Safety_and_Immunogenicity_of_a_Recombinant_Receptor_Binding_Domain-Based_Protein_Subunit_Vaccine_Noora_Vaccine_Against_COVID-19_in_Adults_A_Randomized_Double-Blind_Placebo-Controlled_Phase_1_Trial/links/632bd247873eca0c00a6dfd4/Safety-and-Immunogenicity-of_a_Recombinant_Receptor_Binding_Domain_Based_Protein_Subunit_Vaccine_Noora_Vaccine_Against_COVID_19_in_Adults_A_Randomized_Double_Blind_Placebo_Controlled_Phase_1_Trial.pdf,Sanctioned Institution Customers,Raheleh Halabian,"Applied Microbiology Research Center, Systems Biology and Poisonings Institute, Baqiyatallah University of Medical Sciences, Tehran, Iran",Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD),"Name: Raheleh Halabian
-Institution: Applied Microbiology Research Center, Systems Biology and Poisonings Institute, Baqiyatallah University of Medical Sciences, Tehran, Iran
-Email: Verified email at bmsu.ac.ir
-Order matches SARS-CoV-2 Receptor Binding Domain (RBD)"
-https://www.jbc.org/article/S0021-9258(21)01229-1/fulltext,General Life Science Customers,Yi-Li Chen,"Department of Biological Medicines & Shanghai Engineering Research Center of Immunotherapeutics, Fudan University School of Pharmacy, Shanghai, China; Department of Research and Development Center, Dartsbio Pharmaceuticals Ltd, Zhongshan, Guangdong, China; Department of Antibody Discovery, Shanghai Mabstone Biotechnology, Ltd, Shanghai, China",cheny@dartsbio.com,Merkel cell polyomavirus large T antigen (partial),"Name: Yi-Li Chen
-Institution: Department of Biological Medicines & Shanghai Engineering Research Center of Immunotherapeutics, Fudan University School of Pharmacy, Shanghai, China; Department of Research and Development Center, Dartsbio Pharmaceuticals Ltd, Zhongshan, Guangdong, China; Department of Antibody Discovery, Shanghai Mabstone Biotechnology, Ltd, Shanghai, China
-Email: cheny@dartsbio.com
-Order matches Merkel cell polyomavirus large T antigen (partial)"
-https://patentimages.storage.googleapis.com/5d/83/b0/0050e9c7cfb8bc/CN112334573A.pdf,Controlled Agent Industry,Cheng Hua,Beijing Yibo Puhui Biotechnology Development Co. Ltd.,wanglin@celarts.com,Human T-lymphotropic virus Tax protein,"Name: Cheng Hua
-Institution: Beijing Yibo Puhui Biotechnology Development Co. Ltd.
-Email: wanglin@celarts.com
-Order matches Human T-lymphotropic virus Tax protein"
-https://patentscope.wipo.int/search/en/detail.jsf?docId=US448389932,Controlled Agent Industry,Jennifer Altomonte,Fusix Biotech,jennifer.altomonte@tum.de,Newcastle disease virus fusion protein cleavage site,"Name: Jennifer Altomonte
-Institution: Fusix Biotech
-Email: jennifer.altomonte@tum.de
-Order matches Newcastle disease virus fusion protein cleavage site"
-https://www.microbiologyresearch.org/content/journal/jgv/10.1099/jgv.0.001954,Controlled Agent Academia,Xiao Wang,"Laboratory Animal Center, Guangzhou University of Chinese Medicine, Guangzhou 510000, Guangdong, PR China",xwang72@gzucm.edu.cn,Zika virus NS1 protein,"Name: Xiao Wang
-Institution: Laboratory Animal Center, Guangzhou University of Chinese Medicine, Guangzhou 510000, Guangdong, PR China
-Email: xwang72@gzucm.edu.cn
-Order matches Zika virus NS1 protein"
-https://journals.asm.org/doi/full/10.1128/jvi.02205-24,Controlled Agent Academia,Younho Choi,"Florida Research and Innovation Center, Cleveland Clinic, Port St. Lucie, Florida, USA",choiy5@ccf.org,Schmallenberg virus nucleocapsid,"Name: Younho Choi
-Institution: Florida Research and Innovation Center, Cleveland Clinic, Port St. Lucie, Florida, USA
-Email: choiy5@ccf.org
-Order matches Schmallenberg virus nucleocapsid"
-https://onlinelibrary.wiley.com/doi/full/10.1155/2014/160316,Controlled Agent Academia,Kestutis Sasnauskas,"Institute of Biotechnology, Vilnius University, V.A. Graiciuno 8, 02241 Vilnius, Lithuania",kestutis.sasnauskas@bti.vu.lt,Usutu virus envelope protein,"Name: Kestutis Sasnauskas
-Institution: Institute of Biotechnology, Vilnius University, V.A. Graiciuno 8, 02241 Vilnius, Lithuania
-Email: kestutis.sasnauskas@bti.vu.lt
-Order matches Usutu virus envelope protein"
-https://elifesciences.org/articles/88929,Controlled Agent Academia,Hideo Fukuhara,"Laboratory of Biomolecular Science and Center for Research and Education on Drug Discovery, Faculty of Pharmaceutical Sciences, Hokkaido University, Japan",h-fukuhara@czc.hokudai.ac.jp,Rinderpest virus hemagglutinin,"Name: Hideo Fukuhara
-Institution: Laboratory of Biomolecular Science and Center for Research and Education on Drug Discovery, Faculty of Pharmaceutical Sciences, Hokkaido University, Japan
-Email: h-fukuhara@czc.hokudai.ac.jp
-Order matches Rinderpest virus hemagglutinin"
-https://cepi.net/pioneering-research-develop-all-one-vaccine-against-some-worlds-most-deadly-diseases,Controlled Agent Industry,Louise Goksøyr,AdaptVac,Verfied email at adaptvac.com,Ebola Virus Glycoprotein (GP) RBD,"Name: Louise Goksøyr
-Institution: AdaptVac
-Email: Verfied email at adaptvac.com
-Order matches Ebola Virus Glycoprotein (GP) RBD"
-https://patentscope.wipo.int/search/en/detail.jsf?docId=CN394159866,Controlled Agent Industry,Chen Ruiting,Zhejiang Difurunsi Biotechnology Co. Ltd.,ruiting_chen@163.com,Newcastle disease virus fusion protein cleavage site,"Name: Chen Ruiting
-Institution: Zhejiang Difurunsi Biotechnology Co. Ltd.
-Email: ruiting_chen@163.com
-Order matches Newcastle disease virus fusion protein cleavage site"
-https://www.nature.com/articles/s41409-022-01866-5,General Life Science Customers,Hamenth Kumar Palani,"Department of Haematology, Christian Medical College, Vellore, India",Verified email at cmcvellore.ac.in,Human T-lymphotropic virus Tax protein,"Name: Hamenth Kumar Palani
-Institution: Department of Haematology, Christian Medical College, Vellore, India
-Email: Verified email at cmcvellore.ac.in
-Order matches Human T-lymphotropic virus Tax protein"
-https://www.researchgate.net/profile/Jafar-Salimian/publication/363015888_Safety_and_Immunogenicity_of_a_Recombinant_Receptor_Binding_Domain-Based_Protein_Subunit_Vaccine_Noora_Vaccine_Against_COVID-19_in_Adults_A_Randomized_Double-Blind_Placebo-Controlled_Phase_1_Trial/links/632bd247873eca0c00a6dfd4/Safety-and-Immunogenicity-of-a-Recombinant-Receptor-Binding-Domain-Based-Protein-Subunit-Vaccine-Noora-Vaccine-Against-COVID-19-in_Adults-A-Randomized-Double-Blind-Placebo-Controlled-Phase_1_Trial.pdf,Sanctioned Institution Customers,Ali Ahmadi,"Molecular Biology Research Center, Systems Biology and Poisonings Institute, Baqiyatallah University of Medical Sciences, Tehran, Iran",Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD),"Name: Ali Ahmadi
-Institution: Molecular Biology Research Center, Systems Biology and Poisonings Institute, Baqiyatallah University of Medical Sciences, Tehran, Iran
-Email: Verified email at bmsu.ac.ir
-Order matches SARS-CoV-2 Receptor Binding Domain (RBD)"
-https://patentscope.wipo.int/search/en/detail.jsf?docId=BR463812445,Controlled Agent Industry,Edel Figueiredo Barbosa Stancioli,Universidade Federal de Minas Gerais / SAFETEST DIAGNÓSTICOS LTDA.,edelfb@mono.icb.ufmg.br,Human T-lymphotropic virus (HTLV),"Name: Edel Figueiredo Barbosa Stancioli
-Institution: Universidade Federal de Minas Gerais / SAFETEST DIAGNÓSTICOS LTDA.
-Email: edelfb@mono.icb.ufmg.br
-Order matches Human T-lymphotropic virus (HTLV)"
-https://journals.plos.org/plosone/article/authors?id=10.1371/journal.pone.0124082,Controlled Agent Academia,Giselle A. Funchal,"Clinical and Experimental Immunology Laboratory; Cellular and Molecular Immunology Laboratory; Institute of Biomedical Research, Pontifícia Universidade Católica do Rio Grande do Sul (PUCRS), Porto Alegre, RS, Brazil",Verified email at acad.pucrs.br,Respiratory syncytial virus fusion protein,"Name: Giselle A. Funchal
-Institution: Clinical and Experimental Immunology Laboratory; Cellular and Molecular Immunology Laboratory; Institute of Biomedical Research, Pontifícia Universidade Católica do Rio Grande do Sul (PUCRS), Porto Alegre, RS, Brazil
-Email: Verified email at acad.pucrs.br
-Order matches Respiratory syncytial virus fusion protein"
-https://www.researchgate.net/profile/Jafar-Salimian/publication/363015888_Safety_and_Immunogenicity_of_a_Recombinant_Receptor_Binding_Domain-Based_Protein_Subunit_Vaccine_Noora_Vaccine_Against_COVID-19_in_Adults_A_Randomized_Double-Blind_Placebo-Controlled_Phase_1_Trial/links/632bd247873eca0c00a6dfd4/Safety-and-Immunogenicity-of-a-Recombinant-Receptor-Binding-Domain-Based-Protein-Subunit-Vaccine_Noora_Vaccine_Against_COVID-19_in_Adults_A_Randomized_Double_Blind_Placebo_Controlled_Phase_1_Trial.pdf,Sanctioned Institution Customers,Jafar Amani,"Applied Microbiology Research Center, Systems Biology and Poisonings Institute, Baqiyatallah University of Medical Sciences, Tehran, Iran",Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD),"Name: Jafar Amani
-Institution: Applied Microbiology Research Center, Systems Biology and Poisonings Institute, Baqiyatallah University of Medical Sciences, Tehran, Iran
-Email: Verified email at bmsu.ac.ir
-Order matches SARS-CoV-2 Receptor Binding Domain (RBD)"
-https://escholarship.mcgill.ca/concern/theses/sx61ds32h,Controlled Agent Academia,Julia Puppin Chaves Fulber,McGill University – Department of Biological and Biomedical Engineering,julia.puppinchavesfulber@mail.mcgill.ca,Newcastle disease virus fusion protein cleavage site,"Name: Julia Puppin Chaves Fulber
-Institution: McGill University – Department of Biological and Biomedical Engineering
-Email: julia.puppinchavesfulber@mail.mcgill.ca
-Order matches Newcastle disease virus fusion protein cleavage site"
-https://repositorio.uchile.cl/handle/2250/202062,Controlled Agent Academia,Carlos Alberto Santiviago Cid,Universidad de Chile,csantiviago@ciq.uchile.cl,Human T-lymphotropic virus Tax protein,"Name: Carlos Alberto Santiviago Cid
-Institution: Universidad de Chile
-Email: csantiviago@ciq.uchile.cl
-Order matches Human T-lymphotropic virus Tax protein"
-https://doi.org/10.29326/2304-196X-2025-14-3-283-293,Controlled Agent Academia,Alexey V. Borisov,"Federal Centre for Animal Health, Vladimir, Russia",borisov_av@arriah.ru,Foot-and-mouth disease virus VP1,"Name: Alexey V. Borisov
-Institution: Federal Centre for Animal Health, Vladimir, Russia
-Email: borisov_av@arriah.ru
-Order matches Foot-and-mouth disease virus VP1"
-https://www.science.org/doi/abs/10.1126/science.1242917,Controlled Agent Academia,Honglei Sun,"College of Veterinary Medicine, China Agricultural University, Beijing 100193, China",shlei668@163.com,H7N9 influenza HA receptor binding site,"Name: Honglei Sun
-Institution: College of Veterinary Medicine, China Agricultural University, Beijing 100193, China
-Email: shlei668@163.com
-Order matches H7N9 influenza HA receptor binding site"
-https://www.startupticker.ch/en/news/virometix-to-kick-off-in-human-studies-of-its-vaccine-against-virus-infection,Controlled Agent Industry,Vasiliki Daikopoulou,Virometix AG,vasiliki.daikopoulou@virometix.com,Respiratory syncytial virus fusion protein,"Name: Vasiliki Daikopoulou
-Institution: Virometix AG
-Email: vasiliki.daikopoulou@virometix.com
-Order matches Respiratory syncytial virus fusion protein"
-https://www.jbc.org/article/S0021-9258(21)01229-1/fulltext,General Life Science Customers,Mei-Qing Feng,"Department of Biological Medicines & Shanghai Engineering Research Center of Immunotherapeutics, Fudan University School of Pharmacy, Shanghai, China",fmq@fudan.edu.cn,Merkel cell polyomavirus large T antigen (partial),"Name: Mei-Qing Feng
-Institution: Department of Biological Medicines & Shanghai Engineering Research Center of Immunotherapeutics, Fudan University School of Pharmacy, Shanghai, China
-Email: fmq@fudan.edu.cn
-Order matches Merkel cell polyomavirus large T antigen (partial)"
-https://www.sciencedirect.com/science/article/abs/pii/S000989812500021X,General Life Science Customers,Qiang He,"Department of Nephrology, The First Affiliated Hospital of Zhejiang Chinese Medical University, Zhejiang Provincial Hospital of Traditional Chinese Medicine, Hangzhou, China",qianghe1973@126.com,SARS-CoV-2 Receptor Binding Domain (RBD),"Name: Qiang He
-Institution: Department of Nephrology, The First Affiliated Hospital of Zhejiang Chinese Medical University, Zhejiang Provincial Hospital of Traditional Chinese Medicine, Hangzhou, China
-Email: qianghe1973@126.com
-Order matches SARS-CoV-2 Receptor Binding Domain (RBD)"
-https://www.biorxiv.org/content/biorxiv/early/2024/06/16/2023.07.08.548212.full.pdf,Controlled Agent Academia,David W. Morgens,"Department of Plant and Microbial Biology, UC Berkeley, Berkeley, CA, USA",dmorgens@berkeley.edu,Kaposi's sarcoma-associated herpesvirus K1,"Name: David W. Morgens
-Institution: Department of Plant and Microbial Biology, UC Berkeley, Berkeley, CA, USA
-Email: dmorgens@berkeley.edu
-Order matches Kaposi's sarcoma-associated herpesvirus K1"
-https://patentscope.wipo.int/search/en/detail.jsf?docId=ID464825566,Controlled Agent Industry,SOHN Myung Hyun,GREENVAX INC.,mhsohn@yuhs.ac,Zika virus NS1 protein,"Name: SOHN Myung Hyun
-Institution: GREENVAX INC.
-Email: mhsohn@yuhs.ac
-Order matches Zika virus NS1 protein"
-https://scispace.com/papers/baculoviral-co-expression-of-ha-na-and-m1-proteins-of-highly-123sr27inx,Sanctioned Institution Customers,Esmaeil Saberfar,Baqiyatallah University of Medical Sciences,saberfar@yahoo.com,H5N1 Hemagglutinin (HA) receptor-binding site,"Name: Esmaeil Saberfar
-Institution: Baqiyatallah University of Medical Sciences
-Email: saberfar@yahoo.com
-Order matches H5N1 Hemagglutinin (HA) receptor-binding site"
-https://immunomix.com/iti-reports-positive-results-from-its-phase-1-clinical-trial-of-iti-3000-in-patients-diagnosed-with-merkel-cell-carcinoma/,Controlled Agent Industry,Yun-Ting Kao,"Immunomic Therapeutics, Inc.",ykao@immunomix.com,Merkel cell polyomavirus,"Name: Yun-Ting Kao
-Institution: Immunomic Therapeutics, Inc.
-Email: ykao@immunomix.com
-Order matches Merkel cell polyomavirus"
-https://chemistry-europe.onlinelibrary.wiley.com/doi/full/10.1002/cmdc.202500532,Controlled Agent Academia,Ziwei Gao,"Department of Chemistry & Biotechnology, Graduate School of Engineering, The University of Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo, 113–8656 Japan",Verfied email at @chembio.t.u-tokyo.ac.jp,Measles virus fusion protein,"Name: Ziwei Gao
-Institution: Department of Chemistry & Biotechnology, Graduate School of Engineering, The University of Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo, 113–8656 Japan
-Email: Verfied email at @chembio.t.u-tokyo.ac.jp
-Order matches Measles virus fusion protein"
-https://journals.asm.org/doi/full/10.1128/jvi.75.10.4744-4751.2001,Controlled Agent Academia,Georg Herrler,"Institut für Virologie, Tierärztliche Hochschule Hannover, D-30559 Hannover, Germany",georg.herrler@tiho-hannover.de,Respiratory syncytial virus fusion protein,"Name: Georg Herrler
-Institution: Institut für Virologie, Tierärztliche Hochschule Hannover, D-30559 Hannover, Germany
-Email: georg.herrler@tiho-hannover.de
-Order matches Respiratory syncytial virus fusion protein"
-https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2025241667&_cid=P20-MIKVTP-96970-1,General Life Science Customers,Guo Zhigang,"Nanjing Miracle Biotechnology Co., Ltd",guo@njnu.edu.cn,Kaposi's sarcoma-associated herpesvirus K1,"Name: Guo Zhigang
-Institution: Nanjing Miracle Biotechnology Co., Ltd
-Email: guo@njnu.edu.cn
-Order matches Kaposi's sarcoma-associated herpesvirus K1"
-https://patentscope.wipo.int/search/en/detail.jsf?docId=US293706122,Controlled Agent Industry,Alexander B. Sigalov,Signablok Inc,sigalov@signablok.com,Human T-lymphotropic virus,"Name: Alexander B. Sigalov
-Institution: Signablok Inc
-Email: sigalov@signablok.com
-Order matches Human T-lymphotropic virus"
-https://patentscope.wipo.int/search/en/detail.jsf?docId=US407345960,Controlled Agent Industry,Satishchandran Chandrasekhar,Lay Sciences Inc,satish.chandran@laysciences.com,MERS-CoV spike RBD,"Name: Satishchandran Chandrasekhar
-Institution: Lay Sciences Inc
-Email: satish.chandran@laysciences.com
-Order matches MERS-CoV spike RBD"
-https://patentscope.wipo.int/search/en/detail.jsf?docId=MX441926322,Controlled Agent Industry,Katherine Ivette Calderon Mayo,Farmacológicos Veterinarios S.A.C.,kcalderon@farvet.com,Newcastle disease virus fusion protein cleavage site,"Name: Katherine Ivette Calderon Mayo
-Institution: Farmacológicos Veterinarios S.A.C.
-Email: kcalderon@farvet.com
-Order matches Newcastle disease virus fusion protein cleavage site"
-https://www.sciencedirect.com/science/article/abs/pii/S016635421830740X,Controlled Agent Academia,Vimbaishe P. Chibanga,"Institute for Glycomics, Griffith University, Gold Coast Campus, Gold Coast, Queensland 4222, Australia",Verified email at griffithuni.edu.au,Parainfluenza virus 3 hemagglutinin-neuraminidase,"Name: Vimbaishe P. Chibanga
-Institution: Institute for Glycomics, Griffith University, Gold Coast Campus, Gold Coast, Queensland 4222, Australia
-Email: Verified email at griffithuni.edu.au
-Order matches Parainfluenza virus 3 hemagglutinin-neuraminidase"
-https://www.mdpi.com/2076-393X/9/2/157,Controlled Agent Academia,Bart Faber,"Department of Parasitology, Biomedical Primate Research Centre, Lange Kleiweg 161, 2288 GJ Rijswijk, The Netherlands",faber@bprc.nl,Usutu virus envelope protein,"Name: Bart Faber
-Institution: Department of Parasitology, Biomedical Primate Research Centre, Lange Kleiweg 161, 2288 GJ Rijswijk, The Netherlands
-Email: faber@bprc.nl
-Order matches Usutu virus envelope protein"
-https://www.explorationpub.com/Journals/ei/Article/100311,Controlled Agent Academia,Zainab Fatima,"Department of Psychology, University of Gujrat, Punjab 50991, Pakistan",17200811-036@uog.edu.pk,MERS-CoV spike RBD,"Name: Zainab Fatima
-Institution: Department of Psychology, University of Gujrat, Punjab 50991, Pakistan
-Email: 17200811-036@uog.edu.pk
-Order matches MERS-CoV spike RBD"
-https://www.sciencedirect.com/science/article/abs/pii/S000989812500021X,General Life Science Customers,Shangbin Kao,"College of Life Sciences and Medicine, Zhejiang Sci‑Tech University, Hangzhou, China",kaoshangbin1130@163.com,SARS-CoV-2 Receptor Binding Domain (RBD),"Name: Shangbin Kao
-Institution: College of Life Sciences and Medicine, Zhejiang Sci‑Tech University, Hangzhou, China
-Email: kaoshangbin1130@163.com
-Order matches SARS-CoV-2 Receptor Binding Domain (RBD)"
-https://www.researchgate.net/publication/49820637_A_Recombinant_Vaccine_of_H5N1_HA1_Fused_with_Foldon_and_Human_IgG_Fc_Induced_Complete_Cross_Clade_Protection_against_Divergent_H5N1_Viruses,Sanctioned Institution Customers,Guangyu Zhao,"Beijing Institute of Microbiology and Epidemiology, Beijing, China",guangyu0525@outlook.com,H5N1 Hemagglutinin (HA) receptor-binding site,"Name: Guangyu Zhao
-Institution: Beijing Institute of Microbiology and Epidemiology, Beijing, China
-Email: guangyu0525@outlook.com
-Order matches H5N1 Hemagglutinin (HA) receptor-binding site"
-https://www.science.org/doi/full/10.1126/sciadv.ads3071,Controlled Agent Academia,Mette M. Rosenkilde,"Laboratory for Molecular and Translational Pharmacology, Department of Biomedical Sciences, University of Copenhagen, Copenhagen, Denmark",rosenkilde@sund.ku.dk,Mumps virus small hydrophobic protein,"Name: Mette M. Rosenkilde
-Institution: Laboratory for Molecular and Translational Pharmacology, Department of Biomedical Sciences, University of Copenhagen, Copenhagen, Denmark
-Email: rosenkilde@sund.ku.dk
-Order matches Mumps virus small hydrophobic protein"
-https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2025241977,General Life Science Customers,LING Sikai,"上海本导基因技术有限公司 SHANGHAI BDGENE CO., LTD",sikai.ling@bdgene.cn,Newcastle disease virus fusion protein cleavage site,"Name: LING Sikai
-Institution: 上海本导基因技术有限公司 SHANGHAI BDGENE CO., LTD
-Email: sikai.ling@bdgene.cn
-Order matches Newcastle disease virus fusion protein cleavage site"
-https://pubmed.ncbi.nlm.nih.gov/36985223/,Sanctioned Institution Customers,Nataliya E Suzina,"Laboratory of Cytology of Microorganisms, G.K. Skryabin Institute of Biochemistry and Physiology of Microorganisms, Pushchino Scientific Center for Biological Research of the Russian Academy of Sciences, Prosp. Nauki 5, Pushchino, 142290 Pushchino, Russia",Verified email at rambler.ru,SFTS virus nucleocapsid protein,"Name: Nataliya E Suzina
-Institution: Laboratory of Cytology of Microorganisms, G.K. Skryabin Institute of Biochemistry and Physiology of Microorganisms, Pushchino Scientific Center for Biological Research of the Russian Academy of Sciences, Prosp. Nauki 5, Pushchino, 142290 Pushchino, Russia
-Email: Verified email at rambler.ru
-Order matches SFTS virus nucleocapsid protein"
-https://www.researchgate.net/publication/295668308_Cloning_of_fusion_protein_gene_of_Newcastle_disease_virus_into_a_baculovirus_derived_bacmid_shuttle_vector_in_order_to_express_it_in_insect_cell_line,Sanctioned Institution Customers,Ruhollah Dorostkar,Baqiyatallah University of Medical Sciences,r.dorost@yahoo.com,Newcastle disease virus fusion protein cleavage site,"Name: Ruhollah Dorostkar
-Institution: Baqiyatallah University of Medical Sciences
-Email: r.dorost@yahoo.com
-Order matches Newcastle disease virus fusion protein cleavage site"
+Type,Name,Institution,Email,Order
+Sanctioned Institution Customers,anon_027b55113d42,inst_1f8f13e6cf9c,Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_04e4eb744d98,inst_ccdd3f5360c1,@dartsbio.com,Merkel cell polyomavirus large T antigen (partial)
+Controlled Agent Industry,anon_75e2b4726e3a,inst_d40f07d10894,@celarts.com,Human T-lymphotropic virus Tax protein
+Controlled Agent Industry,anon_b61c21e048b8,inst_c0c265243aa9,@tum.de,Newcastle disease virus fusion protein cleavage site
+Controlled Agent Academia,anon_30db64b95c9c,inst_f8118e4a3287,@gzucm.edu.cn,Zika virus NS1 protein
+Controlled Agent Academia,anon_52e44154eb1d,inst_1283f9005163,@ccf.org,Schmallenberg virus nucleocapsid
+Controlled Agent Academia,anon_1e430e2f7cba,inst_420a9f38927b,@bti.vu.lt,Usutu virus envelope protein
+Controlled Agent Academia,anon_eadeee216506,inst_9e6c4dd26cdb,@czc.hokudai.ac.jp,Rinderpest virus hemagglutinin
+Controlled Agent Industry,anon_13194efc732c,inst_5c716e500475,Verfied email at adaptvac.com,Ebola Virus Glycoprotein (GP) RBD
+Controlled Agent Industry,anon_e763b27af836,inst_e3788f26a504,@163.com,Newcastle disease virus fusion protein cleavage site
+General Life Science Customers,anon_192b387e11c4,inst_e5afae89b467,Verified email at cmcvellore.ac.in,Human T-lymphotropic virus Tax protein
+Sanctioned Institution Customers,anon_638593379f8c,inst_9994ac9866a7,Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD)
+Controlled Agent Industry,anon_c0faaade0799,inst_2cbbb2e99341,@mono.icb.ufmg.br,Human T-lymphotropic virus (HTLV)
+Controlled Agent Academia,anon_995c400fa2f0,inst_28389446ed70,Verified email at acad.pucrs.br,Respiratory syncytial virus fusion protein
+Sanctioned Institution Customers,anon_8d1bd718d5b6,inst_1f8f13e6cf9c,Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD)
+Controlled Agent Academia,anon_545fc28ab8aa,inst_2d5eb46f7ecb,@mail.mcgill.ca,Newcastle disease virus fusion protein cleavage site
+Controlled Agent Academia,anon_7b29ca38925e,inst_88cdbbaf3f7f,@ciq.uchile.cl,Human T-lymphotropic virus Tax protein
+Controlled Agent Academia,anon_17fb625d0cf5,inst_4bce26c68f9d,@arriah.ru,Foot-and-mouth disease virus VP1
+Controlled Agent Academia,anon_7140683b30db,inst_ecaa40fd02af,@163.com,H7N9 influenza HA receptor binding site
+Controlled Agent Industry,anon_d9edf69a0adc,inst_6dca370d6280,@virometix.com,Respiratory syncytial virus fusion protein
+General Life Science Customers,anon_f4671d09213d,inst_2d5109fe9d30,@fudan.edu.cn,Merkel cell polyomavirus large T antigen (partial)
+General Life Science Customers,anon_4111e7c8c50a,inst_c610de0261b2,@126.com,SARS-CoV-2 Receptor Binding Domain (RBD)
+Controlled Agent Academia,anon_903c8a87b7e3,inst_6da7b4323368,@berkeley.edu,Kaposi's sarcoma-associated herpesvirus K1
+Controlled Agent Industry,anon_5e1bc3151909,inst_5c4d425ae9b3,@yuhs.ac,Zika virus NS1 protein
+Sanctioned Institution Customers,anon_d8e9748df044,inst_ca3a7c5f885b,@yahoo.com,H5N1 Hemagglutinin (HA) receptor-binding site
+Controlled Agent Industry,anon_93f4783e78de,inst_752d37c03a1e,@immunomix.com,Merkel cell polyomavirus
+Controlled Agent Academia,anon_ec6abece0ba6,inst_b2599aacb828,@chembio.t.u-tokyo.ac.jp,Measles virus fusion protein
+Controlled Agent Academia,anon_619cd2be9933,inst_67f27c0cbb86,@tiho-hannover.de,Respiratory syncytial virus fusion protein
+General Life Science Customers,anon_ef51f244f18e,inst_3da5c25ce37e,@njnu.edu.cn,Kaposi's sarcoma-associated herpesvirus K1
+Controlled Agent Industry,anon_db3d2cd19fdf,inst_a2bd1d8e8163,@signablok.com,Human T-lymphotropic virus
+Controlled Agent Industry,anon_d96223e4a20f,inst_949b32cc8889,@laysciences.com,MERS-CoV spike RBD
+Controlled Agent Industry,anon_ace9a7303237,inst_8f1fe45115dc,@farvet.com,Newcastle disease virus fusion protein cleavage site
+Controlled Agent Academia,anon_a86e8def44e0,inst_a5e456197748,Verified email at griffithuni.edu.au,Parainfluenza virus 3 hemagglutinin-neuraminidase
+Controlled Agent Academia,anon_1880559bcc29,inst_663244dac6c1,@bprc.nl,Usutu virus envelope protein
+Controlled Agent Academia,anon_48ec383bf29f,inst_ee4150b98b5f,@uog.edu.pk,MERS-CoV spike RBD
+General Life Science Customers,anon_bcc021a2a602,inst_a1c78b783be3,@163.com,SARS-CoV-2 Receptor Binding Domain (RBD)
+Sanctioned Institution Customers,anon_8d0783352608,inst_fac71b1a11a7,@outlook.com,H5N1 Hemagglutinin (HA) receptor-binding site
+Controlled Agent Academia,anon_c79332b266ed,inst_4576071f33f5,@sund.ku.dk,Mumps virus small hydrophobic protein
+General Life Science Customers,anon_7f1ac6919855,inst_bdb2bd03ca56,@bdgene.cn,Newcastle disease virus fusion protein cleavage site
+Sanctioned Institution Customers,anon_9fe0d38e0ee5,inst_56d6dc1efd56,Verified email at rambler.ru,SFTS virus nucleocapsid protein
+Sanctioned Institution Customers,anon_b99f0fd1480e,inst_ca3a7c5f885b,@yahoo.com,Newcastle disease virus fusion protein cleavage site

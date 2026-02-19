@@ -1,1 +1,0 @@
-Flag accuracy error rate for each order (gene/protein product), averaged across all AI models on the 40-profile human baseline subset. Error rate is defined as 1 minus the mean pass rate for flag_accuracy tests. Bars are colored with a red gradient; darker red indicates higher error rates.

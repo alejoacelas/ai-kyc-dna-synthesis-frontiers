@@ -1,1 +1,0 @@
-Figure S10: Effect of specialized tools on pass rates by test category (40-profile subset). Paired bars show average performance across all AI models for web-only (blue) versus all-tools (green) configurations. Annotations show the percentage point difference. Sanctions screening benefits most from tool access, while work relevance declines when additional tools are available.

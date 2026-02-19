@@ -1,1 +1,0 @@
-Figure S4: Pass rates by screener and test category on the full dataset (134 profiles, AI models only). Replication of Figure 2 using all customer profiles rather than the 40-profile human baseline subset. Human baseline screeners are excluded as they were evaluated only on the subset.

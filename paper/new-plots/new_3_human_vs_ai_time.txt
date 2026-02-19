@@ -1,1 +1,0 @@
-Comparison of screening time per customer: human baseline (time_to_complete_minutes from evaluation data) vs AI models (wall-clock information gathering time from dedicated latency benchmark). Human time includes both information gathering and review; AI time is information gathering only.

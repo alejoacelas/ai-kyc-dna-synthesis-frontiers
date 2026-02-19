@@ -1,1 +1,0 @@
-Mean prompt and completion token consumption per customer for each AI model on the 40-profile human baseline subset, summed across both prompts.
