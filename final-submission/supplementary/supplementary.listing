@@ -1,0 +1,93 @@
+You are evaluating the quality of background work sources retrieved for
+customer screening at a DNA synthesis provider. Your task is to determine
+whether the retrieved sources are at least as relevant as a
+manually-identified reference source.
+
+<order_details>
+{{CUSTOMER_INFO}}
+</order_details>
+
+<reference_source>
+{{WORK_CONTENT}}
+</reference_source>
+
+<provided_sources_table>
+{{SOURCES_TABLE}}
+</provided_sources_table>
+
+The relevance levels in this table are the screener's assessment and may be
+incorrect. You must independently determine each source's relevance level
+based on the source content.
+
+<provided_sources>
+{{SOURCES}}
+</provided_sources>
+
+EVALUATION TASK
+1. Independently determine the relevance level (0-5) of the reference source
+   based on the source content.
+2. Identify all sources in the provided sources table that the screener
+   labeled at a relevance level equal to or higher than the reference
+   source's independently-determined level. These are the sources you will
+   audit.
+3. Independently determine the relevance level (0-5) of each selected
+   provided source based on the source content.
+4. A provided source passes if its independently-determined relevance level
+   is equal to or greater than the reference source's
+   independently-determined level.
+
+You must evaluate the reference source first, then evaluate EACH selected
+provided source on all criteria before making a final determination.
+
+OUTPUT FORMAT
+Structure your response as follows:
+
+<order_organism>
+State what organism or sequence is being ordered.
+</order_organism>
+
+<reference_source_analysis>
+- Description: Brief description of the reference work
+- Proximity to Customer: [CUSTOMER_DIRECT / INSTITUTION_ONLY / UNRELATED] -
+  Justification
+- Organism Proximity to Order: [SAME_ORGANISM / CLOSELY_RELATED /
+  DISTANTLY_RELATED / UNRELATED] - Justification including specific
+  organism(s) involved
+- Laboratory Work Involvement: [WET_LAB / COMPUTATIONAL_ONLY / UNCLEAR] -
+  Justification
+- Relevance Level: [0-5]
+</reference_source_analysis>
+
+<selected_sources>
+List the titles of all sources the screener labeled at a relevance level
+equal to or higher than the reference source's. If no sources meet this
+threshold, state "No sources labeled at or above reference level."
+</selected_sources>
+
+Repeat the following block for EACH selected source:
+
+<provided_source_analysis id="[source title]">
+- Description: Brief description of the work
+- Proximity to Customer: [CUSTOMER_DIRECT / INSTITUTION_ONLY / UNRELATED] -
+  Justification
+- Organism Proximity to Order: [SAME_ORGANISM / CLOSELY_RELATED /
+  DISTANTLY_RELATED / UNRELATED] - Justification including specific
+  organism(s) involved
+- Laboratory Work Involvement: [WET_LAB / COMPUTATIONAL_ONLY / UNCLEAR] -
+  Justification
+- Relevance Level: [0-5 as determined by your independent assessment]
+- Source Result: [PASS if this source's relevance level is equal to or
+  greater than the reference level, otherwise FAIL]
+</provided_source_analysis>
+
+<answer>
+PASS if AT LEAST ONE provided source passes. FAIL if ALL provided sources
+fail or if no sources were selected for evaluation.
+[PASS/FAIL]
+</answer>
+
+IMPORTANT NOTES
+- If the provided sources table is empty or contains no sources labeled at
+  or above the reference source's level, output FAIL
+- Evaluate ALL sources that the screener labeled at or above the reference
+  level, even if one has already passed
