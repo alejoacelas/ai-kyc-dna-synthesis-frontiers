@@ -43,6 +43,8 @@
 
 All customer profiles in our dataset were assigned simulated orders from the following list of 22 proteins. These sequences are derived from controlled pathogens and would typically trigger follow-up screening at DNA synthesis providers. We selected sequences that would be plausible to order for legitimate vaccine or therapeutics research.
 
+The ``General life science researchers'' customer category was identified through documented laboratory work on non-SOC sequences including antibodies (scFv fragments), CAR-T constructs, protein engineering targets, and diagnostic antigens.
+
 \begin{itemize}
 \item Ebola Virus Glycoprotein (GP) RBD
 \item Foot-and-mouth disease virus VP1
@@ -642,36 +644,37 @@ Because the two decisions in each pair were made by different evaluators under d
 
 \subsection{Detailed model performance}
 
-All figures reference the 40-profile human baseline subset unless otherwise noted. AI models include five models (Claude Sonnet 4, Gemini 2.5 Pro, Grok 4, GLM 4.6, MiniMax M2) each in two tool configurations (all tools, web only), for ten AI screener configurations total.
+All figures reference the 41-profile human baseline subset unless otherwise noted. AI models include five models (Claude Sonnet 4, Gemini 2.5 Pro, Grok 4, GLM 4.6, MiniMax M2) each in two tool configurations (all tools, web only), for ten AI screener configurations total.
 
 \subsubsection{Overall pass rates}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth, height=0.28\textheight, keepaspectratio]{figures/FigureE1.png}
-\caption{\textbf{Overall pass rate per model with 95\% Wilson score confidence intervals (40-profile subset).} Dots indicate point estimates; horizontal lines show confidence intervals. Green = all tools, blue = web only, red = human baseline.}
-\label{fig:F1}
-
-\vspace{1em}
-
-\includegraphics[width=0.75\textwidth, height=0.28\textheight, keepaspectratio]{figures/FigureE2.png}
-\caption{\textbf{Overall pass rates by screener, sorted from lowest to highest (41-profile subset).} Horizontal bars show the average pass rate across all test categories. Dark blue = AI with all tools, light blue = AI with web search only, amber = human baseline.}
-\label{fig:F2}
+\caption{\textbf{Overall pass rate per screener with 95\% cluster-adjusted Wilson confidence intervals (41-profile subset).} Each customer profile generates multiple test assertions (~15 per customer), and test outcomes within the same customer are correlated (intra-cluster correlation 0.03--0.10). Confidence intervals account for this clustering using design effects (range 1.4--2.4×) to provide appropriately conservative uncertainty estimates. Sorted by pass rate. Green = all tools, blue = web only, red = human baseline.}
+\label{fig:E1}
 \end{figure}
 
 \subsubsection{Pass rate breakdowns}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureE3.png}
-\caption{\textbf{Pass rates by screener and task (41-profile subset).} Each cell shows the percentage of tests passed. Tasks include institutional affiliation verification, institution type classification, email domain validation, sanctions screening, and relevant work assessment.}
-\label{fig:F3}
+\includegraphics[width=\textwidth, height=0.40\textheight, keepaspectratio]{figures/FigureF1.png}
+\caption{\textbf{Pass rates by screener and test category.} Left: 41-profile subset (includes human baseline). Right: full 134-profile dataset (AI models only).}
+\label{fig:F1sbs}
 
 \vspace{1em}
 
-\includegraphics[width=0.5\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureE4.png}
-\caption{\textbf{Pass rates by screener and customer type (41-profile subset).} Each cell shows the percentage of tests passed across four customer categories.}
-\label{fig:F4}
+\includegraphics[width=\textwidth, height=0.40\textheight, keepaspectratio]{figures/FigureE3.png}
+\caption{\textbf{Pass rates by screener and task.} Left: 41-profile subset (includes human baseline). Right: full 134-profile dataset (AI models only). Tasks include institutional affiliation verification, institution type classification, email domain validation, sanctions screening, and relevant work assessment.}
+\label{fig:E3sbs}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth, height=0.40\textheight, keepaspectratio]{figures/FigureE4.png}
+\caption{\textbf{Pass rates by screener and customer type.} Left: 41-profile subset (includes human baseline). Right: full 134-profile dataset (AI models only).}
+\label{fig:E4sbs}
 \end{figure}
 
 \subsubsection{Per-customer performance}
@@ -679,8 +682,8 @@ All figures reference the 40-profile human baseline subset unless otherwise note
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureE5.png}
-\caption{\textbf{Per-customer overall pass rates (41-profile subset).} Swarm plot grouped by customer type. Each dot represents one customer's average pass rate across all AI models.}
-\label{fig:F5}
+\caption{\textbf{Per-customer overall pass rates (41-profile subset).} Swarm plot grouped by customer type. Each dot represents one customer's average pass rate across all AI models. Horizontal bars indicate group means.}
+\label{fig:E5}
 
 \vspace{1em}
 
@@ -689,19 +692,13 @@ All figures reference the 40-profile human baseline subset unless otherwise note
 \label{fig:F6}
 \end{figure}
 
-\subsubsection{Statistical comparisons}
+\subsubsection{Category correlations}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureE7.png}
-\caption{\textbf{Pairwise McNemar's test p-values across 10 AI models (41-profile subset).} 8 of 45 pairs show significant differences at $p < 0.05$ (continuity-corrected).}
-\label{fig:F7}
-
-\vspace{1em}
-
 \includegraphics[width=0.7\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureE8.png}
 \caption{\textbf{Correlation matrix of per-customer pass rates across test categories (41-profile subset).} Pearson correlations computed with pass rates averaged across AI models.}
-\label{fig:F8}
+\label{fig:E8}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -709,41 +706,19 @@ All figures reference the 40-profile human baseline subset unless otherwise note
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Full dataset validation}
 
-The main results are reported on the 41-profile subset where human baseline comparisons are available. To confirm that these findings generalize, we replicate key analyses on the full 134-profile dataset (AI models only; human screeners were not evaluated on the extended profiles).
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.75\textwidth, height=0.40\textheight, keepaspectratio]{figures/FigureF1.png}
-\caption{\textbf{Pass rates by screener and test category on the full dataset (134 profiles, AI models only).} Replication of main-text Figure 2.}
-\label{fig:G1}
-\end{figure}
-
-\subsubsection{Full dataset replications}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureF2.png}
-\caption{\textbf{Pass rates by screener and task on the full dataset (134 profiles, AI models only).} Task-level patterns remain consistent with the subset analysis.}
-\label{fig:G2}
-
-\vspace{1em}
-
-\includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureF3.png}
-\caption{\textbf{Pass rates by screener and customer type on the full dataset (134 profiles, AI models only).} The full dataset provides larger sample sizes per customer category.}
-\label{fig:G3}
-\end{figure}
+The side-by-side heatmaps in Section 6.1 compare the 41-profile human baseline subset with the full 134-profile dataset. The figures below provide additional full dataset comparisons.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureF4.png}
 \caption{\textbf{Overall pass rates on the 41-profile subset vs.\ the full 134-profile dataset for each AI model.} Mean difference: $-1.5$ percentage points.}
-\label{fig:G4}
+\label{fig:F4}
 
 \vspace{1em}
 
 \includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureF5.png}
 \caption{\textbf{Pass rates by customer type and region.} Side-by-side heatmaps averaged across AI models. Left: 41-profile subset. Right: full 134-profile dataset.}
-\label{fig:G5}
+\label{fig:F5}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -860,7 +835,7 @@ Flag accuracy is the only manually graded metric and the most relevant for scree
 \vspace{1em}
 
 \includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureH6.png}
-\caption{\textbf{Token consumption by model (41-profile subset).} Mean prompt and completion tokens per customer.}
+\caption{\textbf{Token consumption by model (41-profile subset).} Mean input and response tokens per customer.}
 \label{fig:I6}
 \end{figure}
 

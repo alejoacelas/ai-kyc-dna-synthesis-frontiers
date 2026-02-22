@@ -66,8 +66,8 @@ MODEL_LABELS = {
     "Grok 4 (Web)": "Grok (W)",
     "MiniMax M2 (All Tools)": "MiniMax (AT)",
     "MiniMax M2 (Web)": "MiniMax (W)",
-    "Human Baseline (30min)": "Human (30m)",
-    "Human Baseline (5min)": "Human (5m)",
+    "Human Baseline (30min)": "Human baseline",
+    "Human Baseline (5min)": "Human (5 min limit)",
 }
 
 MODEL_LABELS_NO_TIME = {
@@ -82,7 +82,7 @@ MODEL_LABELS_NO_TIME = {
     "MiniMax M2 (All Tools)": "MiniMax (AT)",
     "MiniMax M2 (Web)": "MiniMax (W)",
     "Human Baseline (30min)": "Human baseline",
-    "Human Baseline (5min)": "Human (5m)",
+    "Human Baseline (5min)": "Human (5 min limit)",
 }
 
 # Model order for consistent plotting

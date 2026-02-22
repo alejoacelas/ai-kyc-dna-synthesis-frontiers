@@ -25,7 +25,7 @@ from style import (
 
 # Module-level constants
 COST_COLORS = {"input": "#6366f1", "output": "#fb7185", "web_search": "#2dd4bf"}
-TOKEN_COLORS = {"prompt": "#3498db", "completion": "#f39c12"}
+TOKEN_COLORS = {"input": "#3498db", "output": "#f39c12"}
 
 # Map model_name (from responses.csv) to pricing keys in token_pricing.yaml
 MODEL_PRICING_MAP = {
@@ -259,7 +259,7 @@ def figure_h3(responses_df):
     legend_elements = [
         Patch(facecolor=COLORS["all_tools"], label="All Tools (AT)"),
         Patch(facecolor=COLORS["web_only"], label="Web Only (W)"),
-        Patch(facecolor=COLORS["human_baseline"], label="Human Baseline"),
+        Patch(facecolor=COLORS["human_baseline"], label="Human baseline"),
     ]
     ax.legend(handles=legend_elements, loc="lower right", fontsize=10)
 
@@ -398,11 +398,11 @@ def figure_h6(responses_df):
 
     bars_prompt = ax.bar(
         x - width / 2, model_tokens["prompt_tokens"].values, width,
-        label="Prompt tokens", color=TOKEN_COLORS["prompt"], alpha=0.85,
+        label="Input tokens", color=TOKEN_COLORS["input"], alpha=0.85,
     )
     bars_completion = ax.bar(
         x + width / 2, model_tokens["completion_tokens"].values, width,
-        label="Completion tokens", color=TOKEN_COLORS["completion"], alpha=0.85,
+        label="Response tokens", color=TOKEN_COLORS["output"], alpha=0.85,
     )
 
     # Value labels rotated 90 degrees

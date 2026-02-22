@@ -26,7 +26,7 @@ $^{3}$Aclid, New York, United States}
 \onecolumn
 \firstpage{1}
 
-\title[AI-Assisted Customer Verification for DNA Synthesis Screening]{Evaluating AI-Assisted Customer Verification for DNA Synthesis Screening}
+\title[AI-Assisted Customer Verification for Synthetic Nucleic Acid Screening]{Evaluating AI-Assisted Customer Verification for Synthetic Nucleic Acid Screening}
 
 \author[\firstAuthorLast]{\Authors}
 \address{}
@@ -38,26 +38,26 @@ $^{3}$Aclid, New York, United States}
 %%% ABSTRACT %%%
 \begin{abstract}
 \section{}
-Legitimacy screening, the process of verifying the identity and purpose of customers ordering synthetic nucleic acids, is a primary safeguard against the misuse of synthetic biology, but its cost and labor intensity discourage adoption of even baseline screening practices. To evaluate whether AI tools can facilitate this process, we tested five large language models on five verification tasks using 41 simulated customer profiles of life sciences researchers from around the world. We compared AI performance against an expert human baseline on flag accuracy, source quality, source fidelity, and cost.
+Legitimacy screening, the process of verifying the identity and purpose of customers ordering synthetic nucleic acids, is a primary safeguard against the misuse of synthetic biology. However, the associated costs discourage the adoption of screening practices. To evaluate whether AI tools can facilitate this process, we tested five large language models on five verification tasks using customer profiles of life sciences researchers from around the world. We compared AI performance against an expert human baseline on flag accuracy, source quality, source fidelity, and cost.
 
-The best-performing model (Gemini 2.5 Pro with specialized tools) achieved comparable flag accuracy to the human baseline(90\% vs.\ 89\%) while outperforming it on source quality and fidelity, at a tenth of the cost per customer (\$1.18 vs \$14.04). For information-gathering tasks alone, costs averaged \$0.23 per customer, roughly 50 times cheaper than human screening. These results support piloting AI-assisted legitimacy screening at DNA synthesis providers, with AI systems handling information gathering and human reviewers retaining authority over order fulfillment decisions.
+The best-performing model, Gemini 2.5 Pro with specialized tools, achieved comparable flag accuracy to the human baseline (90\% and 89\%, respectively). Gemini 2.5 Pro outperformed the human baseline on source quality and fidelity, at roughly one-tenth of the cost (\$1.18 vs. \$14.04 per customer). For information-gathering tasks, which excluded the human review step, costs averaged \$0.23 per customer, around 50 times cheaper than human screening. These results support piloting AI-assisted legitimacy screening at providers of synthetic nucleic acids and other dual-use biotechnology products, with AI systems handling information gathering and human reviewers retaining authority over order fulfillment decisions.
 
 \tiny
-\keyFont{\section{Keywords:} biosecurity, DNA synthesis screening, large language models, legitimacy screening, customer verification, know your customer, artificial intelligence, synthetic biology}
+\keyFont{\section{Keywords:} biosecurity, large language models, legitimacy screening, know your customer, sequence of concern, gene synthesis, human-in-the-loop, dual-use biotechnology}
 \end{abstract}
 
 %%% INTRODUCTION %%%
 \section{Introduction}
 
-Synthetic nucleic acids are unique among commercially available laboratory reagents: they can be used to directly create pathogens through simple laboratory techniques, without requiring a live pathogen culture \citep{Cello2002}. Most uses of synthetic nucleic acids benefit health and biosecurity, such as through vaccine development, diagnostics, and biotechnology research. However, a bad actor could purchase commercially available synthetic nucleic acids to create dangerous pathogens. The sequences that enable this are called ``sequences of concern'' (SOCs). Screening customers who order SOCs is therefore a primary safeguard against misuse.
+Synthetic nucleic acids are unique among commercially available laboratory reagents: they can be used directly to create pathogens through standard laboratory techniques, without requiring a live pathogen culture \citep{Cello2002}. The overwhelming majority of synthetic nucleic acid use-cases are beneficial—from vaccine development and diagnostics to industrial biotechnology applications. However, a malicious actor could purchase commercially available synthetic nucleic acids to create dangerous pathogens. The sequences that could enable this misuse of synthetic nucleic acids are called ``sequences of concern'' (SOCs). Screening customers who order SOCs is therefore a primary safeguard against misuse.
 
-As nucleic acid synthesis becomes more accessible, strengthening these safeguards becomes more important. Organizations like the International Gene Synthesis Consortium (IGSC) have committed to two forms of screening: sequence screening (checking ordered DNA against databases of regulated pathogens) and legitimacy screening (verifying that customers have legitimate reasons to order flagged sequences) \citep{IGSC2024}. However, widespread adoption remains limited \citep{Crawford2024}. A major barrier is cost. Legitimacy screening---particularly the follow-up verification triggered by risky sequences---requires substantial manual work \citep{CarterFriedman2015}. For gene-length orders, recent work calculates a per-order cost of \pounds0.95 for legitimacy screening compared to \pounds0.10 for sequence screening---almost an order of magnitude difference \citep{Fady2025annexes}. When considering orders specifically flagged by sequence screening, the costs rise to \pounds73 for legitimacy screening compared to \pounds0.53 for sequence screening \citep{Fady2025costmodel}.
+As nucleic acid synthesis becomes more accessible, strengthening these safeguards becomes more important. Organizations like the International Gene Synthesis Consortium (IGSC) have committed to two forms of screening. First, sequence screening compares the ordered sequence against databases of sequences from regulated pathogens. Second, legitimacy screening verifies that customers have legitimate reasons to order flagged sequences \citep{IGSC2024}. However, widespread adoption of sequence and legitimacy screening remains limited, with cost as a major barrier \citep{Crawford2024}. For gene-length orders, recent work calculates a per-order cost of \pounds0.95 for legitimacy screening compared to \pounds0.10 for sequence screening---almost an order of magnitude difference \citep{Fady2025annexes}. When considering orders specifically flagged by sequence screening, the costs rise to \pounds73 for legitimacy screening compared to \pounds0.53 for sequence screening \citep{Fady2025costmodel}.
 
-Currently, no jurisdiction requires providers of synthetic nucleic acids to screen customers \citep{Wheeler2024}. While anti-terrorism laws create implicit obligations, these are neither standardized across countries nor grounded in a shared risk framework \citep{Wheeler2024}. Screening practices therefore vary substantially across providers, creating uneven security guarantees against self-amplifying biological threats which easily cross borders.
+Currently, no jurisdiction explicitly requires providers of synthetic nucleic acids to screen customers \citep{Wheeler2024}. While anti-terrorism laws create implicit obligations, these are neither standardized across countries nor grounded in a shared risk framework \citep{Wheeler2024}. Screening practices therefore vary substantially across providers, creating uneven security guarantees against self-amplifying biological threats which easily cross borders.
 
-Legitimacy screening typically involves two phases: onboarding and follow-up. Onboarding checks verify basic customer information: name checks against watchlists, institutional affiliation, email domain ownership, and stated research purpose. Sequence screening compares ordered DNA against databases of regulated pathogens to identify sequences of concern. When a sequence of concern is flagged, follow-up screening determines whether the customer has a legitimate need for it. This phase requires gathering information from publications, patents, and institutional records, plus requesting documentation from customers such as grant awards or biosafety approvals. The information-gathering step is time-consuming but largely mechanical: it involves searching public records and rarely requires judgment. This makes it a natural target for AI assistance.
+Legitimacy screening typically involves two phases: onboarding and follow-up. Onboarding checks involve the verification of basic customer information such as name checks against watchlists, institutional affiliation, email domain ownership, and stated research purpose. When a SOC is flagged, follow-up screening determines whether the customer has a legitimate need for it. This phase requires gathering information from publications, patents, and institutional records, and requesting documentation from customers such as grant awards or biosafety approvals. The information-gathering step is time-consuming but largely mechanical; as it involves searching public records and synthesising information, it is a natural target for AI assistance.
 
-The aim of this study was to evaluate whether AI tools can accelerate information gathering as part of legitimacy screening. We evaluated five large language models with web search capabilities and with additional specialized tools on five verification tasks relevant to follow-up screening: institutional affiliation, institution type, email domain ownership, sanctions screening, and background work search. We found that AI-assisted screening reduces total per-customer costs roughly 10-fold compared to manual screening (\$1.18 versus \$14.04), while matching or exceeding human accuracy. For tasks AI could perform without human intervention, costs averaged \$0.23 per customer---roughly 50 times cheaper than human screening.
+The aim of this study was to evaluate whether AI tools can accelerate information gathering as part of legitimacy screening. We evaluated five large language models with web search capabilities and with additional specialized tools on five verification tasks relevant to follow-up screening. The verification tasks were: checking each customer's institutional affiliation, institution type, and email domain ownership, as well as sanctions screening, and background work search. We found that AI-assisted screening reduced total per-customer legitimacy screening costs more than tenfold compared to manual screening (\$1.18 versus \$14.04), while matching or exceeding human accuracy. For tasks AI could perform without human intervention, costs averaged \$0.23 per customer, which was around 50 times cheaper than human screening.
 
 %%% METHODS %%%
 \section{Methods}
@@ -97,7 +97,7 @@ We constructed four groups of customer profiles:
 
 \textbf{Customers in the U.S.\ Consolidated Screening List:} Researchers at academic institutions appearing on the CSL, with documented work on SOCs.
 
-\textbf{General life science researchers:} Researchers from academia and industry with documented laboratory work on non-SOC sequences such as antibodies (scFv fragments), CAR-T constructs, protein engineering targets, and diagnostic antigens.
+\textbf{General life science researchers:} Researchers from academia and industry with documented laboratory work on non-SOC sequences.
 
 All profiles in our dataset---including general life science researchers identified through non-SOC work---were assigned simulated orders from a standardized list of 22 SOC proteins. We selected proteins that would be reasonable to order for vaccine or therapeutics research while still being categorized as sequences of concern (see \textbf{Supplementary Material}, Section 1).
 
@@ -105,7 +105,7 @@ Screeners therefore encountered cases where researchers appeared to order SOCs w
 
 \subsubsection{Data Collection}
 
-\textbf{Academic researchers:} We searched Google Scholar using each sequence name as the primary search term. To promote geographic diversity, we appended personal names sampled from a random name generator weighted toward common names in different world regions.
+\textbf{Academic researchers:} We searched Google Scholar using each SOC protein name as the primary search term. To promote geographic diversity, we appended personal names sampled from a random name generator weighted toward common names in different world regions.
 
 We selected publications meeting three criteria: (1) published after 2021, to increase the likelihood that affiliations remain current; (2) involving laboratory work on the target organism or protein, rather than purely computational or epidemiological analysis; and (3) plausibly requiring DNA synthesis, such as protein expression, cloning, or vaccine construct development. We filtered for authors with a publicly available email address or an institutional email domain identifiable through Google Scholar, ORCID, or similar research profiles.
 
@@ -144,9 +144,9 @@ Two coauthors served as the expert human baseline. Collecting customer profiles 
 
 Both evaluators were familiar with the research plan but received no task-specific training. They were given an earlier version of the screening instructions (developed while optimizing prompts for model performance) and had not previously seen the profiles they evaluated. They submitted responses through a custom interface that enforced the same output format as model responses.
 
-The interface recorded snapshots of each screener's work at approximately 5 and 30 minutes. If they submitted a final answer earlier, that submission was used as the 30-minute snapshot. Each evaluator screened 20 or 21 profiles, covering the full primary dataset. Profiles were randomly sampled with the constraint that no two shared the same reference work.
+The interface recorded snapshots of each screener's work at approximately 5 and 30 minutes. If they submitted a final answer earlier, that submission was used as the snapshot for that time point. Screeners were expected to complete each profile within 30 minutes, but there was no hard time cap; submissions after 30 minutes were accepted as received. Each evaluator screened 20 or 21 profiles, covering the full primary dataset. Profiles were randomly sampled with the constraint that no two shared the same reference work.
 
-We collected the 5-minute snapshot to estimate human performance under a time budget comparable to AI models, which averaged under 2 minutes per profile. However, responses at 5 minutes were typically incomplete, and this baseline underperformed AI models by a large margin. Unless otherwise noted, ``human baseline'' refers to the 30-minute snapshot throughout.
+We collected the 5-minute snapshot to estimate human performance under a time budget comparable to AI models, which averaged under 2 minutes per profile. However, responses at 5 minutes were typically incomplete, and this baseline underperformed AI models by a large margin. Unless otherwise noted, ``human baseline'' refers to the final submission throughout.
 
 \subsection{Evaluation Metrics}
 
@@ -154,7 +154,7 @@ We evaluated each of the five verification tasks on three binary metrics, yieldi
 
 \subsubsection{Verification Tasks (Tasks 1--4)}
 
-\textbf{Flag accuracy:} Whether the response's determination (flag, no flag, or undetermined) matches ground truth. Ground truth was established through manual review of all model and human responses. When responses disagreed, we reviewed justifications and occasionally followed cited sources to verify claims. We were not blind to which screener produced each response, but none of the screeners participating in the human baseline were involved in ground truth annotation.
+\textbf{Flag accuracy:} Whether the response's determination (flag, no flag, or undetermined) matches ground truth. Ground truth was established through manual review of all model and human responses. Disagreements between responses were resolved by reviewing justifications and occasionally following cited sources to verify claims. The reviewer was not blinded to which screener produced each response, but none of the screeners participating in the human baseline were involved in ground truth annotation.
 
 \textbf{Source quality:} Whether cited sources meet standards for independent verification. A source is acceptable if it exists independently of the customer and has editorial oversight. Acceptable sources include government registries, peer-reviewed publications, patent filings, regulatory submissions, business registrations, and established research profile aggregators. Unacceptable sources include LinkedIn profiles, personal websites, Wikipedia, and social media sites. A response passes this metric if all cited sources are acceptable; responses citing any unacceptable source, or no sources at all, fail.
 
@@ -180,40 +180,9 @@ We used the same task prompts across all models and developed them through itera
 
 Evaluation prompts underwent a similar iterative process to improve alignment with human judgment. To validate the LLM-as-judge approach, one author independently re-graded a sample of 135 evaluation outputs without access to the original model grades. Agreement reached 83\%, compared to 63\% expected by chance (Cohen's $\kappa = 0.63$). This falls within the ``substantial agreement'' range (0.61--0.80) on the \citet{LandisKoch1977} interpretation scale (see \textbf{Supplementary Material}, Section 3).
 
-\subsubsection{Cost and Time Estimation}
+Due to the manual work required for flag accuracy grading, we only graded flag determinations after settling on the final prompts provided to human and AI models. As a result, this may have underestimated flag accuracy performance for both AI and human screeners, as no iterative refinement was possible based on flag determination feedback.
 
-We estimate the marginal cost of screening an additional customer. Fixed costs such as prompt development, tool integration, and screener training can be amortized over a large number of cases and are excluded from our estimates.
-
-For both workflows, we measure cost through the initial screening step: from receiving a customer profile to recording an order decision. When the decision is to request follow-up, we do not include the cost of subsequent customer communication or verification of additional information.
-
-\textbf{Human-only screening costs:} We estimated costs based on time required and hourly wage for comparable roles. Using advertised salaries for customer service positions at large DNA synthesis providers \citep{Glassdoor2025}, we estimate an hour of human screening at approximately \$54. This figure depends heavily on the country in which a screener is employed; due to limited salary data, we treat it as representative of industry-wide costs.
-
-\textbf{AI-aided screening costs:} For information gathering, costs were based on each provider's per-token API pricing (with input and output tokens priced separately) plus the cost of each web search query requested by the model. For order fulfillment decisions, we timed the human review process and estimated costs using the same hourly rate.
-
-%%% RESULTS %%%
-\section{Results}
-
-\subsection{Pass Rates by Screener}
-
-As Figure~\ref{fig:passrates} shows, AI models outperformed the human baseline on most metrics. For every metric other than flag accuracy, all models achieved a higher pass rate than both the 5-minute and 30-minute human baselines. Even for flag accuracy, the 30-minute human baseline outperformed only two of the ten model configurations. The 5-minute human baseline performed much worse than any other screener setup, largely because responses were practically always incomplete, leading to automatic failures on evaluation metrics.
-
-Across AI models, pass rates spanned a narrow range: the best-performing configuration (Gemini 2.5 Pro with specialized tools) passed 89.8\% of tests, while the worst-performing (Gemini 2.5 Pro with web search only) passed 83.7\%---notably, the same underlying model in both cases, differing only in tool access.
-
-Access to specialized tools (Consolidated Screening List API, Europe PMC, ORCID) affected performance differently depending on the task. For verification tasks (Tasks 1--4), tool access produced a modest but consistent improvement across all metrics. The improvement was most pronounced for sanctions screening (\textbf{Supplementary Figure S3}), where the Consolidated Screening List API provided direct access to authoritative data otherwise available only through downloadable files or specialized interfaces.
-
-For work relevance (Task 5), the pattern reversed: models with tool access scored lower than those with web search only. The drop was concentrated among industry customers (\textbf{Supplementary Figure S4}), while academic and other customer types showed little difference between configurations.
-
-This likely reflects the fact that models with tool access performed notably fewer web searches (\textbf{Supplementary Figure S30}), making them more likely to miss patents or news articles---sources not indexed by Europe PMC or ORCID, which cover primarily academic publications. For most profiles in our dataset, this substitution had little effect, as publication databases contained comparable evidence. However, industry customers were specifically selected based on non-publication work outputs, so tool access steered models away from the most relevant sources for these customers.
-
-\subsection{Cost Comparison}
-
-All AI models produced customer reports faster and more cheaply than either human baseline. Comparing total costs---including human review of AI-generated reports---the most expensive model tested (Claude Sonnet 4, \$1.74 total) was approximately 8 times cheaper than fully manual screening (\$14.04), while the cheapest configuration (MiniMax M2 with tools, \$1.14 total) was approximately 12 times cheaper. The cost reductions were more dramatic when comparing information gathering alone: AI models averaged \$0.23--\$0.27 per customer, roughly 50--60 times cheaper than the human baseline.
-
-Across AI models, cost per customer did not correlate with overall pass rates ($R^2 = 0.01$). The best-performing model, Gemini 2.5 Pro with all tools, was also the second cheapest configuration. While the open-source models (GLM 4.6 and MiniMax M2) had per-token prices 2--8$\times$ lower than Gemini 2.5 Pro, additional web search queries and higher token consumption (often from extra tool calls) eliminated any meaningful cost advantage.
-
-Even with substantially cheaper AI models, per-customer costs were dominated by web search queries. For the model with the lowest per-token price (MiniMax M2), web search accounted for 60\% of total processing cost. Alternative web search providers---including custom tools offered by some model developers---could reduce costs further, but the lack of standardization across such tools would require adapting prompts and source extraction for each provider.
-
-\subsection{Flag Error Analysis}
+\subsubsection{Flag Error Analysis}
 
 We manually reviewed a random sample of 126 flag errors across AI and human screeners and assigned each to one of five categories:
 
@@ -225,13 +194,48 @@ We manually reviewed a random sample of 126 flag errors across AI and human scre
 \item \textbf{Source Misinterpretation:} The screener cited appropriate sources but misrepresented their content, leading to an incorrect flag.
 \end{itemize}
 
+\subsubsection{Cost and Time Estimation}
+
+We estimate the marginal cost of screening an additional customer. Fixed costs such as prompt development, tool integration, and screener training can be amortized over a large number of cases and are excluded from our estimates.
+
+For both workflows, we measure cost through the initial screening step: from receiving a customer profile to recording an order decision. When the decision is to request follow-up, we do not include the cost of subsequent customer communication or verification of additional information.
+
+\textbf{Human-only screening costs:} We estimated costs based on time required and hourly wage for comparable roles. Using advertised salaries for customer service positions at large DNA synthesis providers \citep{Glassdoor2025}, we estimate an hour of human screening at approximately \$54. This figure depends heavily on the country in which a screener is employed; due to limited salary data, we treat it as representative of industry-wide costs.
+
+\textbf{AI-aided screening costs:} For information gathering, costs were based on each provider's per-token API pricing (with input and output tokens priced separately) plus the cost of each web search query requested by the model. For order fulfillment decisions, we timed the human review process and estimated costs using the same hourly rate. 
+
+For AI screening, we computed correlations between per-customer costs (excluding human review) and overall performance across model configurations to understand the possible trade-off between cost and accuracy.
+
+%%% RESULTS %%%
+\section{Results}
+
+\subsection{Pass Rates by Screener}
+
+As Figure~\ref{fig:passrates} shows, AI models outperformed the human baseline on most metrics. For every metric other than flag accuracy, all models achieved a higher pass rate than both human baselines. Even for flag accuracy, the human baseline outperformed only two of the ten model configurations. The 5-minute-limit human baseline performed much worse than any other screener setup, largely because responses were practically always incomplete, leading to automatic failures on evaluation metrics.
+
+Across AI models, pass rates spanned a narrow range: the best-performing configuration (Gemini 2.5 Pro with specialized tools) passed 89.8\% of tests, while the worst-performing (Gemini 2.5 Pro with web search only) passed 83.7\%---notably, the same underlying model in both cases, differing only in tool access.
+
+Access to specialized tools (Consolidated Screening List API, Europe PMC, ORCID) affected performance differently depending on the task. For verification tasks (Tasks 1--4), tool access produced a modest but consistent improvement across all metrics. The improvement was most pronounced for sanctions screening (\textbf{Supplementary Figure J5}), where the Consolidated Screening List API provided direct access to authoritative data otherwise available only through downloadable files or specialized interfaces.
+
+For work relevance (Task 5), the pattern reversed: models with tool access scored lower than those with web search only. The drop was concentrated among industry customers (\textbf{Supplementary Figure E4}), while academic and other customer types showed little difference between configurations.
+
+This likely reflects the fact that models with tool access performed notably fewer web searches (\textbf{Supplementary Figure J1}), making them more likely to miss patents or news articles---sources not indexed by Europe PMC or ORCID, which cover primarily academic publications. For most profiles in our dataset, this substitution had little effect, as publication databases contained comparable evidence. However, industry customers were specifically selected based on non-publication work outputs, so tool access steered models away from the most relevant sources for these customers.
+
+\subsection{Cost Comparison}
+
+All AI models produced customer reports faster and more cheaply than either human baseline. Comparing total costs---including human review of AI-generated reports---the most expensive model tested (Claude Sonnet 4, \$1.74 total) was approximately 8 times cheaper than fully manual screening (\$14.04), while the cheapest configuration (MiniMax M2 with tools, \$1.14 total) was approximately 12 times cheaper. The cost reductions were more dramatic when comparing information gathering alone: AI models averaged \$0.23--\$0.27 per customer, roughly 50--60 times cheaper than the human baseline.
+
+Across AI models, cost per customer did not correlate with overall pass rates ($R^2 = 0.01$). The best-performing model, Gemini 2.5 Pro with all tools, was also the second cheapest configuration. While the open-source models (GLM 4.6 and MiniMax M2) had per-token prices 2--8$\times$ lower than Gemini 2.5 Pro, additional web search queries and higher token consumption (often from extra tool calls) eliminated any meaningful cost advantage.
+
+Asweb search accounted for 60\% of total processing cost of using MiniMax M2, alternative web search providers---including custom tools offered by some model developers---could reduce costs further. However, the lack of standardization across such tools would require adapting prompts and source extraction for each provider.
+
+\subsection{Flag Error Analysis}
+
 \subsubsection{Error Distribution}
 
-Table~\ref{tab:errors} summarizes error category distributions across screener types.
+Except for errors in the search failure category, the frequency of each error type was similar across screeners. Table~\ref{tab:errors} summarizes error category distributions across screener types. Criterion deviation was the most common category, accounting for 39.7\% of all errors. On inspection, a small number of recurring patterns accounted for the majority of mistakes in this category, such as failing to flag personal (non-institutional) email addresses used by otherwise reputable researchers in China.
 
-Except for errors in the search failure category, the frequency of each error type was similar across screeners. Criterion deviation was the most common category, accounting for 39.7\% of all errors. On inspection, a small number of recurring patterns accounted for the majority of mistakes in this category, such as failing to flag personal (non-institutional) email addresses used by otherwise reputable researchers in China.
-
-Because grading flags required substantial manual work, we only graded them after settling on the final prompts provided to human and AI models. We expect that including explicit guidance addressing these recurring cases could substantially reduce criterion deviation errors for both AI and human screeners.
+We expect that including explicit guidance addressing these recurring cases could substantially reduce criterion deviation errors for both AI and human screeners.
 
 Search failure was the next most common error type. Notably, web-only models had a lower rate (16.7\%) than AI models with access to specialized tools or human screeners. Although we did not examine this pattern in detail, it resembles what we observed for work relevance: models with additional tools performed fewer web searches, potentially missing information available only through general web results.
 
@@ -252,17 +256,17 @@ Chinese customers also showed elevated undetermined rates on sanctions screening
 
 We evaluated AI models on follow-up screening of customers who ordered sequences of concern, comparing models with web search alone against those with additional specialized tools (Consolidated Screening List API, Europe PMC, ORCID), and against a human baseline. While our evaluation took place outside a DNA synthesis company, we simulated realistic screening scenarios with customers who have verifiable research backgrounds. These results warrant piloting AI-aided legitimacy screening at DNA synthesis companies and possibly other providers with similar risk profiles (e.g., cloud labs and pathogen repositories). This aligns with existing screening guidelines that pair sequence screening with legitimacy screening and recommend follow-up when orders are flagged \citep{HHS2023, IGSC2024}.
 
-AI models outperformed the 30-minute human baseline on most metrics, with the best model (Gemini 2.5 Pro with tools) achieving an 89.8\% pass rate compared to 79.5\% for humans. However, we invested substantially more effort in prompt development than in training human screeners. Experienced screeners with domain expertise might outperform current models on ambiguous cases requiring contextual judgment---cases our evaluation included but may have undersampled. This performance pattern reflects how LLMs are trained: instruction-tuned models excel at following written procedures and structured checklists, but they do not learn from experience during deployment unless explicitly updated through fine-tuning. Our approach, encoding screening guidance in detailed prompts with explicit rules for acceptable sources, plays to these strengths while avoiding the need for per-case adaptation.
+AI models outperformed the human baseline on most metrics, with the best model (Gemini 2.5 Pro with tools) achieving an 89.8\% pass rate compared to 79.5\% for humans. However, we invested substantially more effort in prompt development than in training human screeners. Experienced screeners with domain expertise might outperform current models on ambiguous cases requiring contextual judgment---cases our evaluation included but may have undersampled. This performance pattern reflects how LLMs are trained: instruction-tuned models excel at following written procedures and structured checklists, but they do not learn from experience during deployment unless explicitly updated through fine-tuning. Our approach, encoding screening guidance in detailed prompts with explicit rules for acceptable sources, plays to these strengths while avoiding the need for per-case adaptation.
 
 Models showed greater variation across source quality metrics than on flag accuracy. Flag accuracy pass rates clustered within a narrow range for both AI and human screeners. However, source quality and fidelity metrics showed wider spreads: Claude Sonnet 4 struggled with institution type verification sources where the human baseline excelled; conversely, Grok 4 with tools substantially outperformed humans on background work relevance.
 
-AI models completed information gathering in under 2 minutes on average compared to roughly 15 minutes for the human baseline---approximately an 8-fold throughput advantage. This speed becomes increasingly important as the synthetic nucleic acid market grows at a projected compound annual growth rate of ${\sim}$15\% \citep{Fady2025report}. AI-assisted screening enables providers to scale verification capacity without proportional increases in human labor.
+AI models completed screening in approximately 3.1 minutes on average (including human review) compared to 15.6 minutes for the human baseline---roughly a 5-fold throughput advantage. This speed becomes increasingly important as the synthetic nucleic acid market grows at a projected compound annual growth rate of ${\sim}$15\% \citep{Fady2025report}. AI-assisted screening enables providers to scale verification capacity without proportional increases in human labor.
 
 Access to specialized tools provided modest but consistent improvements across most tasks. The advantage was most pronounced for sanctions screening, where models with Consolidated Screening List API access substantially outperformed web-only configurations. Sanctions lists are typically available only through APIs or downloadable files, not as indexed webpages, making direct API access particularly valuable. However, tool access reduced performance on background work search by steering models away from web searches that would find patents and news articles not indexed in academic databases. Our implementation queried only the U.S.\ Consolidated Screening List; integrating additional sanctions databases (EU lists, OFAC, UN Security Council) could further improve coverage.
 
 \subsection{Implications for Screening Practice}
 
-The mix of tasks performed here could plausibly be part of one legitimacy screening instance, but they could also be split into onboarding tasks and follow-up tasks. Crucially, the ship/follow-up/reject decision should remain with humans. Fully autonomous AI screening risks introducing biases from language models to order decisions, and should be avoided until we have stronger performance guarantees. AI error rates, while lower than our human baseline on these information-gathering tasks, remain non-negligible for security-critical applications where false clearances could enable misuse.
+The mix of tasks performed here could plausibly be part of one legitimacy screening instance, but they could also be split into onboarding tasks and follow-up tasks. Crucially, the ship/follow-up/reject decision should remain with humans. Fully autonomous AI screening risks introducing biases from language models to order decisions, and should be avoided until we have stronger performance guarantees. AI error rates, while lower than our human baseline on these information-gathering tasks, remain non-negligible for security-critical applications where false approvals could enable misuse.
 
 Cost reduction is the primary driver for piloting AI-assisted screening. The best-performing model (Gemini 2.5 Pro with tools) cost \$1.18 per customer including human review, compared to \$14.04 for manual screening---roughly a 10-fold reduction. Information-gathering tasks alone cost \$0.23 per customer on average for AI models, roughly 50 times cheaper than the human baseline. Open-source tools like Cliver \citep{Cliver2025} could accelerate adoption by lowering barriers for providers who already screen and reducing costs for those considering implementation.
 
@@ -281,7 +285,7 @@ Our evaluation dataset likely overrepresents well-documented researchers. By des
 %%% CONCLUSION %%%
 \section{Conclusion}
 
-This work builds on years of guidance on DNA synthesis legitimacy screening \citep{CarterFriedman2015, Alexanian2024, IGSC2024}. We evaluated how commercially available and open-source LLMs perform on legitimacy screening tasks outlined by \citet{Alexanian2024} and present in various screening guidances. We demonstrated that AI-assisted legitimacy screening is substantially less costly and faster than human-only screening, while achieving comparable or higher accuracy on information-checking tasks. These results support leveraging AI-assisted legitimacy screening as part of industry-wide biosecurity. Although we conducted this study with the DNA synthesis industry in mind, our results broadly support the use of AI-assisted legitimacy screening for any dual-use product in biotech, including live viral or microbial cells, equipment, and other materials of concern. Future work should explore hybrid AI--human systems where models flag uncertain cases for human review, tailored to provider-specific data, and integrated with broader customer onboarding workflows.
+This work builds on years of guidance on DNA synthesis legitimacy screening \citep{CarterFriedman2015, Alexanian2024, IGSC2024}. We evaluated how commercially available and open-source LLMs perform on legitimacy screening tasks outlined by \citet{Alexanian2024} and present in various screening guidances. We demonstrated that AI-assisted legitimacy screening is substantially less costly and faster than human-only screening, while achieving comparable or higher accuracy on information-checking tasks. These results support leveraging AI-assisted legitimacy screening as part of industry-wide biosecurity. Although we conducted this study with the DNA synthesis industry in mind, our results broadly support the use of AI-assisted legitimacy screening for any dual-use product in biotech, including live viral or microbial cells, frontier AI models with biological capabilities, benchtop DNA synthesis equipment, and other materials of concern. Future work should explore hybrid AI--human systems where models flag uncertain cases for human review, tailored to provider-specific data, and integrated with broader customer onboarding workflows.
 
 %%% DATA AVAILABILITY %%%
 \section*{Data Availability Statement}
@@ -291,7 +295,7 @@ The prompts, evaluation framework, and open-source tool (Cliver) developed for t
 %%% AUTHOR CONTRIBUTIONS %%%
 \section*{Author Contributions}
 
-AA designed the study, developed the evaluation framework, collected data, conducted experiments, and wrote the manuscript. KF and HP served as human baseline screeners and provided critical feedback on the manuscript. PEF and CN provided strategic guidance and contributed to the writing of the discussion and regulatory analysis sections. All authors reviewed and approved the final manuscript.
+AA, HP, KF, PEF, and CN contributed to the conceptualization of the study. AA, HP, and KF developed the methodology. AA developed the software, conducted the formal analysis, performed the investigation, provided resources, curated the data, and created the visualizations. HP and AA wrote the original draft. HP, KF, PEF, and CN reviewed and edited the manuscript. AA, HP, and KF conducted the investigation. PEF and CN provided supervision and acquired funding. CN administered the project. All authors reviewed and approved the final manuscript.
 
 %%% FUNDING %%%
 \section*{Funding}
@@ -368,7 +372,7 @@ Inst.\ email & 15 (49) & 10 (22) & 5 (18) & 3 (19) & 33 (108) \\
 \midrule
 \multicolumn{5}{l}{\textit{Human baseline}} \\
 Human (5 min limit) & --- & \$5.43 & --- & 6.0 min \\
-Human (30 min limit) & --- & \$14.04 & --- & 15.6 min \\
+Human baseline & --- & \$14.04 & --- & 15.6 min \\
 \midrule
 \multicolumn{5}{l}{\textit{AI models (all tools)}} \\
 Claude Sonnet 4 & \$0.66 & \$1.74 & 1.5 min & 2.7 min \\
@@ -405,7 +409,7 @@ MiniMax M2 & \$0.12 & \$1.20 & 2.5 min & 3.7 min \\
 
 \begin{table}[h]
 \centering
-\caption{\textbf{Distribution of flag errors by category and screener type.} Percentages are computed within each screener type (column), showing what share of that screener type's errors fell into each category. Counts are in parentheses; the 126 total errors were sampled across all screeners. ``Human Baseline'' combines both the 5-minute and 30-minute snapshots. Examples illustrate representative instances; error categories are defined in the text.}
+\caption{\textbf{Distribution of flag errors by category and screener type.} Percentages are computed within each screener type (column), showing what share of that screener type's errors fell into each category. Counts are in parentheses; the 126 total errors were sampled across all screeners. ``Human Baseline'' combines both the 5-minute-limit and final-submission snapshots. Examples illustrate representative instances; error categories are defined in the text.}
 \label{tab:errors}
 \small
 \begin{tabularx}{\textwidth}{p{2.2cm}Xcccc}

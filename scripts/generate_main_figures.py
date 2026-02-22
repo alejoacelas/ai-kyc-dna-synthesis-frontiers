@@ -145,7 +145,7 @@ def figure2(tests_df):
     center_x = total_width / 2
 
     if n_human > 0:
-        ax.text(center_x, annotation_positions["human"], "Human Baseline",
+        ax.text(center_x, annotation_positions["human"], "Human baseline",
                 ha="center", va="center", fontsize=11, fontweight="bold", style="italic")
     if n_w > 0:
         ax.text(center_x, annotation_positions["w"], "AI - Web Only (W)",
