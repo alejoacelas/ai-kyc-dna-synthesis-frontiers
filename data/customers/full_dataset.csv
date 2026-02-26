@@ -1,135 +1,135 @@
-Type,Name,Institution,Email,Order
-Controlled Agent Academia,anon_8343ea19eac1,inst_a905e6f77cbb,Verified email at iitk.ac.in,MERS-CoV spike RBD
-Controlled Agent Academia,anon_7638b61fe307,inst_eb0941b83878,@scripps.edu,MERS-CoV spike RBD
-Controlled Agent Academia,anon_e833ac9669c9,inst_c88f14496add,@iitk.ac.in,MERS-CoV spike RBD
-Controlled Agent Academia,anon_80433aa2eec3,inst_18b3b4310974,@im.ac.cn,H7N9 influenza HA receptor binding site
-Controlled Agent Academia,anon_7140683b30db,inst_ecaa40fd02af,@163.com,H7N9 influenza HA receptor binding site
-Controlled Agent Academia,anon_58640646c74d,inst_8910354fe2b8,@mail.biols.ac.cn,H7N9 influenza HA receptor binding site
-Controlled Agent Academia,anon_76392cb1546b,inst_67f27c0cbb86,@tiho-hannover.de,Respiratory syncytial virus fusion protein
-Controlled Agent Academia,anon_c3ab72973ef0,inst_67f27c0cbb86,Not provided,Respiratory syncytial virus fusion protein
-Controlled Agent Academia,anon_619cd2be9933,inst_67f27c0cbb86,@tiho-hannover.de,Respiratory syncytial virus fusion protein
-Controlled Agent Academia,anon_995c400fa2f0,inst_28389446ed70,Verified email at acad.pucrs.br,Respiratory syncytial virus fusion protein
-Controlled Agent Academia,anon_30a68f867dad,inst_6ad37e93504b,Verified email at pucrs.br,Respiratory syncytial virus fusion protein
-Controlled Agent Academia,anon_61f3ad173b14,inst_26d6f961aad5,@pucrs.br,Respiratory syncytial virus fusion protein
-Controlled Agent Academia,anon_0c68bc119546,inst_92b1533651a7,@phac-aspc.gc.ca,Human metapneumovirus attachment protein
-Controlled Agent Academia,anon_32426ed98c9b,inst_92b1533651a7,@hc-sc.gc.ca,Human metapneumovirus attachment protein
-Controlled Agent Academia,anon_9812220c2193,inst_6eacd107a109,@gmail.com,Parainfluenza virus 3 hemagglutinin-neuraminidase
-Controlled Agent Academia,anon_766400066623,inst_6a419f713d52,@hotmail.com,Parainfluenza virus 3 hemagglutinin-neuraminidase
-Controlled Agent Academia,anon_4f24a6d30823,inst_6eacd107a109,@conicet.gov.ar,Parainfluenza virus 3 hemagglutinin-neuraminidase
-Controlled Agent Academia,anon_a86e8def44e0,inst_a5e456197748,Verified email at griffithuni.edu.au,Parainfluenza virus 3 hemagglutinin-neuraminidase
-Controlled Agent Academia,anon_eaf77725da6d,inst_a5e456197748,@griffith.edu.au,Parainfluenza virus 3 hemagglutinin-neuraminidase
-Controlled Agent Academia,anon_ea4ea9d5b257,inst_a5e456197748,@griffith.edu.au,Parainfluenza virus 3 hemagglutinin-neuraminidase
-Controlled Agent Academia,anon_8a445f81602d,inst_f8118e4a3287,@qq.com,Zika virus NS1 protein
-Controlled Agent Academia,anon_44158f035f64,inst_4110a9d1ee92,@qq.com,Zika virus NS1 protein
-Controlled Agent Academia,anon_30db64b95c9c,inst_f8118e4a3287,@gzucm.edu.cn,Zika virus NS1 protein
-Controlled Agent Academia,anon_61093a92b168,inst_1283f9005163,@ajou.ac.kr,SFTS virus nucleocapsid protein
-Controlled Agent Academia,anon_52e44154eb1d,inst_1283f9005163,@ccf.org,Schmallenberg virus nucleocapsid
-Controlled Agent Academia,anon_58dd9b0bed8e,inst_420a9f38927b,@bti.vu.lt,Schmallenberg virus nucleocapsid
-Controlled Agent Academia,anon_5da9f2f2690a,inst_6de84ccd295e,@lsmu.lt,Schmallenberg virus nucleocapsid
-Controlled Agent Academia,anon_1e430e2f7cba,inst_420a9f38927b,@bti.vu.lt,Usutu virus envelope protein
-Controlled Agent Academia,anon_89bc106e371c,inst_79c49849e316,@bprc.nl,Usutu virus envelope protein
-Controlled Agent Academia,anon_11ab84f5c386,inst_0d24d73096f3,@lumc.nl,Usutu virus envelope protein
-Controlled Agent Academia,anon_1880559bcc29,inst_663244dac6c1,@bprc.nl,Usutu virus envelope protein
-Controlled Agent Academia,anon_42f9d4684a01,inst_bdac895bcc63,Verified email at dac.unicamp.br,Oropouche virus nucleocapsid
-Controlled Agent Academia,anon_12e0863a327c,inst_b5cfb26f6b20,@caas.cn,Peste des petits ruminants virus fusion protein
-Controlled Agent Academia,anon_545fc28ab8aa,inst_2d5eb46f7ecb,@mail.mcgill.ca,Newcastle disease virus fusion protein cleavage site
-Controlled Agent Academia,anon_18d3c33321a1,inst_2d5eb46f7ecb,@mcgill.ca,Newcastle disease virus fusion protein cleavage site
-Controlled Agent Academia,anon_eb5d44051e1b,inst_922a4f6a4611,@gmail.com,MERS-CoV spike RBD
-Controlled Agent Academia,anon_48ec383bf29f,inst_ee4150b98b5f,@uog.edu.pk,MERS-CoV spike RBD
-Controlled Agent Academia,anon_eadeee216506,inst_9e6c4dd26cdb,@czc.hokudai.ac.jp,Rinderpest virus hemagglutinin
-Controlled Agent Academia,anon_0e201789d628,inst_7eaa80985e12,@ac.shoyaku.ac.jp,Rinderpest virus hemagglutinin
-Controlled Agent Academia,anon_54767a039a94,inst_9e6c4dd26cdb,@pharm.hokudai.ac.jp,Rinderpest virus hemagglutinin
-Controlled Agent Academia,anon_ea62a80ae633,inst_4bce26c68f9d,@arriah.ru,Foot-and-mouth disease virus VP1
-Controlled Agent Academia,anon_e5323bb69473,inst_4bce26c68f9d,@arriah.ru,Foot-and-mouth disease virus VP1
-Controlled Agent Academia,anon_17fb625d0cf5,inst_4bce26c68f9d,@arriah.ru,Foot-and-mouth disease virus VP1
-Controlled Agent Academia,anon_7b29ca38925e,inst_88cdbbaf3f7f,@ciq.uchile.cl,Human T-lymphotropic virus Tax protein
-Controlled Agent Academia,anon_903c8a87b7e3,inst_6da7b4323368,@berkeley.edu,Kaposi's sarcoma-associated herpesvirus K1
-Controlled Agent Academia,anon_b39e161dfbad,inst_4c1ee259ed77,@uchicago.edu,Kaposi's sarcoma-associated herpesvirus K1
-Controlled Agent Academia,anon_43e6ab9aae7c,inst_e765f3e642fa,@berkeley.edu,Kaposi's sarcoma-associated herpesvirus K1
-Controlled Agent Academia,anon_928f94592ad2,inst_88f5c1182c4d,@uke.de,Merkel cell polyomavirus large T antigen
-Controlled Agent Academia,anon_26365526dff1,inst_88f5c1182c4d,@uke.de,Merkel cell polyomavirus large T antigen
-Controlled Agent Academia,anon_622008f7ce0f,inst_88f5c1182c4d,@uke.de,Merkel cell polyomavirus large T antigen
-Controlled Agent Academia,anon_ec6abece0ba6,inst_b2599aacb828,Verified email at chembio.t.u-tokyo.ac.jp,Measles virus fusion protein
-Controlled Agent Academia,anon_cdd7d9d1d75e,inst_b2599aacb828,@chembio.t.u-tokyo.ac.jp,Measles virus fusion protein
-Controlled Agent Academia,anon_b4794acf38c3,inst_b2599aacb828,@chembio.t.u-tokyo.ac.jp,Measles virus fusion protein
-Controlled Agent Academia,anon_246f4bda0c2a,inst_43edd02515b4,@sund.ku.dk,Mumps virus small hydrophobic protein
-Controlled Agent Academia,anon_2dcd122ef40b,inst_2cf72180369a,@sund.ku.dk,Mumps virus small hydrophobic protein
-Controlled Agent Academia,anon_c79332b266ed,inst_4576071f33f5,@sund.ku.dk,Mumps virus small hydrophobic protein
-Controlled Agent Industry,anon_d96223e4a20f,inst_949b32cc8889,@laysciences.com,MERS-CoV spike RBD
-Controlled Agent Industry,anon_41b50310e6df,inst_092f25eb9a69,@163.com,Respiratory syncytial virus fusion protein
-Controlled Agent Industry,anon_ece9f0ae7289,inst_f7f7fc21f3ee,@pasteur.fr,Zika virus NS1 protein
-Controlled Agent Industry,anon_0b8b43259477,inst_f7f7fc21f3ee,@pasteur.fr,Zika virus NS1 protein
-Controlled Agent Industry,anon_5e1bc3151909,inst_5c4d425ae9b3,@yuhs.ac,Zika virus NS1 protein
-Controlled Agent Industry,anon_ef3f065b1b8a,inst_94e011ccad5e,Verified email at westvacpharma.com,Respiratory syncytial virus fusion protein
-Controlled Agent Industry,anon_38d9260031e6,inst_94e011ccad5e,Verified email at westvacpharma.com,Respiratory syncytial virus fusion protein
-Controlled Agent Industry,anon_75e2b4726e3a,inst_d40f07d10894,@celarts.com,Human T-lymphotropic virus Tax protein
-Controlled Agent Industry,anon_db3d2cd19fdf,inst_a2bd1d8e8163,@signablok.com,Human T-lymphotropic virus
-Controlled Agent Industry,anon_c0faaade0799,inst_2cbbb2e99341,@mono.icb.ufmg.br,Human T-lymphotropic virus (HTLV)
-Controlled Agent Industry,anon_b09d5382665f,inst_2cbbb2e99341,@icb.ufmg.br,Human T-lymphotropic virus (HTLV)
-Controlled Agent Industry,anon_9d9b0a9d81d0,inst_72468fb00139,@hemominas.mg.gov.br,Human T-lymphotropic virus (HTLV)
-Controlled Agent Industry,anon_b61c21e048b8,inst_c0c265243aa9,@tum.de,Newcastle disease virus fusion protein cleavage site
-Controlled Agent Industry,anon_ace9a7303237,inst_8f1fe45115dc,@farvet.com,Newcastle disease virus fusion protein cleavage site
-Controlled Agent Industry,anon_e763b27af836,inst_e3788f26a504,@163.com,Newcastle disease virus fusion protein cleavage site
-Controlled Agent Industry,anon_f28a9f9cd5dc,inst_bd3aeb81e372,@uvaxbio.com,MERS-CoV spike RBD
-Controlled Agent Industry,anon_2e01827b9ebb,inst_2fe441ce21b8,@arborvita.com,H7N9 influenza HA receptor binding site
-Controlled Agent Industry,anon_4c95edbbed66,inst_2fe441ce21b8,@arborvita.com,H7N9 influenza HA receptor binding site
-Controlled Agent Industry,anon_d9edf69a0adc,inst_6dca370d6280,@virometix.com,Respiratory syncytial virus fusion protein
-Controlled Agent Industry,anon_0fa13973e600,inst_6dca370d6280,@virometix.com,Respiratory syncytial virus fusion protein
-Controlled Agent Industry,anon_6389dd5d0ecd,inst_5c716e500475,Verified email at adaptvac.com,Ebola Virus Glycoprotein (GP) RBD
-Controlled Agent Industry,anon_13194efc732c,inst_5c716e500475,Verified email at adaptvac.com,Ebola Virus Glycoprotein (GP) RBD
-Controlled Agent Industry,anon_0f4843e60288,inst_752d37c03a1e,@immunomix.com,Merkel cell polyomavirus large T antigen (partial)
-Controlled Agent Industry,anon_93f4783e78de,inst_752d37c03a1e,@immunomix.com,Merkel cell polyomavirus
-General Life Science Customers,anon_04e4eb744d98,inst_ccdd3f5360c1,@dartsbio.com,Merkel cell polyomavirus large T antigen (partial)
-General Life Science Customers,anon_2c944c52a551,inst_b0d694d8b05f,@dartsbio.com,Merkel cell polyomavirus large T antigen (partial)
-General Life Science Customers,anon_f4671d09213d,inst_2d5109fe9d30,@fudan.edu.cn,Merkel cell polyomavirus large T antigen (partial)
-General Life Science Customers,anon_192b387e11c4,inst_e5afae89b467,Verified email at cmcvellore.ac.in,Human T-lymphotropic virus Tax protein
-General Life Science Customers,anon_f8c343d68edd,inst_e5afae89b467,Verified email at cmcvellore.ac.in,Human T-lymphotropic virus Tax protein
-General Life Science Customers,anon_00bb15cb90cc,inst_e5afae89b467,Verified email at cmcvellore.ac.in,Human T-lymphotropic virus Tax protein
-General Life Science Customers,anon_24f9ab05bf67,inst_e5afae89b467,@cmcvellore.ac.in,Human T-lymphotropic virus Tax protein
-General Life Science Customers,anon_09e96d15e643,inst_e5afae89b467,@cmcvellore.ac.in,Human T-lymphotropic virus Tax protein
-General Life Science Customers,anon_bcc021a2a602,inst_a1c78b783be3,@163.com,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_ca242cf55613,inst_84300b394190,@163.com,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_c9a318d306b4,inst_c610de0261b2,@163.com,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_3ef4d9d5454b,inst_d73aca24a84f,@163.com,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_6cb0c23985fb,inst_a1c78b783be3,@163.com,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_c461c6f92833,inst_a1c78b783be3,@qq.com,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_b5821ed2cdf2,inst_a1c78b783be3,@zstu.edu.cn,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_a1bf73b1dc03,inst_a1c78b783be3,@163.com,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_998e0af13a70,inst_a1c78b783be3,@163.com,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_c061e006777a,inst_84300b394190,@126.com,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_4111e7c8c50a,inst_c610de0261b2,@126.com,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_82d056217734,inst_a1c78b783be3,@163.com,SARS-CoV-2 Receptor Binding Domain (RBD)
-General Life Science Customers,anon_eb93e35be4aa,inst_10aeb03d8657,@uth.gr,H5N1 Hemagglutinin (HA) receptor-binding site
-General Life Science Customers,anon_6834d5a9feee,inst_10aeb03d8657,Verified email at uth.gr,H5N1 Hemagglutinin (HA) receptor-binding site
-General Life Science Customers,anon_62cf7ffa5a7f,inst_0def6f755b62,Verified email at mail.nih.gov,H5N1 Hemagglutinin (HA) receptor-binding site
-General Life Science Customers,anon_a0ade3749706,inst_9123ecd850b6,@pharm.uoa.gr,H5N1 Hemagglutinin (HA) receptor-binding site
-General Life Science Customers,anon_e1bf63bd0d28,inst_10aeb03d8657,@uoi.gr,H5N1 Hemagglutinin (HA) receptor-binding site
-General Life Science Customers,anon_d5421d93c595,inst_bdb2bd03ca56,@bdgene.cn,Newcastle disease virus fusion protein cleavage site
-General Life Science Customers,anon_7f1ac6919855,inst_bdb2bd03ca56,@bdgene.cn,Newcastle disease virus fusion protein cleavage site
-General Life Science Customers,anon_ef51f244f18e,inst_3da5c25ce37e,@njnu.edu.cn,Kaposi's sarcoma-associated herpesvirus K1
-General Life Science Customers,anon_e3f88832a2dc,inst_3da5c25ce37e,@njust.edu.cn,Kaposi's sarcoma-associated herpesvirus K1
-Sanctioned Institution Customers,anon_d8e9748df044,inst_ca3a7c5f885b,@yahoo.com,H5N1 Hemagglutinin (HA) receptor-binding site
-Sanctioned Institution Customers,anon_154dd9004568,inst_ca3a7c5f885b,Verified email at bmsu.ac.ir,Newcastle disease virus fusion protein cleavage site
-Sanctioned Institution Customers,anon_b99f0fd1480e,inst_ca3a7c5f885b,@yahoo.com,Newcastle disease virus fusion protein cleavage site
-Sanctioned Institution Customers,anon_f5e8a3a2d756,inst_1f8f13e6cf9c,Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD)
-Sanctioned Institution Customers,anon_638593379f8c,inst_9994ac9866a7,Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD)
-Sanctioned Institution Customers,anon_8d1bd718d5b6,inst_1f8f13e6cf9c,Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD)
-Sanctioned Institution Customers,anon_027b55113d42,inst_1f8f13e6cf9c,Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD)
-Sanctioned Institution Customers,anon_062e7445435f,inst_972d2461ee23,Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD)
-Sanctioned Institution Customers,anon_870280c4b0f0,inst_1f8f13e6cf9c,Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD)
-Sanctioned Institution Customers,anon_0a45eb4e4020,inst_972d2461ee23,Verified email at bmsu.ac.ir,SARS-CoV-2 Receptor Binding Domain (RBD)
-Sanctioned Institution Customers,anon_8d0783352608,inst_fac71b1a11a7,@outlook.com,H5N1 Hemagglutinin (HA) receptor-binding site
-Sanctioned Institution Customers,anon_3c98463d099e,inst_fac71b1a11a7,@163.com,H5N1 Hemagglutinin (HA) receptor-binding site
-Sanctioned Institution Customers,anon_6f9110ae28c9,inst_fac71b1a11a7,Verified email at bmi.ac.cn,H5N1 Hemagglutinin (HA) receptor-binding site
-Sanctioned Institution Customers,anon_4b597c466ff6,inst_d6b472c734a6,@126.com,Zika virus NS1 protein
-Sanctioned Institution Customers,anon_636d79293338,inst_d6b472c734a6,Verified email at bmi.ac.cn,Zika virus NS1 protein
-Sanctioned Institution Customers,anon_ea143fc44c88,inst_ddc33aa283b3,Verified email at mcb.nsc.ru,SFTS virus nucleocapsid protein
-Sanctioned Institution Customers,anon_e1674edf36bf,inst_ddc33aa283b3,Verified email at mcb.nsc.ru,SFTS virus nucleocapsid protein
-Sanctioned Institution Customers,anon_4573980856c3,inst_ddc33aa283b3,Verified email at mcb.nsc.ru,SFTS virus nucleocapsid protein
-Sanctioned Institution Customers,anon_ed78f260a461,inst_ddc33aa283b3,Verified email at mcb.nsc.ru,SFTS virus nucleocapsid protein
-Sanctioned Institution Customers,anon_1d07d67f8a8a,inst_ddc33aa283b3,Verified email at mcb.nsc.ru,SFTS virus nucleocapsid protein
-Sanctioned Institution Customers,anon_2f429cc1809b,inst_ddc33aa283b3,Verified email at mcb.nsc.ru,SFTS virus nucleocapsid protein
-Sanctioned Institution Customers,anon_94d4f224c0b4,inst_438976db8a0b,@rambler.ru,SFTS virus nucleocapsid protein
-Sanctioned Institution Customers,anon_cbe8fd6ce694,inst_438976db8a0b,Verified email at rambler.ru,SFTS virus nucleocapsid protein
-Sanctioned Institution Customers,anon_9fe0d38e0ee5,inst_56d6dc1efd56,Verified email at rambler.ru,SFTS virus nucleocapsid protein
-Sanctioned Institution Customers,anon_aa54aba312ea,inst_696fdb296115,Verified email at rambler.ru,SFTS virus nucleocapsid protein
+Type,Name,Institution,Institutional_Email,Order
+Controlled Agent Academia,anon_8343ea19eac1,inst_a905e6f77cbb,True,MERS-CoV spike RBD
+Controlled Agent Academia,anon_7638b61fe307,inst_eb0941b83878,True,MERS-CoV spike RBD
+Controlled Agent Academia,anon_e833ac9669c9,inst_c88f14496add,True,MERS-CoV spike RBD
+Controlled Agent Academia,anon_80433aa2eec3,inst_18b3b4310974,True,H7N9 influenza HA receptor binding site
+Controlled Agent Academia,anon_7140683b30db,inst_ecaa40fd02af,False,H7N9 influenza HA receptor binding site
+Controlled Agent Academia,anon_58640646c74d,inst_8910354fe2b8,True,H7N9 influenza HA receptor binding site
+Controlled Agent Academia,anon_76392cb1546b,inst_67f27c0cbb86,False,Respiratory syncytial virus fusion protein
+Controlled Agent Academia,anon_c3ab72973ef0,inst_67f27c0cbb86,False,Respiratory syncytial virus fusion protein
+Controlled Agent Academia,anon_619cd2be9933,inst_67f27c0cbb86,False,Respiratory syncytial virus fusion protein
+Controlled Agent Academia,anon_995c400fa2f0,inst_28389446ed70,False,Respiratory syncytial virus fusion protein
+Controlled Agent Academia,anon_30a68f867dad,inst_6ad37e93504b,False,Respiratory syncytial virus fusion protein
+Controlled Agent Academia,anon_61f3ad173b14,inst_26d6f961aad5,False,Respiratory syncytial virus fusion protein
+Controlled Agent Academia,anon_0c68bc119546,inst_92b1533651a7,False,Human metapneumovirus attachment protein
+Controlled Agent Academia,anon_32426ed98c9b,inst_92b1533651a7,False,Human metapneumovirus attachment protein
+Controlled Agent Academia,anon_9812220c2193,inst_6eacd107a109,False,Parainfluenza virus 3 hemagglutinin-neuraminidase
+Controlled Agent Academia,anon_766400066623,inst_6a419f713d52,False,Parainfluenza virus 3 hemagglutinin-neuraminidase
+Controlled Agent Academia,anon_4f24a6d30823,inst_6eacd107a109,True,Parainfluenza virus 3 hemagglutinin-neuraminidase
+Controlled Agent Academia,anon_a86e8def44e0,inst_a5e456197748,True,Parainfluenza virus 3 hemagglutinin-neuraminidase
+Controlled Agent Academia,anon_eaf77725da6d,inst_a5e456197748,True,Parainfluenza virus 3 hemagglutinin-neuraminidase
+Controlled Agent Academia,anon_ea4ea9d5b257,inst_a5e456197748,True,Parainfluenza virus 3 hemagglutinin-neuraminidase
+Controlled Agent Academia,anon_8a445f81602d,inst_f8118e4a3287,False,Zika virus NS1 protein
+Controlled Agent Academia,anon_44158f035f64,inst_4110a9d1ee92,False,Zika virus NS1 protein
+Controlled Agent Academia,anon_30db64b95c9c,inst_f8118e4a3287,True,Zika virus NS1 protein
+Controlled Agent Academia,anon_61093a92b168,inst_1283f9005163,True,SFTS virus nucleocapsid protein
+Controlled Agent Academia,anon_52e44154eb1d,inst_1283f9005163,True,Schmallenberg virus nucleocapsid
+Controlled Agent Academia,anon_58dd9b0bed8e,inst_420a9f38927b,False,Schmallenberg virus nucleocapsid
+Controlled Agent Academia,anon_5da9f2f2690a,inst_6de84ccd295e,False,Schmallenberg virus nucleocapsid
+Controlled Agent Academia,anon_1e430e2f7cba,inst_420a9f38927b,False,Usutu virus envelope protein
+Controlled Agent Academia,anon_89bc106e371c,inst_79c49849e316,False,Usutu virus envelope protein
+Controlled Agent Academia,anon_11ab84f5c386,inst_0d24d73096f3,False,Usutu virus envelope protein
+Controlled Agent Academia,anon_1880559bcc29,inst_663244dac6c1,False,Usutu virus envelope protein
+Controlled Agent Academia,anon_42f9d4684a01,inst_bdac895bcc63,False,Oropouche virus nucleocapsid
+Controlled Agent Academia,anon_12e0863a327c,inst_b5cfb26f6b20,False,Peste des petits ruminants virus fusion protein
+Controlled Agent Academia,anon_545fc28ab8aa,inst_2d5eb46f7ecb,False,Newcastle disease virus fusion protein cleavage site
+Controlled Agent Academia,anon_18d3c33321a1,inst_2d5eb46f7ecb,False,Newcastle disease virus fusion protein cleavage site
+Controlled Agent Academia,anon_eb5d44051e1b,inst_922a4f6a4611,False,MERS-CoV spike RBD
+Controlled Agent Academia,anon_48ec383bf29f,inst_ee4150b98b5f,True,MERS-CoV spike RBD
+Controlled Agent Academia,anon_eadeee216506,inst_9e6c4dd26cdb,True,Rinderpest virus hemagglutinin
+Controlled Agent Academia,anon_0e201789d628,inst_7eaa80985e12,True,Rinderpest virus hemagglutinin
+Controlled Agent Academia,anon_54767a039a94,inst_9e6c4dd26cdb,True,Rinderpest virus hemagglutinin
+Controlled Agent Academia,anon_ea62a80ae633,inst_4bce26c68f9d,False,Foot-and-mouth disease virus VP1
+Controlled Agent Academia,anon_e5323bb69473,inst_4bce26c68f9d,False,Foot-and-mouth disease virus VP1
+Controlled Agent Academia,anon_17fb625d0cf5,inst_4bce26c68f9d,False,Foot-and-mouth disease virus VP1
+Controlled Agent Academia,anon_7b29ca38925e,inst_88cdbbaf3f7f,False,Human T-lymphotropic virus Tax protein
+Controlled Agent Academia,anon_903c8a87b7e3,inst_6da7b4323368,True,Kaposi's sarcoma-associated herpesvirus K1
+Controlled Agent Academia,anon_b39e161dfbad,inst_4c1ee259ed77,True,Kaposi's sarcoma-associated herpesvirus K1
+Controlled Agent Academia,anon_43e6ab9aae7c,inst_e765f3e642fa,True,Kaposi's sarcoma-associated herpesvirus K1
+Controlled Agent Academia,anon_928f94592ad2,inst_88f5c1182c4d,False,Merkel cell polyomavirus large T antigen
+Controlled Agent Academia,anon_26365526dff1,inst_88f5c1182c4d,False,Merkel cell polyomavirus large T antigen
+Controlled Agent Academia,anon_622008f7ce0f,inst_88f5c1182c4d,False,Merkel cell polyomavirus large T antigen
+Controlled Agent Academia,anon_ec6abece0ba6,inst_b2599aacb828,True,Measles virus fusion protein
+Controlled Agent Academia,anon_cdd7d9d1d75e,inst_b2599aacb828,True,Measles virus fusion protein
+Controlled Agent Academia,anon_b4794acf38c3,inst_b2599aacb828,True,Measles virus fusion protein
+Controlled Agent Academia,anon_246f4bda0c2a,inst_43edd02515b4,False,Mumps virus small hydrophobic protein
+Controlled Agent Academia,anon_2dcd122ef40b,inst_2cf72180369a,False,Mumps virus small hydrophobic protein
+Controlled Agent Academia,anon_c79332b266ed,inst_4576071f33f5,False,Mumps virus small hydrophobic protein
+Controlled Agent Industry,anon_d96223e4a20f,inst_949b32cc8889,False,MERS-CoV spike RBD
+Controlled Agent Industry,anon_41b50310e6df,inst_092f25eb9a69,False,Respiratory syncytial virus fusion protein
+Controlled Agent Industry,anon_ece9f0ae7289,inst_f7f7fc21f3ee,False,Zika virus NS1 protein
+Controlled Agent Industry,anon_0b8b43259477,inst_f7f7fc21f3ee,False,Zika virus NS1 protein
+Controlled Agent Industry,anon_5e1bc3151909,inst_5c4d425ae9b3,False,Zika virus NS1 protein
+Controlled Agent Industry,anon_ef3f065b1b8a,inst_94e011ccad5e,False,Respiratory syncytial virus fusion protein
+Controlled Agent Industry,anon_38d9260031e6,inst_94e011ccad5e,False,Respiratory syncytial virus fusion protein
+Controlled Agent Industry,anon_75e2b4726e3a,inst_d40f07d10894,False,Human T-lymphotropic virus Tax protein
+Controlled Agent Industry,anon_db3d2cd19fdf,inst_a2bd1d8e8163,False,Human T-lymphotropic virus
+Controlled Agent Industry,anon_c0faaade0799,inst_2cbbb2e99341,False,Human T-lymphotropic virus (HTLV)
+Controlled Agent Industry,anon_b09d5382665f,inst_2cbbb2e99341,False,Human T-lymphotropic virus (HTLV)
+Controlled Agent Industry,anon_9d9b0a9d81d0,inst_72468fb00139,True,Human T-lymphotropic virus (HTLV)
+Controlled Agent Industry,anon_b61c21e048b8,inst_c0c265243aa9,False,Newcastle disease virus fusion protein cleavage site
+Controlled Agent Industry,anon_ace9a7303237,inst_8f1fe45115dc,False,Newcastle disease virus fusion protein cleavage site
+Controlled Agent Industry,anon_e763b27af836,inst_e3788f26a504,False,Newcastle disease virus fusion protein cleavage site
+Controlled Agent Industry,anon_f28a9f9cd5dc,inst_bd3aeb81e372,False,MERS-CoV spike RBD
+Controlled Agent Industry,anon_2e01827b9ebb,inst_2fe441ce21b8,False,H7N9 influenza HA receptor binding site
+Controlled Agent Industry,anon_4c95edbbed66,inst_2fe441ce21b8,False,H7N9 influenza HA receptor binding site
+Controlled Agent Industry,anon_d9edf69a0adc,inst_6dca370d6280,False,Respiratory syncytial virus fusion protein
+Controlled Agent Industry,anon_0fa13973e600,inst_6dca370d6280,False,Respiratory syncytial virus fusion protein
+Controlled Agent Industry,anon_6389dd5d0ecd,inst_5c716e500475,False,Ebola Virus Glycoprotein (GP) RBD
+Controlled Agent Industry,anon_13194efc732c,inst_5c716e500475,False,Ebola Virus Glycoprotein (GP) RBD
+Controlled Agent Industry,anon_0f4843e60288,inst_752d37c03a1e,False,Merkel cell polyomavirus large T antigen (partial)
+Controlled Agent Industry,anon_93f4783e78de,inst_752d37c03a1e,False,Merkel cell polyomavirus
+General Life Science Customers,anon_04e4eb744d98,inst_ccdd3f5360c1,False,Merkel cell polyomavirus large T antigen (partial)
+General Life Science Customers,anon_2c944c52a551,inst_b0d694d8b05f,False,Merkel cell polyomavirus large T antigen (partial)
+General Life Science Customers,anon_f4671d09213d,inst_2d5109fe9d30,True,Merkel cell polyomavirus large T antigen (partial)
+General Life Science Customers,anon_192b387e11c4,inst_e5afae89b467,True,Human T-lymphotropic virus Tax protein
+General Life Science Customers,anon_f8c343d68edd,inst_e5afae89b467,True,Human T-lymphotropic virus Tax protein
+General Life Science Customers,anon_00bb15cb90cc,inst_e5afae89b467,True,Human T-lymphotropic virus Tax protein
+General Life Science Customers,anon_24f9ab05bf67,inst_e5afae89b467,True,Human T-lymphotropic virus Tax protein
+General Life Science Customers,anon_09e96d15e643,inst_e5afae89b467,True,Human T-lymphotropic virus Tax protein
+General Life Science Customers,anon_bcc021a2a602,inst_a1c78b783be3,False,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_ca242cf55613,inst_84300b394190,False,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_c9a318d306b4,inst_c610de0261b2,False,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_3ef4d9d5454b,inst_d73aca24a84f,False,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_6cb0c23985fb,inst_a1c78b783be3,False,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_c461c6f92833,inst_a1c78b783be3,False,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_b5821ed2cdf2,inst_a1c78b783be3,True,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_a1bf73b1dc03,inst_a1c78b783be3,False,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_998e0af13a70,inst_a1c78b783be3,False,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_c061e006777a,inst_84300b394190,False,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_4111e7c8c50a,inst_c610de0261b2,False,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_82d056217734,inst_a1c78b783be3,False,SARS-CoV-2 Receptor Binding Domain (RBD)
+General Life Science Customers,anon_eb93e35be4aa,inst_10aeb03d8657,False,H5N1 Hemagglutinin (HA) receptor-binding site
+General Life Science Customers,anon_6834d5a9feee,inst_10aeb03d8657,False,H5N1 Hemagglutinin (HA) receptor-binding site
+General Life Science Customers,anon_62cf7ffa5a7f,inst_0def6f755b62,True,H5N1 Hemagglutinin (HA) receptor-binding site
+General Life Science Customers,anon_a0ade3749706,inst_9123ecd850b6,False,H5N1 Hemagglutinin (HA) receptor-binding site
+General Life Science Customers,anon_e1bf63bd0d28,inst_10aeb03d8657,False,H5N1 Hemagglutinin (HA) receptor-binding site
+General Life Science Customers,anon_d5421d93c595,inst_bdb2bd03ca56,False,Newcastle disease virus fusion protein cleavage site
+General Life Science Customers,anon_7f1ac6919855,inst_bdb2bd03ca56,False,Newcastle disease virus fusion protein cleavage site
+General Life Science Customers,anon_ef51f244f18e,inst_3da5c25ce37e,True,Kaposi's sarcoma-associated herpesvirus K1
+General Life Science Customers,anon_e3f88832a2dc,inst_3da5c25ce37e,True,Kaposi's sarcoma-associated herpesvirus K1
+Sanctioned Institution Customers,anon_d8e9748df044,inst_ca3a7c5f885b,False,H5N1 Hemagglutinin (HA) receptor-binding site
+Sanctioned Institution Customers,anon_154dd9004568,inst_ca3a7c5f885b,True,Newcastle disease virus fusion protein cleavage site
+Sanctioned Institution Customers,anon_b99f0fd1480e,inst_ca3a7c5f885b,False,Newcastle disease virus fusion protein cleavage site
+Sanctioned Institution Customers,anon_f5e8a3a2d756,inst_1f8f13e6cf9c,True,SARS-CoV-2 Receptor Binding Domain (RBD)
+Sanctioned Institution Customers,anon_638593379f8c,inst_9994ac9866a7,True,SARS-CoV-2 Receptor Binding Domain (RBD)
+Sanctioned Institution Customers,anon_8d1bd718d5b6,inst_1f8f13e6cf9c,True,SARS-CoV-2 Receptor Binding Domain (RBD)
+Sanctioned Institution Customers,anon_027b55113d42,inst_1f8f13e6cf9c,True,SARS-CoV-2 Receptor Binding Domain (RBD)
+Sanctioned Institution Customers,anon_062e7445435f,inst_972d2461ee23,True,SARS-CoV-2 Receptor Binding Domain (RBD)
+Sanctioned Institution Customers,anon_870280c4b0f0,inst_1f8f13e6cf9c,True,SARS-CoV-2 Receptor Binding Domain (RBD)
+Sanctioned Institution Customers,anon_0a45eb4e4020,inst_972d2461ee23,True,SARS-CoV-2 Receptor Binding Domain (RBD)
+Sanctioned Institution Customers,anon_8d0783352608,inst_fac71b1a11a7,False,H5N1 Hemagglutinin (HA) receptor-binding site
+Sanctioned Institution Customers,anon_3c98463d099e,inst_fac71b1a11a7,False,H5N1 Hemagglutinin (HA) receptor-binding site
+Sanctioned Institution Customers,anon_6f9110ae28c9,inst_fac71b1a11a7,True,H5N1 Hemagglutinin (HA) receptor-binding site
+Sanctioned Institution Customers,anon_4b597c466ff6,inst_d6b472c734a6,False,Zika virus NS1 protein
+Sanctioned Institution Customers,anon_636d79293338,inst_d6b472c734a6,True,Zika virus NS1 protein
+Sanctioned Institution Customers,anon_ea143fc44c88,inst_ddc33aa283b3,False,SFTS virus nucleocapsid protein
+Sanctioned Institution Customers,anon_e1674edf36bf,inst_ddc33aa283b3,False,SFTS virus nucleocapsid protein
+Sanctioned Institution Customers,anon_4573980856c3,inst_ddc33aa283b3,False,SFTS virus nucleocapsid protein
+Sanctioned Institution Customers,anon_ed78f260a461,inst_ddc33aa283b3,False,SFTS virus nucleocapsid protein
+Sanctioned Institution Customers,anon_1d07d67f8a8a,inst_ddc33aa283b3,False,SFTS virus nucleocapsid protein
+Sanctioned Institution Customers,anon_2f429cc1809b,inst_ddc33aa283b3,False,SFTS virus nucleocapsid protein
+Sanctioned Institution Customers,anon_94d4f224c0b4,inst_438976db8a0b,False,SFTS virus nucleocapsid protein
+Sanctioned Institution Customers,anon_cbe8fd6ce694,inst_438976db8a0b,False,SFTS virus nucleocapsid protein
+Sanctioned Institution Customers,anon_9fe0d38e0ee5,inst_56d6dc1efd56,False,SFTS virus nucleocapsid protein
+Sanctioned Institution Customers,anon_aa54aba312ea,inst_696fdb296115,False,SFTS virus nucleocapsid protein

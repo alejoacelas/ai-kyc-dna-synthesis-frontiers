@@ -7,7 +7,6 @@ import pandas as pd
 import json
 import numpy as np
 from sklearn.metrics import cohen_kappa_score
-import re
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.parent
@@ -49,36 +48,7 @@ def compute_n2_profiles_count(full_dataset_df):
 
 def compute_n3_institutional_emails(full_dataset_df):
     """N3: Percentage with institutional email domains."""
-    institutional_patterns = [
-        r"\.edu($|\.)",
-        r"\.ac\.uk$",
-        r"\.ac\.[a-z]{2}$",
-        r"\.org($|\.)",
-        r"university",
-        r"\.gov($|\.)",
-        r"institute",
-        r"research",
-    ]
-
-    def is_institutional_email(email):
-        if pd.isna(email) or email == "":
-            return False
-        if "@" in email:
-            domain = email.split("@")[-1].lower()
-        elif "at " in email.lower():
-            parts = email.lower().split("at ")
-            if len(parts) > 1:
-                domain = parts[-1].strip()
-            else:
-                return False
-        else:
-            return False
-        for pattern in institutional_patterns:
-            if re.search(pattern, domain):
-                return True
-        return False
-
-    institutional_count = full_dataset_df["Email"].apply(is_institutional_email).sum()
+    institutional_count = full_dataset_df["Institutional_Email"].sum()
     percentage = (institutional_count / len(full_dataset_df)) * 100
     print(
         f"N3: {institutional_count}/{len(full_dataset_df)} = {percentage:.1f}% institutional emails"
