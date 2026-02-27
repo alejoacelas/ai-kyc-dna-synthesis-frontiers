@@ -1,0 +1,88 @@
+template: |
+  Evaluate whether sources cited in a customer screening report meet quality standards for independent verification.
+
+  <report_output>
+  {{EXTRACTED_SECTION}}
+  </report_output>
+
+  <source_text>
+  {{SOURCES}}
+  </source_text>
+
+  <customer_details>
+  {{CUSTOMER_INFO}}
+  </customer_details>
+
+  ---
+
+  First, identify all sources cited in the report.
+
+  A source FAILS if any of these apply:
+  - Unverified personal content — The customer controls the content and no institution or third party validates it (LinkedIn, personal websites, CVs)
+  - Openly editable — Anyone can modify without verification (Wikipedia, social media, forums). These are different from verified user-editable sources such as Google Scholar, ORCID, and ResearchGate.
+  - Unattributed — Claims lack traceable origin (anonymous posts, unsourced assertions)
+  - Unavailable — No content appears in the source text (unless the source is marked as empty in the report)
+
+  Otherwise, the source is PASS. Examples of PASS sources:
+  - Official government registries and databases
+  - Peer-reviewed publications and patent filings
+  - Court records, regulatory submissions, business registrations
+  - Accreditation bodies and established ranking organizations
+  - Established research profiles and content aggregators drawing from official sources (ORCID, ResearchGate, Google Scholar, OpenSanctions)
+
+  If no sources are cited → return FAIL.
+  If all sources pass → return PASS. Otherwise, return FAIL.
+
+  Present your answer in the following format:
+
+  <sources_to_audit>
+  [List all sources cited in the report]
+  </sources_to_audit>
+
+  <source_evaluation>
+  <source_1>
+  <identifier>[Source URL or name]</identifier>
+  <reasoning>[Evaluate if the source contains any FAIL conditions. Under 50 words.]</reasoning>
+  <status>PASS | FAIL</status>
+  </source_1>
+
+  <source_2>
+  ...
+  </source_2>
+  </source_evaluation>
+
+  <reason>
+  [Under 100 words: summarize the quality of cited sources]
+  </reason>
+
+  <answer>
+  [PASS if all sources pass, FAIL otherwise]
+  </answer>
+
+  Return only the requested output in the specified xml tags and nothing else.
+
+
+# =============================================================================
+# CRITERION CONFIGURATIONS
+# =============================================================================
+
+claim_types:
+  affiliation:
+    criterion_name: "Customer Institutional Affiliation"
+    criterion_instruction: "Verify the customer is currently affiliated with their claimed institution"
+
+  institution:
+    criterion_name: "Institution Type and Biomedical Focus"
+    criterion_instruction: "Verify the institution is a legitimate research institution or biomedical company with biomedical/biological research focus"
+
+  domain:
+    criterion_name: "Email Domain Verification"
+    criterion_instruction: "Verify the customer's email domain legitimately belongs to their claimed institution"
+
+  sanctions:
+    criterion_name: "Sanctions and Export Control Screening"
+    criterion_instruction: "Verify the institution is not subject to sanctions or export control restrictions"
+
+  background_work:
+    criterion_name: "Relevant Background Work"
+    criterion_instruction: "Identify laboratory work by the customer or institution relevant to the ordered organism"

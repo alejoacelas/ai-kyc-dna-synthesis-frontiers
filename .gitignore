@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Generated figures (Figure1.png is static and committed)
+paper/figures/*.png
+!paper/figures/Figure1.png
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.listing
+paper/*.synctex.gz
+paper/*.fdb_latexmk
+paper/*.fls
+
+# Temporary analysis files
+tmp/

@@ -1,0 +1,1988 @@
+[
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b9836706-0f7d-4972-b68b-55b04414b216",
+    "assertionIndex": 0,
+    "originalIndex": 380,
+    "status": "ungraded",
+    "timestamp": "2025-12-29T22:36:51.519Z",
+    "timeSpentMs": 14057
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "6bd8111d-02b6-425b-be3a-bf7328cc856f",
+    "assertionIndex": 0,
+    "originalIndex": 460,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:43:12.676Z",
+    "timeSpentMs": 18115
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1bd65fba-27bb-428c-abd1-75ea879af53d",
+    "assertionIndex": 0,
+    "originalIndex": 283,
+    "status": "ungraded",
+    "timestamp": "2025-12-29T22:46:26.371Z",
+    "timeSpentMs": 3042
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1bd65fba-27bb-428c-abd1-75ea879af53d",
+    "assertionIndex": 1,
+    "originalIndex": 283,
+    "status": "ungraded",
+    "timestamp": "2025-12-29T22:46:27.314Z",
+    "timeSpentMs": 4047
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 2,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:49:46.466Z",
+    "timeSpentMs": 99039
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 3,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:50:50.111Z",
+    "timeSpentMs": 163037
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 4,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:51:25.472Z",
+    "timeSpentMs": 198036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 5,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:52:45.010Z",
+    "timeSpentMs": 278033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 6,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:53:13.632Z",
+    "timeSpentMs": 306031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 7,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-29T22:55:11.890Z",
+    "timeSpentMs": 425027
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 4,
+    "originalIndex": 403,
+    "status": "fail",
+    "timestamp": "2025-12-29T22:59:51.898Z",
+    "timeSpentMs": 278029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 5,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:00:40.666Z",
+    "timeSpentMs": 327029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 6,
+    "originalIndex": 403,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:00:57.065Z",
+    "timeSpentMs": 343075
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 7,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:01:00.500Z",
+    "timeSpentMs": 346028
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 0,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:03:24.981Z",
+    "timeSpentMs": 96046
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 1,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:04:24.144Z",
+    "timeSpentMs": 155044
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 2,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:04:29.531Z",
+    "timeSpentMs": 161044
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 3,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:05:45.187Z",
+    "timeSpentMs": 236042
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 4,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:08:18.911Z",
+    "timeSpentMs": 390037
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 5,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:08:21.314Z",
+    "timeSpentMs": 393036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 6,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:08:58.046Z",
+    "timeSpentMs": 429037
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1356b98d-2af5-44be-850e-31f65ba73ec1",
+    "assertionIndex": 7,
+    "originalIndex": 455,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:09:00.292Z",
+    "timeSpentMs": 432035
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 0,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:10:32.456Z",
+    "timeSpentMs": 88045
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 1,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:10:33.922Z",
+    "timeSpentMs": 90045
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 2,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:11:14.160Z",
+    "timeSpentMs": 130044
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 3,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:11:27.300Z",
+    "timeSpentMs": 143044
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 4,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:13:23.424Z",
+    "timeSpentMs": 259041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 5,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:13:26.716Z",
+    "timeSpentMs": 262041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 6,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:14:23.941Z",
+    "timeSpentMs": 320039
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d616a7e4-4423-401a-94cb-1d5ae7f619d5",
+    "assertionIndex": 7,
+    "originalIndex": 65,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:14:39.908Z",
+    "timeSpentMs": 336039
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 1,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:16:03.716Z",
+    "timeSpentMs": 60033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 2,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:16:26.613Z",
+    "timeSpentMs": 83031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 3,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:16:30.639Z",
+    "timeSpentMs": 87033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 4,
+    "originalIndex": 309,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:17:51.216Z",
+    "timeSpentMs": 168004
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 5,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:18:09.116Z",
+    "timeSpentMs": 186003
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 6,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:19:04.958Z",
+    "timeSpentMs": 241000
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 7,
+    "originalIndex": 309,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:22:31.823Z",
+    "timeSpentMs": 5034
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 1,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:23:22.235Z",
+    "timeSpentMs": 43031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 2,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:24:13.889Z",
+    "timeSpentMs": 94029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 3,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:24:22.131Z",
+    "timeSpentMs": 103029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 4,
+    "originalIndex": 135,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:24:39.030Z",
+    "timeSpentMs": 119027
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 5,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:25:46.034Z",
+    "timeSpentMs": 187026
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 6,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:25:52.945Z",
+    "timeSpentMs": 193025
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 7,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:25:54.111Z",
+    "timeSpentMs": 195026
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 1,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:26:52.154Z",
+    "timeSpentMs": 45032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 2,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:28:02.941Z",
+    "timeSpentMs": 116029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 3,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:28:05.167Z",
+    "timeSpentMs": 118029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 4,
+    "originalIndex": 176,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:28:11.104Z",
+    "timeSpentMs": 124029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 5,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:47:54.239Z",
+    "timeSpentMs": 1307774
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 6,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:48:05.326Z",
+    "timeSpentMs": 1318774
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 7,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:48:08.276Z",
+    "timeSpentMs": 1321774
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 2,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:50:34.426Z",
+    "timeSpentMs": 101033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 3,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:50:44.636Z",
+    "timeSpentMs": 112033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 4,
+    "originalIndex": 163,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:50:57.570Z",
+    "timeSpentMs": 124032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 5,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:51:27.666Z",
+    "timeSpentMs": 155031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 6,
+    "originalIndex": 163,
+    "status": "fail",
+    "timestamp": "2025-12-29T23:51:58.148Z",
+    "timeSpentMs": 185030
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 7,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:52:27.691Z",
+    "timeSpentMs": 215028
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 2,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:56:07.022Z",
+    "timeSpentMs": 217023
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 3,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:56:10.258Z",
+    "timeSpentMs": 220022
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 4,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:57:31.020Z",
+    "timeSpentMs": 301020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 5,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:57:34.016Z",
+    "timeSpentMs": 304020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 6,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:59:30.919Z",
+    "timeSpentMs": 421016
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 7,
+    "originalIndex": 55,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:59:35.079Z",
+    "timeSpentMs": 425015
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 0,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-29T23:59:46.100Z",
+    "timeSpentMs": 9023
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 1,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-30T00:00:51.145Z",
+    "timeSpentMs": 74021
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 2,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-30T00:01:04.283Z",
+    "timeSpentMs": 87021
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 3,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-30T00:01:07.414Z",
+    "timeSpentMs": 90020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b448007e-2973-4c27-ad68-179d0aaaa513",
+    "assertionIndex": 10,
+    "originalIndex": 139,
+    "status": "pass",
+    "timestamp": "2025-12-30T00:41:22.976Z",
+    "timeSpentMs": 54193
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "71cd60b0-f085-4e90-981c-423ce2bc5cd0",
+    "assertionIndex": 4,
+    "originalIndex": 156,
+    "status": "fail",
+    "timestamp": "2025-12-30T00:41:34.971Z",
+    "timeSpentMs": 7089
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "71cd60b0-f085-4e90-981c-423ce2bc5cd0",
+    "assertionIndex": 5,
+    "originalIndex": 156,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:05:24.781Z",
+    "timeSpentMs": 48177
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b618e8aa-4265-40bf-8a00-6a8a189b474b",
+    "assertionIndex": 8,
+    "originalIndex": 335,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:06:30.030Z",
+    "timeSpentMs": 62097
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "d3ddae29-2b2e-41fb-9363-ff3bf09a0f1d",
+    "assertionIndex": 11,
+    "originalIndex": 458,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:07:36.234Z",
+    "timeSpentMs": 65153
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "df208d3e-d4db-472e-8db7-8912df280ef2",
+    "assertionIndex": 11,
+    "originalIndex": 366,
+    "status": "fail",
+    "timestamp": "2025-12-30T01:08:32.735Z",
+    "timeSpentMs": 23158
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1e5963e0-3032-425e-bb43-65b4b36ad4a5",
+    "assertionIndex": 8,
+    "originalIndex": 192,
+    "status": "fail",
+    "timestamp": "2025-12-30T01:08:36.488Z",
+    "timeSpentMs": 2068
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4906ea80-f38f-490e-9dcd-a99a18056b92",
+    "assertionIndex": 8,
+    "originalIndex": 442,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:09:15.634Z",
+    "timeSpentMs": 29080
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4906ea80-f38f-490e-9dcd-a99a18056b92",
+    "assertionIndex": 9,
+    "originalIndex": 442,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:09:31.709Z",
+    "timeSpentMs": 45079
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "71388d4a-9c5e-4665-ad2d-dc113df2413d",
+    "assertionIndex": 5,
+    "originalIndex": 51,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:10:08.789Z",
+    "timeSpentMs": 32084
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "0369b730-2062-4b59-9417-1e3625891260",
+    "assertionIndex": 9,
+    "originalIndex": 162,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:11:59.763Z",
+    "timeSpentMs": 107058
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "a07b9fc9-df36-45cf-88a8-3d3eabe9389f",
+    "assertionIndex": 8,
+    "originalIndex": 222,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:12:20.676Z",
+    "timeSpentMs": 19154
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "64aae71c-c47c-4d7f-9301-cb086394e28f",
+    "assertionIndex": 8,
+    "originalIndex": 67,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:12:39.398Z",
+    "timeSpentMs": 17069
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4da8bb4e-134d-4328-8dac-d74cb4163613",
+    "assertionIndex": 8,
+    "originalIndex": 461,
+    "status": "fail",
+    "timestamp": "2025-12-30T01:13:00.612Z",
+    "timeSpentMs": 12063
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "6ba16d04-9189-4d64-81be-66a4c6f8795c",
+    "assertionIndex": 7,
+    "originalIndex": 427,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:13:30.523Z",
+    "timeSpentMs": 28052
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "7f1642ca-d3bf-4d74-a6ec-e40bd3035c19",
+    "assertionIndex": 5,
+    "originalIndex": 23,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:15:19.109Z",
+    "timeSpentMs": 107100
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3562193a-f5a1-4994-9be6-a1573e8c2264",
+    "assertionIndex": 6,
+    "originalIndex": 228,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:15:32.830Z",
+    "timeSpentMs": 11117
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "36285772-bf6d-47a2-9ed8-ce3764eb2953",
+    "assertionIndex": 4,
+    "originalIndex": 402,
+    "status": "pass",
+    "timestamp": "2025-12-30T01:16:35.863Z",
+    "timeSpentMs": 60104
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "a0767fee-8a58-41ea-9e6b-31b1053306b0",
+    "assertionIndex": 5,
+    "originalIndex": 21,
+    "status": "fail",
+    "timestamp": "2025-12-30T01:18:34.369Z",
+    "timeSpentMs": 104129
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "fdfd147a-06ad-4bf6-865d-444f85c9263f",
+    "assertionIndex": 4,
+    "originalIndex": 312,
+    "status": "fail",
+    "timestamp": "2025-12-30T01:18:41.730Z",
+    "timeSpentMs": 6048
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 4,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-31T16:30:51.315Z",
+    "timeSpentMs": 566059
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 5,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-31T19:11:05.664Z",
+    "timeSpentMs": 214035
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 6,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-31T19:11:09.177Z",
+    "timeSpentMs": 217036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1260feef-4227-4cff-a243-a3f596a0e88c",
+    "assertionIndex": 7,
+    "originalIndex": 189,
+    "status": "pass",
+    "timestamp": "2025-12-31T19:11:15.697Z",
+    "timeSpentMs": 224035
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 0,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T21:59:48.864Z",
+    "timeSpentMs": 36032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 1,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T21:59:50.297Z",
+    "timeSpentMs": 38032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 2,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:00:28.297Z",
+    "timeSpentMs": 76031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 3,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:00:30.981Z",
+    "timeSpentMs": 78030
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 4,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:05:52.631Z",
+    "timeSpentMs": 400020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 5,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:05:59.238Z",
+    "timeSpentMs": 407020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 6,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:05.261Z",
+    "timeSpentMs": 413020
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "eccd9fd0-1577-44d8-8388-9b73f68a9806",
+    "assertionIndex": 7,
+    "originalIndex": 319,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:07.198Z",
+    "timeSpentMs": 414019
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 0,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:30.311Z",
+    "timeSpentMs": 22033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 1,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:31.863Z",
+    "timeSpentMs": 23033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 2,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:37.790Z",
+    "timeSpentMs": 29033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 3,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:06:38.878Z",
+    "timeSpentMs": 30033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 4,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:07:43.703Z",
+    "timeSpentMs": 95030
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 5,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:07:55.226Z",
+    "timeSpentMs": 107031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 6,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:08:01.881Z",
+    "timeSpentMs": 113030
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5f9d2ab8-2011-4482-81fb-1fe28feed3ae",
+    "assertionIndex": 7,
+    "originalIndex": 263,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:08:02.820Z",
+    "timeSpentMs": 114031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 3,
+    "originalIndex": 275,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:11:25.312Z",
+    "timeSpentMs": 201058
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 4,
+    "originalIndex": 275,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:12:54.186Z",
+    "timeSpentMs": 290024
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 5,
+    "originalIndex": 275,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:14:03.776Z",
+    "timeSpentMs": 360021
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 6,
+    "originalIndex": 275,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:14:11.634Z",
+    "timeSpentMs": 367022
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 7,
+    "originalIndex": 275,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:14:32.365Z",
+    "timeSpentMs": 388021
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 4,
+    "originalIndex": 25,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:16:08.817Z",
+    "timeSpentMs": 83032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 5,
+    "originalIndex": 25,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:16:09.750Z",
+    "timeSpentMs": 84033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 6,
+    "originalIndex": 25,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:16:15.760Z",
+    "timeSpentMs": 90032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 7,
+    "originalIndex": 25,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:16:16.806Z",
+    "timeSpentMs": 91032
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 2,
+    "originalIndex": 469,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:18:06.591Z",
+    "timeSpentMs": 108042
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 3,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:18:07.438Z",
+    "timeSpentMs": 109041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 4,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:18:22.600Z",
+    "timeSpentMs": 124041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 5,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:18:31.861Z",
+    "timeSpentMs": 133040
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 6,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:18:38.467Z",
+    "timeSpentMs": 140041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 7,
+    "originalIndex": 469,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:18:40.143Z",
+    "timeSpentMs": 142041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "9252bf24-7687-4393-82f0-163dfe80c133",
+    "assertionIndex": 4,
+    "originalIndex": 171,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:22:00.490Z",
+    "timeSpentMs": 196017
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 0,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:43:16.869Z",
+    "comment": "linked to rocketreach",
+    "timeSpentMs": 38108
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3892d4fa-04c2-43a0-9aca-9d052348e35b",
+    "assertionIndex": 1,
+    "originalIndex": 390,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:44:02.534Z",
+    "comment": "linked to website related to the institution",
+    "timeSpentMs": 33011
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 0,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:45:27.179Z",
+    "comment": "made claim from information absent from web search snippet but present in the full page",
+    "timeSpentMs": 78047
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 1,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:45:44.358Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 11045
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 2,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:46:03.919Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 18033
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b1387c1c-9933-4c2d-9f12-cf02cc6a92e8",
+    "assertionIndex": 3,
+    "originalIndex": 403,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:48:22.352Z",
+    "comment": "claimed \"Recent political funding changes are policy decisions, not sanctions.\" which the grader took as a more definitive statement than intended",
+    "timeSpentMs": 156030
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1dcc949e-2518-46c0-adaf-4685433ac704",
+    "assertionIndex": 0,
+    "originalIndex": 309,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:48:36.717Z",
+    "comment": "cited LinkedIN",
+    "timeSpentMs": 7054
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2de72d81-96d1-4465-9f7b-89248c5c24f0",
+    "assertionIndex": 0,
+    "originalIndex": 135,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:50:32.255Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 4043
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4dc0e110-d33a-4eeb-9753-12a3b24b9a12",
+    "assertionIndex": 0,
+    "originalIndex": 176,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:50:37.857Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 4047
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 0,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:50:44.761Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 5039
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e9ca7018-3ba8-4d77-92fa-f1b9b360b025",
+    "assertionIndex": 1,
+    "originalIndex": 163,
+    "status": "pass",
+    "timestamp": "2025-12-31T22:50:57.901Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 18038
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 0,
+    "originalIndex": 55,
+    "status": "fail",
+    "timestamp": "2025-12-31T22:51:14.766Z",
+    "comment": "cited Facebook",
+    "timeSpentMs": 4050
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3cab9ab8-7590-4bec-8616-8a313d6082c4",
+    "assertionIndex": 1,
+    "originalIndex": 55,
+    "metricName": "SANCTIONS-CLAIM-SUPPORT",
+    "status": "pass",
+    "timestamp": "2025-12-31T22:52:22.029Z",
+    "comment": "\"only military-affiliated institutions and select technical universities appear on restricted lists\" is literally false, as other kinds of institutions appear as well. however, the claim is not core to the flag classification",
+    "timeSpentMs": 72048
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 0,
+    "originalIndex": 275,
+    "metricName": "AFFILIATION-CLAIM-SUPPORT",
+    "status": "pass",
+    "timestamp": "2025-12-31T22:53:41.851Z",
+    "comment": "grader error: the claim made in the customer order was incorrect, and it marked the report's claim as FAILED for that reason",
+    "timeSpentMs": 71038
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 1,
+    "originalIndex": 275,
+    "metricName": "INSTITUTION-CLAIM-SUPPORT",
+    "status": "pass",
+    "timestamp": "2025-12-31T22:54:55.001Z",
+    "comment": "grader error: response extraction failed. it reviewed claims from the full report",
+    "timeSpentMs": 144036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "231046d9-6652-4d6b-89d5-ea0406e069dd",
+    "assertionIndex": 2,
+    "originalIndex": 275,
+    "metricName": "SANCTIONS-CLAIM-SUPPORT",
+    "status": "pass",
+    "timestamp": "2025-12-31T22:55:16.361Z",
+    "comment": "grader error: response extraction failed",
+    "timeSpentMs": 166035
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 0,
+    "originalIndex": 25,
+    "metricName": "AFFILIATION-CLAIM-SUPPORT",
+    "status": "pass",
+    "timestamp": "2025-12-31T22:57:05.297Z",
+    "comment": "report claim overlooked change in patent asignee. relationship between company and customer still stands, but statement is misleading",
+    "timeSpentMs": 107035
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 1,
+    "originalIndex": 25,
+    "metricName": "DOMAIN-SOURCE-RELIABILITY",
+    "status": "fail",
+    "timestamp": "2025-12-31T22:57:12.693Z",
+    "comment": "no sources given",
+    "timeSpentMs": 114025
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 2,
+    "originalIndex": 25,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "fail",
+    "timestamp": "2025-12-31T22:57:17.967Z",
+    "comment": "no claim made",
+    "timeSpentMs": 120025
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3c42686b-3f9d-4e37-bc30-164ee162b388",
+    "assertionIndex": 3,
+    "originalIndex": 25,
+    "metricName": "SANCTIONS-SOURCE-RELIABILITY",
+    "status": "fail",
+    "timestamp": "2025-12-31T22:57:22.782Z",
+    "comment": "no sources given",
+    "timeSpentMs": 125024
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 0,
+    "originalIndex": 469,
+    "metricName": "DOMAIN-SOURCE-RELIABILITY",
+    "status": "pass",
+    "timestamp": "2025-12-31T22:59:08.204Z",
+    "comment": "made general knowledge claim, which might preferably come with a source",
+    "timeSpentMs": 92045
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "93e38538-b97d-45e5-ac7f-963af6b2d55c",
+    "assertionIndex": 1,
+    "originalIndex": 469,
+    "metricName": "DOMAIN-CLAIM-SUPPORT",
+    "status": "pass",
+    "timestamp": "2025-12-31T22:59:54.967Z",
+    "comment": "grader error: failed to grasp the intent of the claim \"no email was provided\" referring to no specific email givne",
+    "timeSpentMs": 139044
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "9252bf24-7687-4393-82f0-163dfe80c133",
+    "assertionIndex": 0,
+    "originalIndex": 171,
+    "metricName": "AFFILIATION-CLAIM-SUPPORT",
+    "status": "pass",
+    "timestamp": "2025-12-31T23:00:40.308Z",
+    "comment": "didn't include source for claim",
+    "timeSpentMs": 37029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "9252bf24-7687-4393-82f0-163dfe80c133",
+    "assertionIndex": 1,
+    "originalIndex": 171,
+    "metricName": "DOMAIN-SOURCE-RELIABILITY",
+    "status": "pass",
+    "timestamp": "2025-12-31T23:00:51.667Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 48028
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "9252bf24-7687-4393-82f0-163dfe80c133",
+    "assertionIndex": 2,
+    "originalIndex": 171,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "fail",
+    "timestamp": "2025-12-31T23:01:04.670Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 61028
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "9252bf24-7687-4393-82f0-163dfe80c133",
+    "assertionIndex": 3,
+    "originalIndex": 171,
+    "metricName": "INSTITUTION-CLAIM-SUPPORT",
+    "status": "pass",
+    "timestamp": "2025-12-31T23:03:32.775Z",
+    "comment": "precise numerical claim with no sources provided \"university runs three hospitals and 18 clinical research centers\"",
+    "timeSpentMs": 209025
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b0b2a30c-b188-4f55-b188-c3da2ed7c226",
+    "assertionIndex": 0,
+    "originalIndex": 360,
+    "metricName": "AFFILIATION-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:05:41.348Z",
+    "comment": "patent had multiple asignees. making it weaker evidence of affiliation between customer and company",
+    "timeSpentMs": 121038
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b0b2a30c-b188-4f55-b188-c3da2ed7c226",
+    "assertionIndex": 1,
+    "originalIndex": 360,
+    "metricName": "SANCTIONS-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:06:10.836Z",
+    "comment": "no sources provided",
+    "timeSpentMs": 151037
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "c748548b-4b44-4a7d-bd0e-5315bb88f724",
+    "assertionIndex": 0,
+    "originalIndex": 376,
+    "metricName": "AFFILIATION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:07:12.642Z",
+    "comment": "cited rocketreach",
+    "timeSpentMs": 56040
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2f82c546-3a5b-4207-80f8-2f289c33fb4f",
+    "assertionIndex": 0,
+    "originalIndex": 33,
+    "metricName": "AFFILIATION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:07:45.506Z",
+    "comment": "cited scribd",
+    "timeSpentMs": 29050
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "2f82c546-3a5b-4207-80f8-2f289c33fb4f",
+    "assertionIndex": 1,
+    "originalIndex": 33,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:08:10.633Z",
+    "comment": "grader error: failed extraction of response",
+    "timeSpentMs": 54050
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "af361eee-4735-4a3c-a44d-662486458dfc",
+    "assertionIndex": 0,
+    "originalIndex": 180,
+    "metricName": "DOMAIN-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:08:18.248Z",
+    "comment": "no sources provided",
+    "timeSpentMs": 4027
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "af361eee-4735-4a3c-a44d-662486458dfc",
+    "assertionIndex": 1,
+    "originalIndex": 180,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:08:40.633Z",
+    "comment": "no sources provided",
+    "timeSpentMs": 26025
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "af361eee-4735-4a3c-a44d-662486458dfc",
+    "assertionIndex": 2,
+    "originalIndex": 180,
+    "metricName": "SANCTIONS-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:08:49.133Z",
+    "comment": "no sources provided",
+    "timeSpentMs": 35026
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "f975c12c-eba5-4eb7-bf20-909acc32ef0f",
+    "assertionIndex": 0,
+    "originalIndex": 257,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:09:24.877Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 10025
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "8d0f77c9-6fd0-45bb-909d-6024edd69408",
+    "assertionIndex": 0,
+    "originalIndex": 85,
+    "metricName": "AFFILIATION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:10:02.783Z",
+    "comment": "grader error: could not extract link to evaluate",
+    "timeSpentMs": 34059
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "8d0f77c9-6fd0-45bb-909d-6024edd69408",
+    "assertionIndex": 1,
+    "originalIndex": 85,
+    "metricName": "AFFILIATION-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:12:32.650Z",
+    "comment": "affects conclusion. mistook customer affiliation from source",
+    "timeSpentMs": 184037
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "8d0f77c9-6fd0-45bb-909d-6024edd69408",
+    "assertionIndex": 2,
+    "originalIndex": 85,
+    "metricName": "DOMAIN-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:17:13.253Z",
+    "comment": "grader error: didn't get intent of the text",
+    "timeSpentMs": 465029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "bcb1a9a3-7fa3-43de-ad22-c75ead06b326",
+    "assertionIndex": 0,
+    "originalIndex": 182,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:17:36.125Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 21061
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "959d7bf1-4eaf-4ab8-8fa0-fb7854c96a58",
+    "assertionIndex": 0,
+    "originalIndex": 291,
+    "metricName": "AFFILIATION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:17:57.487Z",
+    "comment": "grader error: failed extraction",
+    "timeSpentMs": 19048
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "959d7bf1-4eaf-4ab8-8fa0-fb7854c96a58",
+    "assertionIndex": 1,
+    "originalIndex": 291,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:18:24.029Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 16062
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "78794c0c-6067-4572-8274-3258af1dd87b",
+    "assertionIndex": 0,
+    "originalIndex": 229,
+    "metricName": "AFFILIATION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:18:34.606Z",
+    "comment": "cited linkedin",
+    "timeSpentMs": 8042
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "78794c0c-6067-4572-8274-3258af1dd87b",
+    "assertionIndex": 1,
+    "originalIndex": 229,
+    "metricName": "SANCTIONS-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:19:29.497Z",
+    "comment": "linked sanction list webpages instead of directing to results",
+    "timeSpentMs": 63040
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b47975fe-fe4d-4fa6-86e3-49dbb764758c",
+    "assertionIndex": 0,
+    "originalIndex": 328,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:20:11.828Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 39067
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "b47975fe-fe4d-4fa6-86e3-49dbb764758c",
+    "assertionIndex": 1,
+    "originalIndex": 328,
+    "metricName": "SANCTIONS-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:20:20.381Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 48067
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "9013d773-89c5-4e2e-9c7e-79c7332d932b",
+    "assertionIndex": 0,
+    "originalIndex": 174,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:20:44.177Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 21039
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "30d2f9bd-f2a2-4295-9c26-6151e0f8cf55",
+    "assertionIndex": 0,
+    "originalIndex": 195,
+    "metricName": "DOMAIN-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:21:16.095Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 5042
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "a6fbfc2e-de0d-45e3-9f8f-b4e07cf75a96",
+    "assertionIndex": 0,
+    "originalIndex": 138,
+    "metricName": "DOMAIN-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:21:22.526Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 4037
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "a6fbfc2e-de0d-45e3-9f8f-b4e07cf75a96",
+    "assertionIndex": 1,
+    "originalIndex": 138,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:21:28.510Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 10036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "a6fbfc2e-de0d-45e3-9f8f-b4e07cf75a96",
+    "assertionIndex": 2,
+    "originalIndex": 138,
+    "metricName": "INSTITUTION-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:22:24.251Z",
+    "comment": "did not include source for claim \"multiple research centers in biomedical fields.\" / misrepresented source",
+    "timeSpentMs": 65036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4871dead-031e-4607-a929-a026b758a645",
+    "assertionIndex": 0,
+    "originalIndex": 382,
+    "metricName": "AFFILIATION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:22:45.732Z",
+    "comment": "cited LinkedIN",
+    "timeSpentMs": 19064
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "4871dead-031e-4607-a929-a026b758a645",
+    "assertionIndex": 1,
+    "originalIndex": 382,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:23:00.443Z",
+    "comment": "cited LinkedIn",
+    "timeSpentMs": 33062
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "87f7c322-99d3-49f0-bb58-751758aef32b",
+    "assertionIndex": 0,
+    "originalIndex": 278,
+    "metricName": "DOMAIN-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:25:40.768Z",
+    "comment": "report implies customer works at YUHS, which is not central to the main claim but is also not supported by sources provided there",
+    "timeSpentMs": 157036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "87f7c322-99d3-49f0-bb58-751758aef32b",
+    "assertionIndex": 1,
+    "originalIndex": 278,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:25:54.059Z",
+    "comment": "cites personal blog",
+    "timeSpentMs": 170035
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "f8a6db60-6d94-4c0b-a4c3-c5e138f94671",
+    "assertionIndex": 0,
+    "originalIndex": 280,
+    "metricName": "AFFILIATION-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:26:25.867Z",
+    "comment": "mistook customer email in publication",
+    "timeSpentMs": 28028
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "f8a6db60-6d94-4c0b-a4c3-c5e138f94671",
+    "assertionIndex": 1,
+    "originalIndex": 280,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:26:50.757Z",
+    "comment": "cites wikipedia",
+    "timeSpentMs": 53026
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5fedcfc8-5c5e-4241-a671-672d0f03f533",
+    "assertionIndex": 0,
+    "originalIndex": 152,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:27:10.715Z",
+    "comment": "cites wikipedia",
+    "timeSpentMs": 5039
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "5fedcfc8-5c5e-4241-a671-672d0f03f533",
+    "assertionIndex": 1,
+    "originalIndex": 152,
+    "metricName": "SANCTIONS-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:28:34.986Z",
+    "comment": "cited irrelevant sources to back up the claim \"could not find sanctions to Brazilian universities\"",
+    "timeSpentMs": 89037
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "fb5ac9b0-4a32-4c7d-9fc8-01085bf156b5",
+    "assertionIndex": 0,
+    "originalIndex": 388,
+    "metricName": "AFFILIATION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:28:54.365Z",
+    "comment": "cited Academia.edu",
+    "timeSpentMs": 12059
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "fb5ac9b0-4a32-4c7d-9fc8-01085bf156b5",
+    "assertionIndex": 1,
+    "originalIndex": 388,
+    "metricName": "AFFILIATION-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:31:24.877Z",
+    "comment": "unclear",
+    "timeSpentMs": 163041
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "fb5ac9b0-4a32-4c7d-9fc8-01085bf156b5",
+    "assertionIndex": 2,
+    "originalIndex": 388,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:31:34.183Z",
+    "comment": "cited linkedin",
+    "timeSpentMs": 172040
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "f5d3e254-851a-4509-bc4e-699fd26e9695",
+    "assertionIndex": 0,
+    "originalIndex": 353,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:32:27.188Z",
+    "comment": "cited customer's institution (small biotech) own webpage",
+    "timeSpentMs": 51038
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "6211baac-0eeb-4d6b-9500-4238e615d083",
+    "assertionIndex": 0,
+    "originalIndex": 48,
+    "metricName": "AFFILIATION-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:33:08.946Z",
+    "comment": "grader error: misread claim from report",
+    "timeSpentMs": 39031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "6211baac-0eeb-4d6b-9500-4238e615d083",
+    "assertionIndex": 1,
+    "originalIndex": 48,
+    "metricName": "DOMAIN-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:33:22.518Z",
+    "comment": "no sources provided",
+    "timeSpentMs": 52031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "6211baac-0eeb-4d6b-9500-4238e615d083",
+    "assertionIndex": 2,
+    "originalIndex": 48,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:33:28.946Z",
+    "comment": "no sources provided",
+    "timeSpentMs": 59031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "6211baac-0eeb-4d6b-9500-4238e615d083",
+    "assertionIndex": 3,
+    "originalIndex": 48,
+    "metricName": "SANCTIONS-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:33:34.414Z",
+    "comment": "no sources provided",
+    "timeSpentMs": 64031
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "e2f7e971-b20c-4583-9798-c68ff06a220a",
+    "assertionIndex": 0,
+    "originalIndex": 404,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:33:44.702Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 7044
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "7d2dff93-c77a-469f-a61f-376d021112f3",
+    "assertionIndex": 0,
+    "originalIndex": 36,
+    "metricName": "AFFILIATION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:33:57.766Z",
+    "comment": "cited LinkedIn",
+    "timeSpentMs": 11030
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "7d2dff93-c77a-469f-a61f-376d021112f3",
+    "assertionIndex": 1,
+    "originalIndex": 36,
+    "metricName": "DOMAIN-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:34:50.677Z",
+    "comment": "4-word ambiguous statement on report",
+    "timeSpentMs": 63029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "7d2dff93-c77a-469f-a61f-376d021112f3",
+    "assertionIndex": 2,
+    "originalIndex": 36,
+    "metricName": "SANCTIONS-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:34:58.019Z",
+    "comment": "no sources provided",
+    "timeSpentMs": 71029
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "460d6acf-fda1-4ea4-abd7-3f1c00af64c3",
+    "assertionIndex": 0,
+    "originalIndex": 177,
+    "metricName": "DOMAIN-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:36:48.258Z",
+    "comment": "misrepresented the source by claiming the wrong email for the institution",
+    "timeSpentMs": 108022
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "1e014234-1b06-4a87-9c0e-5831c1e933e8",
+    "assertionIndex": 1,
+    "originalIndex": 9,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:52:46.678Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 954968
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "8430aa97-c2dc-41f1-bb07-1a21431133a5",
+    "assertionIndex": 0,
+    "originalIndex": 355,
+    "metricName": "AFFILIATION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:53:29.221Z",
+    "comment": "cites customer's institution own website (small biotech)",
+    "timeSpentMs": 41049
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "8430aa97-c2dc-41f1-bb07-1a21431133a5",
+    "assertionIndex": 1,
+    "originalIndex": 355,
+    "metricName": "AFFILIATION-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:54:06.329Z",
+    "comment": "forgot to cite source (orcid profile)",
+    "timeSpentMs": 78047
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "8430aa97-c2dc-41f1-bb07-1a21431133a5",
+    "assertionIndex": 2,
+    "originalIndex": 355,
+    "metricName": "INSTITUTION-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:57:04.567Z",
+    "comment": "substantial error: didn't include sources for key claims on Signablock's output and NIH grants",
+    "timeSpentMs": 256046
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3675ddd1-af7a-4d72-956b-34150700b373",
+    "assertionIndex": 0,
+    "originalIndex": 303,
+    "metricName": "AFFILIATION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:57:37.957Z",
+    "comment": "cited Datanyze, a web aggregator",
+    "timeSpentMs": 25044
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "3675ddd1-af7a-4d72-956b-34150700b373",
+    "assertionIndex": 1,
+    "originalIndex": 303,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:57:52.228Z",
+    "comment": "cited LinkedIn",
+    "timeSpentMs": 39042
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "37911c41-8fb6-4fdb-b5a1-5abf6a66edc8",
+    "assertionIndex": 0,
+    "originalIndex": 379,
+    "metricName": "DOMAIN-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:58:24.215Z",
+    "comment": "didn't link main source for claim",
+    "timeSpentMs": 28036
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "0c0ca6b6-a774-4f93-acd2-36d57f65852a",
+    "assertionIndex": 0,
+    "originalIndex": 172,
+    "metricName": "AFFILIATION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:58:43.767Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 16046
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "0c0ca6b6-a774-4f93-acd2-36d57f65852a",
+    "assertionIndex": 1,
+    "originalIndex": 172,
+    "metricName": "INSTITUTION-SOURCE-RELIABILITY",
+    "status": "ungraded",
+    "timestamp": "2025-12-31T23:58:54.775Z",
+    "comment": "cited wikipedia",
+    "timeSpentMs": 27046
+  },
+  {
+    "evalId": "eval-exR-2025-12-26T15:24:21",
+    "testId": "0c0ca6b6-a774-4f93-acd2-36d57f65852a",
+    "assertionIndex": 2,
+    "originalIndex": 172,
+    "metricName": "INSTITUTION-CLAIM-SUPPORT",
+    "status": "ungraded",
+    "timestamp": "2026-01-01T00:11:58.287Z",
+    "comment": "didn't provide source for",
+    "timeSpentMs": 811024
+  }
+]

@@ -1,0 +1,82 @@
+template: |
+  Extract rows for a single criterion from a markdown evidence table.
+
+  EXTRACTION RULES:
+  1. Look for the table with columns "Criterion", "Sources", "Evidence Summary". Typically it will be designated as "Table 1" in the report.
+  2. Include the header row and separator row
+  3. Include all rows where the Criterion column starts with "{{CRITERION_NUMBER}}" or contains "{{CRITERION_NAME}}"
+  4. Stop when you encounter a row for a different criterion (1–4)
+  5. Preserve exact text and citation placeholders (e.g., [web1], [epmc1])
+
+  EXAMPLES:
+
+  Example 1 — Standard extraction (target: criterion 2)
+  
+  Input table:
+  | Criterion | Sources | Evidence Summary |
+  |-----------|---------|------------------|
+  | 1. Affiliation | [web1] | Confirmed via university page |
+  | 2. Institution | [web2] | Research university verified |
+  | 2. Institution | [epmc1] | Published biological research |
+  | 3. Domain | [web3] | Domain matches institution |
+
+  Correct output:
+  | Criterion | Sources | Evidence Summary |
+  |-----------|---------|------------------|
+  | 2. Institution | [web2] | Research university verified |
+  | 2. Institution | [epmc1] | Published biological research |
+
+  Example 2 — Empty evidence for criterion (target: criterion 3)
+
+  Input table:
+  | Criterion | Sources | Evidence Summary |
+  |-----------|---------|------------------|
+  | 2. Institution | [web2] | Research university verified |
+  | 3. Domain | | |
+  | 4. Sanctions | [web4] | No matches found |
+
+  Correct output:
+  | Criterion | Sources | Evidence Summary |
+  |-----------|---------|------------------|
+  | 3. Domain | | |
+
+  Note: Empty cells are preserved. The row is included because the Criterion column matches.
+
+  If no rows match criterion {{CRITERION_NUMBER}} ({{CRITERION_NAME}}) or the relevant section is completely empty, return "NO_RELEVANT_SECTION_FOUND"
+
+  If no evidence table exists, return "NO_TABLE_FOUND"
+
+  Return only the extracted table rows, nothing else.
+
+  REPORT:
+
+claim_types:
+  affiliation:
+    criterion_number: "1"
+    criterion_name: "Customer Institutional Affiliation"
+  
+  institution:
+    criterion_number: "2"
+    criterion_name: "Institution Type and Biomedical Focus"
+  
+  domain:
+    criterion_number: "3"
+    criterion_name: "Email Domain Verification"
+  
+  sanctions:
+    criterion_number: "4"
+    criterion_name: "Sanctions and Export Control Screening"
+
+background_work_template: |
+  Extract the background work table from the report below.
+
+  EXTRACTION RULES:
+  1. Include header row, separator row, and all data rows
+  2. The table contains columns for relevance level, organism, sources, and work summary
+  3. Preserve exact text and citation placeholders
+
+  If no background work table exists, return "NO_TABLE_FOUND"
+
+  Return only the extracted table, nothing else.
+
+  REPORT:
