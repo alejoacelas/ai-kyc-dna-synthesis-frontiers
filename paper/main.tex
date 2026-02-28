@@ -3,16 +3,16 @@
 \usepackage[a4paper, margin=1in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{url,hyperref,lineno,microtype,subcaption}
+\usepackage{url,hyperref,microtype,subcaption}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{float}
+\usepackage{adjustbox}
 \usepackage{natbib}
 \usepackage[affil-it]{authblk}
-
-\linenumbers
 
 \title{Evaluating AI-Assisted Customer Verification for Synthetic Nucleic Acid Screening}
 
@@ -23,7 +23,7 @@
 \author[1]{Cassidy Nelson}
 
 \affil[1]{The Centre for Long-Term Resilience, London, United Kingdom}
-\affil[2]{University of Warwick, Coventry, United Kingdom}
+\affil[2]{Institute for Global Pandemic Planning, University of Warwick, Coventry, United Kingdom}
 \affil[3]{Aclid, New York, United States}
 
 \renewcommand\Authfont{\normalsize}
@@ -33,10 +33,6 @@
 \begin{document}
 \maketitle
 
-\noindent\textsuperscript{*}Corresponding author: \href{mailto:alejoacelas@gmail.com}{alejoacelas@gmail.com}
-
-\vspace{1em}
-
 %%% ABSTRACT %%%
 \begin{abstract}
 Legitimacy screening, the process of verifying the identity and purpose of customers ordering synthetic nucleic acids, is a primary safeguard against the misuse of synthetic biology. However, the associated costs discourage the adoption of screening practices. To evaluate whether AI tools can facilitate this process, we tested five large language models on five verification tasks using customer profiles of life sciences researchers from around the world. We compared AI performance against an expert human baseline on flag accuracy, source quality, source fidelity, and cost.
@@ -45,6 +41,9 @@ The best-performing model, Gemini 2.5 Pro aided by four bibliographic and sancti
 \end{abstract}
 
 \noindent\textbf{Keywords:} biosecurity, large language models, legitimacy screening, know your customer, sequence of concern, gene synthesis, human-in-the-loop, dual-use biotechnology
+
+\vspace{1em}
+\noindent\textsuperscript{*}Corresponding author: \href{mailto:alejoacelas@gmail.com}{alejoacelas@gmail.com}
 
 \newpage
 
@@ -83,6 +82,13 @@ These tasks were selected because they can often be resolved using publicly avai
 
 After information gathering, a human reviewer decided whether to ship the order, reject it, or request additional documentation from the customer. Screener performance was evaluated on the information-gathering tasks only. The order fulfillment decision was not evaluated, but its time and cost were included in our cost estimates.
 
+\begin{figure}[H]
+\centering
+\adjincludegraphics[width=\textwidth,trim={0 {0.2\height} 0 0},clip]{figures/Figure1.png}
+\caption{\textbf{Evaluation methodology for AI-assisted legitimacy screening.} Each customer profile includes a simulated order for a sequence of concern and a reference work (publication, patent or news article). Screeners produce structured outputs evaluated on three binary metrics per task: source quality, source fidelity, and flag accuracy / work relevance. The example shown uses a fictional customer profile for illustration purposes.}
+\label{fig:methodology}
+\end{figure}
+
 \subsection{Dataset}
 
 The primary dataset used for evaluating human and AI screeners had 41 customer profiles, each paired with a simulated order for a sequence of concern. Each profile included the name, institutional affiliation, email address of the customer, as well as a reference work (publication, patent, or news-reported activity) through which we identified the customer. To ensure data protection and prevent any false association between real researchers and simulated biosecurity threats, all personally identifiable information (PII) was strictly anonymised prior to the publication of the dataset. 
@@ -106,6 +112,28 @@ Four groups of customer profiles were constructed:
 All profiles in the dataset—including general life science researchers identified through non-SOC work—were assigned simulated orders from a standardized list of 22 SOC proteins. The SOC proteins were selected such that it would be reasonable to order them for vaccine or therapeutics research (see \textbf{Supplementary Material}, Section 1).
 
 Screeners therefore encountered cases where researchers appeared to order SOCs without relevant background—a mismatch they were expected to identify and note.
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Dataset composition by customer category.} Numbers outside parentheses are the 41-profile primary dataset; numbers in parentheses are the extended 134-profile dataset. Region is determined by institution location. Institutional email indicates profiles with a business, academic, or government email domain.}
+\label{tab:dataset}
+\begin{tabular}{lccccc}
+\toprule
+ & \textbf{Academic} & \textbf{Industry} & \textbf{Life Sci.} & \textbf{CSL} & \textbf{Total} \\
+ & \textbf{SOC Users} & \textbf{SOC Users} & \textbf{Researchers} & \textbf{Academics} & \\
+\midrule
+Profiles & 16 (56) & 11 (24) & 7 (29) & 7 (25) & 41 (134) \\
+\midrule
+\textbf{Region} & & & & & \\
+U.S.\ & 2 (6) & 4 (8) & 0 (1) & 0 (0) & 6 (15) \\
+Europe + Australia & 5 (18) & 2 (6) & 0 (4) & 0 (6) & 7 (34) \\
+China & 2 (8) & 3 (6) & 6 (19) & 1 (5) & 12 (38) \\
+Other & 7 (24) & 2 (4) & 1 (5) & 6 (14) & 16 (47) \\
+\midrule
+Inst.\ email & 15 (49) & 10 (22) & 5 (18) & 3 (19) & 33 (108) \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsubsection{Data Collection}
 
@@ -219,13 +247,67 @@ For work relevance (Task 5), the pattern reversed: models with tool access score
 
 This likely reflects the fact that models with tool access performed notably fewer web searches (\textbf{Supplementary Figure J1}), making them more likely to miss patents or news articles—sources not indexed by Europe PMC or ORCID, which cover primarily academic publications. For most profiles in our dataset, this substitution had little effect, as publication databases contained comparable evidence. However, industry customers were specifically selected based on non-publication work outputs, so tool access steered models away from the most relevant sources for these customers.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth]{figures/Figure2.png}
+\caption{\textbf{Pass rates by screener and metric.} Each cell shows the percentage of evaluation tests passed across 41 customer profiles. Columns show four metrics: flag accuracy (correct flag/no-flag/undetermined choice), source fidelity (claims supported by cited sources), source quality (sources are independently verified), and work relevance (work outputs listed are at least as relevant as a known reference).}
+\label{fig:passrates}
+\end{figure}
+
 \subsection{Cost Comparison}
 
 All AI models produced customer reports faster and more cheaply than either human baseline. Comparing total costs—including human review of AI-generated reports—the most expensive model tested (Claude Sonnet 4, \$1.74 total) was approximately 8 times cheaper than fully manual screening (\$14.04), while the cheapest configuration (MiniMax M2 with tools, \$1.14 total) was approximately 12 times cheaper. The cost reductions were more dramatic when comparing information gathering alone: AI models averaged \$0.23--\$0.27 per customer, roughly 50--60 times cheaper than the human baseline.
 
 Across AI models, cost per customer did not correlate with overall pass rates ($R^2 = 0.01$). The best-performing model, Gemini 2.5 Pro with all tools, was also the second cheapest configuration. Although the open-source models (GLM 4.6 and MiniMax M2) had per-token prices 2--8$\times$ lower than Gemini 2.5 Pro, additional web search queries and higher token consumption (often from extra tool calls) eliminated any meaningful cost advantage.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/Figure4.png}
+\caption{\textbf{AI screening cost versus overall pass rate.} Each point represents one model configuration (five models $\times$ two tool conditions). The x-axis shows average AI information-gathering cost per customer (excluding human review); the y-axis shows the overall pass rate across all four metrics (note the broken y-axis starting at approximately 83\%). All values are averages across 41 customer profiles.}
+\label{fig:costvsperf}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Per-customer screening costs and processing times.} ``Information gathering'' covers Tasks 1--5 only; ``total cost'' adds the time cost of human review of the AI-generated report. For human baselines, these phases were not separated, so only totals are reported. Human costs estimated at \$54/hour based on advertised salaries at a large DNA synthesis provider. AI costs include per-token API pricing and Tavily web search queries (\$0.08/query); other tools were cost-free. All figures are averages across 41 customer profiles.}
+\label{tab:costs}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Model} & \textbf{Info.\ Gathering} & \textbf{Total} & \textbf{Info.\ Gathering} & \textbf{Total} \\
+ & \textbf{Cost} & \textbf{Cost} & \textbf{Time} & \textbf{Time} \\
+\midrule
+\multicolumn{5}{l}{\textit{Human baseline}} \\
+Human (5 min limit) & — & \$5.43 & — & 6.0 min \\
+Human baseline & — & \$14.04 & — & 15.6 min \\
+\midrule
+\multicolumn{5}{l}{\textit{AI models (all tools)}} \\
+Claude Sonnet 4 & \$0.66 & \$1.74 & 1.5 min & 2.7 min \\
+Grok 4 & \$0.21 & \$1.29 & 2.6 min & 3.8 min \\
+Gemini 2.5 Pro & \$0.10 & \$1.18 & 1.3 min & 2.5 min \\
+GLM 4.6 & \$0.12 & \$1.20 & 1.7 min & 2.9 min \\
+MiniMax M2 & \$0.06 & \$1.14 & 2.2 min & 3.4 min \\
+\textit{Average (all tools)} & \textit{\$0.23} & \textit{\$1.31} & \textit{1.9 min} & \textit{3.1 min} \\
+\midrule
+\multicolumn{5}{l}{\textit{AI models (web-only)}} \\
+Claude Sonnet 4 & \$0.68 & \$1.76 & 1.0 min & 2.2 min \\
+Grok 4 & \$0.26 & \$1.33 & 2.7 min & 3.9 min \\
+Gemini 2.5 Pro & \$0.11 & \$1.19 & 1.3 min & 2.5 min \\
+GLM 4.6 & \$0.19 & \$1.27 & 1.4 min & 2.6 min \\
+MiniMax M2 & \$0.12 & \$1.20 & 2.5 min & 3.7 min \\
+\textit{Average (web-only)} & \textit{\$0.27} & \textit{\$1.35} & \textit{1.8 min} & \textit{3.0 min} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 As web search accounted for 60\% of total processing cost of using MiniMax M2, alternative web search providers—including custom tools offered by some model developers—could reduce costs further. However, the lack of standardization across such tools would require adapting prompts and source extraction for each provider.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/Figure3.png}
+\caption{\textbf{Per-customer screening cost breakdown by model configuration.} Stacked bars show three cost components: human review of the AI-generated report (orange), AI token costs for input and output (purple), and web search queries via Tavily (teal). Human review cost was estimated only for the best performing model configuration (Gemini 2.5 Pro with all tools), and it is taken as constant across configurations (approximately \$1.08). All values are averages across 41 customer profiles.}
+\label{fig:costs}
+\end{figure}
 
 \subsection{Flag Error Analysis}
 
@@ -241,11 +323,41 @@ Missing responses accounted for 21.4\% of errors. For human screeners, these typ
 
 Ambiguous cases and source misinterpretation were the least common, accounting for 11.1\% and 0.8\% of errors respectively. Ambiguous cases typically involved conflicting or partial evidence that made it difficult to establish clear ground truth. Source misinterpretation was rare despite the fact that around 15\% of screener responses contained some factual inaccuracy, as measured by the source fidelity metric. This suggests that most of these inaccuracies were minor and did not affect the final flag choice.
 
+\begin{table}[H]
+\centering
+\caption{\textbf{Distribution of flag errors by category and screener type.} Percentages are computed within each screener type (column), showing what share of that screener type's errors fell into each category. Counts are in parentheses; the 126 total errors were sampled across all screeners. ``Human Baseline'' combines both the 5-minute-limit and final-submission snapshots. Examples illustrate representative instances; error categories are defined in the text.}
+\label{tab:errors}
+\small
+\begin{tabularx}{\textwidth}{p{2.2cm}Xcccc}
+\toprule
+\textbf{Error} & \textbf{Example} & \textbf{Human} & \textbf{AI (All} & \textbf{AI (Web} & \textbf{Overall} \\
+\textbf{Category} & & \textbf{Baseline} & \textbf{Tools)} & \textbf{Only)} & \\
+\midrule
+Criterion Deviation & Flagging a biology dept.\ as ``not in life sciences'' because its university appears on a sanctions list & 35\% (6) & 39\% (19) & 42\% (25) & 40\% (50) \\
+\addlinespace
+Search Failure & Missing that a researcher moved to a different institution & 35\% (6) & 35\% (17) & 17\% (10) & 26\% (33) \\
+\addlinespace
+Missing Response & Empty response field or abruptly terminated output & 18\% (3) & 20\% (10) & 23\% (14) & 21\% (27) \\
+\addlinespace
+Ambiguous Case & Email domain matches recently outdated company domain & 12\% (2) & 6\% (3) & 15\% (9) & 11\% (14) \\
+\addlinespace
+Source Misinterp. & Assuming connections between nearby organizations without evidence & 0\% (0) & 0\% (0) & 2\% (1) & 1\% (1) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 \subsubsection{Geographic Variation}
 
 Error rates varied by customer region (Figure~\ref{fig:flagerrors}). European customers had the highest pass rates, potentially reflecting better documentation in the sources most available to screeners (English-language web search results and EuropePMC publications). Chinese customers showed higher missed flag rates on domain verification—15.0\% compared to under 5\% for other regions—as screeners often did not flag otherwise reputable researchers who used personal (non-institutional) email addresses.
 
 Chinese customers also showed elevated undetermined rates on sanctions screening (7.5\%), driven by institutions that appear on some countries' sanctions lists but not others, creating genuine ambiguity about whether a flag is warranted. U.S. customers showed unexpectedly high affiliation verification errors (10.0\% missed flags, 10.0\% false flags), but we did not identify any consistent pattern when reviewing the full response transcripts, and the small sample size (6 profiles) limits the conclusions that can be drawn from this region.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/Figure5.png}
+\caption{\textbf{Flag accuracy error rates by task and customer region, averaged across all AI model configurations.} Each panel shows one verification task; bars indicate the rate of missed flags (red; screener reported no flag when ground truth was flag), false flags (orange; screener reported flag when ground truth was no flag), and undetermined responses (gray; screener reported undetermined when ground truth was either flag or no flag). Regions are defined by institution location: U.S. (6 profiles), Europe + Australia (7 profiles), China (12 profiles), and Other countries (16 profiles). Error rates are computed as a percentage of all screener--profile pairs within each region.}
+\label{fig:flagerrors}
+\end{figure}
 
 %%% DISCUSSION %%%
 \section{Discussion}
@@ -326,120 +438,5 @@ Supplementary material is provided as a separate document.
 %%% BIBLIOGRAPHY %%%
 \bibliographystyle{plainnat}
 \bibliography{references}
-
-%%% FIGURES AND TABLES %%%
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{figures/Figure1.png}
-\caption{\textbf{Evaluation methodology for AI-assisted legitimacy screening.} Each customer profile includes a simulated order for a sequence of concern and a reference work (publication, patent or news article). Screeners produce structured outputs evaluated on three binary metrics per task: source quality, source fidelity, and flag accuracy / work relevance. The example shown uses a fictional customer profile for illustration purposes.}
-\label{fig:methodology}
-\end{figure}
-
-\begin{table}[h]
-\centering
-\caption{\textbf{Dataset composition by customer category.} Numbers outside parentheses are the 41-profile primary dataset; numbers in parentheses are the extended 134-profile dataset. Region is determined by institution location. Institutional email indicates profiles with a business, academic, or government email domain.}
-\label{tab:dataset}
-\begin{tabular}{lccccc}
-\toprule
- & \textbf{Academic} & \textbf{Industry} & \textbf{Life Sci.} & \textbf{CSL} & \textbf{Total} \\
- & \textbf{SOC Users} & \textbf{SOC Users} & \textbf{Researchers} & \textbf{Academics} & \\
-\midrule
-Profiles & 16 (56) & 11 (24) & 7 (29) & 7 (25) & 41 (134) \\
-\midrule
-\textbf{Region} & & & & & \\
-U.S.\ & 2 (6) & 4 (8) & 0 (1) & 0 (0) & 6 (15) \\
-Europe + Australia & 5 (18) & 2 (6) & 0 (4) & 0 (6) & 7 (34) \\
-China & 2 (8) & 3 (6) & 6 (19) & 1 (5) & 12 (38) \\
-Other & 7 (24) & 2 (4) & 1 (5) & 6 (14) & 16 (47) \\
-\midrule
-Inst.\ email & 15 (49) & 10 (22) & 5 (18) & 3 (19) & 33 (108) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.62\textwidth]{figures/Figure2.png}
-\caption{\textbf{Pass rates by screener and metric.} Each cell shows the percentage of evaluation tests passed across 41 customer profiles. Columns show four metrics: flag accuracy (correct flag/no-flag/undetermined choice), source fidelity (claims supported by cited sources), source quality (sources are independently verified), and work relevance (work outputs listed are at least as relevant as a known reference).}
-\label{fig:passrates}
-\end{figure}
-
-\begin{table}[h]
-\centering
-\caption{\textbf{Per-customer screening costs and processing times.} ``Information gathering'' covers Tasks 1--5 only; ``total cost'' adds the time cost of human review of the AI-generated report. For human baselines, these phases were not separated, so only totals are reported. Human costs estimated at \$54/hour based on advertised salaries at a large DNA synthesis provider. AI costs include per-token API pricing and Tavily web search queries (\$0.08/query); other tools were cost-free. All figures are averages across 41 customer profiles.}
-\label{tab:costs}
-\small
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Model} & \textbf{Info.\ Gathering} & \textbf{Total} & \textbf{Info.\ Gathering} & \textbf{Total} \\
- & \textbf{Cost} & \textbf{Cost} & \textbf{Time} & \textbf{Time} \\
-\midrule
-\multicolumn{5}{l}{\textit{Human baseline}} \\
-Human (5 min limit) & — & \$5.43 & — & 6.0 min \\
-Human baseline & — & \$14.04 & — & 15.6 min \\
-\midrule
-\multicolumn{5}{l}{\textit{AI models (all tools)}} \\
-Claude Sonnet 4 & \$0.66 & \$1.74 & 1.5 min & 2.7 min \\
-Grok 4 & \$0.21 & \$1.29 & 2.6 min & 3.8 min \\
-Gemini 2.5 Pro & \$0.10 & \$1.18 & 1.3 min & 2.5 min \\
-GLM 4.6 & \$0.12 & \$1.20 & 1.7 min & 2.9 min \\
-MiniMax M2 & \$0.06 & \$1.14 & 2.2 min & 3.4 min \\
-\textit{Average (all tools)} & \textit{\$0.23} & \textit{\$1.31} & \textit{1.9 min} & \textit{3.1 min} \\
-\midrule
-\multicolumn{5}{l}{\textit{AI models (web-only)}} \\
-Claude Sonnet 4 & \$0.68 & \$1.76 & 1.0 min & 2.2 min \\
-Grok 4 & \$0.26 & \$1.33 & 2.7 min & 3.9 min \\
-Gemini 2.5 Pro & \$0.11 & \$1.19 & 1.3 min & 2.5 min \\
-GLM 4.6 & \$0.19 & \$1.27 & 1.4 min & 2.6 min \\
-MiniMax M2 & \$0.12 & \$1.20 & 2.5 min & 3.7 min \\
-\textit{Average (web-only)} & \textit{\$0.27} & \textit{\$1.35} & \textit{1.8 min} & \textit{3.0 min} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/Figure3.png}
-\caption{\textbf{Per-customer screening cost breakdown by model configuration.} Stacked bars show three cost components: human review of the AI-generated report (orange), AI token costs for input and output (purple), and web search queries via Tavily (teal). Human review cost was estimated only for the best performing model configuration (Gemini 2.5 Pro with all tools), and it is taken as constant across configurations (approximately \$1.08). All values are averages across 41 customer profiles.}
-\label{fig:costs}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{figures/Figure4.png}
-\caption{\textbf{AI screening cost versus overall pass rate.} Each point represents one model configuration (five models $\times$ two tool conditions). The x-axis shows average AI information-gathering cost per customer (excluding human review); the y-axis shows the overall pass rate across all four metrics (note the broken y-axis starting at approximately 83\%). All values are averages across 41 customer profiles.}
-\label{fig:costvsperf}
-\end{figure}
-
-\begin{table}[h]
-\centering
-\caption{\textbf{Distribution of flag errors by category and screener type.} Percentages are computed within each screener type (column), showing what share of that screener type's errors fell into each category. Counts are in parentheses; the 126 total errors were sampled across all screeners. ``Human Baseline'' combines both the 5-minute-limit and final-submission snapshots. Examples illustrate representative instances; error categories are defined in the text.}
-\label{tab:errors}
-\small
-\begin{tabularx}{\textwidth}{p{2.2cm}Xcccc}
-\toprule
-\textbf{Error} & \textbf{Example} & \textbf{Human} & \textbf{AI (All} & \textbf{AI (Web} & \textbf{Overall} \\
-\textbf{Category} & & \textbf{Baseline} & \textbf{Tools)} & \textbf{Only)} & \\
-\midrule
-Criterion Deviation & Flagging a biology dept.\ as ``not in life sciences'' because its university appears on a sanctions list & 35\% (6) & 39\% (19) & 42\% (25) & 40\% (50) \\
-\addlinespace
-Search Failure & Missing that a researcher moved to a different institution & 35\% (6) & 35\% (17) & 17\% (10) & 26\% (33) \\
-\addlinespace
-Missing Response & Empty response field or abruptly terminated output & 18\% (3) & 20\% (10) & 23\% (14) & 21\% (27) \\
-\addlinespace
-Ambiguous Case & Email domain matches recently outdated company domain & 12\% (2) & 6\% (3) & 15\% (9) & 11\% (14) \\
-\addlinespace
-Source Misinterp. & Assuming connections between nearby organizations without evidence & 0\% (0) & 0\% (0) & 2\% (1) & 1\% (1) \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{figures/Figure5.png}
-\caption{\textbf{Flag accuracy error rates by task and customer region, averaged across all AI model configurations.} Each panel shows one verification task; bars indicate the rate of missed flags (red; screener reported no flag when ground truth was flag), false flags (orange; screener reported flag when ground truth was no flag), and undetermined responses (gray; screener reported undetermined when ground truth was either flag or no flag). Regions are defined by institution location: U.S. (6 profiles), Europe + Australia (7 profiles), China (12 profiles), and Other countries (16 profiles). Error rates are computed as a percentage of all screener--profile pairs within each region.}
-\label{fig:flagerrors}
-\end{figure}
 
 \end{document}
