@@ -1,50 +1,52 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Frontiers LaTeX Template - Harvard Reference Style
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
 
-\documentclass[utf8]{FrontiersinHarvard}
-
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
 \usepackage{url,hyperref,lineno,microtype,subcaption}
-\usepackage{setspace}
+\usepackage[onehalfspacing]{setspace}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{natbib}
+\usepackage[affil-it]{authblk}
 
 \linenumbers
 
-\def\keyFont{\fontsize{8}{11}\helveticabold }
-\def\firstAuthorLast{Acelas {et~al.}}
-\def\Authors{Alejandro Acelas\,$^{1,*}$, Hanna P\'{a}lya\,$^{1,2}$, Kevin Flyangolts\,$^{3}$, Paul-Enguerrand Fady\,$^{1}$ and Cassidy Nelson\,$^{1}$}
-\def\Address{$^{1}$The Centre for Long-Term Resilience, London, United Kingdom \\
-$^{2}$University of Warwick, Coventry, United Kingdom \\
-$^{3}$Aclid, New York, United States}
-\def\corrAuthor{Alejandro Acelas}
-\def\corrEmail{alejoacelas@gmail.com}
+\title{Evaluating AI-Assisted Customer Verification for Synthetic Nucleic Acid Screening}
+
+\author[1,*]{Alejandro Acelas}
+\author[1,2]{Hanna P\'{a}lya}
+\author[3]{Kevin Flyangolts}
+\author[1]{Paul-Enguerrand Fady}
+\author[1]{Cassidy Nelson}
+
+\affil[1]{The Centre for Long-Term Resilience, London, United Kingdom}
+\affil[2]{University of Warwick, Coventry, United Kingdom}
+\affil[3]{Aclid, New York, United States}
+
+\renewcommand\Authfont{\normalsize}
+\renewcommand\Affilfont{\small\itshape}
+\date{}
 
 \begin{document}
-\onecolumn
-\firstpage{1}
-
-\title[AI-Assisted Customer Verification for Synthetic Nucleic Acid Screening]{Evaluating AI-Assisted Customer Verification for Synthetic Nucleic Acid Screening}
-
-\author[\firstAuthorLast]{\Authors}
-\address{}
-\correspondance{}
-\extraAuth{}
-
 \maketitle
+
+\noindent\textsuperscript{*}Corresponding author: \href{mailto:alejoacelas@gmail.com}{alejoacelas@gmail.com}
+
+\vspace{1em}
 
 %%% ABSTRACT %%%
 \begin{abstract}
-\section{}
 Legitimacy screening, the process of verifying the identity and purpose of customers ordering synthetic nucleic acids, is a primary safeguard against the misuse of synthetic biology. However, the associated costs discourage the adoption of screening practices. To evaluate whether AI tools can facilitate this process, we tested five large language models on five verification tasks using customer profiles of life sciences researchers from around the world. We compared AI performance against an expert human baseline on flag accuracy, source quality, source fidelity, and cost.
 
 The best-performing model, Gemini 2.5 Pro aided by four bibliographic and sanctions APIs, achieved comparable flag accuracy to the human baseline (90\% and 89\%, respectively). Gemini 2.5 Pro outperformed the human baseline on source quality and fidelity, at roughly one-tenth of the cost (\$1.18 vs. \$14.04 per customer). For information-gathering tasks, which excluded the human review step, costs averaged \$0.23 per customer, around 50 times cheaper than human screening. These results support piloting AI-assisted legitimacy screening at providers of synthetic nucleic acids and other dual-use biotechnology products, with AI systems handling information gathering and human reviewers retaining authority over order fulfillment decisions.
-
-\tiny
-\keyFont{\section{Keywords:} biosecurity, large language models, legitimacy screening, know your customer, sequence of concern, gene synthesis, human-in-the-loop, dual-use biotechnology}
 \end{abstract}
+
+\noindent\textbf{Keywords:} biosecurity, large language models, legitimacy screening, know your customer, sequence of concern, gene synthesis, human-in-the-loop, dual-use biotechnology
+
+\newpage
 
 %%% INTRODUCTION %%%
 \section{Introduction}
@@ -319,14 +321,13 @@ AA, HP, and KF are affiliated with organizations or projects that build and depl
 %%% SUPPLEMENTARY MATERIAL %%%
 \section*{Supplementary Material}
 
-The Supplementary Material for this article can be found online at: [link to be provided by journal]
+Supplementary material is provided as a separate document.
 
 %%% BIBLIOGRAPHY %%%
-\bibliographystyle{Frontiers-Harvard}
+\bibliographystyle{plainnat}
 \bibliography{references}
 
 %%% FIGURES AND TABLES %%%
-%%% Per Frontiers guidelines, figures and tables are appended at the end of the manuscript.
 
 \begin{figure}[h]
 \centering
