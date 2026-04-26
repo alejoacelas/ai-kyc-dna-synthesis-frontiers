@@ -2,6 +2,15 @@
 
 Use uv for package management and running python scripts.
 
+## Project summary
+
+Replication package for a paper evaluating whether large language models can assist with legitimacy screening of synthetic nucleic acid customers. The study tests five LLMs on five verification tasks against an expert human baseline across flag accuracy, source quality, source fidelity, and cost — finding Gemini 2.5 Pro matches human flag accuracy at ~1/10 the cost.
+
+### Main manuscript files
+
+- `paper/main.tex` — main manuscript (Frontiers template)
+- `paper/supplementary.tex` — supplementary material (appendix)
+
 ## Repository organization
 
 This is a replication package: anonymized data in, figures and tables out.

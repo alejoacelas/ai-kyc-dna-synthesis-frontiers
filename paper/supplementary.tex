@@ -72,6 +72,123 @@ The ``General life science researchers'' customer category was identified throug
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Statistical power and confidence intervals
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Statistical power and confidence intervals}
+
+\subsection{Per-screener pass rates with 95\% confidence intervals}
+
+Figure~\ref{fig:forestJ1} plots each screener's overall pass rate with its 95\% Wilson score confidence interval ($n = 615$ binary outcomes per screener: 41 customer profiles $\times$ 15 measurements). The ten AI intervals overlap one another and overlap the 30-minute human baseline at 79.7\% [76.3\%, 82.7\%]; only the 5-minute human baseline is clearly separated. Table~\ref{tab:wilson_metric} reports the same intervals broken out by metric, corresponding cell-for-cell to Figure~2. A paired McNemar exact test of best-AI (Gemini 2.5 Pro with all tools) against the 30-minute human baseline on flag accuracy returned $p = 1.000$ at the profile level (41 paired profiles, 7 vs.\ 8 discordant pairs) and $p = 0.824$ at the criterion level (164 items, 9 vs.\ 11 discordant pairs). We cannot distinguish the two screeners on this metric; at $n = 41$, the study has 80\% power to detect differences of roughly 10--14 percentage points depending on discordance rate (Table~\ref{tab:mde}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth, keepaspectratio]{figures/FigureJ1_forest_plot.png}
+\caption{\textbf{Forest plot of overall per-screener pass rates with 95\% Wilson score confidence intervals ($n = 615$ per screener).} Green = all tools, blue = web only, red = human baselines.}
+\label{fig:forestJ1}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Overall per-screener pass rates with Wilson 95\% confidence intervals.} $n = 615$ binary outcomes per screener (41 customer profiles $\times$ 15 measurements).}
+\label{tab:wilson_overall}
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Screener} & \textbf{Passes} & \textbf{Rate} & \textbf{95\% Wilson CI} \\
+\midrule
+Gemini 2.5 Pro (All Tools) & 552/615 & 89.8\% & [87.1\%, 91.9\%] \\
+GLM 4.6 (Web)              & 542/615 & 88.1\% & [85.3\%, 90.5\%] \\
+GLM 4.6 (All Tools)        & 541/615 & 88.0\% & [85.2\%, 90.3\%] \\
+Claude Sonnet 4 (All Tools)& 535/615 & 87.0\% & [84.1\%, 89.4\%] \\
+Grok 4 (All Tools)         & 531/615 & 86.3\% & [83.4\%, 88.8\%] \\
+MiniMax M2 (All Tools)     & 527/615 & 85.7\% & [82.7\%, 88.2\%] \\
+Claude Sonnet 4 (Web)      & 524/615 & 85.2\% & [82.2\%, 87.8\%] \\
+Grok 4 (Web)               & 522/615 & 84.9\% & [81.8\%, 87.5\%] \\
+MiniMax M2 (Web)           & 519/615 & 84.4\% & [81.3\%, 87.0\%] \\
+Gemini 2.5 Pro (Web)       & 515/615 & 83.7\% & [80.6\%, 86.4\%] \\
+Human Baseline (30 min)    & 490/615 & 79.7\% & [76.3\%, 82.7\%] \\
+Human Baseline (5 min)     & 244/615 & 39.7\% & [35.9\%, 43.6\%] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Per-screener, per-metric pass rates with Wilson 95\% confidence intervals.} Flag accuracy $n = 164$ per screener; claim support and source reliability $n = 205$; work relevance $n = 41$. AT = All Tools; W = Web only.}
+\label{tab:wilson_metric}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Screener} & \textbf{Flag Accuracy} & \textbf{Claim Support} & \textbf{Source Reliability} & \textbf{Work Relevance} \\
+\midrule
+Gemini 2.5 Pro (AT)  & 90.2\% [84.7, 93.9] & 93.7\% [89.5, 96.3] & 87.8\% [82.6, 91.6] & 78.0\% [63.3, 88.0] \\
+Gemini 2.5 Pro (W)   & 86.6\% [80.5, 91.0] & 86.8\% [81.5, 90.8] & 78.5\% [72.4, 83.6] & 82.9\% [68.7, 91.5] \\
+GLM 4.6 (AT)         & 94.5\% [89.9, 97.1] & 88.3\% [83.2, 92.0] & 84.9\% [79.3, 89.1] & 75.6\% [60.7, 86.2] \\
+GLM 4.6 (W)          & 93.3\% [88.4, 96.2] & 83.9\% [78.3, 88.3] & 87.8\% [82.6, 91.6] & 90.2\% [77.5, 96.1] \\
+Claude Sonnet 4 (AT) & 90.9\% [85.5, 94.4] & 86.3\% [81.0, 90.4] & 83.9\% [78.3, 88.3] & 90.2\% [77.5, 96.1] \\
+Claude Sonnet 4 (W)  & 92.1\% [86.9, 95.3] & 83.9\% [78.3, 88.3] & 80.0\% [74.0, 84.9] & 90.2\% [77.5, 96.1] \\
+Grok 4 (AT)          & 90.9\% [85.5, 94.4] & 89.3\% [84.3, 92.8] & 82.9\% [77.2, 87.5] & 70.7\% [55.5, 82.4] \\
+Grok 4 (W)           & 92.7\% [87.6, 95.8] & 83.4\% [77.7, 87.9] & 80.0\% [74.0, 84.9] & 85.4\% [71.6, 93.1] \\
+MiniMax M2 (AT)      & 90.9\% [85.5, 94.4] & 82.0\% [76.1, 86.6] & 84.9\% [79.3, 89.1] & 87.8\% [74.5, 94.7] \\
+MiniMax M2 (W)       & 87.8\% [81.9, 92.0] & 79.5\% [73.5, 84.5] & 85.4\% [79.9, 89.6] & 90.2\% [77.5, 96.1] \\
+Human Baseline 30m   & 89.0\% [83.3, 92.9] & 77.6\% [71.4, 82.7] & 77.6\% [71.4, 82.7] & 63.4\% [48.1, 76.4] \\
+Human Baseline 5m    & 49.4\% [41.8, 57.0] & 39.0\% [32.6, 45.8] & 39.5\% [33.1, 46.3] &  4.9\% [ 1.3, 16.1] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Paired McNemar exact test, best AI vs.\ 30-minute human baseline on flag accuracy.} Two-sided. Best AI = Gemini 2.5 Pro (All Tools).}
+\label{tab:mcnemar}
+\small
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Summary} & \textbf{Best AI} & \textbf{Human} & \textbf{Discordant (b, c)} & \textbf{n} & \textbf{Exact $p$} \\
+\midrule
+Profile-level, all 4 correct   & 28/41 (68.3\%)  & 27/41 (65.9\%)  & (7, 8)   &  41 & 1.000 \\
+Profile-level, $\geq$3 correct & 38/41 (92.7\%)  & 37/41 (90.2\%)  & (1, 2)   &  41 & 1.000 \\
+Criterion-level (pooled items) & 148/164 (90.2\%)& 146/164 (89.0\%)& (9, 11)  & 164 & 0.824 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Minimum detectable effect (MDE) for a paired McNemar comparison at $n = 41$.} $\alpha = 0.05$ two-sided, power = 0.80, normal approximation. Observed discordance rate for best AI vs.\ human was 0.37 (profile-strict) or 0.12 (criterion-level).}
+\label{tab:mde}
+\small
+\begin{tabular}{cc}
+\toprule
+\textbf{Assumed discordance rate $r$} & \textbf{MDE (percentage points)} \\
+\midrule
+0.05 &  9.8 \\
+0.10 & 13.8 \\
+0.20 & 19.6 \\
+0.30 & 24.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Per-region flag-accuracy Wilson 95\% confidence intervals (cf.\ Figure~5 of main text).} Pooled across all ten AI model configurations; $n_\text{obs}$ = profiles $\times$ 4 criteria $\times$ 10 screeners.}
+\label{tab:region}
+\small
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Region} & \textbf{Profiles} & \textbf{$n_\text{obs}$} & \textbf{Passes} & \textbf{Rate} & \textbf{95\% Wilson CI} \\
+\midrule
+Europe + Australia &  7 & 280 & 276 & 98.6\% & [96.4\%, 99.4\%] \\
+Others             & 16 & 640 & 578 & 90.3\% & [87.8\%, 92.4\%] \\
+USA                &  6 & 240 & 215 & 89.6\% & [85.1\%, 92.8\%] \\
+China              & 12 & 480 & 423 & 88.1\% & [84.9\%, 90.7\%] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% APPENDIX B
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Task prompts}
