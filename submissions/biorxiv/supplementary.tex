@@ -1,0 +1,1020 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Supplementary Material for:
+% Evaluating AI-Assisted Customer Verification for DNA Synthesis Screening
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{url,hyperref,lineno,microtype}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{float}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{6pt plus 2pt minus 2pt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,listings}
+
+% Gray box for task prompts (LaTeX-formatted content)
+\newtcolorbox{promptbox}{colback=gray!8, colframe=gray!8, boxrule=0pt, arc=0pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt, breakable}
+
+% Gray box for evaluation prompts (verbatim content)
+\newtcblisting{promptlisting}{colback=gray!8, colframe=gray!8, boxrule=0pt, arc=0pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt, breakable, listing only,
+  listing options={basicstyle=\small\ttfamily, breaklines=true,
+  columns=fullflexible, keepspaces=true}}
+
+\raggedbottom
+
+\begin{document}
+
+\title{\textit{Supplementary Material}}
+\author{}
+\date{}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX A
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sequences of concern used in evaluation}
+
+All customer profiles in our dataset were assigned simulated orders from the following list of 22 proteins. These sequences are derived from controlled pathogens and would typically trigger follow-up screening at DNA synthesis providers. We selected sequences that would be plausible to order for legitimate vaccine or therapeutics research.
+
+The ``General life science researchers'' customer category was identified through documented laboratory work on non-SOC sequences including antibodies (scFv fragments), CAR-T constructs, protein engineering targets, and diagnostic antigens.
+
+\begin{itemize}
+\item Ebola Virus Glycoprotein (GP) RBD
+\item Foot-and-mouth disease virus VP1
+\item H5N1 Hemagglutinin (HA) receptor-binding site
+\item H7N9 influenza HA receptor binding site
+\item Human T-lymphotropic virus (HTLV) Tax protein
+\item Human metapneumovirus attachment protein
+\item Kaposi's sarcoma-associated herpesvirus K1
+\item MERS-CoV spike RBD
+\item Measles virus fusion protein
+\item Merkel cell polyomavirus large T antigen
+\item Mumps virus small hydrophobic protein
+\item Newcastle disease virus fusion protein cleavage site
+\item Oropouche virus nucleocapsid
+\item Parainfluenza virus 3 hemagglutinin-neuraminidase
+\item Peste des petits ruminants virus fusion protein
+\item Respiratory syncytial virus fusion protein
+\item Rinderpest virus hemagglutinin
+\item SARS-CoV-2 Receptor Binding Domain (RBD)
+\item SFTS virus nucleocapsid protein
+\item Schmallenberg virus nucleocapsid
+\item Usutu virus envelope protein
+\item Zika virus NS1 protein
+\end{itemize}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Statistical power and confidence intervals
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Statistical power and confidence intervals}
+
+\subsection{Per-screener pass rates with 95\% confidence intervals}
+
+Figure~\ref{fig:forestJ1} plots each screener's overall pass rate with its 95\% Wilson score confidence interval ($n = 615$ binary outcomes per screener: 41 customer profiles $\times$ 15 measurements). The ten AI intervals overlap one another and overlap the 30-minute human baseline at 79.7\% [76.3\%, 82.7\%]; only the 5-minute human baseline is clearly separated. Table~\ref{tab:wilson_metric} reports the same intervals broken out by metric, corresponding cell-for-cell to Figure~2. A paired McNemar exact test of best-AI (Gemini 2.5 Pro with all tools) against the 30-minute human baseline on flag accuracy returned $p = 1.000$ at the profile level (41 paired profiles, 7 vs.\ 8 discordant pairs) and $p = 0.824$ at the criterion level (164 items, 9 vs.\ 11 discordant pairs). We cannot distinguish the two screeners on this metric; at $n = 41$, the study has 80\% power to detect differences of roughly 10--14 percentage points depending on discordance rate (Table~\ref{tab:mde}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth, keepaspectratio]{figures/FigureJ1_forest_plot.png}
+\caption{\textbf{Forest plot of overall per-screener pass rates with 95\% Wilson score confidence intervals ($n = 615$ per screener).} Green = all tools, blue = web only, red = human baselines.}
+\label{fig:forestJ1}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Overall per-screener pass rates with Wilson 95\% confidence intervals.} $n = 615$ binary outcomes per screener (41 customer profiles $\times$ 15 measurements).}
+\label{tab:wilson_overall}
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Screener} & \textbf{Passes} & \textbf{Rate} & \textbf{95\% Wilson CI} \\
+\midrule
+Gemini 2.5 Pro (All Tools) & 552/615 & 89.8\% & [87.1\%, 91.9\%] \\
+GLM 4.6 (Web)              & 542/615 & 88.1\% & [85.3\%, 90.5\%] \\
+GLM 4.6 (All Tools)        & 541/615 & 88.0\% & [85.2\%, 90.3\%] \\
+Claude Sonnet 4 (All Tools)& 535/615 & 87.0\% & [84.1\%, 89.4\%] \\
+Grok 4 (All Tools)         & 531/615 & 86.3\% & [83.4\%, 88.8\%] \\
+MiniMax M2 (All Tools)     & 527/615 & 85.7\% & [82.7\%, 88.2\%] \\
+Claude Sonnet 4 (Web)      & 524/615 & 85.2\% & [82.2\%, 87.8\%] \\
+Grok 4 (Web)               & 522/615 & 84.9\% & [81.8\%, 87.5\%] \\
+MiniMax M2 (Web)           & 519/615 & 84.4\% & [81.3\%, 87.0\%] \\
+Gemini 2.5 Pro (Web)       & 515/615 & 83.7\% & [80.6\%, 86.4\%] \\
+Human Baseline (30 min)    & 490/615 & 79.7\% & [76.3\%, 82.7\%] \\
+Human Baseline (5 min)     & 244/615 & 39.7\% & [35.9\%, 43.6\%] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Per-screener, per-metric pass rates with Wilson 95\% confidence intervals.} Flag accuracy $n = 164$ per screener; claim support and source reliability $n = 205$; work relevance $n = 41$. AT = All Tools; W = Web only.}
+\label{tab:wilson_metric}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Screener} & \textbf{Flag Accuracy} & \textbf{Claim Support} & \textbf{Source Reliability} & \textbf{Work Relevance} \\
+\midrule
+Gemini 2.5 Pro (AT)  & 90.2\% [84.7, 93.9] & 93.7\% [89.5, 96.3] & 87.8\% [82.6, 91.6] & 78.0\% [63.3, 88.0] \\
+Gemini 2.5 Pro (W)   & 86.6\% [80.5, 91.0] & 86.8\% [81.5, 90.8] & 78.5\% [72.4, 83.6] & 82.9\% [68.7, 91.5] \\
+GLM 4.6 (AT)         & 94.5\% [89.9, 97.1] & 88.3\% [83.2, 92.0] & 84.9\% [79.3, 89.1] & 75.6\% [60.7, 86.2] \\
+GLM 4.6 (W)          & 93.3\% [88.4, 96.2] & 83.9\% [78.3, 88.3] & 87.8\% [82.6, 91.6] & 90.2\% [77.5, 96.1] \\
+Claude Sonnet 4 (AT) & 90.9\% [85.5, 94.4] & 86.3\% [81.0, 90.4] & 83.9\% [78.3, 88.3] & 90.2\% [77.5, 96.1] \\
+Claude Sonnet 4 (W)  & 92.1\% [86.9, 95.3] & 83.9\% [78.3, 88.3] & 80.0\% [74.0, 84.9] & 90.2\% [77.5, 96.1] \\
+Grok 4 (AT)          & 90.9\% [85.5, 94.4] & 89.3\% [84.3, 92.8] & 82.9\% [77.2, 87.5] & 70.7\% [55.5, 82.4] \\
+Grok 4 (W)           & 92.7\% [87.6, 95.8] & 83.4\% [77.7, 87.9] & 80.0\% [74.0, 84.9] & 85.4\% [71.6, 93.1] \\
+MiniMax M2 (AT)      & 90.9\% [85.5, 94.4] & 82.0\% [76.1, 86.6] & 84.9\% [79.3, 89.1] & 87.8\% [74.5, 94.7] \\
+MiniMax M2 (W)       & 87.8\% [81.9, 92.0] & 79.5\% [73.5, 84.5] & 85.4\% [79.9, 89.6] & 90.2\% [77.5, 96.1] \\
+Human Baseline 30m   & 89.0\% [83.3, 92.9] & 77.6\% [71.4, 82.7] & 77.6\% [71.4, 82.7] & 63.4\% [48.1, 76.4] \\
+Human Baseline 5m    & 49.4\% [41.8, 57.0] & 39.0\% [32.6, 45.8] & 39.5\% [33.1, 46.3] &  4.9\% [ 1.3, 16.1] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Paired McNemar exact test, best AI vs.\ 30-minute human baseline on flag accuracy.} Two-sided. Best AI = Gemini 2.5 Pro (All Tools).}
+\label{tab:mcnemar}
+\small
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Summary} & \textbf{Best AI} & \textbf{Human} & \textbf{Discordant (b, c)} & \textbf{n} & \textbf{Exact $p$} \\
+\midrule
+Profile-level, all 4 correct   & 28/41 (68.3\%)  & 27/41 (65.9\%)  & (7, 8)   &  41 & 1.000 \\
+Profile-level, $\geq$3 correct & 38/41 (92.7\%)  & 37/41 (90.2\%)  & (1, 2)   &  41 & 1.000 \\
+Criterion-level (pooled items) & 148/164 (90.2\%)& 146/164 (89.0\%)& (9, 11)  & 164 & 0.824 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Minimum detectable effect (MDE) for a paired McNemar comparison at $n = 41$.} $\alpha = 0.05$ two-sided, power = 0.80, normal approximation. Observed discordance rate for best AI vs.\ human was 0.37 (profile-strict) or 0.12 (criterion-level).}
+\label{tab:mde}
+\small
+\begin{tabular}{cc}
+\toprule
+\textbf{Assumed discordance rate $r$} & \textbf{MDE (percentage points)} \\
+\midrule
+0.05 &  9.8 \\
+0.10 & 13.8 \\
+0.20 & 19.6 \\
+0.30 & 24.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Per-region flag-accuracy Wilson 95\% confidence intervals (cf.\ Figure~5 of main text).} Pooled across all ten AI model configurations; $n_\text{obs}$ = profiles $\times$ 4 criteria $\times$ 10 screeners.}
+\label{tab:region}
+\small
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Region} & \textbf{Profiles} & \textbf{$n_\text{obs}$} & \textbf{Passes} & \textbf{Rate} & \textbf{95\% Wilson CI} \\
+\midrule
+Europe + Australia &  7 & 280 & 276 & 98.6\% & [96.4\%, 99.4\%] \\
+Others             & 16 & 640 & 578 & 90.3\% & [87.8\%, 92.4\%] \\
+USA                &  6 & 240 & 215 & 89.6\% & [85.1\%, 92.8\%] \\
+China              & 12 & 480 & 423 & 88.1\% & [84.9\%, 90.7\%] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX B
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Task prompts}
+
+\subsection{Verification checks (Tasks 1--4)}
+
+The following prompt was used for all models across both tool conditions:
+
+\begin{promptlisting}
+Screen the following customer order for a synthetic DNA provider:
+{{customer_info}}
+
+Assign FLAG / NO FLAG / UNDETERMINED status for each criterion:
+
+1. Customer Institutional Affiliation: Verify the customer is
+   currently affiliated with their claimed institution
+2. Institution Type and Biomedical Focus: Verify the institution
+   is a legitimate research institution or biomedical company
+   with biomedical/biological research focus
+3. Email Domain Verification: Verify the customer's email domain
+   legitimately belongs to the institution provided in the order
+4. Sanctions and Export Control Screening: Verify the institution
+   is not subject to sanctions or export control restrictions
+
+Flag logic: FLAG if no evidence found after searching or if
+sources contradict the claim. UNDETERMINED if evidence exists
+only from insufficient sources. NO FLAG if at least one
+sufficient source confirms the criterion. If sufficient sources
+conflict with each other, FLAG.
+
+Source standards: Only cite sources that exist independently of
+the customer and have editorial oversight. Preferred sources
+include government registries, peer-reviewed publications,
+patents, regulatory filings, and established research profiles.
+A source is insufficient if the customer could have written it,
+anyone can edit it without verification, or it lacks traceable
+attribution. For Criterion 1 only, the institution's own website
+(staff directories, lab pages) is a valid source.
+
+Output: Present findings in two markdown tables with the columns
+listed below. Include at most 3 sources for each criterion.
+
+Table 1 -- Evidence:
+- Criterion (1-4)
+- Sources: Tool citation placeholder (e.g., [web1], [screen1])
+- Evidence Summary: Factual description of what the source states
+
+Table 2 -- Determinations:
+- Criterion (1-4)
+- Flag Status: FLAG, NO FLAG, or UNDETERMINED
+\end{promptlisting}
+
+\subsection{Relevant work search (Task 5)}
+
+\begin{promptlisting}
+Identify relevant laboratory work for the following customer of
+a synthetic DNA provider:
+{{customer_info}}
+
+Search for customer-authored work on the ordered organism first,
+then related organisms, then broader wet lab work by the
+customer. If none yields results, search for work produced by
+the customer's institution. Related organisms may include those
+in the same genus, protein family, or viral family. Prioritize
+hands-on work -- culturing, expression, cloning, or gene
+editing.
+
+Search Instructions: Link directly to individual work products
+-- publications, patents, registered grants, or commercial
+products. Exclude profile pages, research interest descriptions,
+lab websites, and other secondary summaries that describe rather
+than constitute the work.
+
+Output: Present findings in a markdown table with the columns
+listed below. Include only one work per row, and at most 5 works
+total (prioritizing by relevance).
+- Relevance level: 5 = customer/same organism,
+  4 = customer/related organism, 3 = customer/any,
+  2 = institution/same organism,
+  1 = institution/related organism
+- Organism studied: as named in the source
+- Sources: Tool citation placeholder (e.g., [web1])
+- Work summary: One sentence factual description of what the
+  source contains
+
+NOTE: Always report at least one piece of work authored by the
+customer, or state explicitly if you couldn't find any.
+\end{promptlisting}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX C
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Evaluation prompts}
+
+We used Gemini 2.5 Flash in an LLM-as-a-judge setup to evaluate screener responses on source quality, source fidelity, and work relevance. Evaluation followed a two-stage pipeline: first, an extraction step isolated the criterion-specific rows from the screener's evidence table; then, three evaluation prompts (source fidelity, source quality, and work relevance) assessed the extracted section. Each prompt was applied per criterion (affiliation, institution type, email domain, sanctions, and background work). Flag accuracy was manually graded.
+
+Template variables are denoted with \texttt{\{\{VARIABLE\_NAME\}\}} and were populated as follows:
+
+\begin{itemize}
+\item \texttt{\{\{CRITERION\_NUMBER\}\}}: The criterion number (1--4)
+\item \texttt{\{\{CRITERION\_NAME\}\}}: The verification task name (e.g., ``Customer Institutional Affiliation'')
+\item \texttt{\{\{CRITERION\_INSTRUCTION\}\}}: The task description (e.g., ``Verify the customer is currently affiliated with their claimed institution'')
+\item \texttt{\{\{EXTRACTED\_SECTION\}\}}: The relevant portion of the screener's response for the criterion being evaluated
+\item \texttt{\{\{SOURCES\}\}}: Full text content retrieved from URLs cited in the response
+\item \texttt{\{\{CUSTOMER\_INFO\}\}}: The customer profile (name, institution, email, ordered sequence)
+\item \texttt{\{\{WORK\_CONTENT\}\}}: Content of the reference publication or patent used to identify the customer
+\item \texttt{\{\{SOURCES\_TABLE\}\}}: The screener's background work table with relevance labels
+\end{itemize}
+
+\subsection{Section extraction}
+
+Before evaluation, each screener response was passed through an extraction step that isolated the relevant rows from the evidence table. The extraction prompt was applied once per verification criterion (criteria 1--4) and once for background work, producing the \texttt{\{\{EXTRACTED\_SECTION\}\}} variable used by downstream evaluation prompts. The template variables \texttt{\{\{CRITERION\_NUMBER\}\}} and \texttt{\{\{CRITERION\_NAME\}\}} were populated from the criteria configurations listed at the end of this appendix.
+
+\subsubsection{Evidence table extraction}
+
+\begin{promptlisting}
+Extract rows for a single criterion from a markdown evidence table.
+
+EXTRACTION RULES:
+1. Look for the table with columns "Criterion", "Sources",
+   "Evidence Summary". Typically it will be designated as
+   "Table 1" in the report.
+2. Include the header row and separator row
+3. Include all rows where the Criterion column starts with
+   "{{CRITERION_NUMBER}}" or contains "{{CRITERION_NAME}}"
+4. Stop when you encounter a row for a different criterion (1-4)
+5. Preserve exact text and citation placeholders (e.g., [web1],
+   [epmc1])
+
+EXAMPLES:
+
+Example 1 -- Standard extraction (target: criterion 2)
+
+Input table:
+| Criterion | Sources | Evidence Summary |
+|-----------|---------|------------------|
+| 1. Affiliation | [web1] | Confirmed via university page |
+| 2. Institution | [web2] | Research university verified |
+| 2. Institution | [epmc1] | Published biological research |
+| 3. Domain | [web3] | Domain matches institution |
+
+Correct output:
+| Criterion | Sources | Evidence Summary |
+|-----------|---------|------------------|
+| 2. Institution | [web2] | Research university verified |
+| 2. Institution | [epmc1] | Published biological research |
+
+Example 2 -- Empty evidence for criterion (target: criterion 3)
+
+Input table:
+| Criterion | Sources | Evidence Summary |
+|-----------|---------|------------------|
+| 2. Institution | [web2] | Research university verified |
+| 3. Domain | | |
+| 4. Sanctions | [web4] | No matches found |
+
+Correct output:
+| Criterion | Sources | Evidence Summary |
+|-----------|---------|------------------|
+| 3. Domain | | |
+
+Note: Empty cells are preserved. The row is included because the
+Criterion column matches.
+
+If no rows match criterion {{CRITERION_NUMBER}}
+({{CRITERION_NAME}}) or the relevant section is completely empty,
+return "NO_RELEVANT_SECTION_FOUND"
+
+If no evidence table exists, return "NO_TABLE_FOUND"
+
+Return only the extracted table rows, nothing else.
+
+REPORT:
+\end{promptlisting}
+
+\subsubsection{Background work extraction}
+
+\begin{promptlisting}
+Extract the background work table from the report below.
+
+EXTRACTION RULES:
+1. Include header row, separator row, and all data rows
+2. The table contains columns for relevance level, organism,
+   sources, and work summary
+3. Preserve exact text and citation placeholders
+
+If no background work table exists, return "NO_TABLE_FOUND"
+
+Return only the extracted table, nothing else.
+
+REPORT:
+\end{promptlisting}
+
+\subsection{Source fidelity}
+
+The source fidelity prompt reviews claims in the screener's response against cited sources. A claim fails if the source contradicts it, no source provides relevant information, or the claim presents speculation as established fact. Negative claims reporting absence of evidence pass by default. The overall verdict is PASS if all claims pass; FAIL otherwise.
+
+\begin{promptlisting}
+Review a customer screening report for fabricated, unsupported, or misrepresented claims.
+
+<verification_question>
+{{CRITERION_NAME}}: {{CRITERION_INSTRUCTION}}
+</verification_question>
+
+<report_output>
+{{EXTRACTED_SECTION}}
+</report_output>
+
+<source_text>
+{{SOURCES}}
+</source_text>
+
+<customer_details>
+{{CUSTOMER_INFO}}
+</customer_details>
+
+---
+
+Confirm the sources support the report's answer to the verification question:
+{{CRITERION_INSTRUCTION}}.
+
+Focus on substantive claims. Ignore minor discrepancies (e.g., rewordings,
+typos) that don't affect the verification question.
+
+A claim FAILS if:
+- The source flatly contradicts it
+- There's no source providing relevant information for the claim
+- It presents speculation or inference as established fact
+
+Otherwise, the claim is PASS. Negative claims reporting absence of evidence
+(e.g., "no matching records found," "could not locate") are PASS. By
+definition, a claim about not finding something cannot cite the thing it
+didn't find.
+
+If all claims pass, return PASS in <answer> tags. Otherwise, return FAIL.
+
+Present your answer in the following format:
+
+<claims>
+<claim_1>
+<assertion>[Restate the claim]</assertion>
+<reasoning>[Evaluate if the claim contains any of the FAIL conditions.
+Under 50 words.]</reasoning>
+<status>PASS | FAIL</status>
+</claim_1>
+
+<claim_2>
+...
+</claim_2>
+</claims>
+
+<answer>
+[PASS if all claims pass, FAIL otherwise]
+</answer>
+\end{promptlisting}
+
+\subsection{Source quality}
+
+The source quality prompt evaluates whether cited sources meet standards for independent verification. Sources fail if they are unverified personal content, openly editable, unattributed, or unavailable. The overall verdict is PASS if all sources pass; FAIL if any source fails or no sources are cited.
+
+\begin{promptlisting}
+Evaluate whether sources cited in a customer screening report meet quality
+standards for independent verification.
+
+<report_output>
+{{EXTRACTED_SECTION}}
+</report_output>
+
+<source_text>
+{{SOURCES}}
+</source_text>
+
+<customer_details>
+{{CUSTOMER_INFO}}
+</customer_details>
+
+---
+
+First, identify all sources cited in the report.
+
+A source FAILS if any of these apply:
+- Unverified personal content -- The customer controls the content and no
+  institution or third party validates it (LinkedIn, personal websites, CVs)
+- Openly editable -- Anyone can modify without verification (Wikipedia, social
+  media, forums). These are different from verified user-editable sources such
+  as Google Scholar, ORCID, and ResearchGate.
+- Unattributed -- Claims lack traceable origin (anonymous posts, unsourced
+  assertions)
+- Unavailable -- No content appears in the source text (unless the source is
+  marked as empty in the report)
+
+Otherwise, the source is PASS. Examples of PASS sources:
+- Official government registries and databases
+- Peer-reviewed publications and patent filings
+- Court records, regulatory submissions, business registrations
+- Accreditation bodies and established ranking organizations
+- Established research profiles and content aggregators drawing from official
+  sources (ORCID, ResearchGate, Google Scholar, OpenSanctions)
+
+If no sources are cited -> return FAIL.
+If all sources pass -> return PASS. Otherwise, return FAIL.
+
+Present your answer in the following format:
+
+<sources_to_audit>
+[List all sources cited in the report]
+</sources_to_audit>
+
+<source_evaluation>
+<source_1>
+<identifier>[Source URL or name]</identifier>
+<reasoning>[Evaluate if the source contains any FAIL conditions.
+Under 50 words.]</reasoning>
+<status>PASS | FAIL</status>
+</source_1>
+
+<source_2>
+...
+</source_2>
+</source_evaluation>
+
+<reason>
+[Under 100 words: summarize the quality of cited sources]
+</reason>
+
+<answer>
+[PASS if all sources pass, FAIL otherwise]
+</answer>
+\end{promptlisting}
+
+\subsection{Work relevance}
+
+The work relevance prompt compares the screener's retrieved sources against a manually-identified reference source using a 0--5 relevance scale (Table~\ref{tab:relevance_scale}). The verdict is PASS if at least one source meets or exceeds the reference relevance level.
+
+\begin{table}[H]
+\centering
+\caption{Work relevance scoring scale. Relevance is determined by three dimensions---proximity to customer, organism proximity, and laboratory involvement---whose classification values are defined in the prompt.}
+\label{tab:relevance_scale}
+\begin{tabular}{cl}
+\toprule
+\textbf{Level} & \textbf{Criteria} \\
+\midrule
+5 & Customer-authored + same organism + wet lab work \\
+4 & Customer-authored + closely related organism + wet lab work \\
+3 & Customer-authored + any other case \\
+2 & Institution only + same organism + wet lab work \\
+1 & Institution only + closely related organism + wet lab work \\
+0 & Institution only or unrelated + any other case \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{promptlisting}
+You are evaluating the quality of background work sources retrieved for
+customer screening at a DNA synthesis provider. Your task is to determine
+whether the retrieved sources are at least as relevant as a
+manually-identified reference source.
+
+<order_details>
+{{CUSTOMER_INFO}}
+</order_details>
+
+<reference_source>
+{{WORK_CONTENT}}
+</reference_source>
+
+<provided_sources_table>
+{{SOURCES_TABLE}}
+</provided_sources_table>
+
+The relevance levels in this table are the screener's assessment and may be
+incorrect. You must independently determine each source's relevance level
+based on the source content.
+
+<provided_sources>
+{{SOURCES}}
+</provided_sources>
+
+EVALUATION TASK
+1. Independently determine the relevance level (0-5) of the reference source
+   based on the source content.
+2. Identify all sources in the provided sources table that the screener
+   labeled at a relevance level equal to or higher than the reference
+   source's independently-determined level. These are the sources you will
+   audit.
+3. Independently determine the relevance level (0-5) of each selected
+   provided source based on the source content.
+4. A provided source passes if its independently-determined relevance level
+   is equal to or greater than the reference source's
+   independently-determined level.
+
+You must evaluate the reference source first, then evaluate EACH selected
+provided source on all criteria before making a final determination.
+
+OUTPUT FORMAT
+Structure your response as follows:
+
+<order_organism>
+State what organism or sequence is being ordered.
+</order_organism>
+
+<reference_source_analysis>
+- Description: Brief description of the reference work
+- Proximity to Customer: [CUSTOMER_DIRECT / INSTITUTION_ONLY / UNRELATED] -
+  Justification
+- Organism Proximity to Order: [SAME_ORGANISM / CLOSELY_RELATED /
+  DISTANTLY_RELATED / UNRELATED] - Justification including specific
+  organism(s) involved
+- Laboratory Work Involvement: [WET_LAB / COMPUTATIONAL_ONLY / UNCLEAR] -
+  Justification
+- Relevance Level: [0-5]
+</reference_source_analysis>
+
+<selected_sources>
+List the titles of all sources the screener labeled at a relevance level
+equal to or higher than the reference source's. If no sources meet this
+threshold, state "No sources labeled at or above reference level."
+</selected_sources>
+
+Repeat the following block for EACH selected source:
+
+<provided_source_analysis id="[source title]">
+- Description: Brief description of the work
+- Proximity to Customer: [CUSTOMER_DIRECT / INSTITUTION_ONLY / UNRELATED] -
+  Justification
+- Organism Proximity to Order: [SAME_ORGANISM / CLOSELY_RELATED /
+  DISTANTLY_RELATED / UNRELATED] - Justification including specific
+  organism(s) involved
+- Laboratory Work Involvement: [WET_LAB / COMPUTATIONAL_ONLY / UNCLEAR] -
+  Justification
+- Relevance Level: [0-5 as determined by your independent assessment]
+- Source Result: [PASS if this source's relevance level is equal to or
+  greater than the reference level, otherwise FAIL]
+</provided_source_analysis>
+
+<answer>
+PASS if AT LEAST ONE provided source passes. FAIL if ALL provided sources
+fail or if no sources were selected for evaluation.
+[PASS/FAIL]
+</answer>
+
+IMPORTANT NOTES
+- If the provided sources table is empty or contains no sources labeled at
+  or above the reference source's level, output FAIL
+- Evaluate ALL sources that the screener labeled at or above the reference
+  level, even if one has already passed
+\end{promptlisting}
+
+\subsection{Criteria configurations}
+
+The source fidelity and source quality prompts were applied separately for each of the following verification criteria:
+
+\begin{table}[H]
+\centering
+\caption{Verification criteria used in evaluation.}
+\begin{tabular}{llp{7.5cm}}
+\toprule
+\textbf{Criterion} & \textbf{Name} & \textbf{Instruction} \\
+\midrule
+Affiliation & Customer Institutional Affiliation & Verify the customer is currently affiliated with their claimed institution \\
+Institution & Institution Type and Biomedical Focus & Verify the institution is a legitimate research institution or biomedical company with biomedical/biological research focus \\
+Domain & Email Domain Verification & Verify the customer's email domain legitimately belongs to their claimed institution \\
+Sanctions & Sanctions and Export Control Screening & Verify the institution is not subject to sanctions or export control restrictions \\
+Background work & Relevant Background Work & Identify laboratory work by the customer or institution relevant to the ordered organism \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX D - EBRC Case Study
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Adversarial case study: fabricated researcher profile}
+
+To stress-test AI screening capabilities against deliberate deception attempts, we evaluated model performance on a synthetic customer profile created by the Engineering Biology Research Consortium (EBRC), originally developed to test customer screening practices at real nucleic acid synthesis providers.
+
+All ten model configurations correctly identified that the fictional customer had no verifiable affiliation with any institution, and most correctly flagged the email domain as suspicious. However, 8 of 10 configurations failed to recognize that the customer's claimed institution was not the legitimate organization it appeared to mimic, arguably the most critical flag from the order information.
+
+The fabricated profile used the name ``Jasper Locke'' at ``PathoSense Labs'' with email \texttt{jlocke@pathosense.org}. ``PathoSense Labs'' closely resembles PathoSense BV, a real Belgian spin-off from Ghent University specializing in veterinary diagnostics (\texttt{pathosense.com}). The \texttt{.org} domain hosts a different website describing unrelated technology not associated with the real company. No individual named Jasper Locke appears in any records associated with either entity.
+
+The correct screening outcome requires recognizing that two distinct entities exist: PathoSense BV (legitimate, \texttt{pathosense.com}) and ``PathoSense Labs'' (unverified, \texttt{pathosense.org}). Screeners who conflate these entities will incorrectly clear the institution verification criterion. Ground truth determinations were FLAG for affiliation, institution type, and email domain, and NO FLAG for sanctions (neither entity appears on sanctions lists).
+
+\begin{table}[H]
+\centering
+\caption{Flag accuracy on the fabricated profile across ten model configurations (five models $\times$ two tool access conditions). Correct determinations are marked $\checkmark$, incorrect $\times$, and UNDETERMINED $\sim$. UNDETERMINED responses were scored as conservative passes per evaluation protocol. Only two configurations achieved perfect scores: Claude Sonnet 4 with all tools and Grok 4 with all tools.}
+\label{tab:ebrc_flags}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Model Configuration} & \textbf{Affiliation} & \textbf{Institution} & \textbf{Domain} & \textbf{Sanctions} \\
+ & \textbf{(FLAG)} & \textbf{(FLAG)} & \textbf{(FLAG)} & \textbf{(NO FLAG)} \\
+\midrule
+Claude Sonnet 4 (All Tools) & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+Grok 4 (All Tools) & $\checkmark$ & $\sim$ & $\checkmark$ & $\checkmark$ \\
+Gemini 2.5 Pro (Web) & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\sim$ \\
+GLM 4.6 (Web) & $\checkmark$ & $\times$ & $\checkmark$ & $\checkmark$ \\
+GLM 4.6 (All Tools) & $\checkmark$ & $\times$ & $\checkmark$ & $\checkmark$ \\
+Claude Sonnet 4 (Web) & $\checkmark$ & $\times$ & $\checkmark$ & $\checkmark$ \\
+MiniMax M2 (Web) & $\checkmark$ & $\times$ & $\checkmark$ & $\checkmark$ \\
+MiniMax M2 (All Tools) & $\checkmark$ & $\times$ & $\checkmark$ & $\checkmark$ \\
+Gemini 2.5 Pro (All Tools) & $\checkmark$ & $\times$ & $\times$ & $\checkmark$ \\
+Grok 4 (Web) & $\checkmark$ & $\times$ & $\sim$ & $\checkmark$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 80\% failure rate on institution type verification reflects a consistent pattern: models discovered accurate information about the legitimate PathoSense BV and applied it to the entity at \texttt{pathosense.org} without recognizing they were distinct organizations. Representative excerpts from incorrect responses illustrate the conflation:
+
+\begin{quote}
+\small\textit{``PathoSense is a spin-off company from Ghent University founded in 2020, specializing in veterinary diagnostics and sequencing-based services for infectious diseases and microbiome research.''} --- GLM 4.6 (Web)
+\end{quote}
+
+\begin{quote}
+\small\textit{``Multiple sources confirm PathoSense is a Ghent University spin-off founded in 2020 specializing in veterinary diagnostics using nanopore sequencing.''} --- Claude Sonnet 4 (Web)
+\end{quote}
+
+These statements accurately describe PathoSense BV but were incorrectly used to clear an order from ``PathoSense Labs'' at the \texttt{.org} domain. The two models that correctly flagged institution type explicitly noted the existence of two distinct entities:
+
+\begin{quote}
+\small\textit{``Two distinct entities exist: (1) PathoSense BV---a legitimate Belgian spin-off from Ghent University founded in 2020, operating at pathosense.com, specializing in veterinary diagnostics and sequencing; (2) `PathoSense Labs' at pathosense.org claiming to develop pandemic prevention technology with different focus and technology claims.''} --- Claude Sonnet 4 (All Tools)
+\end{quote}
+
+The critical differentiator was whether the model explicitly compared the two domains' content and recognized inconsistencies in stated technology and mission. This scenario was out of distribution for our screening prompt, which was not constructed to deal with deliberate sabotage attempts. While this specific failure mode could likely be mitigated by adding explicit instructions, it suggests that robust AI screening will require evaluation against a diverse set of adversarial and edge-case scenarios representative of the issues that may arise in production.
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX E - Order Fulfillment Decision Statistics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Order fulfillment decision statistics}
+
+After completing the five information-gathering tasks, screeners made a final order fulfillment decision for each customer profile: ship (approve the order), follow-up (request additional documentation from the customer), or not ship (reject the order). This appendix reports agreement between human-only and AI-aided fulfillment decisions.
+
+\subsection{Data collection}
+
+Each of the 41 primary dataset profiles was screened by one of two human evaluators (Kevin or Hanna), who produced both a customer report and a fulfillment decision (``human-only'' decisions). After the main evaluation, we collected a second set of fulfillment decisions in which the other evaluator reviewed an AI-generated customer report and made a decision without having previously seen the profile (``AI-aided'' decisions). This yielded 40 paired comparisons, each consisting of one human-only and one AI-aided decision from different evaluators.
+
+\subsection{Results}
+
+Overall agreement between human-only and AI-aided decisions was 57.5\% (23/40 cases). Table~\ref{tab:fulfillment_matrix} shows the full confusion matrix.
+
+\begin{table}[H]
+\centering
+\caption{Confusion matrix of order fulfillment decisions. Rows show decisions made by the human-only screener (who produced both the customer report and the fulfillment decision). Columns show decisions made by a different evaluator reviewing an AI-generated report for the same customer profile.}
+\label{tab:fulfillment_matrix}
+\begin{tabular}{lcccc}
+\toprule
+ & \textbf{AI-aided:} & \textbf{AI-aided:} & \textbf{AI-aided:} & \\
+ & \textbf{Follow-up} & \textbf{Not Ship} & \textbf{Ship} & \textbf{Total} \\
+\midrule
+Human-only: Follow-up & 9 & 0 & 7 & 16 \\
+Human-only: Not Ship & 1 & 6 & 0 & 7 \\
+Human-only: Ship & 9 & 0 & 8 & 17 \\
+\midrule
+Total & 19 & 6 & 15 & 40 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Agreement was highest for rejection decisions: 6 of 7 cases where the human-only screener decided not to ship were also rejected by the AI-aided reviewer (86\%). These cases typically involved customers at sanctioned institutions, where the evidence was unambiguous.
+
+Disagreement was concentrated between ship and follow-up decisions. Of the 33 cases where the human-only screener decided to either ship or request follow-up, the AI-aided reviewer agreed on only 17 (52\%). The disagreement was roughly symmetric: 7 cases shifted from follow-up (human-only) to ship (AI-aided), and 9 shifted from ship (human-only) to follow-up (AI-aided).
+
+Because the two decisions in each pair were made by different evaluators under different conditions (human-generated versus AI-generated customer reports), observed disagreement could reflect either inter-screener variation in decision thresholds or differences in the information presented in the two report types. This design does not allow us to isolate these effects. Future work could assess fulfillment decisions from a wider pool of screeners, including conditions where multiple screeners evaluate the same customer report, to disentangle inter-rater variability from the effect of AI-generated versus human-generated reports on downstream decisions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDIX F-J - Supplementary Figures
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Supplementary figures and analyses}
+
+\subsection{Detailed model performance}
+
+All figures reference the 41-profile human baseline subset unless otherwise noted. AI models include five models (Claude Sonnet 4, Gemini 2.5 Pro, Grok 4, GLM 4.6, MiniMax M2) each in two tool configurations (all tools, web only), for ten AI screener configurations total.
+
+\subsubsection{Overall pass rates}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth, height=0.28\textheight, keepaspectratio]{figures/FigureE1.png}
+\caption{\textbf{Overall pass rate per screener with 95\% cluster-adjusted Wilson confidence intervals (41-profile subset).} Each customer profile generates multiple test assertions (~15 per customer), and test outcomes within the same customer are correlated (intra-cluster correlation 0.03--0.10). Confidence intervals account for this clustering using design effects (range 1.4--2.4×) to provide appropriately conservative uncertainty estimates. Sorted by pass rate. Green = all tools, blue = web only, red = human baseline.}
+\label{fig:E1}
+\end{figure}
+
+\subsubsection{Pass rate breakdowns}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth, height=0.40\textheight, keepaspectratio]{figures/FigureF1.png}
+\caption{\textbf{Pass rates by screener and test category.} Left: 41-profile subset (includes human baseline). Right: full 134-profile dataset (AI models only).}
+\label{fig:F1sbs}
+
+\vspace{1em}
+
+\includegraphics[width=\textwidth, height=0.40\textheight, keepaspectratio]{figures/FigureE3.png}
+\caption{\textbf{Pass rates by screener and task.} Left: 41-profile subset (includes human baseline). Right: full 134-profile dataset (AI models only). Tasks include institutional affiliation verification, institution type classification, email domain validation, sanctions screening, and relevant work assessment.}
+\label{fig:E3sbs}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth, height=0.40\textheight, keepaspectratio]{figures/FigureE4.png}
+\caption{\textbf{Pass rates by screener and customer type.} Left: 41-profile subset (includes human baseline). Right: full 134-profile dataset (AI models only).}
+\label{fig:E4sbs}
+\end{figure}
+
+\subsubsection{Per-customer performance}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureE5.png}
+\caption{\textbf{Per-customer overall pass rates (41-profile subset).} Swarm plot grouped by customer type. Each dot represents one customer's average pass rate across all AI models. Horizontal bars indicate group means.}
+\label{fig:E5}
+
+\vspace{1em}
+
+\includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureE6.png}
+\caption{\textbf{Flag accuracy vs.\ non-flag pass rate per customer (41-profile subset).} Scatter plot with Pearson $r = 0.38$, averaged across AI models.}
+\label{fig:F6}
+\end{figure}
+
+\subsubsection{Category correlations}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureE8.png}
+\caption{\textbf{Correlation matrix of per-customer pass rates across test categories (41-profile subset).} Pearson correlations computed with pass rates averaged across AI models.}
+\label{fig:E8}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Full Dataset Validation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Full dataset validation}
+
+The side-by-side heatmaps in Section 6.1 compare the 41-profile human baseline subset with the full 134-profile dataset. The figures below provide additional full dataset comparisons.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureF4.png}
+\caption{\textbf{Overall pass rates on the 41-profile subset vs.\ the full 134-profile dataset for each AI model.} Mean difference: $-1.5$ percentage points.}
+\label{fig:F4}
+
+\vspace{1em}
+
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureF5.png}
+\caption{\textbf{Pass rates by customer type and region.} Side-by-side heatmaps averaged across AI models. Left: 41-profile subset. Right: full 134-profile dataset.}
+\label{fig:F5}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Flag Accuracy Deep Dive
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Flag accuracy deep dive}
+
+Flag accuracy is the only manually graded metric and the most relevant for screening decisions.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth, height=0.40\textheight, keepaspectratio]{figures/FigureG1.png}
+\caption{\textbf{Ground truth flag distribution across the 41 profiles.} Each bar represents one flag criterion divided into FLAG, NO FLAG, and UNDETERMINED segments.}
+\label{fig:H1}
+\end{figure}
+
+\subsubsection{Model predictions}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureG2.png}
+\caption{\textbf{Distribution of extracted flag values across AI models and flag criteria.}}
+\label{fig:H2}
+
+\vspace{1em}
+
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureG3.png}
+\caption{\textbf{False positive, false negative, and undetermined rates per model across flag criteria.}}
+\label{fig:H3}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureG4.png}
+\caption{\textbf{Confusion matrices for flag accuracy across four criteria, aggregated across all AI models (41-profile subset).}}
+\label{fig:H4}
+
+\vspace{1em}
+
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureG5.png}
+\caption{\textbf{Human versus AI error rates by flag criterion (41-profile subset).}}
+\label{fig:H5}
+\end{figure}
+
+\subsubsection{Error analysis}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureG6.png}
+\caption{\textbf{Error rates by flag criterion and screener type (41-profile subset).}}
+\label{fig:H6}
+
+\vspace{1em}
+
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureG7.png}
+\caption{\textbf{Error category distribution by screener type (41-profile subset).}}
+\label{fig:H7}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureG8.png}
+\caption{\textbf{Error category distribution by flag criterion and screener type (41-profile subset).}}
+\label{fig:H8}
+
+\vspace{1em}
+
+\includegraphics[width=0.8\textwidth, height=0.75\textheight, keepaspectratio]{figures/FigureG9.png}
+\caption{\textbf{Flag accuracy error rate by gene/protein product (41-profile subset).} Error rate is 1 minus the mean pass rate for flag accuracy tests, averaged across all AI models.}
+\label{fig:H9}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Cost and Latency Analysis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cost and latency analysis}
+
+\subsubsection{Cost decomposition}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureH1.png}
+\caption{\textbf{Token cost decomposition per customer for each AI model (41-profile subset).} Stacked bars show input token cost (indigo), output token cost (coral), and web search cost (teal).}
+\label{fig:I1}
+
+\vspace{1em}
+
+\includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureH2.png}
+\caption{\textbf{Cost vs.\ pass rate on the full dataset (134 profiles).} Each point represents a model configuration.}
+\label{fig:I2}
+\end{figure}
+
+\subsubsection{Time and latency}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureH3.png}
+\caption{\textbf{Human vs.\ AI screening time per customer.}}
+\label{fig:I3}
+
+\vspace{1em}
+
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureH4.png}
+\caption{\textbf{Wall-clock latency distribution by model.} Boxplots of information gathering time per customer.}
+\label{fig:I4}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureH5.png}
+\caption{\textbf{Information gathering time vs.\ pass rate.}}
+\label{fig:I5}
+
+\vspace{1em}
+
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureH6.png}
+\caption{\textbf{Token consumption by model (41-profile subset).} Mean input and response tokens per customer.}
+\label{fig:I6}
+\end{figure}
+
+\subsubsection{Token and response characteristics}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth, height=0.75\textheight, keepaspectratio]{figures/FigureH7.png}
+\caption{\textbf{Response length vs.\ pass rate.}}
+\label{fig:I7}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Source and Tool Usage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Source and tool usage}
+
+\subsubsection{Source composition}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureI1.png}
+\caption{\textbf{Web searches per customer by model (41-profile subset).} Models with specialized tool access perform fewer web searches.}
+\label{fig:J1}
+
+\vspace{1em}
+
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureI2.png}
+\caption{\textbf{Source types per customer by model (41-profile subset).}}
+\label{fig:J2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureI3.png}
+\caption{\textbf{Source types by task for all-tools models (41-profile subset).}}
+\label{fig:J3}
+
+\vspace{1em}
+
+\includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureI4.png}
+\caption{\textbf{Sources vs.\ pass rate.}}
+\label{fig:J4}
+\end{figure}
+
+\subsubsection{Tool configuration effects}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureI5.png}
+\caption{\textbf{Effect of specialized tools on pass rates by test category (41-profile subset).} Sanctions screening benefits most from tool access.}
+\label{fig:J5}
+
+\vspace{1em}
+
+\includegraphics[width=0.75\textwidth, height=0.38\textheight, keepaspectratio]{figures/FigureI6.png}
+\caption{\textbf{Distribution of failed claim-support assertions (41-profile subset).} 207 of 410 customer-model pairs (50\%) had zero claim failures.}
+\label{fig:J6}
+\end{figure}
+
+\end{document}
